@@ -99,7 +99,7 @@ class CatalogoTableSeeder extends Seeder
          */
         Catalogo::create(['idtable' => 9,'iditem' => 1, 'codigo' => 'T01','nombre' => '1er Trimestre','descripcion'=>'Primer Trimestre','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 9,'iditem' => 2, 'codigo' => 'T02','nombre' => '2do Trimestre','descripcion'=>'Segundo Trimestre','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 9,'iditem' => 2, 'codigo' => 'T03','nombre' => '3er Trimestre','descripcion'=>'Tercer Trimestre','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 9,'iditem' => 3, 'codigo' => 'T03','nombre' => '3er Trimestre','descripcion'=>'Tercer Trimestre','valor'=> null,'activo'=>true]);
 
 
 
