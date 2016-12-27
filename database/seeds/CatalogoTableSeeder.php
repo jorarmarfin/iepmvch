@@ -22,6 +22,16 @@ class CatalogoTableSeeder extends Seeder
         Catalogo::create(['idtable' => 0,'iditem' => 7, 'codigo' => 'GEST','nombre' => 'GESTION','descripcion'=>'GESTION ACADEMICA DE UNA INSTITUCION','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 0,'iditem' => 8, 'codigo' => 'SISPEN','nombre' => 'SISTEMA PENSION','descripcion'=>'SISTEMA DE PENSIONES','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 0,'iditem' => 9, 'codigo' => 'PERACA','nombre' => 'PERIODO ACADEMICO','descripcion'=>'PERIODO ACADEMICO','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 0,'iditem' => 10, 'codigo' => 'GRAS','nombre' => 'GRUPO ASIGNATURA','descripcion'=>'AGRUPACION DE LAS ASIGNATURAS','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 0,'iditem' => 11, 'codigo' => 'TMEN','nombre' => 'TIPO MENSAJE','descripcion'=>'TIPO DE MENSAJE','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 0,'iditem' => 12, 'codigo' => 'EMEN','nombre' => 'ESTADO MENSAJE','descripcion'=>'ESTADO DE LOS MENSAJES','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 0,'iditem' => 13, 'codigo' => 'PEN','nombre' => 'Pension','descripcion'=>'Pension que cobra la institucion mensualmente','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 0,'iditem' => 14, 'codigo' => 'MOR','nombre' => 'MORA','descripcion'=>'Mora que cobra la institucion','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 0,'iditem' => 15, 'codigo' => 'TDES','nombre' => 'TIPO DESCUENTO','descripcion'=>'Tipo de descuento aplicado','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 0,'iditem' => 16, 'codigo' => 'ESTASIS','nombre' => 'ESTADO ASISTENCIA','descripcion'=>'Estado de la asistencia del alumno','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 0,'iditem' => 17, 'codigo' => 'ESTACA','nombre' => 'ESTADO ACADEMICO','descripcion'=>'Estado academico del alumno','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 0,'iditem' => 18, 'codigo' => 'SECCION','nombre' => 'SECCION','descripcion'=>'SECCION DE ASIGNATURAS','valor'=> null,'activo'=>true]);
+
 
 
 
@@ -97,9 +107,66 @@ class CatalogoTableSeeder extends Seeder
         /**
          * Periodo Academico
          */
-        Catalogo::create(['idtable' => 9,'iditem' => 1, 'codigo' => 'T01','nombre' => '1er Trimestre','descripcion'=>'Primer Trimestre','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 9,'iditem' => 2, 'codigo' => 'T02','nombre' => '2do Trimestre','descripcion'=>'Segundo Trimestre','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 9,'iditem' => 3, 'codigo' => 'T03','nombre' => '3er Trimestre','descripcion'=>'Tercer Trimestre','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 9,'iditem' => 1, 'codigo' => '1','nombre' => '1er Trimestre','descripcion'=>'Primer Trimestre','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 9,'iditem' => 2, 'codigo' => '2','nombre' => '2do Trimestre','descripcion'=>'Segundo Trimestre','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 9,'iditem' => 3, 'codigo' => '3','nombre' => '3er Trimestre','descripcion'=>'Tercer Trimestre','valor'=> null,'activo'=>true]);
+        /**
+         * Grupos para las asignaturas
+         */
+        Catalogo::create(['idtable' => 10,'iditem' => 1, 'codigo' => 'G01','nombre' => 'Matematica','descripcion'=>'Agrupa en matematica','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 10,'iditem' => 2, 'codigo' => 'G02','nombre' => 'Comunicacion','descripcion'=>'Agrupa en comunicacion','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 10,'iditem' => 3, 'codigo' => 'G03','nombre' => 'Personal social','descripcion'=>'Agrupa en Personal social','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 10,'iditem' => 4, 'codigo' => 'G04','nombre' => 'HGE','descripcion'=>'Agrupa en HGE','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 10,'iditem' => 5, 'codigo' => 'G05','nombre' => 'CTA','descripcion'=>'Agrupa en CTA','valor'=> null,'activo'=>true]);
+        /**
+         * Tipo de mensaje
+         */
+        Catalogo::create(['idtable' => 11,'iditem' => 1, 'codigo' => 'M01','nombre' => 'Regular','descripcion'=>'Es un mensaje comun ','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 11,'iditem' => 2, 'codigo' => 'M02','nombre' => 'Llamada de atencion','descripcion'=>'Llamada de atencion al personal','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 11,'iditem' => 3, 'codigo' => 'M03','nombre' => 'Urgente','descripcion'=>'Mensaje de caracter urgente','valor'=> null,'activo'=>true]);
+        /**
+         * Estado de los mensajes
+         */
+        Catalogo::create(['idtable' => 12,'iditem' => 1, 'codigo' => 'SMS01','nombre' => 'Nuevo','descripcion'=>'Mensaje nuevo','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 12,'iditem' => 2, 'codigo' => 'SMS02','nombre' => 'Visto','descripcion'=>'Mensaje Visto','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 12,'iditem' => 3, 'codigo' => 'SMS02','nombre' => 'Leido','descripcion'=>'Mensaje leido','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 12,'iditem' => 4, 'codigo' => 'SMS03','nombre' => 'Archivadp','descripcion'=>'Mensaje Archivado','valor'=> null,'activo'=>true]);
+        /**
+         * Pension
+         */
+        Catalogo::create(['idtable' => 13,'iditem' => 1, 'codigo' => 'PEN01','nombre' => 'Pension 1','descripcion'=>'Pension 1','valor'=> 300,'activo'=>true]);
+        Catalogo::create(['idtable' => 13,'iditem' => 2, 'codigo' => 'PEN02','nombre' => 'Pension 2','descripcion'=>'Pension 1','valor'=> 320,'activo'=>true]);
+        /**
+         * Mora
+         */
+        Catalogo::create(['idtable' => 14,'iditem' => 1, 'codigo' => 'MOR01','nombre' => 'Mora 1','descripcion'=>'Mora 1','valor'=> 10,'activo'=>true]);
+        /**
+         * Tipo de descuento
+         */
+        Catalogo::create(['idtable' => 15,'iditem' => 1, 'codigo' => 'DES01','nombre' => 'Cantidad','descripcion'=>'Descuenta la cantidad','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 15,'iditem' => 2, 'codigo' => 'DES02','nombre' => 'Porcentaje','descripcion'=>'Descuenta el porcentaje de la cantidad','valor'=> null,'activo'=>true]);
+        /**
+         * Asistencia
+         */
+        Catalogo::create(['idtable' => 16,'iditem' => 1, 'codigo' => 'A','nombre' => 'Asistio','descripcion'=>'Asistio','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 16,'iditem' => 2, 'codigo' => 'F','nombre' => 'Falto','descripcion'=>'Falto','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 16,'iditem' => 3, 'codigo' => 'T','nombre' => 'Tardanza','descripcion'=>'Tardanza','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 16,'iditem' => 4, 'codigo' => 'T/J','nombre' => 'Tardanza/justificada','descripcion'=>'Tardanaza justificada','valor'=> null,'activo'=>true]);
+        /**
+         * Estado academico del alumno
+         */
+        Catalogo::create(['idtable' => 17,'iditem' => 1, 'codigo' => 'Pro','nombre' => 'Promovido','descripcion'=>'Alumno promovido','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 17,'iditem' => 2, 'codigo' => 'reqrec','nombre' => 'Requiere recuperacion','descripcion'=>'Alumno que requiere recuperacion','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 17,'iditem' => 3, 'codigo' => 'rep','nombre' => 'Repite','descripcion'=>'El alumno repite de año','valor'=> null,'activo'=>true]);
+        /**
+         * Secciones
+         */
+        Catalogo::create(['idtable' => 18,'iditem' => 1, 'codigo' => 'A','nombre' => 'A','descripcion'=>'Seccion A','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 18,'iditem' => 2, 'codigo' => 'B','nombre' => 'B','descripcion'=>'Seccion B','valor'=> null,'activo'=>true]);
+
+
+
+
 
 
 
