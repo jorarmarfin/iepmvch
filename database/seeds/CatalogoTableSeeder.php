@@ -31,6 +31,7 @@ class CatalogoTableSeeder extends Seeder
         Catalogo::create(['idtable' => 0,'iditem' => 16, 'codigo' => 'ESTASIS','nombre' => 'ESTADO ASISTENCIA','descripcion'=>'Estado de la asistencia del alumno','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 0,'iditem' => 17, 'codigo' => 'ESTACA','nombre' => 'ESTADO ACADEMICO','descripcion'=>'Estado academico del alumno','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 0,'iditem' => 18, 'codigo' => 'SECCION','nombre' => 'SECCION','descripcion'=>'SECCION DE ASIGNATURAS','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 0,'iditem' => 19, 'codigo' => 'TPER','nombre' => 'TIPO PERSONAL','descripcion'=>'TIPO PERSONAL','valor'=> null,'activo'=>true]);
 
 
 
@@ -163,6 +164,12 @@ class CatalogoTableSeeder extends Seeder
          */
         Catalogo::create(['idtable' => 18,'iditem' => 1, 'codigo' => 'A','nombre' => 'A','descripcion'=>'Seccion A','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 18,'iditem' => 2, 'codigo' => 'B','nombre' => 'B','descripcion'=>'Seccion B','valor'=> null,'activo'=>true]);
+        /**
+         * Tipo de personal
+         */
+        Catalogo::create(['idtable' => 19,'iditem' => 1, 'codigo' => 'Admin','nombre' => 'Administrativo','descripcion'=>'Administrativo','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 19,'iditem' => 2, 'codigo' => 'Docen','nombre' => 'Docente','descripcion'=>'Personal docente','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 19,'iditem' => 3, 'codigo' => 'Pisco','nombre' => 'Psicologo','descripcion'=>'Psicologo','valor'=> null,'activo'=>true]);
 
 
 
