@@ -25,13 +25,15 @@ class CatalogoTableSeeder extends Seeder
         Catalogo::create(['idtable' => 0,'iditem' => 10, 'codigo' => 'GRAS','nombre' => 'GRUPO ASIGNATURA','descripcion'=>'AGRUPACION DE LAS ASIGNATURAS','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 0,'iditem' => 11, 'codigo' => 'TMEN','nombre' => 'TIPO MENSAJE','descripcion'=>'TIPO DE MENSAJE','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 0,'iditem' => 12, 'codigo' => 'EMEN','nombre' => 'ESTADO MENSAJE','descripcion'=>'ESTADO DE LOS MENSAJES','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 0,'iditem' => 13, 'codigo' => 'PEN','nombre' => 'Pension','descripcion'=>'Pension que cobra la institucion mensualmente','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 0,'iditem' => 13, 'codigo' => 'TENT','nombre' => 'TIPO ENTRADA','descripcion'=>'Tipos de ingreso de efectivo','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 0,'iditem' => 14, 'codigo' => 'MOR','nombre' => 'MORA','descripcion'=>'Mora que cobra la institucion','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 0,'iditem' => 15, 'codigo' => 'TDES','nombre' => 'TIPO DESCUENTO','descripcion'=>'Tipo de descuento aplicado','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 0,'iditem' => 16, 'codigo' => 'ESTASIS','nombre' => 'ESTADO ASISTENCIA','descripcion'=>'Estado de la asistencia del alumno','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 0,'iditem' => 17, 'codigo' => 'ESTACA','nombre' => 'ESTADO ACADEMICO','descripcion'=>'Estado academico del alumno','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 0,'iditem' => 18, 'codigo' => 'SECCION','nombre' => 'SECCION','descripcion'=>'SECCION DE ASIGNATURAS','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 0,'iditem' => 19, 'codigo' => 'TPER','nombre' => 'TIPO PERSONAL','descripcion'=>'TIPO PERSONAL','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 0,'iditem' => 20, 'codigo' => 'DIA','nombre' => 'DIA SEMANA','descripcion'=>'Dia de la semana','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 0,'iditem' => 21, 'codigo' => 'TSAL','nombre' => 'TIPO SALIDA','descripcion'=>'Tipo de salida de efectivo','valor'=> null,'activo'=>true]);
 
 
 
@@ -135,8 +137,12 @@ class CatalogoTableSeeder extends Seeder
         /**
          * Pension
          */
-        Catalogo::create(['idtable' => 13,'iditem' => 1, 'codigo' => 'PEN01','nombre' => 'Pension 1','descripcion'=>'Pension 1','valor'=> 300,'activo'=>true]);
-        Catalogo::create(['idtable' => 13,'iditem' => 2, 'codigo' => 'PEN02','nombre' => 'Pension 2','descripcion'=>'Pension 1','valor'=> 320,'activo'=>true]);
+        Catalogo::create(['idtable' => 13,'iditem' => 1, 'codigo' => 'PEN','nombre' => 'Pension','descripcion'=>'Pago mensual que se realiza a la IE','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 13,'iditem' => 2, 'codigo' => 'VENT','nombre' => 'Ventas','descripcion'=>'Ventas','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 13,'iditem' => 3, 'codigo' => 'CERT','nombre' => 'Certificados','descripcion'=>'Certificados','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 13,'iditem' => 4, 'codigo' => 'PAS','nombre' => 'Paseos','descripcion'=>'Paseos','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 13,'iditem' => 5, 'codigo' => 'EXARE','nombre' => 'Examenes Recuperacion','descripcion'=>'Examenes de recuperacion','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 13,'iditem' => 6, 'codigo' => 'MATR','nombre' => 'Matricula','descripcion'=>'pago por concepto de matricula','valor'=> null,'activo'=>true]);
         /**
          * Mora
          */
@@ -170,7 +176,22 @@ class CatalogoTableSeeder extends Seeder
         Catalogo::create(['idtable' => 19,'iditem' => 1, 'codigo' => 'Admin','nombre' => 'Administrativo','descripcion'=>'Administrativo','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 19,'iditem' => 2, 'codigo' => 'Docen','nombre' => 'Docente','descripcion'=>'Personal docente','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 19,'iditem' => 3, 'codigo' => 'Pisco','nombre' => 'Psicologo','descripcion'=>'Psicologo','valor'=> null,'activo'=>true]);
-
+        /**
+         * Dia de la semana
+         */
+        Catalogo::create(['idtable' => 20,'iditem' => 1, 'codigo' => 'L','nombre' => 'Lunes','descripcion'=>'Dia lunes','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 20,'iditem' => 2, 'codigo' => 'M','nombre' => 'Martes','descripcion'=>'Dia Martes','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 20,'iditem' => 3, 'codigo' => 'I','nombre' => 'Miercoles','descripcion'=>'Dia Miercoles','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 20,'iditem' => 4, 'codigo' => 'J','nombre' => 'Jueves','descripcion'=>'Dia Jueves','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 20,'iditem' => 5, 'codigo' => 'V','nombre' => 'Viernes','descripcion'=>'Dia viernes','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 20,'iditem' => 6, 'codigo' => 'S','nombre' => 'Sabado','descripcion'=>'Dia Sabado','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 20,'iditem' => 7, 'codigo' => 'D','nombre' => 'Domingo','descripcion'=>'Dia Domingo','valor'=> null,'activo'=>true]);
+        /**
+         * Tipo de salida de efectivo
+         */
+        Catalogo::create(['idtable' => 21,'iditem' => 1, 'codigo' => 'TS01','nombre' => 'Tributos','descripcion'=>'Sueldo de docente','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 21,'iditem' => 2, 'codigo' => 'TS02','nombre' => 'Servicios','descripcion'=>'Adelanto del sueldo','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 21,'iditem' => 3, 'codigo' => 'TS03','nombre' => 'Gastos Varios','descripcion'=>'descripcion','valor'=> null,'activo'=>true]);
 
 
 
