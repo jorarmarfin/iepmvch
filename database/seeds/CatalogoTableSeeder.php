@@ -34,6 +34,7 @@ class CatalogoTableSeeder extends Seeder
         Catalogo::create(['idtable' => 0,'iditem' => 19, 'codigo' => 'TPER','nombre' => 'TIPO PERSONAL','descripcion'=>'TIPO PERSONAL','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 0,'iditem' => 20, 'codigo' => 'DIA','nombre' => 'DIA SEMANA','descripcion'=>'Dia de la semana','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 0,'iditem' => 21, 'codigo' => 'TSAL','nombre' => 'TIPO SALIDA','descripcion'=>'Tipo de salida de efectivo','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 0,'iditem' => 22, 'codigo' => 'UM','nombre' => 'UNIDAD MEDIDA','descripcion'=>'Unidad de medida','valor'=> null,'activo'=>true]);
 
 
 
@@ -192,6 +193,10 @@ class CatalogoTableSeeder extends Seeder
         Catalogo::create(['idtable' => 21,'iditem' => 1, 'codigo' => 'TS01','nombre' => 'Tributos','descripcion'=>'Sueldo de docente','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 21,'iditem' => 2, 'codigo' => 'TS02','nombre' => 'Servicios','descripcion'=>'Adelanto del sueldo','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 21,'iditem' => 3, 'codigo' => 'TS03','nombre' => 'Gastos Varios','descripcion'=>'descripcion','valor'=> null,'activo'=>true]);
+        /**
+         * Unidad de medida
+         */
+        Catalogo::create(['idtable' => 22,'iditem' => 1, 'codigo' => 'UN','nombre' => 'Unidad','descripcion'=>'Solo un articulo','valor'=> null,'activo'=>true]);
 
 
 
