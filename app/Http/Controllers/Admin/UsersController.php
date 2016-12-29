@@ -50,11 +50,13 @@ class UsersController extends Controller
         $data = $request->all();
         $user = new User($data);
         $file = $request->file('file');
-        if (isset($file)) {
+
+        $request->file('file')->store('avatars');
+        /*if (isset($file)) {
             $namefile = $file->getClientOriginalName();
             $user['foto']= $namefile;
             Storage::disk('public')->put('/fotos/'.$namefile,File::get($file));
-        };
+        };*/
 
         $user->save();
         Alert::success('Usuario Registrado con exito');
@@ -98,6 +100,9 @@ class UsersController extends Controller
     {
         $user = User::findOrFail($id);
         $user->fill($request->all());
+        if ($request->hasFile('file')) {
+            $user->foto = $request->file('file')->store('avatars');
+        }
         $user->save();
         Alert::success('Usuario actualizado');
         return redirect()->route('admin.users.index');

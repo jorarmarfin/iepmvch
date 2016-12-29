@@ -8,27 +8,27 @@
 @include(Auth::user()->menu)
 @stop
 
-@section('userimg')
-{{ asset('storage/fotos/'.Auth::user()->foto) }}
+@section('user-img')
+{{ url('avatar') }}
 @stop
 
-@section('username')
+@section('user-name')
 {!!Auth::user()->name!!}
 @stop
 
+@section('breadcrumb')
+@stop
 
 
 @section('page-title')
-Panel de
+Panel de Administracion
 @stop
 
 @section('page-subtitle')
-  Administracion
-
 @stop
 
 @section('content')
-asd
+asdaaa
 @stop
 
 

@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Auth;
+
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -25,7 +28,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    //protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -36,4 +39,37 @@ class LoginController extends Controller
     {
         $this->middleware('guest', ['except' => 'logout']);
     }
+
+    /**
+     * Get the post register / login redirect path.
+     *
+     * @return string
+     */
+    public function redirectPath()
+    {
+        switch (Auth::user()->role->nombre) {
+            case 'root':
+                    return route('home.index');
+                break;
+
+            default:
+                    return route('users.index');
+                break;
+        }
+    }
+    /**
+     * Get the needed authorization credentials from the request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return array
+     */
+    protected function credentials(Request $request)
+    {
+        return [
+        'email' => $request->get('email'),
+        'password' => $request->get('password'),
+        'activo' => true
+        ];
+    }
+
 }
