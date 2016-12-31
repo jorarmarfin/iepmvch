@@ -16,26 +16,35 @@ class CreateAlumnosTable extends Migration
         Schema::create('alumno', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->string('paterno',25)->nullable();
-            $table->string('materno',25)->nullable();
-            $table->string('nombres',50)->nullable();
-            $table->string('dni',20)->nullable();
+            $table->string('paterno',25)->nullable()->index();
+            $table->string('materno',25)->nullable()->index();
+            $table->string('nombres',50)->nullable()->index();
+            $table->string('dni',20)->nullable()->index();
             $table->integer('idsubnivel')->nullable();
             $table->date('fechanacimiento')->nullable();
-            $table->integer('idubigeonacimiento')->nullable();
             $table->integer('idpais')->nullable();
+            $table->integer('idubigeonacimiento')->nullable();
             $table->string('religion',100)->nullable();
             $table->boolean('bautismo')->nullable();
             $table->boolean('comunion')->nullable();
             $table->boolean('confirmacion')->nullable();
             $table->integer('idubigeo')->nullable();
-            $table->string('direccion',100)->nullable();
+            $table->mediumtext('direccion')->nullable();
+            $table->string('telefonos',100)->nullable();
+            $table->string('telefonoemergencia1',100)->nullable();
+            $table->string('telefonoemergencia2',100)->nullable();
+            $table->boolean('respadre')->nullable();
+            $table->boolean('resmadre')->nullable();
+            $table->boolean('resapoderado')->nullable();
+            $table->integer('idestado')->nullable();
+            $table->text('observacion')->nullable();
 
             $table->timestamps();
-            $table->foreign('idsubnivel')->references('references')->on('catalogo');
-            $table->foreign('idubigeonacimiento')->references('references')->on('catalogo');
-            $table->foreign('idpais')->references('references')->on('catalogo');
-            $table->foreign('idubigeo')->references('references')->on('catalogo');
+            $table->foreign('idsubnivel')->references('id')->on('catalogo');
+            $table->foreign('idubigeonacimiento')->references('id')->on('catalogo');
+            $table->foreign('idpais')->references('id')->on('catalogo');
+            $table->foreign('idubigeo')->references('id')->on('catalogo');
+            $table->foreign('idestado')->references('id')->on('catalogo');
         });
     }
 
