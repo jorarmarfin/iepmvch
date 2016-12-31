@@ -101,7 +101,7 @@ class UsersController extends Controller
         $user = User::findOrFail($id);
         $user->fill($request->all());
         if ($request->hasFile('file')) {
-            $user->foto = $request->file('file')->store('avatars');
+            $user->foto = $request->file('file')->store("avatars",'public');
         }
         $user->save();
         Alert::success('Usuario actualizado');

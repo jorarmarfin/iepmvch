@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Models\Catalogo;
+use App\User;
 
 class UserTableSeeder extends Seeder
 {
@@ -13,7 +14,7 @@ class UserTableSeeder extends Seeder
     public function run()
     {
         $root = Catalogo::idroot();
-        factory(App\User::class)->create([
+        User::create([
             'name' => 'Luis Fernando',
             'email' => 'luis.mayta@gmail.com',
             'password' => '321654987',

@@ -9,7 +9,7 @@
 @stop
 
 @section('user-img')
-{{ url('avatar') }}
+{{ asset('storage/'.Auth::user()->foto) }}
 @stop
 
 @section('user-name')

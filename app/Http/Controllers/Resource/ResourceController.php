@@ -16,8 +16,7 @@ class ResourceController extends Controller
         return response()->download(
             storage_path('app/'.$foto),
             null,
-            $headers,
-            ResponseHeaderBag::DISPOSITION_INLINE
+            $headers
         );
     }
 }
