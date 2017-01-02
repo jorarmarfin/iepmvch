@@ -35,6 +35,10 @@ class CatalogoTableSeeder extends Seeder
         Catalogo::create(['idtable' => 0,'iditem' => 20, 'codigo' => 'DIA','nombre' => 'DIA SEMANA','descripcion'=>'Dia de la semana','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 0,'iditem' => 21, 'codigo' => 'TSAL','nombre' => 'TIPO SALIDA','descripcion'=>'Tipo de salida de efectivo','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 0,'iditem' => 22, 'codigo' => 'UM','nombre' => 'UNIDAD MEDIDA','descripcion'=>'Unidad de medida','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 0,'iditem' => 23, 'codigo' => 'IP','nombre' => 'PAIS','descripcion'=>'Pais','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 0,'iditem' => 24, 'codigo' => 'MAT','nombre' => 'Materiales','descripcion'=>'Utiles escolares','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 0,'iditem' => 25, 'codigo' => 'ARE','nombre' => 'Area','descripcion'=>'Area de Asignaturas','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 0,'iditem' => 26, 'codigo' => 'UBI','nombre' => 'UBIGEO','descripcion'=>'Ubigeo de peru','valor'=> null,'activo'=>true]);
 
 
 
@@ -72,8 +76,9 @@ class CatalogoTableSeeder extends Seeder
         /**
          * Nivel Eduativo
          */
-        Catalogo::create(['idtable' => 4,'iditem' => 1, 'codigo' => 'Pri','nombre' => 'Primaria','descripcion'=>'Primaria','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 4,'iditem' => 2, 'codigo' => 'Sec','nombre' => 'Secundaria','descripcion'=>'Secundaria','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 4,'iditem' => 1, 'codigo' => 'INI','nombre' => 'Inicial','descripcion'=>'Secundaria','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 4,'iditem' => 2, 'codigo' => 'PRI','nombre' => 'Primaria','descripcion'=>'Primaria','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 4,'iditem' => 3, 'codigo' => 'SEC','nombre' => 'Secundaria','descripcion'=>'Secundaria','valor'=> null,'activo'=>true]);
         /**
          * Estado del alumno
          */
@@ -197,6 +202,38 @@ class CatalogoTableSeeder extends Seeder
          * Unidad de medida
          */
         Catalogo::create(['idtable' => 22,'iditem' => 1, 'codigo' => 'UN','nombre' => 'Unidad','descripcion'=>'Solo un articulo','valor'=> null,'activo'=>true]);
+        /**
+         * Pais
+         */
+        Catalogo::create(['idtable' => 23,'iditem' => 1, 'codigo' => 'PE','nombre' => 'Peru','descripcion'=>'Peru','valor'=> null,'activo'=>true]);
+        /**
+         * Utiles escolares
+         */
+        Catalogo::create(['idtable' => 24,'iditem' => 1, 'codigo' => 'MAT01','nombre' => 'Lapicero','descripcion'=>'Lapicero','valor'=> null,'activo'=>true]);
+        /**
+         * Area de asignatura
+         */
+        Catalogo::create(['idtable' => 25,'iditem' => 1, 'codigo' => 'MAT','nombre' => 'Matematica','descripcion'=>'Matematica','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 25,'iditem' => 2, 'codigo' => 'COM','nombre' => 'Comunicacion','descripcion'=>'Comunicacion','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 25,'iditem' => 3, 'codigo' => 'AYC','nombre' => 'Arte y Cultura','descripcion'=>'Arte y Cultura','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 25,'iditem' => 4, 'codigo' => 'CYT','nombre' => 'Ciencia y Tecnologia','descripcion'=>'Ciencia y Tecnologia','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 25,'iditem' => 5, 'codigo' => 'ING','nombre' => 'Ingles','descripcion'=>'Ingles','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 25,'iditem' => 6, 'codigo' => 'CSO','nombre' => 'Ciencias Sociales','descripcion'=>'Ciencias Sociales','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 25,'iditem' => 7, 'codigo' => 'DPCC','nombre' => 'DPCC','descripcion'=>'Desarrollo Personal, ciudad y Civil','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 25,'iditem' => 8, 'codigo' => 'EDF','nombre' => 'E. Fisica','descripcion'=>'Educacion Fisica','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 25,'iditem' => 9, 'codigo' => 'EDR','nombre' => 'E. Religiosa','descripcion'=>'Educacion Religiosa','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 25,'iditem' =>10, 'codigo' => 'EPT','nombre' => 'Ed. Para el Trabajo','descripcion'=>'Ed. Para el Trabajo','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 25,'iditem' =>11, 'codigo' => 'TOE','nombre' => 'Tutoria TOE','descripcion'=>'Tutoria TOE','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 25,'iditem' =>12, 'codigo' => 'PSO','nombre' => 'Personal Social','descripcion'=>'Personal Social','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 25,'iditem' =>13, 'codigo' => 'CYA','nombre' => 'Ciencia y Ambiente','descripcion'=>'Ciencia y Ambiente','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 25,'iditem' => 14, 'codigo' => 'INF','nombre' => 'Informatica','descripcion'=>'Informatica','valor'=> null,'activo'=>true]);
+
+
+
+
+        /**
+         * Ubigeo
+         */
 
 
 
