@@ -2,9 +2,13 @@
 
 @section('content')
 {!! Alert::render() !!}
-<div class="row">
-	<div class="col-sm-12">
+<div class="portlet box red">
+	<div class="portlet-title">
+		<div class="caption"><i class="fa fa-edit"></i>Eliminar registro</div>
+	</div>
+	<div class="portlet-body form">
 		{!! Form::model($catalogo,['route'=>['catalogo.destroy',$catalogo],'method'=>'DELETE']) !!}
+			<div class="form-body">
 				<div class="form-group">
 						{!!Form::label('lblCodigo', 'Codigo');!!}
 						{!!Form::text('codigo', null , ['class'=>'form-control','placeholder'=>'Codigo']);!!}
@@ -17,10 +21,11 @@
 						{!!Form::label('lblDescripcion', 'Descripcion');!!}
 						{!!Form::text('descripcion', null , ['class'=>'form-control','placeholder'=>'Descripcion']);!!}
 					</div>
-            	<div class="col-sm-4">
+            	<div class="form-group">
 					{!!Form::submit('Eliminar',['class'=>'btn btn-danger'])!!}
 	            	<a href="{{ route('catalogo.index') }}" class="btn default">REGRESAR</a>
             	</div>
+            </div>
 		{!! Form::close() !!}
 	</div>
 </div>

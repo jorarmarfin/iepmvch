@@ -8,9 +8,6 @@
 @include(Auth::user()->menu)
 @stop
 
-@section('user-img')
-{{ asset('storage/'.Auth::user()->foto) }}
-@stop
 
 @section('user-name')
 {!!Auth::user()->name!!}

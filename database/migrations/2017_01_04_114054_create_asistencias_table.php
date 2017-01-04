@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateReservapsicologicasTable extends Migration
+class CreateAsistenciasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,17 @@ class CreateReservapsicologicasTable extends Migration
      */
     public function up()
     {
-        Schema::create('reserva_psicologica', function (Blueprint $table) {
+        Schema::create('asistencia', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('idmatricula')->nullable();
+            $table->integer('idasignaturagrado')->nullable();
+            $table->integer('idestado')->nullable();
             $table->date('fecha')->nullable();
             $table->time('hora')->nullable();
-            $table->string('persona',200)->nullable();
-            $table->mediumtext('motivo')->nullable();
-            $table->mediumtext('observacion')->nullable();
-            $table->integer('idpersonal')->nullable();
-            $table->integer('idestado')->nullable();
-            $table->boolean('activo')->nullable();
 
             $table->timestamps();
-            $table->foreign('idpersonal')->references('id')->on('personal');
+            $table->foreign('idmatricula')->references('id')->on('matricula');
+            $table->foreign('idasignaturagrado')->references('id')->on('asignatura_grado');
             $table->foreign('idestado')->references('id')->on('catalogo');
         });
     }
@@ -37,6 +35,6 @@ class CreateReservapsicologicasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reserva_psicologica');
+        Schema::dropIfExists('asistencia');
     }
 }

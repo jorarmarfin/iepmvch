@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class EtiquetaNota extends Model
 {
-    protected $table = 'etiquetanota';
+    protected $table = 'etiqueta_nota';
     protected $fillable = ['idtable', 'iditem', 'codigo','nombre','descripcion','valor','activo'];
 }

@@ -1,9 +1,13 @@
 @extends('layouts.base')
 
 @section('content')
-<div class="row">
-	<div class="col-sm-12">
+<div class="portlet box green">
+	<div class="portlet-title">
+		<div class="caption"><i class="fa fa-edit"></i>Formulario de Usuarios </div>
+	</div>
+	<div class="portlet-body form">
 		{!! Form::model($catalogo,['route'=>['catalogo.update',$catalogo],'method'=>'PUT']) !!}
+			<div class="form-body">
 				@if (Session::get('tablename') != 'jefatura')
 					<div class="form-group">
 						{!!Form::label('lblCodigo', 'Codigo');!!}
@@ -18,10 +22,12 @@
 					{!!Form::label('lblDescripcion', 'Descripcion');!!}
 					{!!Form::text('descripcion', null , ['class'=>'form-control','placeholder'=>'Descripcion']);!!}
 				</div>
-            	<div class="col-sm-4">
+
+            	<div class="form-group">
 					{!!Form::submit('Guardar',['class'=>'btn yellow-gold uppercase'])!!}
 	            	<a href="{{ route('catalogo.index') }}" class="btn default">REGRESAR</a>
             	</div>
+            </div>
 		{!! Form::close() !!}
 	</div>
 </div>

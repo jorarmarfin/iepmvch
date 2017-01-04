@@ -4,8 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Personaautorizada extends Model
+class PersonaAutorizada extends Model
 {
-    protected $table = 'personaautorizada';
+    protected $table = 'persona_autorizada';
     protected $fillable = ['nombre', 'dni', 'telefono','idalumno','idparentesco'];
 }

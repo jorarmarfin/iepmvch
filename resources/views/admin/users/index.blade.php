@@ -54,10 +54,6 @@
 @include('admin.users.modals.create')
 @stop
 
-@section('user-img')
-{{ asset('/storage/fotos/'.Auth::user()->foto) }}
-@stop
-
 @section('menu-user')
 @include('menu.profile-admin')
 @stop

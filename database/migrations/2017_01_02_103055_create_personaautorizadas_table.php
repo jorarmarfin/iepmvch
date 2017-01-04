@@ -13,7 +13,7 @@ class CreatePersonaautorizadasTable extends Migration
      */
     public function up()
     {
-        Schema::create('personaautorizada', function (Blueprint $table) {
+        Schema::create('persona_autorizada', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre',200)->nullable();
             $table->string('dni',20)->nullable();
@@ -33,6 +33,6 @@ class CreatePersonaautorizadasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('personaautorizada');
+        Schema::dropIfExists('persona_autorizada');
     }
 }

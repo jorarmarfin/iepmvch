@@ -27,8 +27,8 @@
         </li>
         <li class="nav-item  ">
             <a href="javascript:;" class="nav-link nav-toggle">
-                <i class="icon-diamond"></i>
-                <span class="title">Catalogo</span>
+                <i class="icon-wrench"></i>
+                <span class="title">Configuracion</span>
                 <span class="arrow"></span>
             </a>
             <ul class="sub-menu">

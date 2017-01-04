@@ -48,6 +48,6 @@ class Catalogo extends Model
     }
     #--------------------------------------------------------------------
 	public function scopeidroot($cadenaSQL){
-		return $cadenaSQL->select('id')->where('codigo','root')->where('nombre','root')->get()[0];
+		return $cadenaSQL->select('id')->where('codigo','root')->where('nombre','root')->first();
 	}
 }

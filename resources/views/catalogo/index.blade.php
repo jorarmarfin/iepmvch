@@ -4,7 +4,7 @@
 <div class="row">
 	<div class="col-md-12">
         <!-- BEGIN SAMPLE TABLE PORTLET-->
-        <div class="portlet box dark">
+        <div class="portlet box green">
             <div class="portlet-title">
                 <div class="caption">
                     <i class="fa fa-comments"></i>Gestion de {{ Session::get('tablename') }} </div>

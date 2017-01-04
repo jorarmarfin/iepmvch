@@ -2,12 +2,12 @@
 
 @section('content')
 {!! Alert::render() !!}
-<div class="portlet box yellow-gold">
+<div class="portlet box green">
 	<div class="portlet-title">
-		<div class="caption"><i class="fa fa-gift"></i>Formulario de Usuarios </div>
+		<div class="caption"><i class="fa fa-edit"></i>Formulario de Usuarios </div>
 	</div>
 	<div class="portlet-body form">
-		{!! Form::model($user,['route'=>['admin.users.update',$user],'method'=>'PUT','files'=>true,'class'=>'form-horizontal']) !!}
+		{!! Form::model($user,['route'=>['admin.users.update',$user],'method'=>'PUT','files'=>true]) !!}
 			<div class="form-body">
 				<div class="form-group">
 					{!!Form::label('lblNombre', 'Nombre del usuario');!!}
@@ -22,10 +22,8 @@
 					{!!Form::select('idrole',$roles,null, ['class'=>'form-control']);!!}
 				</div>
 				<div class="form-group">
-					<div class="col-sm-4">
 						<img src="{{ asset('/storage/'.Auth::user()->foto) }}" width="30%">
 						{!!Form::file('file',['class'=>'form-control'])!!}
-					</div>
 				</div>
 
 
@@ -38,10 +36,6 @@
 	</div>
 </div>
 @include('admin.users.modals.create')
-@stop
-
-@section('user-img')
-{{ asset('/storage/fotos/'.Auth::user()->foto) }}
 @stop
 
 @section('menu-user')

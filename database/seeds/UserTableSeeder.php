@@ -21,6 +21,13 @@ class UserTableSeeder extends Seeder
             'idrole' => $root->id,
             'menu' => 'menu.sider-admin',
             ]);
+        User::create([
+            'name' => 'Rosa',
+            'email' => 'luis.mayta@gmail.com',
+            'password' => '321654987',
+            'idrole' => $root->id,
+            'menu' => 'menu.sider-admin',
+            ]);
         //factory(App\User::class,20)->create();
     }
 }

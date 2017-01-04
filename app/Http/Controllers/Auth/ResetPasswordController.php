@@ -55,6 +55,6 @@ class ResetPasswordController extends Controller
     {
         //return property_exists($this, 'redirectTo') ? $this->redirectTo : '/';
         //return redirect()->route('home.index');
-        dd('hola');
+        return route('home.index');
     }
 }

@@ -4,8 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Reservapsicologica extends Model
+class ReservaPsicologica extends Model
 {
-    protected $table = 'reservapsicologica';
+    protected $table = 'reserva_psicologica';
     protected $fillable = ['fecha', 'hora', 'persona','motivo','observacion','idpersonal','idestado','activo'];
 }

@@ -22,6 +22,7 @@ class CreateInstitucionsTable extends Migration
             $table->string('telefonos',200)->nullable();
             $table->string('email',200)->nullable();
             $table->string('web',100)->nullable();
+            $table->string('ruc',50)->nullable();
             $table->timestamps();
         });
     }
