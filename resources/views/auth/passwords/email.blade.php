@@ -10,7 +10,7 @@
     </div>
     <div class="form-actions">
        <a href="{{ url('/') }}" class="btn green btn-outline">REGRESAR</a>
-       {!!Form::submit('Entrar',['class'=>'btn btn-success uppercase pull-right'])!!}
+       {!!Form::submit('Enviar',['class'=>'btn btn-success uppercase pull-right'])!!}
     </div>
 {!! Form::close() !!}
 @stop
