@@ -29,15 +29,15 @@ class CatalogoTableSeeder extends Seeder
         Catalogo::create(['idtable' => 0,'iditem' => 14, 'codigo' => 'MOR','nombre' => 'MORA','descripcion'=>'Mora que cobra la institucion','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 0,'iditem' => 15, 'codigo' => 'TDES','nombre' => 'TIPO DESCUENTO','descripcion'=>'Tipo de descuento aplicado','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 0,'iditem' => 16, 'codigo' => 'ESTASIS','nombre' => 'ESTADO ASISTENCIA','descripcion'=>'Estado de la asistencia del alumno','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 0,'iditem' => 17, 'codigo' => 'ESTACA','nombre' => 'ESTADO ACADEMICO','descripcion'=>'Estado academico del alumno','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 0,'iditem' => 18, 'codigo' => 'SECCION','nombre' => 'SECCION','descripcion'=>'SECCION DE ASIGNATURAS','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 0,'iditem' => 19, 'codigo' => 'TPER','nombre' => 'TIPO PERSONAL','descripcion'=>'TIPO PERSONAL','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 0,'iditem' => 20, 'codigo' => 'DIA','nombre' => 'DIA SEMANA','descripcion'=>'Dia de la semana','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 0,'iditem' => 21, 'codigo' => 'TSAL','nombre' => 'TIPO SALIDA','descripcion'=>'Tipo de salida de efectivo','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 0,'iditem' => 22, 'codigo' => 'UM','nombre' => 'UNIDAD MEDIDA','descripcion'=>'Unidad de medida','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 0,'iditem' => 23, 'codigo' => 'IP','nombre' => 'PAIS','descripcion'=>'Pais','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 0,'iditem' => 24, 'codigo' => 'MAT','nombre' => 'Materiales','descripcion'=>'Utiles escolares','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 0,'iditem' => 25, 'codigo' => 'ARE','nombre' => 'Area','descripcion'=>'Area de Asignaturas','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 0,'iditem' => 17, 'codigo' => 'SECCION','nombre' => 'SECCION','descripcion'=>'SECCION DE ASIGNATURAS','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 0,'iditem' => 18, 'codigo' => 'TPER','nombre' => 'TIPO PERSONAL','descripcion'=>'TIPO PERSONAL','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 0,'iditem' => 19, 'codigo' => 'DIA','nombre' => 'DIA SEMANA','descripcion'=>'Dia de la semana','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 0,'iditem' => 20, 'codigo' => 'TSAL','nombre' => 'TIPO SALIDA','descripcion'=>'Tipo de salida de efectivo','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 0,'iditem' => 21, 'codigo' => 'UM','nombre' => 'UNIDAD MEDIDA','descripcion'=>'Unidad de medida','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 0,'iditem' => 22, 'codigo' => 'IP','nombre' => 'PAIS','descripcion'=>'Pais','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 0,'iditem' => 23, 'codigo' => 'MAT','nombre' => 'Materiales','descripcion'=>'Utiles escolares','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 0,'iditem' => 24, 'codigo' => 'ARE','nombre' => 'Area','descripcion'=>'Area de Asignaturas','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 0,'iditem' => 25, 'codigo' => 'PRACT','nombre' => 'PRACTICAS','descripcion'=>'Practicas Calificadas','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 0,'iditem' => 26, 'codigo' => 'UBI','nombre' => 'UBIGEO','descripcion'=>'Ubigeo de peru','valor'=> null,'activo'=>true]);
 
 
@@ -47,11 +47,13 @@ class CatalogoTableSeeder extends Seeder
          * sub tablas
          */
         Catalogo::create(['idtable' => 1,'iditem' => 1, 'codigo' => 'root','nombre' => 'root','descripcion'=>'Administrador del sistema','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 1,'iditem' => 2, 'codigo' => 'ger','nombre' => 'Gerente','descripcion'=>'Gerente del la Institucion educativa ','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 1,'iditem' => 2, 'codigo' => 'dir','nombre' => 'Director','descripcion'=>'Director del la Institucion educativa ','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 1,'iditem' => 3, 'codigo' => 'adm','nombre' => 'Administrador','descripcion'=>'Administrador la Institucion educativa ','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 1,'iditem' => 4, 'codigo' => 'doc','nombre' => 'Docente','descripcion'=>'docente de la Institucion educativa ','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 1,'iditem' => 5, 'codigo' => 'pad','nombre' => 'Padre','descripcion'=>'Padre de familia ','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 1,'iditem' => 6, 'codigo' => 'pad','nombre' => 'Psicologo','descripcion'=>'Psicologo de la Institucion educativa ','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 1,'iditem' => 6, 'codigo' => 'psi','nombre' => 'Psicologo','descripcion'=>'Psicologo de la Institucion educativa ','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 1,'iditem' => 7, 'codigo' => 'pro','nombre' => 'Promotor','descripcion'=>'Promotor de la Institucion educativa ','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 1,'iditem' => 8, 'codigo' => 'sub','nombre' => 'Sub Director','descripcion'=>'Sub director de la Institucion educativa ','valor'=> null,'activo'=>true]);
         /**
          * Estado civil
          */
@@ -83,8 +85,11 @@ class CatalogoTableSeeder extends Seeder
          * Estado del alumno
          */
         Catalogo::create(['idtable' => 5,'iditem' => 1, 'codigo' => 'reg','nombre' => 'Regular','descripcion'=>'Alumno regular si alguna observacion','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 5,'iditem' => 2, 'codigo' => 'sus','nombre' => 'Suspendido','descripcion'=>'Alumno suspendido temporalmente','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 5,'iditem' => 3, 'codigo' => 'ret','nombre' => 'Retirado','descripcion'=>'Alumno retirado de la institucion','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 5,'iditem' => 2, 'codigo' => 'ret','nombre' => 'Retirado','descripcion'=>'Alumno retirado de la institucion','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 5,'iditem' => 3, 'codigo' => 'pro','nombre' => 'Promovido','descripcion'=>'Alumno Promovido de grado','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 5,'iditem' => 4, 'codigo' => 'rec','nombre' => 'Requiere recuperacion','descripcion'=>'Alumno requiere recuperacion','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 5,'iditem' => 5, 'codigo' => 'rep','nombre' => 'Repite','descripcion'=>'El alumno repite de año','valor'=> null,'activo'=>true]);
+
         /**
          * Requisitos de matricula
          */
@@ -166,12 +171,6 @@ class CatalogoTableSeeder extends Seeder
         Catalogo::create(['idtable' => 16,'iditem' => 3, 'codigo' => 'T','nombre' => 'Tardanza','descripcion'=>'Tardanza','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 16,'iditem' => 4, 'codigo' => 'T/J','nombre' => 'Tardanza/justificada','descripcion'=>'Tardanaza justificada','valor'=> null,'activo'=>true]);
         /**
-         * Estado academico del alumno
-         */
-        Catalogo::create(['idtable' => 17,'iditem' => 1, 'codigo' => 'Pro','nombre' => 'Promovido','descripcion'=>'Alumno promovido','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 17,'iditem' => 2, 'codigo' => 'reqrec','nombre' => 'Requiere recuperacion','descripcion'=>'Alumno que requiere recuperacion','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 17,'iditem' => 3, 'codigo' => 'rep','nombre' => 'Repite','descripcion'=>'El alumno repite de año','valor'=> null,'activo'=>true]);
-        /**
          * Secciones
          */
         Catalogo::create(['idtable' => 18,'iditem' => 1, 'codigo' => 'A','nombre' => 'A','descripcion'=>'Seccion A','valor'=> null,'activo'=>true]);
@@ -227,6 +226,15 @@ class CatalogoTableSeeder extends Seeder
         Catalogo::create(['idtable' => 25,'iditem' =>12, 'codigo' => 'PSO','nombre' => 'Personal Social','descripcion'=>'Personal Social','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 25,'iditem' =>13, 'codigo' => 'CYA','nombre' => 'Ciencia y Ambiente','descripcion'=>'Ciencia y Ambiente','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 25,'iditem' => 14, 'codigo' => 'INF','nombre' => 'Informatica','descripcion'=>'Informatica','valor'=> null,'activo'=>true]);
+        /**
+         * Practicas Calificadas
+         */
+        Catalogo::create(['idtable' => 26,'iditem' => 1, 'codigo' => 'pc1_n','nombre' => 'pc1','descripcion'=>'Primera practica calificada','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 26,'iditem' => 2, 'codigo' => 'pc2_n','nombre' => 'pc2','descripcion'=>'Segunda practica calificada','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 26,'iditem' => 3, 'codigo' => 'pc3_n','nombre' => 'pc3','descripcion'=>'Tercera practica calificada','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 26,'iditem' => 4, 'codigo' => 'pc4_n','nombre' => 'pc4','descripcion'=>'Cuarta practica calificada','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 26,'iditem' => 5, 'codigo' => 'pc5_n','nombre' => 'pc5','descripcion'=>'Quinta practica calificada','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 26,'iditem' => 6, 'codigo' => 'pc6_n','nombre' => 'pc6','descripcion'=>'Sexta practica calificada','valor'=> null,'activo'=>true]);
 
 
 

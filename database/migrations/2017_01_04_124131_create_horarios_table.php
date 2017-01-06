@@ -18,10 +18,10 @@ class CreateHorariosTable extends Migration
             $table->integer('numero')->nullable();
             $table->time('horainicio')->nullable();
             $table->time('horafin')->nullable();
-            $table->integer('idasignaturagrado')->nullable();
+            $table->integer('idasignaturagradoseccion')->nullable();
             $table->integer('iddiasemana')->nullable();
             $table->timestamps();
-            $table->foreign('idasignaturagrado')->references('id')->on('asignatura_grado');
+            $table->foreign('idasignaturagradoseccion')->references('id')->on('asignatura_grado_seccion');
             $table->foreign('iddiasemana')->references('id')->on('catalogo');
         });
     }

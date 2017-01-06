@@ -13,17 +13,15 @@ class CreateAsignaturaGradosTable extends Migration
      */
     public function up()
     {
-        Schema::create('asignatura_grado', function (Blueprint $table) {
+        Schema::create('asignatura_grado_seccion', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('idgrado')->nullable();
+            $table->integer('idgradoseccion')->nullable();
             $table->integer('idasignatura')->nullable();
-            $table->integer('idseccion')->nullable();
-            $table->integer('practicas')->nullable();
+            $table->integer('practicas')->nullable()->default(6);
             $table->boolean('activo')->nullable();
             $table->timestamps();
-            $table->foreign('idgrado')->references('id')->on('grado');
+            $table->foreign('idgradoseccion')->references('id')->on('grado_seccion');
             $table->foreign('idasignatura')->references('id')->on('asignatura');
-            $table->foreign('idseccion')->references('id')->on('catalogo');
         });
     }
 
@@ -34,6 +32,6 @@ class CreateAsignaturaGradosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('asignatura_grado');
+        Schema::dropIfExists('asignatura_grado_seccion');
     }
 }

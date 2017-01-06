@@ -16,12 +16,12 @@ class CreatePersonalAsignaturasTable extends Migration
         Schema::create('personal_asignatura', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('idpersonal')->nullable();
-            $table->integer('idasignaturagrado')->nullable();
+            $table->integer('idasignaturagradoseccion')->nullable();
             $table->boolean('tutor')->nullable()->default(true);
             $table->boolean('notas')->nullable()->default(false);
-
-
             $table->timestamps();
+            $table->foreign('idpersonal')->references('id')->on('personal');
+            $table->foreign('idasignaturagradoseccion')->references('id')->on('asignatura_grado_seccion');
         });
     }
 

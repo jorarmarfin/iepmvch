@@ -16,14 +16,13 @@ class CreateMatriculasTable extends Migration
         Schema::create('matricula', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('idalumno')->nullable();
-            $table->integer('idgrado')->nullable();
+            $table->integer('idgradoseccion')->nullable();
             $table->date('fecha')->nullable();
             $table->time('hora')->nullable();
-            $table->integer('idestadoacademico')->nullable();
+            $table->boolean('activo')->nullable()->default(true);
             $table->timestamps();
             $table->foreign('idalumno')->references('id')->on('alumno');
-            $table->foreign('idgrado')->references('id')->on('grado');
-            $table->foreign('idestadoacademico')->references('id')->on('catalogo');
+            $table->foreign('idgradoseccion')->references('id')->on('grado_seccion');
         });
     }
 

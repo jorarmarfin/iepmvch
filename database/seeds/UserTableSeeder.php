@@ -22,8 +22,8 @@ class UserTableSeeder extends Seeder
             'menu' => 'menu.sider-admin',
             ]);
         User::create([
-            'name' => 'Rosa',
-            'email' => 'luis.mayta@gmail.com',
+            'name' => 'Rosa Gutierres',
+            'email' => 'rgutierres@iepmvch.com',
             'password' => '321654987',
             'idrole' => $root->id,
             'menu' => 'menu.sider-admin',

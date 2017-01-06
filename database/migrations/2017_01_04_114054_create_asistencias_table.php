@@ -16,14 +16,14 @@ class CreateAsistenciasTable extends Migration
         Schema::create('asistencia', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('idmatricula')->nullable();
-            $table->integer('idasignaturagrado')->nullable();
+            $table->integer('idasignaturagradoseccion')->nullable();
             $table->integer('idestado')->nullable();
             $table->date('fecha')->nullable();
             $table->time('hora')->nullable();
 
             $table->timestamps();
             $table->foreign('idmatricula')->references('id')->on('matricula');
-            $table->foreign('idasignaturagrado')->references('id')->on('asignatura_grado');
+            $table->foreign('idasignaturagradoseccion')->references('id')->on('asignatura_grado_seccion');
             $table->foreign('idestado')->references('id')->on('catalogo');
         });
     }

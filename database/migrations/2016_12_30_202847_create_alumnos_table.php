@@ -38,7 +38,8 @@ class CreateAlumnosTable extends Migration
             $table->boolean('resapoderado')->nullable();
             $table->integer('idestado')->nullable();
             $table->text('observacion')->nullable();
-
+            $table->boolean('esespecial')->nullable()->default(false);
+            $table->mediumtext('discapacidad')->nullable();
             $table->timestamps();
             $table->foreign('idsubnivel')->references('id')->on('catalogo');
             $table->foreign('idubigeonacimiento')->references('id')->on('catalogo');
