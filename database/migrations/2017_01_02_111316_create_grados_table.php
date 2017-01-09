@@ -19,6 +19,7 @@ class CreateGradosTable extends Migration
             $table->string('ciclo',20)->nullable();
             $table->string('codigo',50)->nullable();
             $table->string('nombre',150)->nullable();
+            $table->string('siguiente',150)->nullable();
             $table->boolean('activo')->nullable();
             $table->timestamps();
             $table->foreign('idnivel')->references('id')->on('catalogo');

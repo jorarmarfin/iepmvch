@@ -21,7 +21,7 @@ class CreateChecklistsTable extends Migration
             $table->date('fecha')->nullable();
             $table->integer('idusuario')->nullable();
             $table->boolean('activo')->nullable();
-            $table->timestamps();
+
             $table->foreign('idalumno')->references('id')->on('alumno');
             $table->foreign('idrequisito')->references('id')->on('catalogo');
             $table->foreign('idusuario')->references('id')->on('users');

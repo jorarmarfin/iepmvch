@@ -17,8 +17,6 @@ class CreateMatriculasTable extends Migration
             $table->increments('id');
             $table->integer('idalumno')->nullable();
             $table->integer('idgradoseccion')->nullable();
-            $table->date('fecha')->nullable();
-            $table->time('hora')->nullable();
             $table->boolean('activo')->nullable()->default(true);
             $table->timestamps();
             $table->foreign('idalumno')->references('id')->on('alumno');

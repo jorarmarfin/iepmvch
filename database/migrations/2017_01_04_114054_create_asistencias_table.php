@@ -18,8 +18,6 @@ class CreateAsistenciasTable extends Migration
             $table->integer('idmatricula')->nullable();
             $table->integer('idasignaturagradoseccion')->nullable();
             $table->integer('idestado')->nullable();
-            $table->date('fecha')->nullable();
-            $table->time('hora')->nullable();
 
             $table->timestamps();
             $table->foreign('idmatricula')->references('id')->on('matricula');
