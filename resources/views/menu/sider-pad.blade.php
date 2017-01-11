@@ -16,92 +16,19 @@
             </a>
         </li>
         <li class="heading">
-            <h3 class="uppercase">Sistema</h3>
+            <h3 class="uppercase">Padre de Familia</h3>
         </li>
         <li class="nav-item  ">
-            <a href="{{route('admin.users.index')}}" class="nav-link nav-toggle">
-                <i class="icon-users"></i>
-                <span class="title">Usuarios</span>
+            <a href="{{ route('padres.agenda.index') }}" class="nav-link nav-toggle">
+                <i class="fa fa-book"></i>
+                <span class="title">Agenda</span>
                 <span class="arrow"></span>
             </a>
         </li>
         <li class="nav-item  ">
             <a href="javascript:;" class="nav-link nav-toggle">
-                <i class="fa fa-cogs"></i>
-                <span class="title">Configuracion</span>
-                <span class="arrow"></span>
-            </a>
-            <ul class="sub-menu">
-                <li class="nav-item  ">
-                    <a href="{{ route('catalogo.gestion','maestro') }}" class="nav-link ">
-                        <span class="title">Maestro</span>
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <li class="heading">
-            <h3 class="uppercase">Modulos</h3>
-        </li>
-        <li class="nav-item  ">
-            <a href="{{ route('admin.matricula.index') }}" class="nav-link nav-toggle">
-                <i class="fa fa-cube"></i>
-                <span class="title">Matricula</span>
-                <span class="arrow"></span>
-            </a>
-        </li>
-        <li class="nav-item  ">
-            <a href="javascript:;" class="nav-link nav-toggle">
-                <i class="fa fa-cube"></i>
-                <span class="title">Asistencia</span>
-                <span class="arrow"></span>
-            </a>
-        </li>
-        <li class="nav-item  ">
-            <a href="javascript:;" class="nav-link nav-toggle">
-                <i class="icon-book-open"></i>
-                <span class="title">Registros</span>
-                <span class="arrow"></span>
-            </a>
-        </li>
-        <li class="nav-item  ">
-            <a href="javascript:;" class="nav-link nav-toggle">
-                <i class="fa fa-archive"></i>
-                <span class="title">Almacen</span>
-                <span class="arrow"></span>
-            </a>
-        </li>
-        <li class="nav-item  ">
-            <a href="javascript:;" class="nav-link nav-toggle">
-                <i class="fa fa-dollar"></i>
-                <span class="title">Pensiones</span>
-                <span class="arrow"></span>
-            </a>
-        </li>
-        <li class="nav-item  ">
-            <a href="javascript:;" class="nav-link nav-toggle">
-                <i class=" icon-present"></i>
-                <span class="title">Cumpleaños</span>
-                <span class="arrow"></span>
-            </a>
-        </li>
-        <li class="nav-item  ">
-            <a href="javascript:;" class="nav-link nav-toggle">
-                <i class="fa fa-list"></i>
-                <span class="title">Lista de Utiles</span>
-                <span class="arrow"></span>
-            </a>
-        </li>
-        <li class="nav-item  ">
-            <a href="javascript:;" class="nav-link nav-toggle">
-                <i class="fa fa-thumbs-o-down"></i>
-                <span class="title">Memos</span>
-                <span class="arrow"></span>
-            </a>
-        </li>
-        <li class="nav-item  ">
-            <a href="javascript:;" class="nav-link nav-toggle">
-                <i class="fa fa-cubes"></i>
-                <span class="title">Plan Curricular</span>
+                <i class="fa fa-money"></i>
+                <span class="title">Cronograma de pago</span>
                 <span class="arrow"></span>
             </a>
         </li>
@@ -114,22 +41,57 @@
         </li>
         <li class="nav-item  ">
             <a href="javascript:;" class="nav-link nav-toggle">
-                <i class="fa fa-search"></i>
-                <span class="title">Busqueda</span>
+                <i class="fa fa-table"></i>
+                <span class="title">Horario</span>
                 <span class="arrow"></span>
             </a>
         </li>
         <li class="nav-item  ">
             <a href="javascript:;" class="nav-link nav-toggle">
-                <i class="fa fa-user-plus"></i>
-                <span class="title">Postulaciones</span>
+                <i class="fa fa-user"></i>
+                <span class="title">Tutor</span>
+                <span class="arrow"></span>
+            </a>
+        </li>
+        <li class="nav-item  ">
+            <a href="javascript:;" class="nav-link nav-toggle">
+                <i class="fa fa-users"></i>
+                <span class="title">Docentes</span>
+                <span class="arrow"></span>
+            </a>
+        </li>
+        <li class="nav-item  ">
+            <a href="javascript:;" class="nav-link nav-toggle">
+                <i class="fa fa-list-alt"></i>
+                <span class="title">Notas</span>
+                <span class="arrow"></span>
+            </a>
+        </li>
+        <li class="nav-item  ">
+            <a href="javascript:;" class="nav-link nav-toggle">
+                <i class="fa fa-cube"></i>
+                <span class="title">Psicología</span>
+                <span class="arrow"></span>
+            </a>
+        </li>
+        <li class="nav-item  ">
+            <a href="javascript:;" class="nav-link nav-toggle">
+                <i class="fa fa-calendar-check-o"></i>
+                <span class="title">Asistencias</span>
                 <span class="arrow"></span>
             </a>
         </li>
         <li class="nav-item  ">
             <a href="javascript:;" class="nav-link nav-toggle">
                 <i class="icon-badge"></i>
-                <span class="title">Diplomas</span>
+                <span class="title">Merito y demeritos</span>
+                <span class="arrow"></span>
+            </a>
+        </li>
+        <li class="nav-item  ">
+            <a href="javascript:;" class="nav-link nav-toggle">
+                <i class="fa fa-list-ol"></i>
+                <span class="title">Lista Utiles</span>
                 <span class="arrow"></span>
             </a>
         </li>
