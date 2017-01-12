@@ -29,6 +29,10 @@
 @section('js-scripts')
 <script>
  $('.login-bg').backstretch([
+    "../assets/pages/img/login/bg1.jpg",
+    "../assets/pages/img/login/bg2.jpg",
+    "../assets/pages/img/login/bg3.jpg",
+    "../assets/pages/img/login/bg4.jpg",
     "../assets/pages/img/login/bg5.jpg",
     "../assets/pages/img/login/bg6.jpg",
     "../assets/pages/img/login/bg7.jpg"

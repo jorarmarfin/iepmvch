@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class MatriculaController extends Controller
+class ReservaPsicologicaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,12 +14,9 @@ class MatriculaController extends Controller
      */
     public function index()
     {
-        return view('admin.matricula.index');
+        return view('admin.reservapsicologica.index');
     }
-    public function matriculanew()
-    {
-        return view('admin.matricula.ma-new');
-    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -27,7 +24,7 @@ class MatriculaController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.reservapsicologica.create');
     }
 
     /**
@@ -38,7 +35,7 @@ class MatriculaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
     }
 
     /**

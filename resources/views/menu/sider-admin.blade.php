@@ -48,6 +48,28 @@
                 <span class="title">Matricula</span>
                 <span class="arrow"></span>
             </a>
+            <ul class="sub-menu">
+                <li class="nav-item  ">
+                    <a href="javascript:;" class="nav-link ">
+                        <i class="fa fa-user-plus"></i>
+                        <span class="title">Nuevo</span>
+                    </a>
+                </li>
+                <li class="nav-item  ">
+                    <a href="javascript:;" class="nav-link nav-toggle">
+                        <i class="fa fa-user"></i>
+                        <span class="title">Antiguo</span>
+                        <span class="arrow"></span>
+                    </a>
+                </li>
+                <li class="nav-item  ">
+                    <a href="javascript:;" class="nav-link nav-toggle">
+                        <i class="fa fa-user-md"></i>
+                        <span class="title">Reservas Psicologicas</span>
+                        <span class="arrow"></span>
+                    </a>
+                </li>
+            </ul>
         </li>
         <li class="nav-item  ">
             <a href="javascript:;" class="nav-link nav-toggle">

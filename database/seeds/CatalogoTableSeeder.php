@@ -38,7 +38,8 @@ class CatalogoTableSeeder extends Seeder
         Catalogo::create(['idtable' => 0,'iditem' => 23, 'codigo' => 'MAT','nombre' => 'Materiales','descripcion'=>'Utiles escolares','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 0,'iditem' => 24, 'codigo' => 'ARE','nombre' => 'Area','descripcion'=>'Area de Asignaturas','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 0,'iditem' => 25, 'codigo' => 'PRACT','nombre' => 'PRACTICAS','descripcion'=>'Practicas Calificadas','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 0,'iditem' => 26, 'codigo' => 'UBI','nombre' => 'UBIGEO','descripcion'=>'Ubigeo de peru','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 0,'iditem' => 26, 'codigo' => 'ESTPSI','nombre' => 'ESTADO PSICOLOGICO','descripcion'=>'Estado de la evaluacion psicologica','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 0,'iditem' => 27, 'codigo' => 'UBI','nombre' => 'UBIGEO','descripcion'=>'Ubigeo de peru','valor'=> null,'activo'=>true]);
 
 
 
@@ -235,10 +236,11 @@ class CatalogoTableSeeder extends Seeder
         Catalogo::create(['idtable' => 26,'iditem' => 4, 'codigo' => 'pc4_n','nombre' => 'pc4','descripcion'=>'Cuarta practica calificada','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 26,'iditem' => 5, 'codigo' => 'pc5_n','nombre' => 'pc5','descripcion'=>'Quinta practica calificada','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 26,'iditem' => 6, 'codigo' => 'pc6_n','nombre' => 'pc6','descripcion'=>'Sexta practica calificada','valor'=> null,'activo'=>true]);
-
-
-
-
+        /**
+         * Estado de la evaluacion psicologica
+         */
+        Catalogo::create(['idtable' => 27,'iditem' => 1, 'codigo' => 'psi01','nombre' => 'Aprobado','descripcion'=>'Aprobado','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 27,'iditem' => 2, 'codigo' => 'psi02','nombre' => 'Rechazado','descripcion'=>'Rechazado','valor'=> null,'activo'=>true]);
         /**
          * Ubigeo
          */

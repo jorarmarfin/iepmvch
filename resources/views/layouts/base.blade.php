@@ -13,7 +13,7 @@
 	@include('layouts.partials.styles-plugins')
 	@include('layouts.partials.styles-global')
 	@include('layouts.partials.styles-theme')
-
+    @include('layouts.partials.template-favicon')
 </head>
 <body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
 	<div class="page-wrapper">
