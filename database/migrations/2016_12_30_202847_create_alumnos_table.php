@@ -20,7 +20,7 @@ class CreateAlumnosTable extends Migration
             $table->string('materno',25)->nullable()->index();
             $table->string('nombres',50)->nullable()->index();
             $table->string('dni',20)->nullable()->index();
-            $table->integer('idsubnivel')->nullable();
+            $table->integer('idgrado')->nullable();
             $table->date('fechanacimiento')->nullable();
             $table->integer('idpais')->nullable();
             $table->integer('idubigeonacimiento')->nullable();
@@ -41,7 +41,7 @@ class CreateAlumnosTable extends Migration
             $table->boolean('esespecial')->nullable()->default(false);
             $table->mediumtext('discapacidad')->nullable();
             $table->timestamps();
-            $table->foreign('idsubnivel')->references('id')->on('catalogo');
+            $table->foreign('idgrado')->references('id')->on('grado');
             $table->foreign('idubigeonacimiento')->references('id')->on('catalogo');
             $table->foreign('idpais')->references('id')->on('catalogo');
             $table->foreign('idubigeo')->references('id')->on('catalogo');

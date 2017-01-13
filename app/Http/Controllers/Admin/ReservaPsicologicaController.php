@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ReservaPsicologicaRequest;
+use App\Models\Catalogo;
+use App\Models\ReservaPsicologica;
+use Illuminate\Http\Request;
+use Styde\Html\Facades\Alert;
 
 class ReservaPsicologicaController extends Controller
 {
@@ -14,7 +18,9 @@ class ReservaPsicologicaController extends Controller
      */
     public function index()
     {
-        return view('admin.reservapsicologica.index');
+        $Lista = ReservaPsicologica::Activo()->with('Grado')->with('Estado')->OrderBy('id','desc')->get();
+        //dd($Lista);
+        return view('admin.reservapsicologica.index',compact('Lista'));
     }
 
     /**
@@ -33,9 +39,14 @@ class ReservaPsicologicaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ReservaPsicologicaRequest $request)
     {
-        dd($request->all());
+        $data = $request->all();
+        $estado = Catalogo::Table('ESTADO PSICOLOGICO')->where('nombre','Pendiente')->first();
+        $data['idestado'] = $estado->id;
+        ReservaPsicologica::create($data);
+        Alert::success('Reserva registrada con exito');
+        return redirect()->route('admin.reservapsicologica.index');
     }
 
     /**
@@ -46,7 +57,8 @@ class ReservaPsicologicaController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = ReservaPsicologica::find($id);
+        return view('admin.reservapsicologica.delete',compact('data'));
     }
 
     /**
@@ -57,7 +69,8 @@ class ReservaPsicologicaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = ReservaPsicologica::find($id);
+        return view('admin.reservapsicologica.edit',compact('data'));
     }
 
     /**
@@ -67,9 +80,13 @@ class ReservaPsicologicaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ReservaPsicologicaRequest $request, $id)
     {
-        //
+        $data = ReservaPsicologica::find($id);
+        $data->fill($request->all());
+        $data->save();
+        Alert::success('Se actualizo el registro satisfactoriamente');
+        return redirect()->route('admin.reservapsicologica.index');
     }
 
     /**
@@ -80,6 +97,8 @@ class ReservaPsicologicaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        ReservaPsicologica::destroy($id);
+        Alert::success('Se ha eliminado el registro satisfactoriamente');
+        return redirect()->route('admin.reservapsicologica.index');
     }
 }

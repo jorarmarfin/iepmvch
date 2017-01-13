@@ -13,7 +13,7 @@ class GradoSeccionTableSeeder extends Seeder
      */
     public function run()
     {
-        $seccion = Catalogo::where('idtable',18)->where('codigo','A')->first();
+        $seccion = Catalogo::where('idtable',17)->where('codigo','A')->first();
         $grado = Grado::where('activo',true)->get();
         $grado = $grado->each(function($item,$key) use($seccion) {
         	GradoSeccion::create(['idgrado' => $item->id,'idseccion' => $seccion->id,'cantidad' => 16]);

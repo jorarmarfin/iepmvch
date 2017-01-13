@@ -174,73 +174,74 @@ class CatalogoTableSeeder extends Seeder
         /**
          * Secciones
          */
-        Catalogo::create(['idtable' => 18,'iditem' => 1, 'codigo' => 'A','nombre' => 'A','descripcion'=>'Seccion A','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 18,'iditem' => 2, 'codigo' => 'B','nombre' => 'B','descripcion'=>'Seccion B','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 17,'iditem' => 1, 'codigo' => 'A','nombre' => 'A','descripcion'=>'Seccion A','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 17,'iditem' => 2, 'codigo' => 'B','nombre' => 'B','descripcion'=>'Seccion B','valor'=> null,'activo'=>true]);
         /**
          * Tipo de personal
          */
-        Catalogo::create(['idtable' => 19,'iditem' => 1, 'codigo' => 'Admin','nombre' => 'Administrativo','descripcion'=>'Administrativo','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 19,'iditem' => 2, 'codigo' => 'Docen','nombre' => 'Docente','descripcion'=>'Personal docente','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 19,'iditem' => 3, 'codigo' => 'Pisco','nombre' => 'Psicologo','descripcion'=>'Psicologo','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 18,'iditem' => 1, 'codigo' => 'Admin','nombre' => 'Administrativo','descripcion'=>'Administrativo','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 18,'iditem' => 2, 'codigo' => 'Docen','nombre' => 'Docente','descripcion'=>'Personal docente','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 18,'iditem' => 3, 'codigo' => 'Pisco','nombre' => 'Psicologo','descripcion'=>'Psicologo','valor'=> null,'activo'=>true]);
         /**
          * Dia de la semana
          */
-        Catalogo::create(['idtable' => 20,'iditem' => 1, 'codigo' => 'L','nombre' => 'Lunes','descripcion'=>'Dia lunes','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 20,'iditem' => 2, 'codigo' => 'M','nombre' => 'Martes','descripcion'=>'Dia Martes','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 20,'iditem' => 3, 'codigo' => 'I','nombre' => 'Miercoles','descripcion'=>'Dia Miercoles','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 20,'iditem' => 4, 'codigo' => 'J','nombre' => 'Jueves','descripcion'=>'Dia Jueves','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 20,'iditem' => 5, 'codigo' => 'V','nombre' => 'Viernes','descripcion'=>'Dia viernes','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 20,'iditem' => 6, 'codigo' => 'S','nombre' => 'Sabado','descripcion'=>'Dia Sabado','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 20,'iditem' => 7, 'codigo' => 'D','nombre' => 'Domingo','descripcion'=>'Dia Domingo','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 19,'iditem' => 1, 'codigo' => 'L','nombre' => 'Lunes','descripcion'=>'Dia lunes','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 19,'iditem' => 2, 'codigo' => 'M','nombre' => 'Martes','descripcion'=>'Dia Martes','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 19,'iditem' => 3, 'codigo' => 'I','nombre' => 'Miercoles','descripcion'=>'Dia Miercoles','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 19,'iditem' => 4, 'codigo' => 'J','nombre' => 'Jueves','descripcion'=>'Dia Jueves','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 19,'iditem' => 5, 'codigo' => 'V','nombre' => 'Viernes','descripcion'=>'Dia viernes','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 19,'iditem' => 6, 'codigo' => 'S','nombre' => 'Sabado','descripcion'=>'Dia Sabado','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 19,'iditem' => 7, 'codigo' => 'D','nombre' => 'Domingo','descripcion'=>'Dia Domingo','valor'=> null,'activo'=>true]);
         /**
          * Tipo de salida de efectivo
          */
-        Catalogo::create(['idtable' => 21,'iditem' => 1, 'codigo' => 'TS01','nombre' => 'Tributos','descripcion'=>'Sueldo de docente','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 21,'iditem' => 2, 'codigo' => 'TS02','nombre' => 'Servicios','descripcion'=>'Adelanto del sueldo','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 21,'iditem' => 3, 'codigo' => 'TS03','nombre' => 'Gastos Varios','descripcion'=>'descripcion','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 20,'iditem' => 1, 'codigo' => 'TS01','nombre' => 'Tributos','descripcion'=>'Sueldo de docente','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 20,'iditem' => 2, 'codigo' => 'TS02','nombre' => 'Servicios','descripcion'=>'Adelanto del sueldo','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 20,'iditem' => 3, 'codigo' => 'TS03','nombre' => 'Gastos Varios','descripcion'=>'descripcion','valor'=> null,'activo'=>true]);
         /**
          * Unidad de medida
          */
-        Catalogo::create(['idtable' => 22,'iditem' => 1, 'codigo' => 'UN','nombre' => 'Unidad','descripcion'=>'Solo un articulo','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 21,'iditem' => 1, 'codigo' => 'UN','nombre' => 'Unidad','descripcion'=>'Solo un articulo','valor'=> null,'activo'=>true]);
         /**
          * Pais
          */
-        Catalogo::create(['idtable' => 23,'iditem' => 1, 'codigo' => 'PE','nombre' => 'Peru','descripcion'=>'Peru','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 22,'iditem' => 1, 'codigo' => 'PE','nombre' => 'Peru','descripcion'=>'Peru','valor'=> null,'activo'=>true]);
         /**
          * Utiles escolares
          */
-        Catalogo::create(['idtable' => 24,'iditem' => 1, 'codigo' => 'MAT01','nombre' => 'Lapicero','descripcion'=>'Lapicero','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 23,'iditem' => 1, 'codigo' => 'MAT01','nombre' => 'Lapicero','descripcion'=>'Lapicero','valor'=> null,'activo'=>true]);
         /**
          * Area de asignatura
          */
-        Catalogo::create(['idtable' => 25,'iditem' => 1, 'codigo' => 'MAT','nombre' => 'Matematica','descripcion'=>'Matematica','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 25,'iditem' => 2, 'codigo' => 'COM','nombre' => 'Comunicacion','descripcion'=>'Comunicacion','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 25,'iditem' => 3, 'codigo' => 'AYC','nombre' => 'Arte y Cultura','descripcion'=>'Arte y Cultura','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 25,'iditem' => 4, 'codigo' => 'CYT','nombre' => 'Ciencia y Tecnologia','descripcion'=>'Ciencia y Tecnologia','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 25,'iditem' => 5, 'codigo' => 'ING','nombre' => 'Ingles','descripcion'=>'Ingles','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 25,'iditem' => 6, 'codigo' => 'CSO','nombre' => 'Ciencias Sociales','descripcion'=>'Ciencias Sociales','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 25,'iditem' => 7, 'codigo' => 'DPCC','nombre' => 'DPCC','descripcion'=>'Desarrollo Personal, ciudad y Civil','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 25,'iditem' => 8, 'codigo' => 'EDF','nombre' => 'E. Fisica','descripcion'=>'Educacion Fisica','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 25,'iditem' => 9, 'codigo' => 'EDR','nombre' => 'E. Religiosa','descripcion'=>'Educacion Religiosa','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 25,'iditem' =>10, 'codigo' => 'EPT','nombre' => 'Ed. Para el Trabajo','descripcion'=>'Ed. Para el Trabajo','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 25,'iditem' =>11, 'codigo' => 'TOE','nombre' => 'Tutoria TOE','descripcion'=>'Tutoria TOE','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 25,'iditem' =>12, 'codigo' => 'PSO','nombre' => 'Personal Social','descripcion'=>'Personal Social','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 25,'iditem' =>13, 'codigo' => 'CYA','nombre' => 'Ciencia y Ambiente','descripcion'=>'Ciencia y Ambiente','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 25,'iditem' => 14, 'codigo' => 'INF','nombre' => 'Informatica','descripcion'=>'Informatica','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 24,'iditem' => 1, 'codigo' => 'MAT','nombre' => 'Matematica','descripcion'=>'Matematica','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 24,'iditem' => 2, 'codigo' => 'COM','nombre' => 'Comunicacion','descripcion'=>'Comunicacion','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 24,'iditem' => 3, 'codigo' => 'AYC','nombre' => 'Arte y Cultura','descripcion'=>'Arte y Cultura','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 24,'iditem' => 4, 'codigo' => 'CYT','nombre' => 'Ciencia y Tecnologia','descripcion'=>'Ciencia y Tecnologia','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 24,'iditem' => 5, 'codigo' => 'ING','nombre' => 'Ingles','descripcion'=>'Ingles','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 24,'iditem' => 6, 'codigo' => 'CSO','nombre' => 'Ciencias Sociales','descripcion'=>'Ciencias Sociales','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 24,'iditem' => 7, 'codigo' => 'DPCC','nombre' => 'DPCC','descripcion'=>'Desarrollo Personal, ciudad y Civil','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 24,'iditem' => 8, 'codigo' => 'EDF','nombre' => 'E. Fisica','descripcion'=>'Educacion Fisica','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 24,'iditem' => 9, 'codigo' => 'EDR','nombre' => 'E. Religiosa','descripcion'=>'Educacion Religiosa','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 24,'iditem' =>10, 'codigo' => 'EPT','nombre' => 'Ed. Para el Trabajo','descripcion'=>'Ed. Para el Trabajo','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 24,'iditem' =>11, 'codigo' => 'TOE','nombre' => 'Tutoria TOE','descripcion'=>'Tutoria TOE','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 24,'iditem' =>12, 'codigo' => 'PSO','nombre' => 'Personal Social','descripcion'=>'Personal Social','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 24,'iditem' =>13, 'codigo' => 'CYA','nombre' => 'Ciencia y Ambiente','descripcion'=>'Ciencia y Ambiente','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 24,'iditem' => 14, 'codigo' => 'INF','nombre' => 'Informatica','descripcion'=>'Informatica','valor'=> null,'activo'=>true]);
         /**
          * Practicas Calificadas
          */
-        Catalogo::create(['idtable' => 26,'iditem' => 1, 'codigo' => 'pc1_n','nombre' => 'pc1','descripcion'=>'Primera practica calificada','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 26,'iditem' => 2, 'codigo' => 'pc2_n','nombre' => 'pc2','descripcion'=>'Segunda practica calificada','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 26,'iditem' => 3, 'codigo' => 'pc3_n','nombre' => 'pc3','descripcion'=>'Tercera practica calificada','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 26,'iditem' => 4, 'codigo' => 'pc4_n','nombre' => 'pc4','descripcion'=>'Cuarta practica calificada','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 26,'iditem' => 5, 'codigo' => 'pc5_n','nombre' => 'pc5','descripcion'=>'Quinta practica calificada','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 26,'iditem' => 6, 'codigo' => 'pc6_n','nombre' => 'pc6','descripcion'=>'Sexta practica calificada','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 25,'iditem' => 1, 'codigo' => 'pc1_n','nombre' => 'pc1','descripcion'=>'Primera practica calificada','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 25,'iditem' => 2, 'codigo' => 'pc2_n','nombre' => 'pc2','descripcion'=>'Segunda practica calificada','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 25,'iditem' => 3, 'codigo' => 'pc3_n','nombre' => 'pc3','descripcion'=>'Tercera practica calificada','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 25,'iditem' => 4, 'codigo' => 'pc4_n','nombre' => 'pc4','descripcion'=>'Cuarta practica calificada','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 25,'iditem' => 5, 'codigo' => 'pc5_n','nombre' => 'pc5','descripcion'=>'Quinta practica calificada','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 25,'iditem' => 6, 'codigo' => 'pc6_n','nombre' => 'pc6','descripcion'=>'Sexta practica calificada','valor'=> null,'activo'=>true]);
         /**
          * Estado de la evaluacion psicologica
          */
-        Catalogo::create(['idtable' => 27,'iditem' => 1, 'codigo' => 'psi01','nombre' => 'Aprobado','descripcion'=>'Aprobado','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 27,'iditem' => 2, 'codigo' => 'psi02','nombre' => 'Rechazado','descripcion'=>'Rechazado','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 26,'iditem' => 1, 'codigo' => 'psi01','nombre' => 'Aprobado','descripcion'=>'Aprobado','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 26,'iditem' => 2, 'codigo' => 'psi02','nombre' => 'Rechazado','descripcion'=>'Rechazado','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 26,'iditem' => 3, 'codigo' => 'psi03','nombre' => 'Pendiente','descripcion'=>'Pendiente','valor'=> null,'activo'=>true]);
         /**
          * Ubigeo
          */

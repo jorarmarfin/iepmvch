@@ -18,7 +18,7 @@
                 </div>
                 <div class="portlet-body">
 	                <a href="{{ route('admin.reservapsicologica.create') }}" class="btn green-meadow"><i class="fa fa-user-md"></i> Reserva Psicologica</a>
-	                <a href="#" class="btn green-meadow"><i class="fa fa-pencil"></i> Datos del Alumno</a>
+	                <a href="{{ route('admin.alumnos.create') }}" class="btn green-meadow"><i class="fa fa-pencil"></i> Datos del Alumno</a>
 	                <a href="#" class="btn green-meadow"><i class="fa fa-file-pdf-o"></i> Compromiso de matricula</a>
 
                 </div>

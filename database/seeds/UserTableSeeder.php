@@ -23,7 +23,7 @@ class UserTableSeeder extends Seeder
             ]);
         $role = Catalogo::where('idtable',1)->where('codigo','adm')->first();
         User::create([
-            'name' => 'Rosa Gutierres',
+            'name' => 'Rosa Gutierrez',
             'email' => 'rgutierrez@iepmvch.com',
             'password' => '321654987',
             'idrole' => $role->id,

@@ -17,7 +17,7 @@
             </div>
             <div class="portlet-body form">
                 <!-- BEGIN FORM-->
-				{!! Form::open(['route'=>'admin.reservapsicologica.store','method'=>'POST','class'=>'form-horizontal']) !!}
+				{!! Form::model($data,['route'=>['admin.reservapsicologica.update',$data],'method'=>'PUT','class'=>'form-horizontal']) !!}
                     <div class="form-body">
 						<div class="form-group">
 							{!!Form::label('lblPersona', 'Persona para atender',['class'=>'col-md-3 control-label']);!!}
@@ -63,7 +63,7 @@
                     <div class="form-actions">
                         <div class="row">
                             <div class="col-md-offset-3 col-md-9">
-								{!!Form::submit('Enviar',['class'=>'btn green uppercase'])!!}
+								{!!Form::submit('Actualizar',['class'=>'btn green uppercase'])!!}
 								<a href="{{ route('admin.reservapsicologica.index') }}" class="btn default">REGRESAR</a>
                             </div>
                         </div>

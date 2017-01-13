@@ -3,6 +3,7 @@
 @section('content')
 <div class="row">
 	<div class="col-md-12">
+{!! Alert::render() !!}
         <!-- BEGIN Portlet PORTLET-->
             <div class="portlet box green">
                 <div class="portlet-title">
@@ -18,7 +19,52 @@
                 </div>
                 <div class="portlet-body">
 
-
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th> Persona </th>
+                                <th> Grado </th>
+                                <th> Motivo </th>
+                                <th> Observacion </th>
+                                <th> Estado </th>
+                                <th> fecha </th>
+                                <th> Opciones </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @foreach ($Lista as $item)
+                            <tr >
+                                <td> {{ $item->persona }} </td>
+                                <td> {{ $item->grado->nombre }} </td>
+                                <td> {{ $item->motivo }} </td>
+                                <td> {{ $item->observacion }} </td>
+                                <td> {{ $item->Estado->nombre }} </td>
+                                <td> {{ $item->fecha }} </td>
+                                <td>
+                                    <div class="btn-group">
+                                        <button class="btn btn-xs green-dark dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Opciones
+                                            <i class="fa fa-angle-down"></i>
+                                        </button>
+                                        <ul class="dropdown-menu pull-left" role="menu">
+                                            <li>
+                                                <a href="{{route('admin.reservapsicologica.create',$item->id)}}">
+                                                    <i class="icon-docs"></i> New </a>
+                                            </li>
+                                            <li>
+                                                <a href="{{route('admin.reservapsicologica.edit',$item->id)}}">
+                                                    <i class="fa fa-edit"></i> Edit </a>
+                                            </li>
+                                            <li>
+                                                <a href="{{route('admin.reservapsicologica.show',$item->id)}}">
+                                                    <i class="fa fa-trash"></i> Delete </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         <!-- END Portlet PORTLET-->
@@ -27,7 +73,14 @@
 
 @stop
 
+@section('plugins-styles')
+{!! Html::style('assets/global/plugins/bootstrap-table/bootstrap-table.min.css') !!}
+@stop
 
+@section('js-plugins')
+{!! Html::script('assets/global/plugins/jquery-ui/jquery-ui.min.js') !!}
+{!! Html::script('assets/global/plugins/bootstrap-table/bootstrap-table.min.js') !!}
+@stop
 
 
 @section('menu-user')

@@ -63,7 +63,7 @@
                     </a>
                 </li>
                 <li class="nav-item  ">
-                    <a href="javascript:;" class="nav-link nav-toggle">
+                    <a href="{{ route('admin.reservapsicologica.index') }}" class="nav-link nav-toggle">
                         <i class="fa fa-user-md"></i>
                         <span class="title">Reservas Psicologicas</span>
                         <span class="arrow"></span>
@@ -75,6 +75,13 @@
             <a href="javascript:;" class="nav-link nav-toggle">
                 <i class="fa fa-cube"></i>
                 <span class="title">Asistencia</span>
+                <span class="arrow"></span>
+            </a>
+        </li>
+        <li class="nav-item  ">
+            <a href="javascript:;" class="nav-link nav-toggle">
+                <i class="fa fa-users"></i>
+                <span class="title">Alumnos</span>
                 <span class="arrow"></span>
             </a>
         </li>
