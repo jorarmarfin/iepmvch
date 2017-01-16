@@ -33,13 +33,12 @@ class CreateAlumnosTable extends Migration
             $table->string('telefonos',100)->nullable();
             $table->string('telefonoemergencia1',100)->nullable();
             $table->string('telefonoemergencia2',100)->nullable();
-            $table->boolean('respadre')->nullable();
-            $table->boolean('resmadre')->nullable();
-            $table->boolean('resapoderado')->nullable();
-            $table->integer('idestado')->nullable();
-            $table->text('observacion')->nullable();
+            $table->string('responsableeconomico',15)->nullable();
+            $table->string('colegioprocedencia',200)->nullable();
             $table->boolean('esespecial')->nullable()->default(false);
             $table->mediumtext('discapacidad')->nullable();
+            $table->integer('idestado')->nullable();
+            $table->text('observacion')->nullable();
             $table->timestamps();
             $table->foreign('idgrado')->references('id')->on('grado');
             $table->foreign('idubigeonacimiento')->references('id')->on('catalogo');

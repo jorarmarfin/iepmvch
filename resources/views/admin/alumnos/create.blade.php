@@ -57,7 +57,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                {!!Form::label('lblGrado', 'Grado que desea matricular',['class'=>'control-label']);!!}
+                                {!!Form::label('lblGrado', 'Grado Actual del alumno',['class'=>'control-label']);!!}
                                     {!!Form::select('idgrado',$grado, null , ['class'=>'form-control']);!!}
                                 </div>
                             </div>
@@ -65,31 +65,25 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     {!! Form::label('lblFecha', 'Fecha de nacimiento', ['class'=>'control-label']) !!}
-                                    {!!Form::date('fecha', null , ['class'=>'form-control','placeholder'=>'Fecha de nacimiento']);!!}
+                                    {!!Form::date('fechanacimiento', null , ['class'=>'form-control','placeholder'=>'Fecha de nacimiento']);!!}
                                 </div>
                             </div>
                             <!--/span-->
                         </div>
                         <!--/row-->
-                        <h3 class="form-section">Address</h3>
-                        <div class="row">
-                            <div class="col-md-12 ">
-                                <div class="form-group">
-                                    <label>Street</label>
-                                    <input type="text" class="form-control"> </div>
-                            </div>
-                        </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>City</label>
-                                    <input type="text" class="form-control"> </div>
+                                    {!!Form::label('lblPais', 'Pais de nacimiento',['class'=>'control-label']);!!}
+                                    {!!Form::select('idpais',$pais, 123 , ['class'=>'form-control']);!!}
+                                </div>
                             </div>
                             <!--/span-->
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>State</label>
-                                    <input type="text" class="form-control"> </div>
+                                    {!! Form::label('lblUbigeo', 'Lugar de nacimiento', ['class'=>'control-label']) !!}
+                                    {!!Form::select('idubigeonacimiento',[], null , ['class'=>'form-control','id'=>'idubigeonacimiento']);!!}
+                                </div>
                             </div>
                             <!--/span-->
                         </div>
@@ -97,23 +91,148 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Post Code</label>
-                                    <input type="text" class="form-control"> </div>
+                                    {!! Form::label('lblReligion', 'Religion que profesa', ['class'=>'control-label']) !!}
+                                    {!!Form::text('religion', null , ['class'=>'form-control','placeholder'=>'Religion que profesa'])!!}
+                                </div>
                             </div>
                             <!--/span-->
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Country</label>
-                                    <select class="form-control"> </select>
+                                    {!!Form::label('lblSacramentos', 'Sacramentos',['class'=>'control-label']);!!}
+                                    <div class="input-group">
+                                        <div class="icheck-list">
+                                            <label>
+                                                {!!Form::checkbox('bautismo',true)!!}
+                                                 Bautizo
+                                            </label>
+                                            <label>
+                                                {!!Form::checkbox('comunion',true)!!}
+                                                Comunión
+                                            </label>
+                                            <label>
+                                                {!!Form::checkbox('confirmacion',true)!!}
+                                                Confirmación
+                                            </label>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <!--/span-->
                         </div>
-                    </div>
+                        <!--/row-->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    {!! Form::label('lblDireccion', 'Domicilio - calle', ['class'=>'control-label']) !!}
+                                    {!! Form::text('direccion', null, ['class'=>'form-control','placeholder'=>'Nombres completos']) !!}
+                                </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+                        <!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    {!! Form::label('lblUbigeo', 'Lugar de residencia', ['class'=>'control-label']) !!}
+                                    {!!Form::select('idubigeo',[], null , ['class'=>'form-control','id'=>'idubigeo']);!!}
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    {!! Form::label('lblTelefonos', 'Telefonos', ['class'=>'control-label']) !!}
+                                    {!! Form::text('telefonos', null, ['class'=>'form-control','placeholder'=>'Telefonos']) !!}
+                                </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+                        <!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    {!! Form::label('lblTelefonoE1', 'Telefono de emergencia 1 / Preguntar por:', ['class'=>'control-label']) !!}
+                                    {!! Form::text('telefonoemergencia1', null, ['class'=>'form-control','placeholder'=>'Telefono de emergencia']) !!}
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    {!! Form::label('lblTelefonoE2', 'Telefono de emergencia 2 / Preguntar por:', ['class'=>'control-label']) !!}
+                                    {!! Form::text('telefonoemergencia2', null, ['class'=>'form-control','placeholder'=>'Telefono de emergencia']) !!}
+                                </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+                        <!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    {!! Form::label('lblResEco', 'Responsable economico', ['class'=>'control-label']) !!}
+                                    <div class="input-group">
+                                        <div class="icheck-inline">
+                                            <label>
+                                                {!! Form::radio('responsableeconomico', 'padre',true) !!}
+                                                Padre
+                                            </label>
+                                            <label>
+                                                {!! Form::radio('responsableeconomico', 'madre') !!}
+                                                Madre
+                                            </label>
+                                            <label>
+                                                {!! Form::radio('responsableeconomico', 'apoderado') !!}
+                                                Apoderado
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    {!! Form::label('lblColegio', 'Colegio de procedencia', ['class'=>'control-label']) !!}
+                                    {!! Form::text('colegioprocedencia', null, ['class'=>'form-control','placeholder'=>'Colegio de procedencia']) !!}
+                                </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+                        <!--/row-->
+                        <h3 class="form-section">Observacion</h3>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    {!!Form::label('lblEsEspecial', 'Es un niño especial',['class'=>'control-label col-md-2']);!!}
+                                    <div class="input-group col-md-10">
+                                        <div class="icheck-inline">
+                                            <label>
+                                                {!! Form::radio('esespecial', 'true') !!}
+                                                Si
+                                            </label>
+                                            <label>
+                                                {!! Form::radio('esespecial', 'false',true) !!}
+                                                No
+                                            </label>
+                                        </div>
+                                    </div>
+                                    {!! Form::textarea('discapacidad', null, ['class'=>'form-control']) !!}
+                                </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+                        <!--/row-->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    {!!Form::label('lblObservacion', 'Observacion, deudas, etc',['class'=>'control-label']);!!}
+                                    {!! Form::textarea('observacion', null, ['class'=>'form-control']) !!}
+                                </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+                        <!--/row-->
+                        {!! Form::hidden('idestado', EstadoId('ESTADO ALUMNO','Regular')) !!}
                     <div class="form-actions right">
-                        <button type="button" class="btn default">Cancel</button>
-                        <button type="submit" class="btn blue">
-                            <i class="fa fa-check"></i> Save</button>
+                        {!!Form::submit('Guardar',['class'=>'btn green uppercase'])!!}
+                        <a href="{{ route('admin.alumnos.index') }}" class="btn default">REGRESAR</a>
                     </div>
 				{!! Form::close() !!}
                 <!-- END FORM-->
@@ -125,13 +244,95 @@
 
 @stop
 
+@section('js-scripts')
+<script>
+$(document).ready(function() {
+
+    $("#idubigeonacimiento").select2({
+
+        ajax: {
+            url: '{{ url("/ubigeo") }}',
+            dataType: 'json',
+            delay: 250,
+            data: function(params) {
+                return {
+                    varsearch: params.term // search term
+                };
+            },
+            processResults: function(data) {
+                // parse the results into the format expected by Select2.
+                // since we are using custom formatting functions we do not need to
+                // alter the remote JSON data
+                return {
+                    results: data
+                };
+            },
+            cache: true
+        },
+        minimumInputLength: 3,
+        templateResult: format,
+        templateSelection: format,
+        escapeMarkup: function(markup) {
+            return markup;
+        } // let our custom formatter work
+    });
+    function format(res){
+        var markup=res.text;
+        return markup;
+    }
+    $("#idubigeo").select2({
+
+        ajax: {
+            url: '{{ url("/ubigeo") }}',
+            dataType: 'json',
+            delay: 250,
+            data: function(params) {
+                return {
+                    varsearch: params.term // search term
+                };
+            },
+            processResults: function(data) {
+                // parse the results into the format expected by Select2.
+                // since we are using custom formatting functions we do not need to
+                // alter the remote JSON data
+                return {
+                    results: data
+                };
+            },
+            cache: true
+        },
+        minimumInputLength: 3,
+        templateResult: format,
+        templateSelection: format,
+        escapeMarkup: function(markup) {
+            return markup;
+        } // let our custom formatter work
+    });
+    function format(res){
+        var markup=res.text;
+        return markup;
+    }
+    $('input').iCheck({
+        checkboxClass: 'icheckbox_minimal',
+        radioClass: 'iradio_minimal',
+        increaseArea: '20%' // optional
+    });
+});
+</script>
+@stop
 
 
 @section('plugins-styles')
 {!! Html::style(asset('assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css')) !!}
+{!! Html::style(asset('assets/global/plugins/select2/css/select2.min.css')) !!}
+{!! Html::style(asset('assets/global/plugins/select2/css/select2-bootstrap.min.css')) !!}
+{!! Html::style(asset('assets/global/plugins/icheck/skins/all.css')) !!}
 @stop
 @section('js-plugins')
 {!! Html::script(asset('assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js')) !!}
+{!! Html::script(asset('assets/global/plugins/select2/js/select2.full.min.js')) !!}
+{!! Html::script(asset('assets/global/plugins/select2/js/i18n/es.js')) !!}
+{!! Html::script(asset('assets/global/plugins/icheck/icheck.min.js')) !!}
 @stop
 
 

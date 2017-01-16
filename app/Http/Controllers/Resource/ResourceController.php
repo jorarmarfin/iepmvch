@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Resource;
 
+use App\Http\Controllers\Controller;
+use App\Models\Catalogo;
 use Auth;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class ResourceController extends Controller
 {
@@ -18,5 +19,16 @@ class ResourceController extends Controller
             null,
             $headers
         );
+    }
+    /**
+     * Devuelve el Ubigeo
+     * @return [type] [description]
+     */
+    public function ubigeo(Request $request)
+    {
+        $name = $request->varsearch ?:'';
+        $name = trim(strtoupper($name));
+        $ubigeo = Catalogo::ubigeo($name);
+        return $ubigeo;
     }
 }

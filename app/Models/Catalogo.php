@@ -50,4 +50,24 @@ class Catalogo extends Model
 	public function scopeidroot($cadenaSQL){
 		return $cadenaSQL->select('id')->where('codigo','root')->where('nombre','root')->first();
 	}
+	/**
+	 * Devuelve la tabla del Catalogo
+	 * @param  [string] $cadenaSQL [cadena de ejecucion]
+	 * @param  [strin] $NameTable [nombre de la tabla]
+	 * @return [type]            [description]
+	 */
+	public function scopeUbigeo($cadenaSQL,$Name=null){
+		$idtable=$this->Maestro('UBIGEO');
+		$raw1 = \DB::raw("SUBSTRING(codigo,5,2)");
+		if (isset($Name)) {
+			return $cadenaSQL->select('id','descripcion as text')->where('idtable',$idtable)
+						 ->where($raw1,'<>','00')
+						 ->where('descripcion','like',"%$Name%")
+						 ->orderBy('descripcion')
+						 ->get();
+		}else{
+			return $cadenaSQL->select('id','descripcion as text')->where('idtable',$idtable)->get();
+		}
+
+	}
 }

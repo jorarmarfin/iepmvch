@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use App\Models\Alumno;
+use Illuminate\Http\Request;
+use Styde\Html\Facades\Alert;
 class AlumnosController extends Controller
 {
     /**
@@ -14,7 +15,9 @@ class AlumnosController extends Controller
      */
     public function index()
     {
-        //
+        $Lista = Alumno::all();
+        return view('admin.alumnos.index',compact('Lista'));
+
     }
 
     /**
@@ -35,7 +38,10 @@ class AlumnosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request->all());
+        Alert::success('Alumno Registrado con exito');
+        Alumno::create($request->all());
+        return redirect()->route('admin.alumnos.index');
     }
 
     /**

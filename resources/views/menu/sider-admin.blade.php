@@ -37,6 +37,11 @@
                         <span class="title">Maestro</span>
                     </a>
                 </li>
+                <li class="nav-item  ">
+                    <a href="{{ route('catalogo.gestion','pais') }}" class="nav-link ">
+                        <span class="title">Pais</span>
+                    </a>
+                </li>
             </ul>
         </li>
         <li class="heading">
@@ -48,40 +53,25 @@
                 <span class="title">Matricula</span>
                 <span class="arrow"></span>
             </a>
-            <ul class="sub-menu">
-                <li class="nav-item  ">
-                    <a href="javascript:;" class="nav-link ">
-                        <i class="fa fa-user-plus"></i>
-                        <span class="title">Nuevo</span>
-                    </a>
-                </li>
-                <li class="nav-item  ">
-                    <a href="javascript:;" class="nav-link nav-toggle">
-                        <i class="fa fa-user"></i>
-                        <span class="title">Antiguo</span>
-                        <span class="arrow"></span>
-                    </a>
-                </li>
-                <li class="nav-item  ">
-                    <a href="{{ route('admin.reservapsicologica.index') }}" class="nav-link nav-toggle">
-                        <i class="fa fa-user-md"></i>
-                        <span class="title">Reservas Psicologicas</span>
-                        <span class="arrow"></span>
-                    </a>
-                </li>
-            </ul>
         </li>
         <li class="nav-item  ">
-            <a href="javascript:;" class="nav-link nav-toggle">
-                <i class="fa fa-cube"></i>
-                <span class="title">Asistencia</span>
+            <a href="{{ route('admin.reservapsicologica.index') }}" class="nav-link nav-toggle">
+                <i class="fa fa-user-md"></i>
+                <span class="title">Psicologia</span>
+                <span class="arrow"></span>
+            </a>
+        </li>
+        <li class="nav-item  ">
+            <a href="{{ route('admin.alumnos.index') }}" class="nav-link nav-toggle">
+                <i class="fa fa-users"></i>
+                <span class="title">Alumnos</span>
                 <span class="arrow"></span>
             </a>
         </li>
         <li class="nav-item  ">
             <a href="javascript:;" class="nav-link nav-toggle">
-                <i class="fa fa-users"></i>
-                <span class="title">Alumnos</span>
+                <i class="fa fa-cube"></i>
+                <span class="title">Asistencia</span>
                 <span class="arrow"></span>
             </a>
         </li>

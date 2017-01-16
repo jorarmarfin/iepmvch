@@ -8,7 +8,7 @@
             <div class="portlet box green">
                 <div class="portlet-title">
                     <div class="caption">
-                        <i class="fa fa-user-plus"></i>
+                        <i class="fa fa-user-md"></i>
                         Reserva Psicologica
                     </div>
                     <div class="tools">
@@ -18,7 +18,11 @@
                     </div>
                 </div>
                 <div class="portlet-body">
-
+                <a href="{{ route('admin.reservapsicologica.create') }}" class="btn green">
+                    <i class="fa fa-plus"></i>
+                    Nueva reserva
+                </a>
+                <p></p>
                     <table class="table table-bordered table-hover">
                         <thead>
                             <tr>
