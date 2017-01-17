@@ -40,6 +40,7 @@ class CatalogoTableSeeder extends Seeder
         Catalogo::create(['idtable' => 0,'iditem' => 25, 'codigo' => 'PRACT','nombre' => 'PRACTICAS','descripcion'=>'Practicas Calificadas','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 0,'iditem' => 26, 'codigo' => 'ESTPSI','nombre' => 'ESTADO PSICOLOGICO','descripcion'=>'Estado de la evaluacion psicologica','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 0,'iditem' => 27, 'codigo' => 'UBI','nombre' => 'UBIGEO','descripcion'=>'Ubigeo de peru','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 0,'iditem' => 28, 'codigo' => 'SEX','nombre' => 'SEXO','descripcion'=>'Tipo de sexo','valor'=> null,'activo'=>true]);
 
 
 
@@ -2299,6 +2300,11 @@ class CatalogoTableSeeder extends Seeder
         Catalogo::create(['idtable' => 27,'iditem' =>2053, 'codigo' => '250401','nombre' => 'PURUS','descripcion'=>'UCAYALI/PURUS/PURUS','valor'=>null,'activo'=>true]);
         Catalogo::create(['idtable' => 27,'iditem' =>2054, 'codigo' => '10205','nombre' => 'BAGUA','descripcion'=>'AMAZONAS/BAGUA/BAGUA/','valor'=>null,'activo'=>true]);
         Catalogo::create(['idtable' => 27,'iditem' =>979, 'codigo' => '90105','nombre' => 'QUISQUI','descripcion'=>'HUANUCO/HUANUCO/QUISQUI (KICHKI)','valor'=>null,'activo'=>true]);
+        /**
+         * Sexo
+         */
+        Catalogo::create(['idtable' => 28,'iditem' => 1, 'codigo' => 'M','nombre' => 'Masculino','descripcion'=>'Sexo masculino','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 28,'iditem' => 2, 'codigo' => 'F','nombre' => 'Femenino','descripcion'=>'Sexo femenino','valor'=> null,'activo'=>true]);
 
 
 

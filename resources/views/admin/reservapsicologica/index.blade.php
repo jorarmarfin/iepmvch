@@ -79,9 +79,11 @@
 
 @section('plugins-styles')
 {!! Html::style('assets/global/plugins/bootstrap-table/bootstrap-table.min.css') !!}
+{!! Html::style('assets/global/plugins/datatables/datatables.min.css') !!}
+{!! Html::style('assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css') !!}
 @stop
 
-@section('js-plugins')
+@section('plugins-js')
 {!! Html::script('assets/global/plugins/jquery-ui/jquery-ui.min.js') !!}
 {!! Html::script('assets/global/plugins/bootstrap-table/bootstrap-table.min.js') !!}
 @stop

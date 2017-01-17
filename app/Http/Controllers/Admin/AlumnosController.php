@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Alumno;
+use App\Models\Catalogo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Styde\Html\Facades\Alert;
 class AlumnosController extends Controller
 {
@@ -39,8 +41,13 @@ class AlumnosController extends Controller
     public function store(Request $request)
     {
         //dd($request->all());
+        $data = $request->all();
+        if ($request->hasFile('file')) {
+            $data['foto'] = $request->file('file')->store('fotos','public');
+        }
+
         Alert::success('Alumno Registrado con exito');
-        Alumno::create($request->all());
+        Alumno::create($data);
         return redirect()->route('admin.alumnos.index');
     }
 
@@ -52,7 +59,9 @@ class AlumnosController extends Controller
      */
     public function show($id)
     {
-        //
+        $alumno = Alumno::find($id);
+        return view('admin.alumnos.show',compact('alumno'));
+
     }
 
     /**
@@ -63,7 +72,8 @@ class AlumnosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $alumno = Alumno::find($id);
+        return view('admin.alumnos.edit',compact('alumno'));
     }
 
     /**
@@ -75,7 +85,20 @@ class AlumnosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //dd($request->all());
+        $alumno = Alumno::findOrFail($id);
+        $alumno->fill($request->all());
+
+        if ($request->hasFile('file')) {
+            if (strlen($alumno->foto)!=18) {
+                Storage::delete("/public/$alumno->foto");
+            }
+
+            $alumno->foto = $request->file('file')->store('fotos','public');
+        }
+        $alumno->save();
+        Alert::success('Usuario actualizado');
+        return redirect()->route('admin.alumnos.index');
     }
 
     /**

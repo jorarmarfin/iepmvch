@@ -8,7 +8,7 @@
         <div class="portlet box green">
             <div class="portlet-title">
                 <div class="caption">
-                    <i class="fa fa-gift"></i> Nuevo alumno </div>
+                    <i class="fa fa-gift"></i> Editar Alumno </div>
                 <div class="tools">
                     <a href="javascript:;" class="collapse"> </a>
                     <a href="javascript:;" class="fullscreen"> </a>
@@ -17,11 +17,12 @@
             </div>
             <div class="portlet-body form">
                 <!-- BEGIN FORM-->
-				{!! Form::open(['route'=>'admin.alumnos.store','method'=>'POST','class'=>'horizontal-form','files'=>true]) !!}
-                    <div class="form-actions right">
-                        {!!Form::submit('Guardar',['class'=>'btn green uppercase'])!!}
-                        <a href="{{ route('admin.alumnos.index') }}" class="btn default">REGRESAR</a>
-                    </div>
+				{!! Form::model($alumno,['route'=>['admin.alumnos.update',$alumno],'method'=>'PUT','class'=>'horizontal-form','files'=>true]) !!}
+                    <div class="portlet-body form">
+                        <div class="form-actions right">
+                            {!!Form::submit('Guardar',['class'=>'btn green uppercase'])!!}
+                            <a href="{{ route('admin.alumnos.index') }}" class="btn default">REGRESAR</a>
+                        </div>
                     <div class="form-body">
                         <h3 class="form-section">Datos Personales</h3>
                         <div class="row">
@@ -79,14 +80,14 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     {!!Form::label('lblPais', 'Pais de nacimiento',['class'=>'control-label']);!!}
-                                    {!!Form::select('idpais',$pais, IdPeru() , ['class'=>'form-control']);!!}
+                                    {!!Form::select('idpais',$pais, null , ['class'=>'form-control']);!!}
                                 </div>
                             </div>
                             <!--/span-->
                             <div class="col-md-6">
                                 <div class="form-group">
                                     {!! Form::label('lblUbigeo', 'Lugar de nacimiento', ['class'=>'control-label']) !!}
-                                    {!!Form::select('idubigeonacimiento',[], null , ['class'=>'form-control','id'=>'idubigeonacimiento']);!!}
+                                    {!!Form::select('idubigeonacimiento',UbigeoPersonal('ubigeo',$alumno->idubigeonacimiento), null , ['class'=>'form-control','id'=>'idubigeonacimiento']);!!}
                                 </div>
                             </div>
                             <!--/span-->
@@ -100,7 +101,7 @@
                                 </div>
                                 <div class="form-group">
                                     {!! Form::label('lblSexo', 'Sexo', ['class'=>'control-label']) !!}
-                                    {!!Form::select('idsexo', $sexo, IdMasculino() , ['class'=>'form-control'])!!}
+                                    {!!Form::select('idsexo', $sexo, null , ['class'=>'form-control'])!!}
                                 </div>
                             </div>
                             <!--/span-->
@@ -141,8 +142,8 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    {!! Form::label('lblUbigeo', 'Dsitrito de residencia', ['class'=>'control-label']) !!}
-                                    {!!Form::select('idubigeo',[], null , ['class'=>'form-control','id'=>'idubigeo']);!!}
+                                    {!! Form::label('lblUbigeo', 'Distrito de residencia', ['class'=>'control-label']) !!}
+                                    {!!Form::select('idubigeo',UbigeoPersonal('ubigeo',$alumno->idubigeo), null , ['class'=>'form-control','id'=>'idubigeo']);!!}
                                 </div>
                             </div>
                             <!--/span-->
@@ -207,6 +208,7 @@
                         <h3 class="form-section">Fotografia</h3>
                         <div class="row">
                             <div class="col-md-12">
+                                <img src="{{ asset('/storage/'.$alumno->foto) }}" width='10%'>
                                 <div class="form-group">
                                     {!! Form::file('file', []) !!}
                                 </div>
@@ -248,6 +250,7 @@
                         </div>
                         <!--/row-->
                         {!! Form::hidden('idestado', EstadoId('ESTADO ALUMNO','Regular')) !!}
+                        </div>
                     <div class="form-actions right">
                         {!!Form::submit('Guardar',['class'=>'btn green uppercase'])!!}
                         <a href="{{ route('admin.alumnos.index') }}" class="btn default">REGRESAR</a>

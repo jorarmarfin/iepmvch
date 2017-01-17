@@ -93,7 +93,7 @@ $(".form_datetime").datetimepicker({
 @section('plugins-styles')
 {!! Html::style(asset('assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css')) !!}
 @stop
-@section('js-plugins')
+@section('plugins-js')
 {!! Html::script(asset('assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js')) !!}
 @stop
 
