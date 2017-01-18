@@ -19,7 +19,7 @@ class CreateFamiliarsTable extends Migration
             $table->string('paterno',25)->nullable()->index();
             $table->string('materno',25)->nullable()->index();
             $table->string('nombres',50)->nullable()->index();
-            $table->string('dni',20)->nullable()->index();
+            $table->string('dni',20)->nullable()->index()->unique();
             $table->date('fechanacimiento')->nullable();
             $table->integer('idpais')->nullable();
             $table->integer('idubigeonacimiento')->nullable();
@@ -34,11 +34,14 @@ class CreateFamiliarsTable extends Migration
             $table->string('email',100)->nullable();
             $table->integer('idtipo')->nullable();
             $table->boolean('autorizo')->default(false);
+            $table->integer('idsexo')->nullable();
+            $table->boolean('esapoderado')->default(false);
             $table->timestamps();
             $table->foreign('idpais')->references('id')->on('catalogo');
             $table->foreign('idubigeonacimiento')->references('id')->on('catalogo');
             $table->foreign('idestadocivil')->references('id')->on('catalogo');
             $table->foreign('idtipo')->references('id')->on('catalogo');
+            $table->foreign('idsexo')->references('id')->on('catalogo');
         });
     }
 

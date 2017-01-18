@@ -1,14 +1,18 @@
 @extends('layouts.base')
 
 @section('content')
+<div class="note note-danger">
+    <h4 class="block">Cuidado! Esta seguro de eliminar este alumno</h4>
+    <p> No podra desacer esta opcion </p>
+</div>
 <div class="row">
 	<div class="col-md-12">
 			@include('alerts.errors')
         <!-- BEGIN Portlet PORTLET-->
-        <div class="portlet box green">
+        <div class="portlet box red">
             <div class="portlet-title">
                 <div class="caption">
-                    <i class="fa fa-user"></i>Detalle de alumno </div>
+                    <i class="fa fa-warning"></i>CUIDADO </div>
                 <div class="tools">
                     <a href="javascript:;" class="collapse"> </a>
                     <a href="#portlet-config" data-toggle="modal" class="config"> </a>
@@ -17,11 +21,12 @@
                 </div>
             </div>
             <div class="portlet-body form">
+                {!! Form::open(['route'=>['admin.alumnos.destroy',$alumno],'method'=>'DELETE','class'=>'form-horizontal']) !!}
                     <div class="form-actions right">
+                        {!!Form::submit('Eliminar',['class'=>'btn red uppercase'])!!}
                         <a href="{{ route('admin.alumnos.index') }}" class="btn default">REGRESAR</a>
                     </div>
                 <!-- BEGIN FORM-->
-                <form class="form-horizontal" role="form">
                     <div class="form-body">
                         <h2 class="margin-bottom-20"> Ficha de : {{ $alumno->nombre_completo }} </h2>
                         <h3 class="form-section">Informacion Personal</h3>
@@ -199,9 +204,10 @@
                         </div>
                     </div>
                     <div class="form-actions right">
+                        {!!Form::submit('Eliminar',['class'=>'btn red uppercase'])!!}
                         <a href="{{ route('admin.alumnos.index') }}" class="btn default">REGRESAR</a>
                     </div>
-                </form>
+                {!! Form::close() !!}
                 <!-- END FORM-->
             </div>
         </div>
@@ -231,7 +237,7 @@
 
 
 @section('page-title')
-Datos de Alumno
+Eliminar Alumno
 @stop
 
 @section('page-subtitle')

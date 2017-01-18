@@ -7,6 +7,8 @@ use App\Http\ViewComposers\ControlSelectData;
 use App\Http\ViewComposers\GradoSelectData;
 use App\Http\ViewComposers\PaisSelectData;
 use App\Http\ViewComposers\SexoSelectData;
+use App\Http\ViewComposers\EstadoCivilSelectData;
+use App\Http\ViewComposers\TipoFamiliarSelectData;
 
 class ViewServiceProvider extends ServiceProvider
 {
@@ -27,12 +29,20 @@ class ViewServiceProvider extends ServiceProvider
             GradoSelectData::class
             );
         $this->app->make('view')->composer(
-            ['admin.alumnos.create','admin.alumnos.edit'],
+            ['admin.alumnos.create','admin.alumnos.edit','admin.familiar.create','admin.familiar.edit'],
             PaisSelectData::class
             );
         $this->app->make('view')->composer(
-            ['admin.alumnos.create','admin.alumnos.edit'],
+            ['admin.alumnos.create','admin.alumnos.edit','admin.familiar.create','admin.familiar.edit'],
             SexoSelectData::class
+            );
+        $this->app->make('view')->composer(
+            ['admin.familiar.create','admin.familiar.edit'],
+            EstadoCivilSelectData::class
+            );
+        $this->app->make('view')->composer(
+            ['admin.familiar.create','admin.familiar.edit'],
+            TipoFamiliarSelectData::class
             );
     }
 

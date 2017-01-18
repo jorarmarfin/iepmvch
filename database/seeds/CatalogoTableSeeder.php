@@ -34,7 +34,7 @@ class CatalogoTableSeeder extends Seeder
         Catalogo::create(['idtable' => 0,'iditem' => 19, 'codigo' => 'DIA','nombre' => 'DIA SEMANA','descripcion'=>'Dia de la semana','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 0,'iditem' => 20, 'codigo' => 'TSAL','nombre' => 'TIPO SALIDA','descripcion'=>'Tipo de salida de efectivo','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 0,'iditem' => 21, 'codigo' => 'UM','nombre' => 'UNIDAD MEDIDA','descripcion'=>'Unidad de medida','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 0,'iditem' => 22, 'codigo' => 'IP','nombre' => 'PAIS','descripcion'=>'Pais','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 0,'iditem' => 22, 'codigo' => 'PAIS','nombre' => 'PAIS','descripcion'=>'Pais','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 0,'iditem' => 23, 'codigo' => 'MAT','nombre' => 'Materiales','descripcion'=>'Utiles escolares','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 0,'iditem' => 24, 'codigo' => 'ARE','nombre' => 'Area','descripcion'=>'Area de Asignaturas','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 0,'iditem' => 25, 'codigo' => 'PRACT','nombre' => 'PRACTICAS','descripcion'=>'Practicas Calificadas','valor'=> null,'activo'=>true]);
@@ -206,7 +206,7 @@ class CatalogoTableSeeder extends Seeder
         /**
          * Pais
          */
-        Catalogo::create(['idtable' => 22,'iditem' => 1, 'codigo' => 'PE','nombre' => 'Peru','descripcion'=>'Peru','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 22,'iditem' => 1, 'codigo' => 'PE','nombre' => 'PERÚ','descripcion'=>'PERÚ','valor'=> null,'activo'=>true]);
         /**
          * Utiles escolares
          */

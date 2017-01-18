@@ -9,7 +9,7 @@
             <div class="portlet-title">
                 <div class="caption">
                     <i class="fa fa-table"></i>
-                    Lista de Alumnos
+                    Familiares
                 </div>
                 <div class="tools">
                     <a href="javascript:;" class="collapse"> </a>
@@ -18,19 +18,16 @@
                 </div>
             </div>
             <div class="portlet-body">
-            <a href="{{ route('admin.alumnos.create') }}" class="btn green">
+            <a href="{{ route('admin.familiar.create',$id) }}" class="btn green">
                 <i class="fa fa-plus"></i>
-                Nuevo Alumno
+                Nuevo Familiar
             </a><p></p>
-                <table class="table table-striped table-hover" id="Alumnos">
+                <table class="table table-striped table-hover" data-toggle="table" data-pagination="true">
                     <thead>
                         <tr>
                             <th> Paterno </th>
                             <th> Materno </th>
                             <th> Nombres </th>
-                            <th> Grado actual</th>
-                            <th> Foto </th>
-                            <th> Estado </th>
                             <th> Opciones </th>
                         </tr>
                     </thead>
@@ -40,9 +37,7 @@
                             <td> {{ $item->paterno }} </td>
                             <td> {{ $item->materno }} </td>
                             <td> {{ $item->nombres }} </td>
-                            <td> {{ $item->grado }} </td>
                             <td><a href="{{ route('admin.alumnos.show',$item->id) }}"><img src="{{ asset('/storage/'.$item->foto) }}"  width='25px'> </a></td>
-                            <td> {{ $item->estado }} </td>
                             <td>
                                 <div class="btn-group">
                                     <button class="btn btn-xs green-dark dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Opciones
@@ -61,10 +56,6 @@
                                             <a href="{{ route('admin.alumnos.delete',$item->id) }}">
                                                 <i class="fa fa-trash"></i> Delete </a>
                                         </li>
-                                        <li>
-                                            <a href="{{ route('admin.familiar.lists',$item->id) }}">
-                                                <i class="fa fa-users"></i> Familiar </a>
-                                        </li>
                                     </ul>
                                 </div>
                             </td>
@@ -80,33 +71,16 @@
 
 @stop
 
-@section('js-scripts')
-<script>
-$('#Alumnos').dataTable({
-    "language": {
-        "emptyTable": "No hay datos disponibles",
-        "info": "Mostrando _START_ a _END_ de _TOTAL_ filas",
-        "search": "Buscar Alumnos :",
-        "lengthMenu": "_MENU_ registros"
-    },
-    "bProcessing": true,
-    "pagingType": "bootstrap_full_number",
-    "order": [1,"asc"]
-});
-</script>
-@stop
 
 @section('plugins-styles')
-{!! Html::style('assets/global/plugins/datatables/datatables.min.css') !!}
-{!! Html::style('assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css') !!}
+{!! Html::style('assets/global/plugins/bootstrap-table/bootstrap-table.min.css') !!}
 @stop
 
 @section('plugins-js')
 {!! Html::script('assets/global/plugins/jquery-ui/jquery-ui.min.js') !!}
-{!! Html::script('assets/global/scripts/datatable.js') !!}
-{!! Html::script('assets/global/plugins/datatables/datatables.min.js') !!}
-{!! Html::script('assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js') !!}
+{!! Html::script('assets/global/plugins/bootstrap-table/bootstrap-table.min.js') !!}
 @stop
+
 
 
 @section('menu-user')
@@ -127,7 +101,7 @@ $('#Alumnos').dataTable({
 
 
 @section('page-title')
-Datos de alumnos
+Familiar de alumno {{ NombreAlumno($id) }}
 @stop
 
 @section('page-subtitle')

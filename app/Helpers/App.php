@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Alumno;
 use App\Models\Catalogo;
 if (! function_exists('RoleId')) {
 	/**
@@ -52,7 +53,7 @@ if (! function_exists('IdPeru')) {
      */
     function IdPeru()
     {
-        $paises = Catalogo::select('id')->table('PAIS')->where('nombre','Peru')->first();
+        $paises = Catalogo::select('id')->table('PAIS')->where('nombre','PERÚ')->first();
 
         return $paises->id;
     }
@@ -71,5 +72,21 @@ if (! function_exists('IdMasculino')) {
         $sexo = Catalogo::select('id')->table('SEXO')->where('nombre','Masculino')->first();
 
         return $sexo->id;
+    }
+}
+
+/**
+ * Devuelve el id del sexo masculino
+ */
+if (! function_exists('NombreAlumno')) {
+    /**
+     * Funcion que retorna el prefijo para nombres de archivos
+     * @return [type] [description]
+     */
+    function NombreAlumno($id)
+    {
+        $alumno = Alumno::find($id);
+
+        return $alumno->nombre_completo;
     }
 }

@@ -108,7 +108,7 @@ GESTION DE CATALOGO
 {!! Html::style('assets/global/plugins/bootstrap-table/bootstrap-table.min.css') !!}
 @stop
 
-@section('js-plugins')
+@section('plugins-js')
 {!! Html::script('assets/global/plugins/jquery-ui/jquery-ui.min.js') !!}
 {!! Html::script('assets/global/plugins/bootstrap-table/bootstrap-table.min.js') !!}
 @stop

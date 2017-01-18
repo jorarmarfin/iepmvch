@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AlumnoRequest;
 use App\Models\Alumno;
 use App\Models\Catalogo;
 use Illuminate\Http\Request;
@@ -38,9 +39,8 @@ class AlumnosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AlumnoRequest $request)
     {
-        //dd($request->all());
         $data = $request->all();
         if ($request->hasFile('file')) {
             $data['foto'] = $request->file('file')->store('fotos','public');
@@ -61,6 +61,18 @@ class AlumnosController extends Controller
     {
         $alumno = Alumno::find($id);
         return view('admin.alumnos.show',compact('alumno'));
+
+    }
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function delete($id)
+    {
+        $alumno = Alumno::find($id);
+        return view('admin.alumnos.delete',compact('alumno'));
 
     }
 
@@ -109,6 +121,11 @@ class AlumnosController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        $alumno = Alumno::find($id);
+        Storage::delete("/public/$alumno->foto");
+        $alumno->delete();
+        Alert::success('Alumno eliminado con exito');
+        return redirect()->route('admin.alumnos.index');
     }
 }
