@@ -17,5 +17,19 @@ class Familiar extends Model
     	$familia = AlumnoFamiliar::select('idfamiliar')->where('idalumno',$idalumno)->get();
     	return $cadenaSQL->wherein('id',$familia);
     }
+    /**
+     * Funcion para guardar los datos y referencias
+     * @param  [type] $data [description]
+     * @return [type]       [description]
+     */
+    public static function guardar($data)
+    {
+        $alumno = Alumno::find($data['idalumno']);
+        $familiar = new Familiar();
+        $familiar->fill($data);
+        if($alumno->familiar()->save($familiar))
+        return true;
+        else return false;
+    }
 
 }

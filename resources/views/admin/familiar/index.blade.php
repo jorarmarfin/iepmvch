@@ -22,7 +22,7 @@
                 <i class="fa fa-plus"></i>
                 Nuevo Familiar
             </a><p></p>
-                <table class="table table-striped table-hover" data-toggle="table" data-pagination="true">
+                <table class="table table-hover table-bordered" >
                     <thead>
                         <tr>
                             <th> Paterno </th>
@@ -37,7 +37,6 @@
                             <td> {{ $item->paterno }} </td>
                             <td> {{ $item->materno }} </td>
                             <td> {{ $item->nombres }} </td>
-                            <td><a href="{{ route('admin.alumnos.show',$item->id) }}"><img src="{{ asset('/storage/'.$item->foto) }}"  width='25px'> </a></td>
                             <td>
                                 <div class="btn-group">
                                     <button class="btn btn-xs green-dark dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Opciones
@@ -49,7 +48,7 @@
                                                 <i class="fa fa-eye"></i> Show </a>
                                         </li>
                                         <li>
-                                            <a href="{{ route('admin.alumnos.edit',$item->id) }}">
+                                            <a href="{{ route('admin.familiar.edit',$item->id) }}">
                                                 <i class="fa fa-edit"></i> Edit </a>
                                         </li>
                                         <li>

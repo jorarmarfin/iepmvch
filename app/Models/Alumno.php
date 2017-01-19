@@ -101,7 +101,15 @@ class Alumno extends Model
       $ubigeo = Catalogo::select('nombre','descripcion')->where('id',$this->idubigeo)->first();
       return $ubigeo;
     }
-
+    /**
+     * El nombre de la funcion hace referncia a la tabla con la que se relaciona
+     * de muchos a muchos
+     * @return [type] [description]
+     */
+    public function familiar()
+    {
+        return $this->belongsToMany(Familiar::class,'alumno_familiar','idalumno','idfamiliar');
+    }
 
 
 

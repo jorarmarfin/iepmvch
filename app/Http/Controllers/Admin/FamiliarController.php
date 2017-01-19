@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\FamiliarRequest;
+use App\Models\AlumnoFamiliar;
 use App\Models\Familiar;
 use Illuminate\Http\Request;
 use Styde\Html\Facades\Alert;
@@ -48,12 +50,17 @@ class FamiliarController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(FamiliarRequest $request)
     {
         $data = $request->all();
-        Familiar::create($data);
-        Alert::success('Familiar Registrado con exito');
-        return redirect()->route('admin.familiar.lists',$data['idalumno']);
+        if(Familiar::guardar($data))
+        {
+            Alert::success('Familiar Registrado con exito');
+            return redirect()->route('admin.familiar.lists',$data['idalumno']);
+        }else{
+            Alert::warning('No se guardo el registro');
+            return redirect()->route('admin.familiar.lists',$data['idalumno']);
+        }
     }
 
     /**
@@ -75,7 +82,10 @@ class FamiliarController extends Controller
      */
     public function edit($id)
     {
-        //
+        $familiar = Familiar::find($id);
+        $data = AlumnoFamiliar::where('idfamiliar',$familiar->id)->first();
+        $idalumno = $data->idalumno;
+        return view('admin.familiar.edit',compact('familiar','idalumno'));
     }
 
     /**
