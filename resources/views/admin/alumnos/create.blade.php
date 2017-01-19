@@ -222,11 +222,11 @@
                                     <div class="input-group col-md-10">
                                         <div class="icheck-inline">
                                             <label>
-                                                {!! Form::radio('esespecial', 'true') !!}
+                                                {!! Form::radio('esespecial',1) !!}
                                                 Si
                                             </label>
                                             <label>
-                                                {!! Form::radio('esespecial', 'false',true) !!}
+                                                {!! Form::radio('esespecial',0,true) !!}
                                                 No
                                             </label>
                                         </div>

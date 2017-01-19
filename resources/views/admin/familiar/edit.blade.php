@@ -19,8 +19,8 @@
                 <!-- BEGIN FORM-->
 				{!! Form::model($familiar,['route'=>['admin.familiar.update',$familiar],'method'=>'PUT','class'=>'horizontal-form','files'=>true]) !!}
                     <div class="form-actions right">
-                        {!!Form::submit('Actualizar',['class'=>'btn green uppercase'])!!}
-                        <a href="{{ route('admin.familiar.lists',$idalumno) }}" class="btn default">REGRESAR</a>
+                        {!!Form::enviar('Guardar')!!}
+                        {!!Form::back(route('admin.familiar.lists',$idalumno))!!}
                     </div>
                     <div class="form-body">
                         <h3 class="form-section">Datos Personales</h3>
@@ -31,11 +31,11 @@
                                     <div class="input-group col-md-6">
                                         <div class="icheck-inline">
                                             <label>
-                                                {!! Form::radio('viveconestudiante', 'true') !!}
+                                                {!! Form::radio('viveconestudiante', 1) !!}
                                                 Si
                                             </label>
                                             <label>
-                                                {!! Form::radio('viveconestudiante', 'false',true) !!}
+                                                {!! Form::radio('viveconestudiante', 0,true) !!}
                                                 No
                                             </label>
                                         </div>
@@ -90,14 +90,14 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     {!!Form::label('lblPais', 'Pais de nacimiento',['class'=>'control-label']);!!}
-                                    {!!Form::select('idpais',$pais, IdPeru() , ['class'=>'form-control']);!!}
+                                    {!!Form::select('idpais',$pais, null , ['class'=>'form-control']);!!}
                                 </div>
                             </div>
                             <!--/span-->
                             <div class="col-md-6">
                                 <div class="form-group">
                                     {!! Form::label('lblUbigeo', 'Lugar de nacimiento', ['class'=>'control-label']) !!}
-                                    {!!Form::select('idubigeonacimiento',[], null , ['class'=>'form-control','id'=>'idubigeonacimiento']);!!}
+                                    {!!Form::select('idubigeonacimiento',UbigeoPersonal('Lugar de nacimiento',$familiar->idubigeonacimiento), null , ['class'=>'form-control','id'=>'idubigeonacimiento']);!!}
                                 </div>
                             </div>
                             <!--/span-->
@@ -124,7 +124,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     {!! Form::label('lblEstCivil', 'Estado Civil', ['class'=>'control-label']) !!}
-                                    {!!Form::select('idestadocivil', $estadocivil, IdMasculino() , ['class'=>'form-control'])!!}
+                                    {!!Form::select('idestadocivil', $estadocivil, null, ['class'=>'form-control'])!!}
                                 </div>
                             </div>
                             <!--/span-->
@@ -169,8 +169,8 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    {!! Form::label('lblUbigeo', 'Dsitrito de residencia:', ['class'=>'control-label']) !!}
-                                    {!!Form::select('idubigeo',[], null , ['class'=>'form-control','id'=>'idubigeo']);!!}
+                                    {!! Form::label('lblUbigeo', 'Distrito de residencia:', ['class'=>'control-label']) !!}
+                                    {!!Form::select('idubigeo',UbigeoPersonal('Distrito',$familiar->idubigeo), null , ['class'=>'form-control','id'=>'idubigeo']);!!}
                                 </div>
                             </div>
                             <!--/span-->
@@ -214,11 +214,11 @@
                                     <div class="input-group col-md-6">
                                         <div class="icheck-inline">
                                             <label>
-                                                {!! Form::radio('esapoderado', 'true') !!}
+                                                {!! Form::radio('esapoderado', 1) !!}
                                                 Si
                                             </label>
                                             <label>
-                                                {!! Form::radio('esapoderado', 'false',true) !!}
+                                                {!! Form::radio('esapoderado', 0) !!}
                                                 No
                                             </label>
                                         </div>
@@ -228,10 +228,30 @@
                             <!--/span-->
                         </div>
                         <!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    {!! Form::label('lblAutorizo', 'Autorizo para incorporar y utilizar los siguientes datos', ['class'=>'control-label']) !!}
+                                    <div class="input-group col-md-6">
+                                        <div class="icheck-inline">
+                                            <label>
+                                                {!! Form::radio('autorizo', 1) !!}
+                                                Si
+                                            </label>
+                                            <label>
+                                                {!! Form::radio('autorizo', 0) !!}
+                                                No
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                        </div><!--/row-->
                         {!! Form::hidden('idalumno', $idalumno) !!}
                     <div class="form-actions right">
-                        {!!Form::submit('Guardar',['class'=>'btn green uppercase'])!!}
-                        <a href="{{ route('admin.alumnos.index') }}" class="btn default">REGRESAR</a>
+                        {!!Form::enviar('Guardar')!!}
+                        {!!Form::back(route('admin.familiar.lists',$idalumno))!!}
                     </div>
 				{!! Form::close() !!}
                 <!-- END FORM-->
@@ -355,7 +375,7 @@ $(document).ready(function() {
 
 
 @section('page-title')
-Creando familiar para {{ NombreAlumno($idalumno) }}
+Editando familiar para {{ NombreAlumno($idalumno) }}
 @stop
 
 @section('page-subtitle')

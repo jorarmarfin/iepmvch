@@ -95,20 +95,9 @@ class AlumnosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(AlumnoRequest $request, $id)
     {
-        //dd($request->all());
-        $alumno = Alumno::findOrFail($id);
-        $alumno->fill($request->all());
-
-        if ($request->hasFile('file')) {
-            if (strlen($alumno->foto)!=18) {
-                Storage::delete("/public/$alumno->foto");
-            }
-
-            $alumno->foto = $request->file('file')->store('fotos','public');
-        }
-        $alumno->save();
+        Alumno::Guardar($request,$id);
         Alert::success('Usuario actualizado');
         return redirect()->route('admin.alumnos.index');
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AlumnoFamiliarRequest;
 use App\Http\Requests\FamiliarRequest;
 use App\Models\AlumnoFamiliar;
 use App\Models\Familiar;
@@ -53,14 +54,10 @@ class FamiliarController extends Controller
     public function store(FamiliarRequest $request)
     {
         $data = $request->all();
-        if(Familiar::guardar($data))
-        {
-            Alert::success('Familiar Registrado con exito');
-            return redirect()->route('admin.familiar.lists',$data['idalumno']);
-        }else{
-            Alert::warning('No se guardo el registro');
-            return redirect()->route('admin.familiar.lists',$data['idalumno']);
-        }
+        Familiar::Guardar($data);
+        Alert::success('Familiar Registrado con exito');
+        return redirect()->route('admin.familiar.lists',$data['idalumno']);
+
     }
 
     /**
@@ -71,7 +68,9 @@ class FamiliarController extends Controller
      */
     public function show($id)
     {
-
+        $familiar = Familiar::find($id);
+        $idalumno = IdAlumno($id);
+        return view('admin.familiar.show',compact('familiar','idalumno'));
     }
 
     /**
@@ -83,8 +82,7 @@ class FamiliarController extends Controller
     public function edit($id)
     {
         $familiar = Familiar::find($id);
-        $data = AlumnoFamiliar::where('idfamiliar',$familiar->id)->first();
-        $idalumno = $data->idalumno;
+        $idalumno = IdAlumno($id);
         return view('admin.familiar.edit',compact('familiar','idalumno'));
     }
 
@@ -95,9 +93,25 @@ class FamiliarController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(FamiliarRequest $request, $id)
     {
-        //
+        Familiar::Actualizar($request,$id);
+        $idalumno = IdAlumno($id);
+        Alert::success('Familiar actualizado con exito');
+        return redirect()->route('admin.familiar.lists',$idalumno);
+    }
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function delete($id)
+    {
+        $familiar = Familiar::find($id);
+        $idalumno = IdAlumno($id);
+        return view('admin.familiar.delete',compact('familiar','idalumno'));
+
     }
 
     /**
@@ -108,6 +122,15 @@ class FamiliarController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Familiar::destroy($id);
+        $idalumno = IdAlumno($id);
+        Alert::success('Usuario eliminado con exito');
+        return redirect()->route('admin.familiar.lists',$idalumno);
+    }
+    public function relation(AlumnoFamiliarRequest $request)
+    {
+        AlumnoFamiliar::create($request->all());
+        Alert::success('Familiar Registrado con exito');
+        return back();
     }
 }

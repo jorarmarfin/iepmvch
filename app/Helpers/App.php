@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Alumno;
+use App\Models\AlumnoFamiliar;
 use App\Models\Catalogo;
 if (! function_exists('RoleId')) {
 	/**
@@ -88,5 +89,20 @@ if (! function_exists('NombreAlumno')) {
         $alumno = Alumno::find($id);
 
         return $alumno->nombre_completo;
+    }
+}
+/**
+ * Devuelve el id del alumno con el id familiar
+ */
+if (! function_exists('IdAlumno')) {
+    /**
+     * Funcion que retorna el prefijo para nombres de archivos
+     * @return [type] [description]
+     */
+    function IdAlumno($id)
+    {
+        $alumno = AlumnoFamiliar::where('idfamiliar',$id)->first();
+
+        return $alumno->id;
     }
 }

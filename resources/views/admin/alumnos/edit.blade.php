@@ -20,8 +20,10 @@
 				{!! Form::model($alumno,['route'=>['admin.alumnos.update',$alumno],'method'=>'PUT','class'=>'horizontal-form','files'=>true]) !!}
                     <div class="portlet-body form">
                         <div class="form-actions right">
-                            {!!Form::submit('Guardar',['class'=>'btn green uppercase'])!!}
-                            <a href="{{ route('admin.alumnos.index') }}" class="btn default">REGRESAR</a>
+                            {!!Form::enviar('Guardar')!!}
+                            {!!Form::back(route('admin.alumnos.index'))!!}
+
+
                         </div>
                     <div class="form-body">
                         <h3 class="form-section">Datos Personales</h3>
@@ -224,11 +226,11 @@
                                     <div class="input-group col-md-10">
                                         <div class="icheck-inline">
                                             <label>
-                                                {!! Form::radio('esespecial', 'true') !!}
+                                                {!! Form::radio('esespecial', 1) !!}
                                                 Si
                                             </label>
                                             <label>
-                                                {!! Form::radio('esespecial', 'false',true) !!}
+                                                {!! Form::radio('esespecial', 0) !!}
                                                 No
                                             </label>
                                         </div>
@@ -252,8 +254,8 @@
                         {!! Form::hidden('idestado', EstadoId('ESTADO ALUMNO','Regular')) !!}
                         </div>
                     <div class="form-actions right">
-                        {!!Form::submit('Guardar',['class'=>'btn green uppercase'])!!}
-                        <a href="{{ route('admin.alumnos.index') }}" class="btn default">REGRESAR</a>
+                        {!!Form::enviar('Guardar')!!}
+                        {!!Form::back(route('admin.alumnos.index'))!!}
                     </div>
 				{!! Form::close() !!}
                 <!-- END FORM-->
@@ -377,7 +379,7 @@ $(document).ready(function() {
 
 
 @section('page-title')
-Modulo de matricula
+Datos de alumnos
 @stop
 
 @section('page-subtitle')

@@ -43,15 +43,6 @@ class Alumno extends Model
         return $nombrecompleto;
     }
     /**
-     * Atributos de la clase Users
-     */
-    /*public function setfechanacimientoAttribute($value)
-    {
-        if (isset($this->fechanacimiento) && $this->fechanacimiento!='') {
-          $this->attributes['fechanacimiento'] = $value;
-        }
-    }*/
-    /**
     * Atributos Edad del alumno
     */
     public function getEdadAttribute()
@@ -100,6 +91,28 @@ class Alumno extends Model
     {
       $ubigeo = Catalogo::select('nombre','descripcion')->where('id',$this->idubigeo)->first();
       return $ubigeo;
+    }
+    /**
+     * Guarda el registro
+     * @param [type] $request [description]
+     * @param [type] $id      [description]
+     */
+    public static function Guardar($request,$id)
+    {
+        $data = $request->all();
+        $alumno = Alumno::findOrFail($id);
+        $alumno->fill($data);
+
+        if ($request->hasFile('file')) {
+            if (strlen($alumno->foto)!=18) {
+                Storage::delete("/public/$alumno->foto");
+            }
+
+            $alumno->foto = $request->file('file')->store('fotos','public');
+        }
+        if($alumno->save()) return true;
+        else return false;
+
     }
     /**
      * El nombre de la funcion hace referncia a la tabla con la que se relaciona

@@ -8,5 +8,6 @@ class AlumnoFamiliar extends Model
 {
     protected $table = 'alumno_familiar';
     protected $fillable = ['idalumno', 'idfamiliar'];
+    public $timestamps = false;
 
 }

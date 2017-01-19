@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Resource;
 
 use App\Http\Controllers\Controller;
 use App\Models\Catalogo;
+use App\Models\Familiar;
 use Auth;
+use DB;
 use Illuminate\Http\Request;
 
 class ResourceController extends Controller
@@ -30,5 +32,17 @@ class ResourceController extends Controller
         $name = trim(strtoupper($name));
         $ubigeo = Catalogo::ubigeo($name);
         return $ubigeo;
+    }
+    /**
+     * Devuelve Los familiares
+     * @return [type] [description]
+     */
+    public function familiares(Request $request)
+    {
+        $name = $request->varsearch ?:'';
+        $query = "paterno||' - '||materno||', '||nombres";
+        $familiares = Familiar::select('id',DB::raw("$query as text"))
+                        ->get();
+        return $familiares;
     }
 }

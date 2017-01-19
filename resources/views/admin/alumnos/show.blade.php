@@ -18,13 +18,13 @@
             </div>
             <div class="portlet-body form">
                     <div class="form-actions right">
-                        <a href="{{ route('admin.alumnos.index') }}" class="btn default">REGRESAR</a>
+                    {!!Form::back(route('admin.alumnos.index'))!!}
                     </div>
                 <!-- BEGIN FORM-->
                 <form class="form-horizontal" role="form">
                     <div class="form-body">
                         <h2 class="margin-bottom-20"> Ficha de : {{ $alumno->nombre_completo }} </h2>
-                        <h3 class="form-section">Informacion Personal</h3>
+                        <h3 class="form-section">Informacion Personal : estado {{ $alumno->estado }}</h3>
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="thumbnail">
@@ -194,12 +194,51 @@
                                         <p class="form-control-static"> {{ $alumno->telefonoemergencia2 }} </p>
                                     </div>
                                 </div>
-                            </div>
-                            <!--/span-->
+                            </div><!--/span-->
+                        </div><!--/row-->
+                        <h3 class="form-section">Observacion</h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-6">Responsable Economico:</label>
+                                    <div class="col-md-6">
+                                        <p class="form-control-static"> {{ $alumno->responsableeconomico }} </p>
+                                    </div>
+                                </div>
+                            </div><!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-6">Es Especial:</label>
+                                    <div class="col-md-6">
+                                        <p class="form-control-static"> {{ $alumno->especial }} </p>
+                                    </div>
+                                </div>
+                            </div><!--/span-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Discapacidad:</label>
+                                    <div class="col-md-9 thumbnail">
+                                        <p class="form-control-static "> {!! $alumno->discapacidad !!} </p>
+                                    </div>
+                                </div>
+                            </div><!--/span-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Observacion:</label>
+                                    <div class="col-md-9 thumbnail">
+                                        <p class="form-control-static "> {!! $alumno->observacion !!} </p>
+                                    </div>
+                                </div>
+                            </div><!--/span-->
                         </div>
+                        <!--/row-->
                     </div>
                     <div class="form-actions right">
-                        <a href="{{ route('admin.alumnos.index') }}" class="btn default">REGRESAR</a>
+                    {!!Form::back(route('admin.alumnos.index'))!!}
                     </div>
                 </form>
                 <!-- END FORM-->

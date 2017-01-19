@@ -17,7 +17,8 @@ class CreateAlumnoFamiliarsTable extends Migration
             $table->increments('id');
             $table->integer('idalumno')->nullable();
             $table->integer('idfamiliar')->nullable();
-            $table->timestamps();
+            $table->foreign('idalumno')->references('id')->on('alumno');
+            $table->foreign('idfamiliar')->references('id')->on('familiar');
         });
     }
 

@@ -19,8 +19,8 @@
                 <!-- BEGIN FORM-->
 				{!! Form::open(['route'=>'admin.familiar.store','method'=>'POST','class'=>'horizontal-form','files'=>true]) !!}
                     <div class="form-actions right">
-                        {!!Form::submit('Guardar',['class'=>'btn green uppercase'])!!}
-                        <a href="{{ route('admin.familiar.lists',$idalumno) }}" class="btn default">REGRESAR</a>
+                        {!!Form::enviar('Guardar')!!}
+                        {!!Form::back(route('admin.familiar.lists',$idalumno))!!}
                     </div>
                     <div class="form-body">
                         <h3 class="form-section">Datos Personales</h3>
@@ -31,11 +31,11 @@
                                     <div class="input-group col-md-6">
                                         <div class="icheck-inline">
                                             <label>
-                                                {!! Form::radio('viveconestudiante', 'true') !!}
+                                                {!! Form::radio('viveconestudiante', true) !!}
                                                 Si
                                             </label>
                                             <label>
-                                                {!! Form::radio('viveconestudiante', 'false',true) !!}
+                                                {!! Form::radio('viveconestudiante', false,true) !!}
                                                 No
                                             </label>
                                         </div>
@@ -214,11 +214,11 @@
                                     <div class="input-group col-md-6">
                                         <div class="icheck-inline">
                                             <label>
-                                                {!! Form::radio('esapoderado', 'true') !!}
+                                                {!! Form::radio('esapoderado', true) !!}
                                                 Si
                                             </label>
                                             <label>
-                                                {!! Form::radio('esapoderado', 'false',true) !!}
+                                                {!! Form::radio('esapoderado', false) !!}
                                                 No
                                             </label>
                                         </div>
@@ -226,12 +226,31 @@
                                 </div>
                             </div>
                             <!--/span-->
-                        </div>
-                        <!--/row-->
+                        </div><!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    {!! Form::label('lblAutorizo', 'Autorizo para incorporar y utilizar los siguientes datos', ['class'=>'control-label']) !!}
+                                    <div class="input-group col-md-6">
+                                        <div class="icheck-inline">
+                                            <label>
+                                                {!! Form::radio('autorizo', true) !!}
+                                                Si
+                                            </label>
+                                            <label>
+                                                {!! Form::radio('autorizo', false) !!}
+                                                No
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                        </div><!--/row-->
                         {!! Form::hidden('idalumno', $idalumno) !!}
                     <div class="form-actions right">
-                        {!!Form::submit('Guardar',['class'=>'btn green uppercase'])!!}
-                        <a href="{{ route('admin.alumnos.index') }}" class="btn default">REGRESAR</a>
+                        {!!Form::enviar('Guardar')!!}
+                        {!!Form::back(route('admin.familiar.lists',$idalumno))!!}
                     </div>
 				{!! Form::close() !!}
                 <!-- END FORM-->

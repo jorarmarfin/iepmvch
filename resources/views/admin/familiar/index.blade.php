@@ -4,6 +4,7 @@
 <div class="row">
 	<div class="col-md-12">
     {!! Alert::render() !!}
+    @include('alerts.errors')
         <!-- BEGIN Portlet PORTLET-->
         <div class="portlet box green">
             <div class="portlet-title">
@@ -18,10 +19,26 @@
                 </div>
             </div>
             <div class="portlet-body">
-            <a href="{{ route('admin.familiar.create',$id) }}" class="btn green">
-                <i class="fa fa-plus"></i>
-                Nuevo Familiar
-            </a><p></p>
+                {!! Form::open(['route'=>'admin.familiar.relation','method'=>'POST']) !!}
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            {!! Form::label('lblAlumno', 'Si el padre ya existe puede escogerlo y guardar', ['class'=>'control-label']) !!}
+                            {!!Form::select('idfamiliar', [], null , ['class'=>'form-control','id'=>'familiares'])!!}
+                            {!! Form::hidden('idalumno', $id) !!}
+                        </div>
+                    </div><!--/span-->
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <p></p>
+                        {!!Form::enviar('Guardar')!!}
+                        </div>
+                    </div><!--/span-->
+                </div><!--/row-->
+                {!! Form::close() !!}
+                {!!Form::boton('Nuevo Familiar',route('admin.familiar.create',$id),'green','fa fa-plus')!!}
+                {!!Form::back(route('admin.alumnos.index'))!!}
+            <p></p>
                 <table class="table table-hover table-bordered" >
                     <thead>
                         <tr>
@@ -44,7 +61,7 @@
                                     </button>
                                     <ul class="dropdown-menu pull-left" role="menu">
                                         <li>
-                                            <a href="{{ route('admin.alumnos.show',$item->id) }}">
+                                            <a href="{{ route('admin.familiar.show',$item->id) }}">
                                                 <i class="fa fa-eye"></i> Show </a>
                                         </li>
                                         <li>
@@ -52,7 +69,7 @@
                                                 <i class="fa fa-edit"></i> Edit </a>
                                         </li>
                                         <li>
-                                            <a href="{{ route('admin.alumnos.delete',$item->id) }}">
+                                            <a href="{{ route('admin.familiar.delete',$item->id) }}">
                                                 <i class="fa fa-trash"></i> Delete </a>
                                         </li>
                                     </ul>
@@ -69,18 +86,59 @@
 </div>
 
 @stop
+@section('js-scripts')
+<script>
+$(document).ready(function() {
 
+    $("#familiares").select2({
+
+        ajax: {
+            url: '{{ url("/familiares") }}',
+            dataType: 'json',
+            delay: 250,
+            data: function(params) {
+                return {
+                    varsearch: params.term // search term
+                };
+            },
+            processResults: function(data) {
+                // parse the results into the format expected by Select2.
+                // since we are using custom formatting functions we do not need to
+                // alter the remote JSON data
+                return {
+                    results: data
+                };
+            },
+            cache: true
+        },
+        minimumInputLength: 3,
+        templateResult: format,
+        templateSelection: format,
+        escapeMarkup: function(markup) {
+            return markup;
+        } // let our custom formatter work
+    });
+    function format(res){
+        var markup=res.text;
+        return markup;
+    }
+
+});
+</script>
+@stop
 
 @section('plugins-styles')
 {!! Html::style('assets/global/plugins/bootstrap-table/bootstrap-table.min.css') !!}
+{!! Html::style(asset('assets/global/plugins/select2/css/select2.min.css')) !!}
+{!! Html::style(asset('assets/global/plugins/select2/css/select2-bootstrap.min.css')) !!}
 @stop
 
 @section('plugins-js')
 {!! Html::script('assets/global/plugins/jquery-ui/jquery-ui.min.js') !!}
 {!! Html::script('assets/global/plugins/bootstrap-table/bootstrap-table.min.js') !!}
+{!! Html::script(asset('assets/global/plugins/select2/js/select2.full.min.js')) !!}
+{!! Html::script(asset('assets/global/plugins/select2/js/i18n/es.js')) !!}
 @stop
-
-
 
 @section('menu-user')
 @include('menu.profile-admin')
