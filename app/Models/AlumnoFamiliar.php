@@ -10,4 +10,15 @@ class AlumnoFamiliar extends Model
     protected $fillable = ['idalumno', 'idfamiliar'];
     public $timestamps = false;
 
+    /**
+    * Devuelve los valores Activos
+    * @param  [type]  [description]
+    * @return [type]            [description]
+    */
+    public function scopeRelacionados($cadenaSQL,$idfamiliar,$idalumno){
+    	return $cadenaSQL->select('idalumno')
+    					 ->where('idfamiliar',$idfamiliar)
+    					 ->where('idalumno','<>',$idalumno);
+    }
+
 }

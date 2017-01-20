@@ -4,6 +4,7 @@
 <div class="note note-danger">
     <h4 class="block">Cuidado! Esta seguro de eliminar este Familiar</h4>
     <p> No podra desacer esta opcion </p>
+    <p> Si tiene alumnos relacionados, se perdera el familiar de ellos tambien </p>
 </div>
 <div class="row">
 	<div class="col-md-12">
@@ -186,7 +187,21 @@
                                 </div>
                             </div><!--/span-->
                         </div><!--/row-->
-                        <h3 class="form-section">Dirección</h3>
+                        <h3 class="form-section">Alumnos Relacionados con este familiar</h3>
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th> Alumnos </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @foreach ($Lista as $item)
+                                    <tr >
+                                        <td> {{ $item->nombre_completo }} </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
                     </div>
                     <div class="form-actions right">
                     {!!Form::enviar('Eliminar','red')!!}

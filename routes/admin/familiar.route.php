@@ -10,5 +10,6 @@ Route::put('familiar/{familiar}','FamiliarController@update')->name('admin.famil
 Route::get('familiar/delete/{familiar}','FamiliarController@delete')->name('admin.familiar.delete');
 Route::delete('familiar/{familiar}','FamiliarController@destroy')->name('admin.familiar.destroy');
 Route::post('familiar/relation','FamiliarController@relation')->name('admin.familiar.relation');
+Route::get('familiar/quitar/{familiar}','FamiliarController@quitar')->name('admin.familiar.quitar');
 
 

@@ -23,15 +23,38 @@ class Familiar extends Model
      * @param  [type] $data [description]
      * @return [type]       [description]
      */
-    public static function Guardar($data)
+    public static function Guardar($request)
     {
+        $data = $request->all();
         $alumno = Alumno::find($data['idalumno']);
 
         $familiar = new Familiar();
         $familiar->fill($data);
+        //dd($data);
         if($alumno->familiar()->save($familiar))
         return true;
         else return false;
+    }
+    /**
+     * Funcion para eliminar los datos y referencias
+     * @param  [type] $data [description]
+     * @return [type]       [description]
+     */
+    public static function Eliminar($id,$idalumno)
+    {
+        $familiar = Familiar::find($id);
+        $familiar->alumnos()->detach();
+        $familiar->delete();
+    }
+    /**
+     * Funcion para eliminar los datos y referencias
+     * @param  [type] $data [description]
+     * @return [type]       [description]
+     */
+    public static function Quitar($id,$idalumno)
+    {
+        $familiar = Familiar::find($id);
+        $familiar->alumnos()->detach($idalumno);
     }
     /**
      * Funcion para Actualizar los datos y referencias
@@ -66,8 +89,24 @@ class Familiar extends Model
     */
     public function getUbigeoNacimientoAttribute()
     {
-        $ubigeo = Catalogo::find($this->idubigeonacimiento);
-        return $ubigeo->descripcion;
+        if (isset($this->idubigeonacimiento)){
+            $ubigeo = Catalogo::find($this->idubigeonacimiento);
+            $ubigeo = $ubigeo->descripcion;
+          }else $ubigeo = '';
+
+        return $ubigeo;
+    }
+    /**
+    * Atributos Ubigeo de residencia
+    */
+    public function getUbigeoAttribute()
+    {
+      if (isset($this->idubigeo)){
+        $ubigeo = Catalogo::find($this->idubigeo);
+        $ubigeo = $ubigeo->descripcion;
+      }else $ubigeo = '';
+
+      return $ubigeo;
     }
     /**
     * Atributos Estado Civil
@@ -84,6 +123,15 @@ class Familiar extends Model
     {
         $tipo = Catalogo::find($this->idtipo);
         return $tipo->nombre;
+    }
+    /**
+     * Relacion con la tabla Familia
+     * de muchos a muchos
+     * @return [type] [description]
+     */
+    public function Alumnos()
+    {
+        return $this->belongsToMany(Alumno::class,'alumno_familiar','idfamiliar','idalumno');
     }
 
 }

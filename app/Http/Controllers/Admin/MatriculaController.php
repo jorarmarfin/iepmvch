@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\MatriculaRequest;
+use App\Models\Alumno;
+use Illuminate\Http\Request;
 
 class MatriculaController extends Controller
 {
@@ -14,11 +16,8 @@ class MatriculaController extends Controller
      */
     public function index()
     {
-        return view('admin.matricula.index');
-    }
-    public function matriculanew()
-    {
-        return view('admin.matricula.ma-new');
+        $Lista = Alumno::all();
+        return view('admin.matricula.index',compact('Lista'));
     }
     /**
      * Show the form for creating a new resource.
@@ -36,9 +35,9 @@ class MatriculaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MatriculaRequest $request)
     {
-        //
+        dd($request->all());
     }
 
     /**

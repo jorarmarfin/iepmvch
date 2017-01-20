@@ -81,7 +81,11 @@ class Alumno extends Model
     */
     public function getUbigeoNacimientoAttribute()
     {
-      $ubigeo = Catalogo::select('nombre','descripcion')->where('id',$this->idubigeonacimiento)->first();
+      if (isset($this->idubigeonacimiento)){
+        $ubigeo = Catalogo::find($this->idubigeonacimiento);
+        $ubigeo = $ubigeo->descripcion;
+      }else $ubigeo = '';
+
       return $ubigeo;
     }
     /**
@@ -89,7 +93,11 @@ class Alumno extends Model
     */
     public function getUbigeoAttribute()
     {
-      $ubigeo = Catalogo::select('nombre','descripcion')->where('id',$this->idubigeo)->first();
+      if (isset($this->idubigeo)){
+        $ubigeo = Catalogo::find($this->idubigeo);
+        $ubigeo = $ubigeo->descripcion;
+      }else $ubigeo = '';
+
       return $ubigeo;
     }
     /**
@@ -115,7 +123,7 @@ class Alumno extends Model
 
     }
     /**
-     * El nombre de la funcion hace referncia a la tabla con la que se relaciona
+     * Relacion con la tabla Familia
      * de muchos a muchos
      * @return [type] [description]
      */
@@ -123,7 +131,24 @@ class Alumno extends Model
     {
         return $this->belongsToMany(Familiar::class,'alumno_familiar','idalumno','idfamiliar');
     }
-
+    /**
+     * Relacion de one to many
+     * Obtener la dependencia que tiene esta persona
+     */
+    public function Matricula()
+    {
+        return $this->hasmany(Matricula::class, 'id', 'idalumno');
+    }
+    /**
+    * Devuelve los valores Activos
+    * @param  [type]  [description]
+    * @return [type]            [description]
+    */
+    public function scopeAlfabetico($cadenaSQL){
+      return $cadenaSQL->orderBy('paterno','asc')
+                       ->orderBy('materno','asc')
+                       ->orderBy('nombres','asc');
+    }
 
 
 

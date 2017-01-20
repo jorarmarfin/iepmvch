@@ -19,12 +19,26 @@ if (! function_exists('RoleId')) {
  */
 if (! function_exists('EstadoId')) {
 	/**
-	 * Funcion que retorna el prefijo para nombres de archivos
+	 *
 	 * @return [type] [description]
 	 */
     function EstadoId($table,$name)
     {
     	$role = Catalogo::select('id')->table($table)->where('nombre',$name)->first();
+        return $role->id;
+    }
+}
+/**
+ * Devuelve eñ id del estado civil
+ */
+if (! function_exists('EstadoCivilId')) {
+    /**
+     *
+     * @return [type] [description]
+     */
+    function EstadoCivilId($table,$name)
+    {
+        $role = Catalogo::select('id')->table($table)->where('nombre',$name)->first();
         return $role->id;
     }
 }
@@ -38,8 +52,11 @@ if (! function_exists('UbigeoPersonal')) {
      */
     function UbigeoPersonal($seleccionar,$id)
     {
-        $ubigeo = ['-1' => "Seleccionar $seleccionar"]+Catalogo::where('id',$id)->pluck('nombre','id')->toarray();
-
+        if (isset($id)) {
+            $ubigeo = ['-1' => "Seleccionar $seleccionar"]+Catalogo::where('id',$id)->pluck('nombre','id')->toarray();
+        } else {
+            $ubigeo=[];
+        }
         return $ubigeo;
     }
 }
@@ -89,20 +106,5 @@ if (! function_exists('NombreAlumno')) {
         $alumno = Alumno::find($id);
 
         return $alumno->nombre_completo;
-    }
-}
-/**
- * Devuelve el id del alumno con el id familiar
- */
-if (! function_exists('IdAlumno')) {
-    /**
-     * Funcion que retorna el prefijo para nombres de archivos
-     * @return [type] [description]
-     */
-    function IdAlumno($id)
-    {
-        $alumno = AlumnoFamiliar::where('idfamiliar',$id)->first();
-
-        return $alumno->id;
     }
 }

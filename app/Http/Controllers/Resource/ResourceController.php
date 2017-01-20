@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Resource;
 
 use App\Http\Controllers\Controller;
+use App\Models\Alumno;
 use App\Models\Catalogo;
 use App\Models\Familiar;
 use Auth;
@@ -44,5 +45,24 @@ class ResourceController extends Controller
         $familiares = Familiar::select('id',DB::raw("$query as text"))
                         ->get();
         return $familiares;
+    }
+    /**
+     * Devuelve listado de alumnos matriculables
+     * @return [type] [description]
+     */
+    public function matriculables(Request $request)
+    {
+        $condicion = Catalogo::select('id')
+                                ->table('ESTADO ALUMNO')
+                                ->whereIn('nombre',['Regular','Promovido'])
+                                ->get();
+        $name = $request->varsearch ?:'';
+        $query = "alumno.paterno||' - '||alumno.materno||', '||alumno.nombres||' - '||g.nombre";
+        $matriculables = Alumno::select('alumno.id',DB::raw("$query as text"))
+                        ->join('grado as g','g.id','=','alumno.idgrado')
+                        ->whereIn('idestado',$condicion)
+                        ->alfabetico()
+                        ->get();
+        return $matriculables;
     }
 }

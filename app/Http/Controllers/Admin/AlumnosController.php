@@ -18,7 +18,7 @@ class AlumnosController extends Controller
      */
     public function index()
     {
-        $Lista = Alumno::all();
+        $Lista = Alumno::orderBy('id','desc')->get();
         return view('admin.alumnos.index',compact('Lista'));
 
     }

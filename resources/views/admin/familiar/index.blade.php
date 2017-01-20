@@ -23,7 +23,7 @@
                 <div class="row">
                     <div class="col-md-8">
                         <div class="form-group">
-                            {!! Form::label('lblAlumno', 'Si el padre ya existe puede escogerlo y guardar', ['class'=>'control-label']) !!}
+                            {!! Form::label('lblAlumno', 'Si el padre ya existe puede escogerlo y asignarlo al alumno', ['class'=>'control-label']) !!}
                             {!!Form::select('idfamiliar', [], null , ['class'=>'form-control','id'=>'familiares'])!!}
                             {!! Form::hidden('idalumno', $id) !!}
                         </div>
@@ -31,7 +31,7 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <p></p>
-                        {!!Form::enviar('Guardar')!!}
+                        {!!Form::enviar('Agregar')!!}
                         </div>
                     </div><!--/span-->
                 </div><!--/row-->
@@ -53,7 +53,7 @@
                         <tr>
                             <td> {{ $item->paterno }} </td>
                             <td> {{ $item->materno }} </td>
-                            <td> {{ $item->nombres }} </td>
+                            <td> {{ $item->nombres.' ('.$item->tipo.')' }} </td>
                             <td>
                                 <div class="btn-group">
                                     <button class="btn btn-xs green-dark dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Opciones
@@ -71,6 +71,9 @@
                                         <li>
                                             <a href="{{ route('admin.familiar.delete',$item->id) }}">
                                                 <i class="fa fa-trash"></i> Delete </a>
+                                        </li><li>
+                                            <a href="{{ route('admin.familiar.quitar',$item->id) }}">
+                                                <i class="fa fa-mail-reply"></i> Quitar </a>
                                         </li>
                                     </ul>
                                 </div>

@@ -19,8 +19,8 @@
                 <!-- BEGIN FORM-->
 				{!! Form::open(['route'=>'admin.alumnos.store','method'=>'POST','class'=>'horizontal-form','files'=>true]) !!}
                     <div class="form-actions right">
-                        {!!Form::submit('Guardar',['class'=>'btn green uppercase'])!!}
-                        <a href="{{ route('admin.alumnos.index') }}" class="btn default">REGRESAR</a>
+                        {!!Form::enviar('Guardar')!!}
+                        {!!Form::back(route('admin.alumnos.index'))!!}
                     </div>
                     <div class="form-body">
                         <h3 class="form-section">Datos Personales</h3>
@@ -249,8 +249,8 @@
                         <!--/row-->
                         {!! Form::hidden('idestado', EstadoId('ESTADO ALUMNO','Regular')) !!}
                     <div class="form-actions right">
-                        {!!Form::submit('Guardar',['class'=>'btn green uppercase'])!!}
-                        <a href="{{ route('admin.alumnos.index') }}" class="btn default">REGRESAR</a>
+                        {!!Form::enviar('Guardar')!!}
+                        {!!Form::back(route('admin.alumnos.index'))!!}
                     </div>
 				{!! Form::close() !!}
                 <!-- END FORM-->

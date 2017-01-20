@@ -31,11 +31,11 @@
                                     <div class="input-group col-md-6">
                                         <div class="icheck-inline">
                                             <label>
-                                                {!! Form::radio('viveconestudiante', true) !!}
+                                                {!! Form::radio('viveconestudiante', 1) !!}
                                                 Si
                                             </label>
                                             <label>
-                                                {!! Form::radio('viveconestudiante', false,true) !!}
+                                                {!! Form::radio('viveconestudiante', 0) !!}
                                                 No
                                             </label>
                                         </div>
@@ -124,7 +124,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     {!! Form::label('lblEstCivil', 'Estado Civil', ['class'=>'control-label']) !!}
-                                    {!!Form::select('idestadocivil', $estadocivil, IdMasculino() , ['class'=>'form-control'])!!}
+                                    {!!Form::select('idestadocivil', $estadocivil, EstadoCivilId('ESTADO CIVIL','Casado') , ['class'=>'form-control'])!!}
                                 </div>
                             </div>
                             <!--/span-->
@@ -214,11 +214,11 @@
                                     <div class="input-group col-md-6">
                                         <div class="icheck-inline">
                                             <label>
-                                                {!! Form::radio('esapoderado', true) !!}
+                                                {!! Form::radio('esapoderado', 1) !!}
                                                 Si
                                             </label>
                                             <label>
-                                                {!! Form::radio('esapoderado', false) !!}
+                                                {!! Form::radio('esapoderado', 0) !!}
                                                 No
                                             </label>
                                         </div>
@@ -234,11 +234,11 @@
                                     <div class="input-group col-md-6">
                                         <div class="icheck-inline">
                                             <label>
-                                                {!! Form::radio('autorizo', true) !!}
+                                                {!! Form::radio('autorizo', 1) !!}
                                                 Si
                                             </label>
                                             <label>
-                                                {!! Form::radio('autorizo', false) !!}
+                                                {!! Form::radio('autorizo', 0) !!}
                                                 No
                                             </label>
                                         </div>

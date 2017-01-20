@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Http\ViewComposers\ControlSelectData;
 use App\Http\ViewComposers\GradoSelectData;
+use App\Http\ViewComposers\GradoSeccionSelectData;
 use App\Http\ViewComposers\PaisSelectData;
 use App\Http\ViewComposers\SexoSelectData;
 use App\Http\ViewComposers\EstadoCivilSelectData;
@@ -27,6 +28,10 @@ class ViewServiceProvider extends ServiceProvider
             ['admin.reservapsicologica.create','admin.reservapsicologica.delete','admin.reservapsicologica.edit',
             'admin.alumnos.create','admin.alumnos.edit'],
             GradoSelectData::class
+            );
+        $this->app->make('view')->composer(
+            ['admin.matricula.index'],
+            GradoSeccionSelectData::class
             );
         $this->app->make('view')->composer(
             ['admin.alumnos.create','admin.alumnos.edit','admin.familiar.create','admin.familiar.edit'],

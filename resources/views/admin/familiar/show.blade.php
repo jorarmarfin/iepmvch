@@ -140,17 +140,17 @@
                             </div><!--/span-->
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="control-label col-md-6">Celular:</label>
+                                    <label class="control-label col-md-6">Distrito:</label>
                                     <div class="col-md-6">
-                                        <p class="form-control-static"> {{ $familiar->celular }} </p>
+                                        <p class="form-control-static"> {{ $familiar->ubigeo }} </p>
                                     </div>
                                 </div>
                             </div><!--/span-->
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="control-label col-md-6">Telefono Fijo:</label>
+                                    <label class="control-label col-md-6">Celular:</label>
                                     <div class="col-md-6">
-                                        <p class="form-control-static"> {{ $familiar->telefonofijo }} </p>
+                                        <p class="form-control-static"> {{ $familiar->celular }} </p>
                                     </div>
                                 </div>
                             </div><!--/span-->
@@ -166,22 +166,22 @@
                             </div><!--/span-->
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="control-label col-md-6">Email:</label>
-                                    <div class="col-md-6">
-                                        <p class="form-control-static"> {{ $familiar->email }} </p>
-                                    </div>
-                                </div>
-                            </div><!--/span-->
-                            <div class="col-md-4">
-                                <div class="form-group">
                                     <label class="control-label col-md-6">Telefono Fijo:</label>
                                     <div class="col-md-6">
                                         <p class="form-control-static"> {{ $familiar->telefonofijo }} </p>
                                     </div>
                                 </div>
                             </div><!--/span-->
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label col-md-6">Email:</label>
+                                    <div class="col-md-6">
+                                        <p class="form-control-static"> {{ $familiar->email }} </p>
+                                    </div>
+                                </div>
+                            </div><!--/span-->
                         </div><!--/row-->
-                        <h3 class="form-section">Dirección</h3>
+                        <h3 class="form-section">Alumnos</h3>
                     </div>
                     <div class="form-actions right">
                     {!!Form::back(route('admin.familiar.lists',$idalumno))!!}

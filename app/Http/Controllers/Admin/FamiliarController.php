@@ -5,9 +5,12 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AlumnoFamiliarRequest;
 use App\Http\Requests\FamiliarRequest;
+use App\Http\Requests\FamiliarUpdateRequest;
+use App\Models\Alumno;
 use App\Models\AlumnoFamiliar;
 use App\Models\Familiar;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Styde\Html\Facades\Alert;
 
 class FamiliarController extends Controller
@@ -18,7 +21,7 @@ class FamiliarController extends Controller
     public function lists($id)
     {
         $Lista = Familiar::Familia($id)->get();
-
+        Session::put('IDALUMNO', $id);
         return view('admin.familiar.index',compact('Lista','id'));
     }
 
@@ -53,10 +56,10 @@ class FamiliarController extends Controller
      */
     public function store(FamiliarRequest $request)
     {
-        $data = $request->all();
-        Familiar::Guardar($data);
+        $idalumno = $request->input('idalumno');
+        Familiar::Guardar($request);
         Alert::success('Familiar Registrado con exito');
-        return redirect()->route('admin.familiar.lists',$data['idalumno']);
+        return redirect()->route('admin.familiar.lists', $idalumno);
 
     }
 
@@ -69,7 +72,7 @@ class FamiliarController extends Controller
     public function show($id)
     {
         $familiar = Familiar::find($id);
-        $idalumno = IdAlumno($id);
+        $idalumno = Session::get('IDALUMNO');
         return view('admin.familiar.show',compact('familiar','idalumno'));
     }
 
@@ -82,7 +85,7 @@ class FamiliarController extends Controller
     public function edit($id)
     {
         $familiar = Familiar::find($id);
-        $idalumno = IdAlumno($id);
+        $idalumno = Session::get('IDALUMNO');
         return view('admin.familiar.edit',compact('familiar','idalumno'));
     }
 
@@ -93,10 +96,10 @@ class FamiliarController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(FamiliarRequest $request, $id)
+    public function update(FamiliarUpdateRequest $request, $id)
     {
         Familiar::Actualizar($request,$id);
-        $idalumno = IdAlumno($id);
+        $idalumno = Session::get('IDALUMNO');
         Alert::success('Familiar actualizado con exito');
         return redirect()->route('admin.familiar.lists',$idalumno);
     }
@@ -109,8 +112,10 @@ class FamiliarController extends Controller
     public function delete($id)
     {
         $familiar = Familiar::find($id);
-        $idalumno = IdAlumno($id);
-        return view('admin.familiar.delete',compact('familiar','idalumno'));
+        $idalumno = Session::get('IDALUMNO');
+        $relacionados = AlumnoFamiliar::relacionados($id,$idalumno)->get();
+        $Lista = Alumno::wherein('id',$relacionados)->get();
+        return view('admin.familiar.delete',compact('familiar','idalumno','Lista'));
 
     }
 
@@ -122,15 +127,32 @@ class FamiliarController extends Controller
      */
     public function destroy($id)
     {
-        Familiar::destroy($id);
-        $idalumno = IdAlumno($id);
-        Alert::success('Usuario eliminado con exito');
+        $idalumno = Session::get('IDALUMNO');
+        Familiar::eliminar($id,$idalumno);
+        Alert::success('Familiar eliminado con exito');
         return redirect()->route('admin.familiar.lists',$idalumno);
     }
+    /**
+     * Agregar Relacion de un alumno con un familiar
+     * @param  AlumnoFamiliarRequest $request [description]
+     * @return [type]                         [description]
+     */
     public function relation(AlumnoFamiliarRequest $request)
     {
         AlumnoFamiliar::create($request->all());
         Alert::success('Familiar Registrado con exito');
+        return back();
+    }
+    /**
+     * Agregar Relacion de un alumno con un familiar
+     * @param  AlumnoFamiliarRequest $request [description]
+     * @return [type]                         [description]
+     */
+    public function quitar($id)
+    {
+        $idalumno = Session::get('IDALUMNO');
+        Familiar::quitar($id,$idalumno);
+        Alert::success('Familiar quitado con exito');
         return back();
     }
 }

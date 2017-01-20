@@ -1,46 +1,179 @@
 @extends('layouts.base')
 
 @section('content')
+@include('alerts.errors')
 <div class="row">
 	<div class="col-md-12">
         <!-- BEGIN Portlet PORTLET-->
-            <div class="portlet box green">
-                <div class="portlet-title">
-                    <div class="caption">
-                        <i class="fa fa-table"></i>
-                        Listado de matriculas realizadas
-                    </div>
-                    <div class="tools">
-                        <a href="javascript:;" class="collapse"> </a>
-                        <a href="" class="fullscreen"> </a>
-                        <a href="javascript:;" class="remove"> </a>
-                    </div>
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-table"></i>
+                    Listado de matriculas realizadas
                 </div>
-                <div class="portlet-body">
-                	<div class="widget-thumb bordered">
-						<a href="{{ route('admin.matricula.new') }}" class="btn green-turquoise"><i class="fa fa-plus"></i>Nuevo</a>
-						<a href="#" class="btn green-sharp">Antiguo</a>
-                	</div>
-                    <div>
-                        <p> Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. est non commodo luctus, nisi erat porttitor
-                            ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
-                            Cras mattis consectetur purus sit amet fermentum. est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. </p>
-                        <p> Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. est non commodo luctus, nisi erat porttitor
-                            ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
-                            Cras mattis consectetur purus sit amet fermentum. est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. </p>
-                        <p> Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. est non commodo luctus, nisi erat porttitor
-                            ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
-                            Cras mattis consectetur purus sit amet fermentum. est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. </p>
-                    </div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse"> </a>
+                    <a href="" class="fullscreen"> </a>
+                    <a href="javascript:;" class="remove"> </a>
                 </div>
             </div>
+            <div class="portlet-body">
+            {!! Form::open(['route'=>'admin.matricula.store','method'=>'POST']) !!}
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            {!! Form::label('lblAlumno', 'Escoger el alumno a matricular', ['class'=>'control-label']) !!}
+                            {!!Form::select('idalumno', [], null , ['class'=>'form-control','id'=>'matriculables'])!!}
+                        </div>
+                    </div><!--/span-->
+                </div><!--/row-->
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            {!! Form::label('lblGrado', 'Escoger el grado al que fue promovido', ['class'=>'control-label']) !!}
+                            {!!Form::select('idgrado', $gradoseccion, null , ['class'=>'form-control'])!!}
+                        </div>
+                    </div><!--/span-->
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <p></p>
+                        {!!Form::enviar('Agregar')!!}
+                        </div>
+                    </div><!--/span-->
+                </div><!--/row-->
+            {!! Form::close() !!}
+                <h3 class="form-section">Alumnos matriculados</h3>
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-striped table-hover" id="Matriculados">
+                            <thead>
+                                <tr>
+                                    <th> Paterno </th>
+                                    <th> Materno </th>
+                                    <th> Nombres </th>
+                                    <th> Grado actual</th>
+                                    <th> Foto </th>
+                                    <th> Opciones </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach ($Lista as $item)
+                                <tr>
+                                    <td> {{ $item->paterno }} </td>
+                                    <td> {{ $item->materno }} </td>
+                                    <td> {{ $item->nombres }} </td>
+                                    <td> {{ $item->grado }} </td>
+                                    <td><a href="{{ route('admin.alumnos.show',$item->id) }}"><img src="{{ asset('/storage/'.$item->foto) }}"  width='25px'> </a></td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <button class="btn btn-xs green-dark dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Opciones
+                                                <i class="fa fa-angle-down"></i>
+                                            </button>
+                                            <ul class="dropdown-menu pull-left" role="menu">
+                                                <li>
+                                                    <a href="{{ route('admin.alumnos.show',$item->id) }}">
+                                                        <i class="fa fa-eye"></i> Show </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('admin.alumnos.edit',$item->id) }}">
+                                                        <i class="fa fa-edit"></i> Edit </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('admin.alumnos.delete',$item->id) }}">
+                                                        <i class="fa fa-trash"></i> Delete </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('admin.familiar.lists',$item->id) }}">
+                                                        <i class="fa fa-users"></i> Familiar </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div><!--/span-->
+                </div><!--/row-->
+            </div><!--/Porlet Body-->
+        </div>
         <!-- END Portlet PORTLET-->
     </div>
 </div>
 
 @stop
 
+@section('js-scripts')
+<script>
+$(document).ready(function() {
 
+    $("#matriculables").select2({
+
+        ajax: {
+            url: '{{ url("/alumnos-matriculables") }}',
+            dataType: 'json',
+            delay: 250,
+            data: function(params) {
+                return {
+                    varsearch: params.term // search term
+                };
+            },
+            processResults: function(data) {
+                // parse the results into the format expected by Select2.
+                // since we are using custom formatting functions we do not need to
+                // alter the remote JSON data
+                return {
+                    results: data
+                };
+            },
+            cache: true
+        },
+        minimumInputLength: 3,
+        templateResult: format,
+        templateSelection: format,
+        escapeMarkup: function(markup) {
+            return markup;
+        } // let our custom formatter work
+    });
+    function format(res){
+        var markup=res.text;
+        return markup;
+    }
+
+    $('#Matriculados').dataTable({
+        "language": {
+            "emptyTable": "No hay datos disponibles",
+            "info": "Mostrando _START_ a _END_ de _TOTAL_ filas",
+            "search": "Buscar Alumnos :",
+            "lengthMenu": "_MENU_ registros"
+        },
+        "bProcessing": true,
+        "pagingType": "bootstrap_full_number",
+        "order": [1,"asc"]
+    });
+
+});
+</script>
+@stop
+
+@section('plugins-styles')
+{!! Html::style('assets/global/plugins/bootstrap-table/bootstrap-table.min.css') !!}
+{!! Html::style(asset('assets/global/plugins/select2/css/select2.min.css')) !!}
+{!! Html::style(asset('assets/global/plugins/select2/css/select2-bootstrap.min.css')) !!}
+{!! Html::style('assets/global/plugins/datatables/datatables.min.css') !!}
+{!! Html::style('assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css') !!}
+@stop
+
+@section('plugins-js')
+{!! Html::script('assets/global/plugins/jquery-ui/jquery-ui.min.js') !!}
+{!! Html::script('assets/global/plugins/bootstrap-table/bootstrap-table.min.js') !!}
+{!! Html::script(asset('assets/global/plugins/select2/js/select2.full.min.js')) !!}
+{!! Html::script(asset('assets/global/plugins/select2/js/i18n/es.js')) !!}
+{!! Html::script('assets/global/scripts/datatable.js') !!}
+{!! Html::script('assets/global/plugins/datatables/datatables.min.js') !!}
+{!! Html::script('assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js') !!}
+
+@stop
 
 
 @section('menu-user')

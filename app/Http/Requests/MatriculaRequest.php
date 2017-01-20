@@ -2,9 +2,11 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Alumno;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Request;
 
-class AlumnoRequest extends FormRequest
+class MatriculaRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,18 +25,20 @@ class AlumnoRequest extends FormRequest
      */
     public function rules()
     {
+        $data = Request::all();
+        $alumno = Alumno::find($data['idalumno']);
+        $gradoautorizado = $alumno->idgrado +1;
         return [
-            'fechanacimiento'=>'required',
-            'dni'=>'required',
-            'idgrado'=>'required|not_in:-1',
+            'idalumno'=>'required',
+            'idgrado'=>'not_in:-1|in:'.$gradoautorizado
         ];
     }
     public function messages()
     {
         return[
-            'fechanacimiento.required'=>'Su fecha de nacimiento es obligatorio',
-            'dni.required'=>'Su número de DNI es obligatorio',
-            'idgrado.not_in'=>'El grado del alumno es obligatorio'
+            'idalumno.required'=>'No escogio Alumno',
+            'idgrado.not_in'=>'No escogio Grado',
+            'idgrado.in'=>'No esta permitido la matricula en este grado',
         ];
     }
 }

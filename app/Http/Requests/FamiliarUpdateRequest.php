@@ -3,9 +3,16 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Routing\Route;
 
-class FamiliarRequest extends FormRequest
+class FamiliarUpdateRequest extends FormRequest
 {
+    private $route;
+
+    function __construct(Route $route)
+    {
+        $this->route = $route;
+    }
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -33,7 +40,7 @@ class FamiliarRequest extends FormRequest
             'autorizo'=>'required',
             'esapoderado'=>'required',
             'idtipo'=>'required|not_in:-1',
-            'email'=>'required|unique:familiar,email'
+            'email'=>'required|unique:familiar,email,'.$this->route->getParameter('familiar')
         ];
     }
     public function messages()
@@ -49,5 +56,4 @@ class FamiliarRequest extends FormRequest
             'idtipo.not_in'=>'El tipo de familiar es obligatorio'
         ];
     }
-
 }
