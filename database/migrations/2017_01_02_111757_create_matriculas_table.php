@@ -17,10 +17,13 @@ class CreateMatriculasTable extends Migration
             $table->increments('id');
             $table->integer('idalumno')->nullable();
             $table->integer('idgradoseccion')->nullable();
-            $table->boolean('activo')->nullable()->default(true);
+            $table->integer('idtipo')->nullable();
+            $table->string('year',4)->nullable();
             $table->timestamps();
             $table->foreign('idalumno')->references('id')->on('alumno');
             $table->foreign('idgradoseccion')->references('id')->on('grado_seccion');
+            $table->foreign('idtipo')->references('id')->on('catalogo');
+            $table->unique(['idalumno','idgradoseccion','idtipo','year']);
         });
     }
 

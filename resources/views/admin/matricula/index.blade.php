@@ -3,7 +3,8 @@
 @section('content')
 @include('alerts.errors')
 <div class="row">
-	<div class="col-md-12">
+    <div class="col-md-12">
+        {!! Alert::render() !!}
         <!-- BEGIN Portlet PORTLET-->
         <div class="portlet box green">
             <div class="portlet-title">
@@ -20,7 +21,7 @@
             <div class="portlet-body">
             {!! Form::open(['route'=>'admin.matricula.store','method'=>'POST']) !!}
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-sm-12">
                         <div class="form-group">
                             {!! Form::label('lblAlumno', 'Escoger el alumno a matricular', ['class'=>'control-label']) !!}
                             {!!Form::select('idalumno', [], null , ['class'=>'form-control','id'=>'matriculables'])!!}
@@ -28,16 +29,22 @@
                     </div><!--/span-->
                 </div><!--/row-->
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-4">
                         <div class="form-group">
                             {!! Form::label('lblGrado', 'Escoger el grado al que fue promovido', ['class'=>'control-label']) !!}
-                            {!!Form::select('idgrado', $gradoseccion, null , ['class'=>'form-control'])!!}
+                            {!!Form::select('idgradoseccion', $gradoseccion, null , ['class'=>'form-control'])!!}
+                        </div>
+                    </div><!--/span-->
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            {!! Form::label('lblTipo', 'Tipo de Matricula', ['class'=>'control-label']) !!}
+                            {!!Form::select('idtipo', $tipomatricula, EstadoId('TIPO MATRICULA','Activa') , ['class'=>'form-control'])!!}
                         </div>
                     </div><!--/span-->
                     <div class="col-md-4">
                         <div class="form-group">
                             <p></p>
-                        {!!Form::enviar('Agregar')!!}
+                        {!!Form::enviar('Matricular')!!}
                         </div>
                     </div><!--/span-->
                 </div><!--/row-->
@@ -48,22 +55,22 @@
                         <table class="table table-striped table-hover" id="Matriculados">
                             <thead>
                                 <tr>
-                                    <th> Paterno </th>
-                                    <th> Materno </th>
-                                    <th> Nombres </th>
+                                    <th> Alumnos </th>
                                     <th> Grado actual</th>
                                     <th> Foto </th>
+                                    <th> Periodo </th>
+                                    <th> Tipo </th>
                                     <th> Opciones </th>
                                 </tr>
                             </thead>
                             <tbody>
                             @foreach ($Lista as $item)
                                 <tr>
-                                    <td> {{ $item->paterno }} </td>
-                                    <td> {{ $item->materno }} </td>
-                                    <td> {{ $item->nombres }} </td>
+                                    <td> {{ $item->paterno.' - '.$item->materno.', '.$item->nombres }} </td>
                                     <td> {{ $item->grado }} </td>
                                     <td><a href="{{ route('admin.alumnos.show',$item->id) }}"><img src="{{ asset('/storage/'.$item->foto) }}"  width='25px'> </a></td>
+                                    <td> {{ $item->year }} </td>
+                                    <td> {{ $item->tipo }} </td>
                                     <td>
                                         <div class="btn-group">
                                             <button class="btn btn-xs green-dark dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Opciones
@@ -71,20 +78,16 @@
                                             </button>
                                             <ul class="dropdown-menu pull-left" role="menu">
                                                 <li>
-                                                    <a href="{{ route('admin.alumnos.show',$item->id) }}">
-                                                        <i class="fa fa-eye"></i> Show </a>
-                                                </li>
-                                                <li>
-                                                    <a href="{{ route('admin.alumnos.edit',$item->id) }}">
+                                                    <a href="{{ route('admin.matricula.edit',$item->id) }}">
                                                         <i class="fa fa-edit"></i> Edit </a>
                                                 </li>
                                                 <li>
-                                                    <a href="{{ route('admin.alumnos.delete',$item->id) }}">
+                                                    <a href="{{ route('admin.matricula.delete',$item->id) }}">
                                                         <i class="fa fa-trash"></i> Delete </a>
                                                 </li>
                                                 <li>
-                                                    <a href="{{ route('admin.familiar.lists',$item->id) }}">
-                                                        <i class="fa fa-users"></i> Familiar </a>
+                                                    <a href="{{ route('admin.matricula.print',$item->id) }}">
+                                                        <i class="fa fa-file-pdf-o"></i> Recibo </a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -128,6 +131,7 @@ $(document).ready(function() {
             },
             cache: true
         },
+        width: '100%',
         minimumInputLength: 3,
         templateResult: format,
         templateSelection: format,

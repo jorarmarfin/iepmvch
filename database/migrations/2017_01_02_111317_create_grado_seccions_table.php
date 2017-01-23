@@ -18,7 +18,6 @@ class CreateGradoSeccionsTable extends Migration
             $table->integer('idgrado')->nullable();
             $table->integer('idseccion')->nullable();
             $table->integer('cantidad')->nullable();
-            $table->timestamps();
             $table->foreign('idgrado')->references('id')->on('grado');
             $table->foreign('idseccion')->references('id')->on('catalogo');
         });

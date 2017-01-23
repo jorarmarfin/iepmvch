@@ -10,6 +10,7 @@ use App\Http\ViewComposers\PaisSelectData;
 use App\Http\ViewComposers\SexoSelectData;
 use App\Http\ViewComposers\EstadoCivilSelectData;
 use App\Http\ViewComposers\TipoFamiliarSelectData;
+use App\Http\ViewComposers\TipoMatriculaSelectData;
 
 class ViewServiceProvider extends ServiceProvider
 {
@@ -30,8 +31,12 @@ class ViewServiceProvider extends ServiceProvider
             GradoSelectData::class
             );
         $this->app->make('view')->composer(
-            ['admin.matricula.index'],
+            ['admin.matricula.index','admin.matricula.edit','admin.matricula.delete'],
             GradoSeccionSelectData::class
+            );
+        $this->app->make('view')->composer(
+            ['admin.matricula.index','admin.matricula.edit','admin.matricula.delete'],
+            TipoMatriculaSelectData::class
             );
         $this->app->make('view')->composer(
             ['admin.alumnos.create','admin.alumnos.edit','admin.familiar.create','admin.familiar.edit'],

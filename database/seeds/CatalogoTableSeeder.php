@@ -41,6 +41,7 @@ class CatalogoTableSeeder extends Seeder
         Catalogo::create(['idtable' => 0,'iditem' => 26, 'codigo' => 'ESTPSI','nombre' => 'ESTADO PSICOLOGICO','descripcion'=>'Estado de la evaluacion psicologica','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 0,'iditem' => 27, 'codigo' => 'UBI','nombre' => 'UBIGEO','descripcion'=>'Ubigeo de peru','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 0,'iditem' => 28, 'codigo' => 'SEX','nombre' => 'SEXO','descripcion'=>'Tipo de sexo','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 0,'iditem' => 29, 'codigo' => 'TMATRI','nombre' => 'TIPO MATRICULA','descripcion'=>'TIPO DE MATRICULA','valor'=> null,'activo'=>true]);
 
 
 
@@ -2305,6 +2306,12 @@ class CatalogoTableSeeder extends Seeder
          */
         Catalogo::create(['idtable' => 28,'iditem' => 1, 'codigo' => 'M','nombre' => 'Masculino','descripcion'=>'Sexo masculino','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 28,'iditem' => 2, 'codigo' => 'F','nombre' => 'Femenino','descripcion'=>'Sexo femenino','valor'=> null,'activo'=>true]);
+        /**
+         * Tipo de matricula
+         */
+        Catalogo::create(['idtable' => 29,'iditem' => 1, 'codigo' => 'MAACT','nombre' => 'Activa','descripcion'=>'Matricula Activa','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 29,'iditem' => 2, 'codigo' => 'MAINA','nombre' => 'Inactiva','descripcion'=>'Matricula Inactiva','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 29,'iditem' => 3, 'codigo' => 'MAPRE','nombre' => 'Pre-Matricula','descripcion'=>'Matricula anticipada del año','valor'=> null,'activo'=>true]);
 
 
 

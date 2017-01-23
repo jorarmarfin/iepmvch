@@ -25,14 +25,9 @@ class MatriculaRequest extends FormRequest
      */
     public function rules()
     {
-        $data = Request::all();
-        $alumno = Alumno::find($data['idalumno']);
-        $gradoautorizado = $alumno->idgrado +1;
-        $gradoseccion = GradoSeccion::select('id')->where('idgrado',$gradoautorizado)->get();
-        dd($gradoseccion);
         return [
             'idalumno'=>'required',
-            'idgrado'=>'not_in:-1|in:'.$gradoautorizado
+            'idgrado'=>'not_in:-1'
         ];
     }
     public function messages()
