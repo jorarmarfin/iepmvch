@@ -21,7 +21,7 @@
             <div class="portlet-body">
                 {!!Form::back(route('admin.matricula.index'))!!}
                 <p></p>
-                <iframe src="{{ route('admin.matricula.recibo',$id) }}" width="100%" height="400px" scrolling="auto"></iframe>
+                <iframe src="{{ route('pdf.recibo.matricula',$id) }}" width="100%" height="700px" scrolling="auto"></iframe>
             </div><!--/Porlet Body-->
         </div>
         <!-- END Portlet PORTLET-->

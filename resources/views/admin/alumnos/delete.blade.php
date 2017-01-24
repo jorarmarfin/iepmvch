@@ -115,7 +115,7 @@
                                         <div class="form-group">
                                             <label class="control-label col-md-6">Pais nacimiento:</label>
                                             <div class="col-md-6">
-                                                <p class="form-control-static"> {{ $alumno->pais.' / '.$alumno->ubigeo_nacimiento->descripcion  }} </p>
+                                                <p class="form-control-static"> {{ $alumno->pais.' / '.$alumno->ubigeo_nacimiento  }} </p>
                                             </div>
                                         </div>
                                     </div>
@@ -163,7 +163,7 @@
                                 <div class="form-group">
                                     <label class="control-label col-md-3">Localidad:</label>
                                     <div class="col-md-9">
-                                        <p class="form-control-static"> {{ $alumno->ubigeo->descripcion }} </p>
+                                        <p class="form-control-static"> {{ $alumno->ubigeo }} </p>
                                     </div>
                                 </div>
                             </div>

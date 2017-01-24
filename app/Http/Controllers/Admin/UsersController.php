@@ -25,7 +25,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $Lista = User::all();
+        $Lista = User::orderBy('name','asc')->get();
         return view('admin.users.index',compact('Lista'));
     }
 

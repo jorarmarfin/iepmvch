@@ -149,7 +149,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     {!! Form::label('lblTelefonos', 'Telefonos', ['class'=>'control-label']) !!}
-                                    {!! Form::text('telefonos', null, ['class'=>'form-control','placeholder'=>'Telefonos']) !!}
+                                    {!! Form::text('telefonos', null, ['class'=>'form-control','placeholder'=>'Telefonos','maxlength'=>'100']) !!}
                                 </div>
                             </div>
                             <!--/span-->
@@ -159,14 +159,14 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     {!! Form::label('lblTelefonoE1', 'Telefono de emergencia 1 / Preguntar por:', ['class'=>'control-label']) !!}
-                                    {!! Form::text('telefonoemergencia1', null, ['class'=>'form-control','placeholder'=>'Telefono de emergencia']) !!}
+                                    {!! Form::text('telefonoemergencia1', null, ['class'=>'form-control','placeholder'=>'Telefono de emergencia','maxlength'=>'100']) !!}
                                 </div>
                             </div>
                             <!--/span-->
                             <div class="col-md-6">
                                 <div class="form-group">
                                     {!! Form::label('lblTelefonoE2', 'Telefono de emergencia 2 / Preguntar por:', ['class'=>'control-label']) !!}
-                                    {!! Form::text('telefonoemergencia2', null, ['class'=>'form-control','placeholder'=>'Telefono de emergencia']) !!}
+                                    {!! Form::text('telefonoemergencia2', null, ['class'=>'form-control','placeholder'=>'Telefono de emergencia','maxlength'=>'100']) !!}
                                 </div>
                             </div>
                             <!--/span-->
@@ -199,6 +199,14 @@
                                 <div class="form-group">
                                     {!! Form::label('lblColegio', 'Colegio de procedencia', ['class'=>'control-label']) !!}
                                     {!! Form::text('colegioprocedencia', null, ['class'=>'form-control','placeholder'=>'Colegio de procedencia']) !!}
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    {!! Form::label('lblEstado', 'Estado Alumno', ['class'=>'control-label']) !!}
+                                    {!! Form::select('idestado', $estadoalumno,EstadoId('ESTADO ALUMNO','Regular'), ['class'=>'form-control']) !!}
                                 </div>
                             </div>
                             <!--/span-->

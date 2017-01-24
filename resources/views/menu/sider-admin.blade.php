@@ -69,6 +69,13 @@
             </a>
         </li>
         <li class="nav-item  ">
+            <a href="#" class="nav-link nav-toggle">
+                <i class="fa fa-graduation-cap"></i>
+                <span class="title">Personal</span>
+                <span class="arrow"></span>
+            </a>
+        </li>
+        <li class="nav-item  ">
             <a href="javascript:;" class="nav-link nav-toggle">
                 <i class="fa fa-cube"></i>
                 <span class="title">Asistencia</span>

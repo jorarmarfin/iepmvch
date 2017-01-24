@@ -16,6 +16,8 @@ class CreateInstitucionsTable extends Migration
         Schema::create('institucion', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre',200)->nullable();
+            $table->string('razonsocial',200)->nullable();
+            $table->string('resolucion',200)->nullable();
             $table->mediumtext('direccion')->nullable();
             $table->integer('idubigeo')->nullable();
             $table->string('director',200)->nullable();
@@ -23,6 +25,9 @@ class CreateInstitucionsTable extends Migration
             $table->string('email',200)->nullable();
             $table->string('web',100)->nullable();
             $table->string('ruc',50)->nullable();
+            $table->string('serie',10)->nullable();
+            $table->biginteger('inicio')->nullable();
+            $table->biginteger('fin')->nullable();
             $table->timestamps();
         });
     }

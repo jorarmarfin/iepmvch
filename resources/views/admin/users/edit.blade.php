@@ -22,6 +22,10 @@
 					{!!Form::select('idrole',$roles,null, ['class'=>'form-control']);!!}
 				</div>
 				<div class="form-group">
+					{!!Form::label('lblClave', 'Contraseña');!!}
+					{!!Form::password('password', ['class'=>'form-control']);!!}
+				</div>
+				<div class="form-group">
 						<img src="{{ asset('/storage/'.Auth::user()->foto) }}" width="30%">
 						{!!Form::file('file',['class'=>'form-control'])!!}
 				</div>

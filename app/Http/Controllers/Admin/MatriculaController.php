@@ -9,7 +9,6 @@ use App\Models\GradoSeccion;
 use App\Models\Matricula;
 use Illuminate\Http\Request;
 use Styde\Html\Facades\Alert;
-use PDF;
 
 class MatriculaController extends Controller
 {
@@ -121,17 +120,6 @@ class MatriculaController extends Controller
     public function printrecibo($id)
     {
         return view('admin.matricula.recibo',compact('id'));
-    }
-    /**
-     * Muestra el recibo
-     * @param  [type] $id [description]
-     * @return [type]     [description]
-     */
-    public function recibo($id)
-    {
-        PDF::SetTitle('Recibo');
-        PDF::AddPage('L','A5');
-        PDF::Output(public_path('storage/tmp/').'recibo.pdf','FI');
     }
 
     /**

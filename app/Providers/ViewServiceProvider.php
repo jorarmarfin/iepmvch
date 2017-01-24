@@ -9,6 +9,7 @@ use App\Http\ViewComposers\GradoSeccionSelectData;
 use App\Http\ViewComposers\PaisSelectData;
 use App\Http\ViewComposers\SexoSelectData;
 use App\Http\ViewComposers\EstadoCivilSelectData;
+use App\Http\ViewComposers\EstadoAlumnoSelectData;
 use App\Http\ViewComposers\TipoFamiliarSelectData;
 use App\Http\ViewComposers\TipoMatriculaSelectData;
 
@@ -49,6 +50,10 @@ class ViewServiceProvider extends ServiceProvider
         $this->app->make('view')->composer(
             ['admin.familiar.create','admin.familiar.edit'],
             EstadoCivilSelectData::class
+            );
+        $this->app->make('view')->composer(
+            ['admin.alumnos.create','admin.alumnos.edit'],
+            EstadoAlumnoSelectData::class
             );
         $this->app->make('view')->composer(
             ['admin.familiar.create','admin.familiar.edit'],

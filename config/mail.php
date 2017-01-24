@@ -56,8 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => 'luis.mayta.developer@gmail.com',
-        'name' => 'Luis Mayta',
+        'address' => 'iepmvch@gmail.com',
+        'name' => 'Milagrosa Virgen de Chapi',
     ],
 
     /*

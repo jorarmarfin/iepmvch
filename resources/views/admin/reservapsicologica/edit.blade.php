@@ -63,8 +63,8 @@
                     <div class="form-actions">
                         <div class="row">
                             <div class="col-md-offset-3 col-md-9">
-								{!!Form::submit('Actualizar',['class'=>'btn green uppercase'])!!}
-								<a href="{{ route('admin.reservapsicologica.index') }}" class="btn default">REGRESAR</a>
+								{!!Form::enviar('Actualizar')!!}
+								{!!Form::back(route('admin.reservapsicologica.index'))!!}
                             </div>
                         </div>
                     </div>
