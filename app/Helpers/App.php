@@ -108,3 +108,21 @@ if (! function_exists('NombreAlumno')) {
         return $alumno->nombre_completo;
     }
 }
+
+/**
+ * Devuelve el id del sexo masculino
+ */
+if (! function_exists('LinkActivo')) {
+    /**
+     * Funcion que retorna el prefijo para nombres de archivos
+     * @return [type] [description]
+     */
+    function LinkActivo($id,$link = '#')
+    {
+
+        $alumno = Alumno::find($id);
+        if ($id) return '<a href="'.$link.'" class="label label-sm label-info"> Activo </a>';
+        else return '<a href="'.$lnk.'" class="label label-sm label-danger"> Inactivo </a>';
+    }
+}
+

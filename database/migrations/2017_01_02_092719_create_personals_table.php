@@ -15,16 +15,17 @@ class CreatePersonalsTable extends Migration
     {
         Schema::create('personal', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('llave',60)->nullable()->unique();
             $table->string('paterno',25)->nullable()->index();
             $table->string('materno',25)->nullable()->index();
             $table->string('nombres',50)->nullable()->index();
-            $table->string('dni',20)->nullable()->index();
+            $table->string('dni',20)->nullable()->index()->unique();
             $table->date('fechanacimiento')->nullable();
             $table->integer('idpais')->nullable();
             $table->integer('idubigeonacimiento')->nullable();
             $table->string('email',150)->nullable();
             $table->integer('idestadocivil')->nullable();
-            $table->integer('numerohijos')->nullable();
+            $table->integer('numerohijos')->nullable()->default(0);
             $table->integer('idubigeo')->nullable();
             $table->mediumtext('direccion')->nullable();
             $table->string('telefonofijo',50)->nullable();
@@ -41,9 +42,10 @@ class CreatePersonalsTable extends Migration
             $table->boolean('vigente')->nullable();
             $table->integer('llamadaatencion')->nullable();
             $table->integer('memo')->nullable();
-            $table->boolean('activo')->nullable();
+            $table->boolean('activo')->nullable()->default(true);
             $table->integer('idtipo')->nullable();
-
+            $table->integer('idsexo')->nullable();
+            $table->string('foto',100)->nullable()->default('avatars/nofoto.jpg');
 
 
             $table->timestamps();
@@ -54,6 +56,7 @@ class CreatePersonalsTable extends Migration
             $table->foreign('idgestionuniversidad')->references('id')->on('catalogo');
             $table->foreign('idsistemapension')->references('id')->on('catalogo');
             $table->foreign('idtipo')->references('id')->on('catalogo');
+            $table->foreign('idsexo')->references('id')->on('catalogo');
         });
     }
 

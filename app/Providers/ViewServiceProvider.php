@@ -12,6 +12,9 @@ use App\Http\ViewComposers\EstadoCivilSelectData;
 use App\Http\ViewComposers\EstadoAlumnoSelectData;
 use App\Http\ViewComposers\TipoFamiliarSelectData;
 use App\Http\ViewComposers\TipoMatriculaSelectData;
+use App\Http\ViewComposers\TipoPersonalSelectData;
+use App\Http\ViewComposers\GestionSelectData;
+use App\Http\ViewComposers\SistemaPensionSelectData;
 
 class ViewServiceProvider extends ServiceProvider
 {
@@ -40,15 +43,19 @@ class ViewServiceProvider extends ServiceProvider
             TipoMatriculaSelectData::class
             );
         $this->app->make('view')->composer(
-            ['admin.alumnos.create','admin.alumnos.edit','admin.familiar.create','admin.familiar.edit'],
+            ['admin.alumnos.create','admin.alumnos.edit','admin.familiar.create','admin.familiar.edit',
+            'admin.personal.create','admin.personal.edit'
+            ],
             PaisSelectData::class
             );
         $this->app->make('view')->composer(
-            ['admin.alumnos.create','admin.alumnos.edit','admin.familiar.create','admin.familiar.edit'],
+            ['admin.alumnos.create','admin.alumnos.edit','admin.familiar.create','admin.familiar.edit',
+            'admin.personal.create','admin.personal.edit'
+            ],
             SexoSelectData::class
             );
         $this->app->make('view')->composer(
-            ['admin.familiar.create','admin.familiar.edit'],
+            ['admin.familiar.create','admin.familiar.edit','admin.personal.create','admin.personal.edit'],
             EstadoCivilSelectData::class
             );
         $this->app->make('view')->composer(
@@ -58,6 +65,18 @@ class ViewServiceProvider extends ServiceProvider
         $this->app->make('view')->composer(
             ['admin.familiar.create','admin.familiar.edit'],
             TipoFamiliarSelectData::class
+            );
+        $this->app->make('view')->composer(
+            ['admin.personal.create','admin.personal.edit'],
+            GestionSelectData::class
+            );
+        $this->app->make('view')->composer(
+            ['admin.personal.create','admin.personal.edit'],
+            SistemaPensionSelectData::class
+            );
+        $this->app->make('view')->composer(
+            ['admin.personal.create','admin.personal.edit'],
+            TipoPersonalSelectData::class
             );
     }
 

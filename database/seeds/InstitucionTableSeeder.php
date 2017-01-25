@@ -20,11 +20,11 @@ class InstitucionTableSeeder extends Seeder
         	'director' => 'GUTIERREZ TRUJILLO SATURNINO EDUARDO',
         	'telefonos' => '458-5946',
         	'email'=>'colegio@colegio.com',
-            'web'=>'www.iepmvch.com'
-            'ruc'=>'20600162773'
-            'serie'=>'FA14'
-            'inicio'=>'100'
-        	'fin'=>'2000'
+            'web'=>'www.iepmvch.com',
+            'ruc'=>'20600162773',
+            'serie'=>'FA14',
+            'inicio'=>'100',
+        	'fin'=>'2000',
         	]);
     }
 }

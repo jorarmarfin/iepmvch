@@ -132,7 +132,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     {!! Form::label('lblDireccion', 'Domicilio - calle', ['class'=>'control-label']) !!}
-                                    {!! Form::text('direccion', null, ['class'=>'form-control','placeholder'=>'Nombres completos']) !!}
+                                    {!! Form::text('direccion', null, ['class'=>'form-control','placeholder'=>'Direccion completa']) !!}
                                 </div>
                             </div>
                             <!--/span-->
