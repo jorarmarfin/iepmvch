@@ -18,10 +18,8 @@
                     </div>
                 </div>
                 <div class="portlet-body">
-                <a href="{{ route('admin.reservapsicologica.create') }}" class="btn green">
-                    <i class="fa fa-plus"></i>
-                    Nueva reserva
-                </a>
+                {!!Form::boton('Nueva Reserva',route('admin.reservapsicologica.create'),'green','fa fa-plus')!!}
+                {!!Form::boton('Disponibilidad Horaria',route('admin.reservapsicologica.create'),'green-meadow','fa fa-calendar')!!}
                 <p></p>
                     <table class="table table-bordered table-hover">
                         <thead>
