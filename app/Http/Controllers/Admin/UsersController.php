@@ -2,18 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\User;
-use App\Models\Catalogo;
-
-use Storage;
-use File;
-
-use Illuminate\Http\Request;
-use Styde\Html\Facades\Alert;
-use Illuminate\Routing\Route;
-
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Requests;
+use App\Http\Requests\UserRequest;
+use App\Models\Catalogo;
+use App\User;
+use File;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
+use Storage;
+use Styde\Html\Facades\Alert;
 
 class UsersController extends Controller
 {
@@ -45,7 +43,7 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
         $data = $request->all();
         $user = new User($data);
@@ -96,7 +94,7 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserRequest $request, $id)
     {
         $user = User::findOrFail($id);
         $user->fill($request->all());

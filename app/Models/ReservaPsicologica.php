@@ -32,6 +32,23 @@ class ReservaPsicologica extends Model
     {
         return $this->hasOne(Catalogo::class,'id','idestado');
     }
+    /**
+    * Atributos Personal
+    */
+    public function getPersonalAttribute()
+    {
+        $personal = Personal::find($this->idpersonal);
+        return $personal->paterno.' - '.$personal->materno.', '.$personal->nombres;
+    }
+    /**
+    * Atributos Tipo Personal
+    */
+    public function getTipoPersonalAttribute()
+    {
+        $personal = Personal::find($this->idpersonal);
+        $tipo = Catalogo::find($personal->idtipo);
+        return $tipo->nombre;
+    }
 
 
 }

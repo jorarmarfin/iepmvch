@@ -17,6 +17,8 @@ class MacroServiceProvider extends ServiceProvider
         $this->ControlBack();
         $this->ControlSubmit();
         $this->ControlBoton();
+        $this->ControlMenu();
+        $this->ControlMenuLink();
     }
 
     /**
@@ -51,5 +53,21 @@ class MacroServiceProvider extends ServiceProvider
     {
         $macro = new Macros();
         return $macro->boton();
+    }
+    /**
+     * Menu
+     */
+    public function ControlMenu()
+    {
+        $macro = new Macros();
+        return $macro->Menu();
+    }
+    /**
+     * Menu Link
+     */
+    public function ControlMenuLink()
+    {
+        $macro = new Macros();
+        return $macro->MenuLink();
     }
 }

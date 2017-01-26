@@ -23,7 +23,7 @@ class CreatePersonalsTable extends Migration
             $table->date('fechanacimiento')->nullable();
             $table->integer('idpais')->nullable();
             $table->integer('idubigeonacimiento')->nullable();
-            $table->string('email',150)->nullable();
+            $table->string('email',150)->nullable()->unique();
             $table->integer('idestadocivil')->nullable();
             $table->integer('numerohijos')->nullable()->default(0);
             $table->integer('idubigeo')->nullable();

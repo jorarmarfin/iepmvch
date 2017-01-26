@@ -58,6 +58,12 @@
 							</div>
 
 						</div>
+						<div class="form-group">
+							{!!Form::label('lblPesonal', 'Pesonal que atendera',['class'=>'col-md-3 control-label']);!!}
+							<div class="col-md-9">
+							{!!Form::select('idpersonal',$personalData, null , ['class'=>'form-control','placeholder'=>'Seleccionar personal que atendera']);!!}
+							</div>
+						</div>
 
                     </div>
                     <div class="form-actions">
@@ -70,6 +76,32 @@
                     </div>
 				{!! Form::close() !!}
                 <!-- END FORM-->
+				<div class="row">
+                	<div class="col-md-12">
+
+                	<p><h3>Horario disponible de psicologos</h3></p>
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th> Personal </th>
+                                <th> Dia </th>
+                                <th> Inicio </th>
+                                <th> fin </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @foreach ($hp as $item)
+                        <tr>
+                            <td> {{ $item->personal }} </td>
+                            <td> {{ $item->dia }} </td>
+                            <td> {{ $item->inicio }} </td>
+                            <td> {{ $item->fin }} </td>
+                        </tr>
+                    @endforeach
+                        </tbody>
+                    </table>
+                	</div><!--span-->
+                </div><!--row-->
             </div>
         </div>
         <!-- END Portlet PORTLET-->

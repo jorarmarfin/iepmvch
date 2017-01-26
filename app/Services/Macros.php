@@ -63,6 +63,44 @@ class Macros extends FormBuilder
 		});
 
 	}
+	/**
+	 * Menu
+	 */
+	public function Menu()
+	{
+		Form::macro('menu',function($name,$url,$icon = null,$start=null){
+			$iconclass = (isset($icon)) ? '<i class="'.$icon.'"></i>' : '' ;
+
+			return '
+				<li class="nav-item '.$start.' ">
+		            <a href="'.$url.'" class="nav-link nav-toggle">
+		               '.$iconclass.'
+		                <span class="title">'.$name.'</span>
+		                <span class="arrow"></span>
+		            </a>
+		        </li>
+			';
+		});
+
+	}
+	/**
+	 * Menu LINK
+	 */
+	public function MenuLink()
+	{
+		Form::macro('menulink',function($name,$url,$icon = null){
+			$iconclass = (isset($icon)) ? '<i class="'.$icon.'"></i>' : '' ;
+
+			return '
+		            <a href="'.$url.'" class="nav-link nav-toggle">
+		               '.$iconclass.'
+		                <span class="title">'.$name.'</span>
+		                <span class="arrow"></span>
+		            </a>
+			';
+		});
+
+	}
 
 }
 

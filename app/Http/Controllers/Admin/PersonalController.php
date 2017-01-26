@@ -19,11 +19,21 @@ class PersonalController extends Controller
      */
     public function index()
     {
-        $Lista = Personal::alfabetico()->get();
+        $Lista = Personal::activo()->alfabetico()->get();
 
         return view('admin.personal.index',compact('Lista'));
     }
+    /**
+     * Muestra un listado de personal inactivo.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function inactivo()
+    {
+        $Lista = Personal::inactivo()->alfabetico()->get();
 
+        return view('admin.personal.index',compact('Lista'));
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -87,7 +97,9 @@ class PersonalController extends Controller
         $personal = Personal::find($id);
         $data = $request->all();
         if ($request->hasFile('file')) {
+            if(!str_contains($personal->foto,'nofoto.jpg'))
             Storage::delete("/public/$personal->foto");
+
             $data['foto'] = $request->file('file')->store('personal','public');
         }
         $personal->fill($data);
@@ -116,9 +128,26 @@ class PersonalController extends Controller
     public function destroy($id)
     {
         $personal = Personal::find($id);
+
+        if(!str_contains($personal->foto,'nofoto.jpg'))
         Storage::delete("/public/$personal->foto");
+
         $personal->delete();
         Alert::success('Personal Eliminado con exito');
         return redirect()->route('admin.personal.index');
     }
+    /**
+     * Cambia el estado de activo a inactivo
+     * @param  [type] $id [description]
+     * @return [type]     [description]
+     */
+    public function activo($id)
+    {
+        $personal = Personal::find($id);
+        $personal->activo = !$personal->activo;
+        $personal->save();
+        Alert::success('Personal actualizado con exito');
+        return redirect()->route('admin.personal.index');
+    }
+
 }

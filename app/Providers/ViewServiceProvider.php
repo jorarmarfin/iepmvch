@@ -2,19 +2,21 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
 use App\Http\ViewComposers\ControlSelectData;
-use App\Http\ViewComposers\GradoSelectData;
-use App\Http\ViewComposers\GradoSeccionSelectData;
-use App\Http\ViewComposers\PaisSelectData;
-use App\Http\ViewComposers\SexoSelectData;
-use App\Http\ViewComposers\EstadoCivilSelectData;
+use App\Http\ViewComposers\DiaSemanaSelectData;
 use App\Http\ViewComposers\EstadoAlumnoSelectData;
+use App\Http\ViewComposers\EstadoCivilSelectData;
+use App\Http\ViewComposers\GestionSelectData;
+use App\Http\ViewComposers\GradoSeccionSelectData;
+use App\Http\ViewComposers\GradoSelectData;
+use App\Http\ViewComposers\PaisSelectData;
+use App\Http\ViewComposers\PersonalSelectData;
+use App\Http\ViewComposers\SexoSelectData;
+use App\Http\ViewComposers\SistemaPensionSelectData;
 use App\Http\ViewComposers\TipoFamiliarSelectData;
 use App\Http\ViewComposers\TipoMatriculaSelectData;
 use App\Http\ViewComposers\TipoPersonalSelectData;
-use App\Http\ViewComposers\GestionSelectData;
-use App\Http\ViewComposers\SistemaPensionSelectData;
+use Illuminate\Support\ServiceProvider;
 
 class ViewServiceProvider extends ServiceProvider
 {
@@ -77,6 +79,16 @@ class ViewServiceProvider extends ServiceProvider
         $this->app->make('view')->composer(
             ['admin.personal.create','admin.personal.edit'],
             TipoPersonalSelectData::class
+            );
+        $this->app->make('view')->composer(
+            ['admin.disponibilidad.index','admin.disponibilidad.edit','admin.disponibilidad.delete'],
+            DiaSemanaSelectData::class
+            );
+        $this->app->make('view')->composer(
+            ['admin.disponibilidad.index','admin.disponibilidad.edit','admin.disponibilidad.delete',
+            'admin.reservapsicologica.create','admin.reservapsicologica.edit'
+            ],
+            PersonalSelectData::class
             );
     }
 

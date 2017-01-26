@@ -8,158 +8,38 @@
             </div>
         </li>
         <!-- END SIDEBAR TOGGLER BUTTON -->
-        <li class="nav-item start ">
-            <a href="{{ route('home.index') }}" class="nav-link nav-toggle">
-                <i class="icon-home"></i>
-                <span class="title">Escritorio</span>
-                <span class="arrow"></span>
-            </a>
-        </li>
+        {!!Form::menu('Escritorio',route('home.index'),'icon-home','start')!!}
         <li class="heading">
             <h3 class="uppercase">Sistema</h3>
         </li>
+        {!!Form::menu('Usuarios',route('admin.users.index'),'icon-users')!!}
         <li class="nav-item  ">
-            <a href="{{route('admin.users.index')}}" class="nav-link nav-toggle">
-                <i class="icon-users"></i>
-                <span class="title">Usuarios</span>
-                <span class="arrow"></span>
-            </a>
-        </li>
-        <li class="nav-item  ">
-            <a href="javascript:;" class="nav-link nav-toggle">
-                <i class="fa fa-cogs"></i>
-                <span class="title">Configuracion</span>
-                <span class="arrow"></span>
-            </a>
+            {!!Form::menulink('Configuracion','#','fa fa-cogs')!!}
             <ul class="sub-menu">
-                <li class="nav-item  ">
-                    <a href="{{ route('catalogo.gestion','maestro') }}" class="nav-link ">
-                        <span class="title">Maestro</span>
-                    </a>
-                </li>
-                <li class="nav-item  ">
-                    <a href="{{ route('catalogo.gestion','pais') }}" class="nav-link ">
-                        <span class="title">Pais</span>
-                    </a>
-                </li>
+                {!!Form::menu('Maestro',route('catalogo.gestion','maestro'))!!}
+                {!!Form::menu('Pais',route('catalogo.gestion','pais'))!!}
             </ul>
         </li>
         <li class="heading">
             <h3 class="uppercase">Modulos</h3>
         </li>
-        <li class="nav-item  ">
-            <a href="{{ route('admin.matricula.index') }}" class="nav-link nav-toggle">
-                <i class="fa fa-cube"></i>
-                <span class="title">Matricula</span>
-                <span class="arrow"></span>
-            </a>
-        </li>
-        <li class="nav-item  ">
-            <a href="{{ route('admin.reservapsicologica.index') }}" class="nav-link nav-toggle">
-                <i class="fa fa-user-md"></i>
-                <span class="title">Psicologia</span>
-                <span class="arrow"></span>
-            </a>
-        </li>
-        <li class="nav-item  ">
-            <a href="{{ route('admin.alumnos.index') }}" class="nav-link nav-toggle">
-                <i class="fa fa-users"></i>
-                <span class="title">Alumnos</span>
-                <span class="arrow"></span>
-            </a>
-        </li>
-        <li class="nav-item  ">
-            <a href="{{ route('admin.personal.index') }}" class="nav-link nav-toggle">
-                <i class="fa fa-graduation-cap"></i>
-                <span class="title">Personal</span>
-                <span class="arrow"></span>
-            </a>
-        </li>
-        <li class="nav-item  ">
-            <a href="javascript:;" class="nav-link nav-toggle">
-                <i class="fa fa-cube"></i>
-                <span class="title">Asistencia</span>
-                <span class="arrow"></span>
-            </a>
-        </li>
-        <li class="nav-item  ">
-            <a href="javascript:;" class="nav-link nav-toggle">
-                <i class="icon-book-open"></i>
-                <span class="title">Registros</span>
-                <span class="arrow"></span>
-            </a>
-        </li>
-        <li class="nav-item  ">
-            <a href="javascript:;" class="nav-link nav-toggle">
-                <i class="fa fa-archive"></i>
-                <span class="title">Almacen</span>
-                <span class="arrow"></span>
-            </a>
-        </li>
-        <li class="nav-item  ">
-            <a href="javascript:;" class="nav-link nav-toggle">
-                <i class="fa fa-dollar"></i>
-                <span class="title">Pensiones</span>
-                <span class="arrow"></span>
-            </a>
-        </li>
-        <li class="nav-item  ">
-            <a href="javascript:;" class="nav-link nav-toggle">
-                <i class=" icon-present"></i>
-                <span class="title">Cumpleaños</span>
-                <span class="arrow"></span>
-            </a>
-        </li>
-        <li class="nav-item  ">
-            <a href="javascript:;" class="nav-link nav-toggle">
-                <i class="fa fa-list"></i>
-                <span class="title">Lista de Utiles</span>
-                <span class="arrow"></span>
-            </a>
-        </li>
-        <li class="nav-item  ">
-            <a href="javascript:;" class="nav-link nav-toggle">
-                <i class="fa fa-thumbs-o-down"></i>
-                <span class="title">Memos</span>
-                <span class="arrow"></span>
-            </a>
-        </li>
-        <li class="nav-item  ">
-            <a href="javascript:;" class="nav-link nav-toggle">
-                <i class="fa fa-cubes"></i>
-                <span class="title">Plan Curricular</span>
-                <span class="arrow"></span>
-            </a>
-        </li>
-        <li class="nav-item  ">
-            <a href="javascript:;" class="nav-link nav-toggle">
-                <i class="fa fa-calendar"></i>
-                <span class="title">Calendarizacion</span>
-                <span class="arrow"></span>
-            </a>
-        </li>
-        <li class="nav-item  ">
-            <a href="javascript:;" class="nav-link nav-toggle">
-                <i class="fa fa-search"></i>
-                <span class="title">Busqueda</span>
-                <span class="arrow"></span>
-            </a>
-        </li>
-        <li class="nav-item  ">
-            <a href="javascript:;" class="nav-link nav-toggle">
-                <i class="fa fa-user-plus"></i>
-                <span class="title">Postulaciones</span>
-                <span class="arrow"></span>
-            </a>
-        </li>
-        <li class="nav-item  ">
-            <a href="javascript:;" class="nav-link nav-toggle">
-                <i class="icon-badge"></i>
-                <span class="title">Diplomas</span>
-                <span class="arrow"></span>
-            </a>
-        </li>
-
+        {!!Form::menu('Matricula',route('admin.matricula.index'),'fa fa-cube')!!}
+        {!!Form::menu('Psicologia',route('admin.reservapsicologica.index'),'fa fa-user-md')!!}
+        {!!Form::menu('Alumnos',route('admin.alumnos.index'),'fa fa-users')!!}
+        {!!Form::menu('Personal',route('admin.personal.index'),'fa fa-graduation-cap')!!}
+        {!!Form::menu('Asistencia','#','fa fa-cube')!!}
+        {!!Form::menu('Plan Curricular','#','fa fa-cubes')!!}
+        {!!Form::menu('Horario','#','fa fa-cube')!!}
+        {!!Form::menu('Registros','#','icon-book-open')!!}
+        {!!Form::menu('Almacen','#','fa fa-archive')!!}
+        {!!Form::menu('Pensiones','#','fa fa-dollar')!!}
+        {!!Form::menu('Cumpleaños','#','icon-present')!!}
+        {!!Form::menu('Lista de Utiles','#','fa fa-list')!!}
+        {!!Form::menu('Memos','#','fa fa-thumbs-o-down')!!}
+        {!!Form::menu('Calendarizacion','#','fa fa-calendar')!!}
+        {!!Form::menu('Busqueda','#','fa fa-search')!!}
+        {!!Form::menu('Postulaciones','#','fa fa-user-plus')!!}
+        {!!Form::menu('Diplomas','#','icon-badge')!!}
 
     </ul>
     <!-- END SIDEBAR MENU -->

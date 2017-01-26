@@ -4,13 +4,13 @@
 <div class="row">
 	<div class="col-md-12">
     {!! Alert::render() !!}
-
+    @include('alerts.errors')
         <!-- BEGIN Portlet PORTLET-->
         <div class="portlet box green">
             <div class="portlet-title">
                 <div class="caption">
                     <i class="fa fa-table"></i>
-                    Lista de Personal
+                    Disponibilidad horaria
                 </div>
                 <div class="tools">
                     <a href="javascript:;" class="collapse"> </a>
@@ -19,29 +19,57 @@
                 </div>
             </div>
             <div class="portlet-body">
-            {!!Form::boton('Nuevo Personal',route('admin.personal.create'),'green','fa fa-plus')!!}
-            {!!Form::boton('Disponibilidad',route('admin.disponibilidad.index'),'green-meadow','fa fa-calendar')!!}
-            {!!Form::boton('Personal Inactivo',route('admin.personal.inactivo'),'red','fa fa-minus')!!}
+            {!! Form::open(['route'=>'admin.disponibilidad.store','method'=>'POST']) !!}
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        {!!Form::select('idpersonal',$personalData, null , ['class'=>'form-control','placeholder'=>'Escoger Personal']);!!}
+                    </div>
+                </div><!--/span-->
+                <div class="col-md-3">
+                    <div class="form-group">
+                        {!!Form::select('iddia',$diasemana, null , ['class'=>'form-control','placeholder'=>'Escoger Dia de la semana']);!!}
+                    </div>
+                </div><!--/span-->
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <div class="input-icon">
+                            <i class="fa fa-clock-o"></i>
+                            {!! Form::text('inicio', null, ['class'=>'form-control timepicker timepicker-default','placeholder'=>'hora de inicio']) !!}
+                        </div>
+                    </div>
+                </div><!--/span-->
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <div class="input-icon">
+                            <i class="fa fa-clock-o"></i>
+                            {!! Form::text('fin', null, ['class'=>'form-control timepicker timepicker-default','placeholder'=>'hora de inicio']) !!}
+                        </div>
+                    </div>
+                </div><!--/span-->
+            </div><!--/row-->
+
+            {!!Form::enviar('Guardar')!!}
+            {!!Form::back(route('admin.personal.index'))!!}
+            {!! Form::close() !!}
             <p></p>
-                <table class="table table-striped table-hover" id="Alumnos">
+                <table class="table table-striped table-hover" id="HorarioDisponible">
                     <thead>
                         <tr>
-                            <th> Paterno </th>
-                            <th> Materno </th>
-                            <th> Nombres </th>
-                            <th> Foto </th>
-                            <th> Estado </th>
+                            <th> Personal </th>
+                            <th> Dia </th>
+                            <th> Inicio </th>
+                            <th> fin </th>
                             <th> Opciones </th>
                         </tr>
                     </thead>
                     <tbody>
                     @foreach ($Lista as $item)
                         <tr>
-                            <td> {{ $item->paterno }} </td>
-                            <td> {{ $item->materno }} </td>
-                            <td> {{ $item->nombres }} </td>
-                            <td><a href="{{ route('admin.personal.show',$item->id) }}"><img src="{{ asset('/storage/'.$item->foto) }}"  width='25px'> </a></td>
-                            <td> {!! LinkActivo($item->activo,route('admin.personal.activo',$item->id)) !!}  </td>
+                            <td> {{ $item->personal }} </td>
+                            <td> {{ $item->dia }} </td>
+                            <td> {{ $item->inicio }} </td>
+                            <td> {{ $item->fin }} </td>
                             <td>
                                 <div class="btn-group">
                                     <button class="btn btn-xs green-dark dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Opciones
@@ -49,15 +77,11 @@
                                     </button>
                                     <ul class="dropdown-menu pull-left" role="menu">
                                         <li>
-                                            <a href="{{ route('admin.personal.show',$item->id) }}">
-                                                <i class="fa fa-eye"></i> Show </a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ route('admin.personal.edit',$item->id) }}">
+                                            <a href="{{ route('admin.disponibilidad.edit',$item->id) }}">
                                                 <i class="fa fa-edit"></i> Edit </a>
                                         </li>
                                         <li>
-                                            <a href="{{ route('admin.personal.delete',$item->id) }}">
+                                            <a href="{{ route('admin.disponibilidad.delete',$item->id) }}">
                                                 <i class="fa fa-trash"></i> Delete </a>
                                         </li>
                                     </ul>
@@ -77,7 +101,7 @@
 
 @section('js-scripts')
 <script>
-$('#Alumnos').dataTable({
+$('#HorarioDisponible').dataTable({
     "language": {
         "emptyTable": "No hay datos disponibles",
         "info": "Mostrando _START_ a _END_ de _TOTAL_ filas",
@@ -88,12 +112,19 @@ $('#Alumnos').dataTable({
     "pagingType": "bootstrap_full_number",
     "order": [1,"asc"]
 });
+
+$('.timepicker-default').timepicker({
+        autoclose: true,
+        showSeconds: true,
+        minuteStep: 1
+    });
 </script>
 @stop
 
 @section('plugins-styles')
 {!! Html::style('assets/global/plugins/datatables/datatables.min.css') !!}
 {!! Html::style('assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css') !!}
+{!! Html::style('assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css') !!}
 @stop
 
 @section('plugins-js')
@@ -101,6 +132,7 @@ $('#Alumnos').dataTable({
 {!! Html::script('assets/global/scripts/datatable.js') !!}
 {!! Html::script('assets/global/plugins/datatables/datatables.min.js') !!}
 {!! Html::script('assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js') !!}
+{!! Html::script('assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js') !!}
 @stop
 
 

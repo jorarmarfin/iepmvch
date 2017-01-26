@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ReservaPsicologicaRequest extends FormRequest
+class UserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,19 +24,13 @@ class ReservaPsicologicaRequest extends FormRequest
     public function rules()
     {
         return [
-            'persona'=>'required|max:200',
-            'idgrado'=>'required',
-            'motivo'=>'required',
-            'fecha'=>'required',
-            'idpersonal'=>'required',
-
+            'password'=>'required'
         ];
     }
     public function messages()
     {
-        return[
-            'idgrado.required'=>'El campo grado es obligatorio',
-            'idpersonal.required'=>'El campo personal es obligatorio',
+        return [
+            'password.required'=>'No ingresaste tu contraseña'
         ];
     }
 }

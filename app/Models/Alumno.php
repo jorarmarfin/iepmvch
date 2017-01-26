@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Alumno extends Model
 {
@@ -112,9 +113,8 @@ class Alumno extends Model
         $alumno->fill($data);
 
         if ($request->hasFile('file')) {
-            if (strlen($alumno->foto)!=18) {
+            if(!str_contains($personal->foto,'nofoto.jpg'))
                 Storage::delete("/public/$alumno->foto");
-            }
 
             $alumno->foto = $request->file('file')->store('fotos','public');
         }

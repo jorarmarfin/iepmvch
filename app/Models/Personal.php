@@ -134,4 +134,20 @@ class Personal extends Model
                        ->orderBy('materno','asc')
                        ->orderBy('nombres','asc');
     }
+    /**
+    * Devuelve los valores Activos
+    * @param  [type]  [description]
+    * @return [type]            [description]
+    */
+    public function scopeActivo($cadenaSQL){
+        return $cadenaSQL->where('activo',1);
+    }
+    /**
+    * Devuelve los valores Activos
+    * @param  [type]  [description]
+    * @return [type]            [description]
+    */
+    public function scopeInactivo($cadenaSQL){
+        return $cadenaSQL->where('activo',0);
+    }
 }

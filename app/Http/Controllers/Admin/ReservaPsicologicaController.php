@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ReservaPsicologicaRequest;
 use App\Models\Catalogo;
+use App\Models\DisponibilidadHoraria;
 use App\Models\ReservaPsicologica;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Styde\Html\Facades\Alert;
 
@@ -19,7 +21,7 @@ class ReservaPsicologicaController extends Controller
     public function index()
     {
         $Lista = ReservaPsicologica::Activo()->with('Grado')->with('Estado')->OrderBy('id','desc')->get();
-        //dd($Lista);
+
         return view('admin.reservapsicologica.index',compact('Lista'));
     }
 
@@ -30,7 +32,8 @@ class ReservaPsicologicaController extends Controller
      */
     public function create()
     {
-        return view('admin.reservapsicologica.create');
+        $hp = DisponibilidadHoraria::HorarioPsicologico()->get();
+        return view('admin.reservapsicologica.create',compact('hp'));
     }
 
     /**
@@ -41,9 +44,12 @@ class ReservaPsicologicaController extends Controller
      */
     public function store(ReservaPsicologicaRequest $request)
     {
+        $this->ValidoHora($request);
         $data = $request->all();
+        dd($data);
         $estado = Catalogo::Table('ESTADO PSICOLOGICO')->where('nombre','Pendiente')->first();
         $data['idestado'] = $estado->id;
+
         ReservaPsicologica::create($data);
         Alert::success('Reserva registrada con exito');
         return redirect()->route('admin.reservapsicologica.index');
@@ -100,5 +106,22 @@ class ReservaPsicologicaController extends Controller
         ReservaPsicologica::destroy($id);
         Alert::success('Se ha eliminado el registro satisfactoriamente');
         return redirect()->route('admin.reservapsicologica.index');
+    }
+    /**
+     * Valida la hora disponible
+     * @param [type] $request [description]
+     */
+    public function ValidoHora($request)
+    {
+        $data = $request->all();
+        $date = Carbon::parse($data['fecha']);
+
+        dd($date->hour);
+
+        $this->validate($request, [
+            'fecha' => 'accepted:yes',
+        ],[
+            'fecha.accepted'=>'No puede registrar en esta hora'
+        ]);
     }
 }

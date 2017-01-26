@@ -19,17 +19,17 @@
                 </div>
                 <div class="portlet-body">
                 {!!Form::boton('Nueva Reserva',route('admin.reservapsicologica.create'),'green','fa fa-plus')!!}
-                {!!Form::boton('Disponibilidad Horaria',route('admin.reservapsicologica.create'),'green-meadow','fa fa-calendar')!!}
                 <p></p>
                     <table class="table table-bordered table-hover">
                         <thead>
                             <tr>
-                                <th> Persona </th>
+                                <th> Persona Solicita</th>
                                 <th> Grado </th>
                                 <th> Motivo </th>
                                 <th> Observacion </th>
                                 <th> Estado </th>
                                 <th> fecha </th>
+                                <th> Personal que atendera </th>
                                 <th> Opciones </th>
                             </tr>
                         </thead>
@@ -42,6 +42,7 @@
                                 <td> {{ $item->observacion }} </td>
                                 <td> {{ $item->Estado->nombre }} </td>
                                 <td> {{ $item->fecha }} </td>
+                                <td> {{ $item->personal.' ('.$item->TipoPersonal.')' }} </td>
                                 <td>
                                     <div class="btn-group">
                                         <button class="btn btn-xs green-dark dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Opciones
@@ -67,6 +68,7 @@
                         @endforeach
                         </tbody>
                     </table>
+
                 </div>
             </div>
         <!-- END Portlet PORTLET-->

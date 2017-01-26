@@ -122,7 +122,7 @@ if (! function_exists('LinkActivo')) {
 
         $alumno = Alumno::find($id);
         if ($id) return '<a href="'.$link.'" class="label label-sm label-info"> Activo </a>';
-        else return '<a href="'.$lnk.'" class="label label-sm label-danger"> Inactivo </a>';
+        else return '<a href="'.$link.'" class="label label-sm label-danger"> Inactivo </a>';
     }
 }
 
