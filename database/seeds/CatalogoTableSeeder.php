@@ -187,13 +187,13 @@ class CatalogoTableSeeder extends Seeder
         /**
          * Dia de la semana
          */
-        Catalogo::create(['idtable' => 19,'iditem' => 1, 'codigo' => 'L','nombre' => 'Lunes','descripcion'=>'Monday','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 19,'iditem' => 2, 'codigo' => 'M','nombre' => 'Martes','descripcion'=>'Tuesday','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 19,'iditem' => 3, 'codigo' => 'I','nombre' => 'Miercoles','descripcion'=>'Wednesday','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 19,'iditem' => 4, 'codigo' => 'J','nombre' => 'Jueves','descripcion'=>'Thursday','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 19,'iditem' => 5, 'codigo' => 'V','nombre' => 'Viernes','descripcion'=>'Friday','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 19,'iditem' => 6, 'codigo' => 'S','nombre' => 'Sabado','descripcion'=>'Saturday','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 19,'iditem' => 7, 'codigo' => 'D','nombre' => 'Domingo','descripcion'=>'sunday','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 19,'iditem' => 1, 'codigo' => 'L','nombre' => 'Lunes','descripcion'=>'Monday','valor'=> 1,'activo'=>true]);
+        Catalogo::create(['idtable' => 19,'iditem' => 2, 'codigo' => 'M','nombre' => 'Martes','descripcion'=>'Tuesday','valor'=> 2,'activo'=>true]);
+        Catalogo::create(['idtable' => 19,'iditem' => 3, 'codigo' => 'I','nombre' => 'Miercoles','descripcion'=>'Wednesday','valor'=> 3,'activo'=>true]);
+        Catalogo::create(['idtable' => 19,'iditem' => 4, 'codigo' => 'J','nombre' => 'Jueves','descripcion'=>'Thursday','valor'=> 4,'activo'=>true]);
+        Catalogo::create(['idtable' => 19,'iditem' => 5, 'codigo' => 'V','nombre' => 'Viernes','descripcion'=>'Friday','valor'=> 5,'activo'=>true]);
+        Catalogo::create(['idtable' => 19,'iditem' => 6, 'codigo' => 'S','nombre' => 'Sabado','descripcion'=>'Saturday','valor'=> 6,'activo'=>true]);
+        Catalogo::create(['idtable' => 19,'iditem' => 7, 'codigo' => 'D','nombre' => 'Domingo','descripcion'=>'sunday','valor'=> 0,'activo'=>true]);
         /**
          * Tipo de salida de efectivo
          */

@@ -46,7 +46,7 @@ class ReservaPsicologicaController extends Controller
     {
         $this->ValidoHora($request);
         $data = $request->all();
-        dd($data);
+        dd('se puede guardar');
         $estado = Catalogo::Table('ESTADO PSICOLOGICO')->where('nombre','Pendiente')->first();
         $data['idestado'] = $estado->id;
 
@@ -115,13 +115,27 @@ class ReservaPsicologicaController extends Controller
     {
         $data = $request->all();
         $date = Carbon::parse($data['fecha']);
+        #valido dias
+        $dias = DisponibilidadHoraria::select('d.valor as dias')
+                                        ->join('catalogo as d','d.id','=','iddia')
+                                        ->where('idpersonal',$data['idpersonal'])
+                                        ->groupBy('d.valor')
+                                        ->get()->implode('dias',',');
 
-        dd($date->hour);
+        if (!str_contains($dias,$date->dayOfWeek))
+            $this->Bloquea($request);
 
+    }
+    /**
+     * Detiene el flujo
+     * @param [type] $text [description]
+     */
+    public function Bloquea($request)
+    {
         $this->validate($request, [
             'fecha' => 'accepted:yes',
         ],[
-            'fecha.accepted'=>'No puede registrar en esta hora'
+            'fecha.accepted'=>'Esta fecha y hora no esta disponible'
         ]);
     }
 }
