@@ -20,7 +20,8 @@ class MatriculaController extends Controller
     public function index()
     {
         $Lista = Matricula::Activas()->orderBy('matricula.id','desc')->get();
-        return view('admin.matricula.index',compact('Lista'));
+        $Resumen = Matricula::Resumen()->get();
+        return view('admin.matricula.index',compact('Lista','Resumen'));
     }
     /**
      * Show the form for creating a new resource.

@@ -60,6 +60,10 @@
                                             <a href="{{ route('admin.personal.delete',$item->id) }}">
                                                 <i class="fa fa-trash"></i> Delete </a>
                                         </li>
+                                        <li>
+                                            <a href="{{ route('admin.personal.delete',$item->id) }}">
+                                                <i class="fa fa-trash"></i> Crea Usuario </a>
+                                        </li>
                                     </ul>
                                 </div>
                             </td>

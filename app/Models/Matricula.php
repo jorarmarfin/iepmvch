@@ -29,6 +29,17 @@ class Matricula extends Model
         return $tipo->nombre;
     }
     /**
+    * Atributos Grado
+    */
+    public function getGradoMatriculadoAttribute()
+    {
+        $gradoseccion = GradoSeccion::select('idgrado')
+                                        ->where('id',$this->idgradoseccion)
+                                        ->first();
+        $grado = Grado::find($gradoseccion->idgrado);
+        return $grado->nombre;
+    }
+    /**
      * Guarda una matricula
      * @param [type] $request [description]
      */
@@ -72,6 +83,18 @@ class Matricula extends Model
             Matricula::create($data);
             return true;
         }
+    }
+    /**
+     * Resumen de matricula
+     */
+    /**
+    * Devuelve los valores Activos
+    * @param  [type]  [description]
+    * @return [type]            [description]
+    */
+    public function scopeResumen($cadenaSQL){
+        return $cadenaSQL->select('idgradoseccion',\DB::raw('count(*) as total'))
+                         ->groupBy('idgradoseccion');
     }
 
 }
