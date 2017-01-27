@@ -28,15 +28,6 @@ class DisponibilidadHoraria extends Model
     	return $dia->nombre;
     }
     /**
-     * Devuelve el horario de los psicologos
-     * @return [type] [description]
-     */
-   /* public static function horariopsicologo()
-    {
-        $idtipo = EstadoId('TIPO PERSONAL','Psicologo');
-        $personal = Personal::select('id')->where('idtipo',$idtipo)->get();
-    }*/
-    /**
     * Devuelve los valores Activos
     * @param  [type]  [description]
     * @return [type]            [description]
@@ -46,5 +37,29 @@ class DisponibilidadHoraria extends Model
         $personal = Personal::select('id')->where('idtipo',$idtipo)->get();
 
         return $cadenaSQL->wherein('idpersonal',$personal);
+    }
+    /**
+     * Retorna los dias disponibles del psicologo escogido
+     * @param  [type] $cadenaSQL [description]
+     * @param  [type] $data      [description]
+     * @return [type]            [description]
+     */
+    public function scopeRetornaDias($cadenaSQL,$data)
+    {
+        return $cadenaSQL->select('d.valor as dias')
+                ->join('catalogo as d','d.id','=','iddia')
+                ->where('idpersonal',$data['idpersonal'])
+                ->groupBy('d.valor')
+                ->get()->implode('dias',',');
+    }
+    /**
+    * Devuelve los valores Activos
+    * @param  [type]  [description]
+    * @return [type]            [description]
+    */
+    public function scopeRetornoHoras($cadenaSQL,$date){
+        return $cadenaSQL->where('inicio','<=',$date->toTimeString())
+                            ->where('fin','>',$date->toTimeString())
+                            ->get();
     }
 }

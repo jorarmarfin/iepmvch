@@ -46,7 +46,7 @@ class ReservaPsicologicaController extends Controller
     {
         $this->ValidoHora($request);
         $data = $request->all();
-        dd('se puede guardar');
+        //dd('se puede guardar');
         $estado = Catalogo::Table('ESTADO PSICOLOGICO')->where('nombre','Pendiente')->first();
         $data['idestado'] = $estado->id;
 
@@ -115,14 +115,22 @@ class ReservaPsicologicaController extends Controller
     {
         $data = $request->all();
         $date = Carbon::parse($data['fecha']);
-        #valido dias
-        $dias = DisponibilidadHoraria::select('d.valor as dias')
-                                        ->join('catalogo as d','d.id','=','iddia')
-                                        ->where('idpersonal',$data['idpersonal'])
-                                        ->groupBy('d.valor')
-                                        ->get()->implode('dias',',');
+        #valido dias-----------------------------------------------------
+        $dias = DisponibilidadHoraria::RetornaDias($data);
 
         if (!str_contains($dias,$date->dayOfWeek))
+            $this->Bloquea($request);
+        #Valido Horas----------------------------------------------------
+        $horas = DisponibilidadHoraria::RetornoHoras($date);
+        if(!$horas->count()>0)
+            $this->Bloquea($request);
+        #Valido una hora despues de lo atendido
+        $hora = ReservaPsicologica::wheredate('fecha',$date->toDateString())->get();
+        $hora = $hora->last();
+        $lastdate = Carbon::parse($hora->fecha);
+        $lastdate = $lastdate->addHour();
+
+        if($date->hour<$lastdate->hour)
             $this->Bloquea($request);
 
     }
