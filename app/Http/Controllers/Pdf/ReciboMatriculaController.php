@@ -13,7 +13,7 @@ class ReciboMatriculaController extends Controller
         $institucion = Institucion::first();
     	PDF::SetTitle('Recibo de matricula');
         PDF::AddPage('L','A5');
-        ReportHeader();
+        ReportHeaderRecibo();
 
         PDF::SetXY(150,10);
         PDF::Cell(50,25,"",1,0,'C');

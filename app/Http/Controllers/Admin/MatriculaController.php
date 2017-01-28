@@ -20,8 +20,8 @@ class MatriculaController extends Controller
     public function index()
     {
         $Lista = Matricula::Activas()->orderBy('matricula.id','desc')->get();
-        $Resumen = Matricula::Resumen()->get();
-        return view('admin.matricula.index',compact('Lista','Resumen'));
+
+        return view('admin.matricula.index',compact('Lista'));
     }
     /**
      * Show the form for creating a new resource.
@@ -116,14 +116,6 @@ class MatriculaController extends Controller
         return redirect()->route('admin.matricula.index');
     }
     /**
-     * Ruta del recibo
-     */
-    public function printrecibo($id)
-    {
-        return view('admin.matricula.recibo',compact('id'));
-    }
-
-    /**
      * Valida el grado que debe matricularse el Alumno
      * @param [type] $request [description]
      */
@@ -141,4 +133,19 @@ class MatriculaController extends Controller
             ]);
         }
     }
+    /**
+     * Ruta del recibo
+     */
+    public function printrecibo($id)
+    {
+        return view('admin.matricula.recibo',compact('id'));
+    }
+    /**
+     * Ruta del Compromiso
+     */
+    public function printcompromiso($id)
+    {
+        return view('admin.matricula.compromiso',compact('id'));
+    }
+
 }

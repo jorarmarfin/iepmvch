@@ -8,8 +8,8 @@
         <div class="portlet box green">
             <div class="portlet-title">
                 <div class="caption">
-                    <i class="fa fa-table"></i>
-                    Lista de Alumnos
+                    <i class="fa fa-book"></i>
+                    Lista de Asignaturas
                 </div>
                 <div class="tools">
                     <a href="javascript:;" class="collapse"> </a>
@@ -18,30 +18,23 @@
                 </div>
             </div>
             <div class="portlet-body">
-            {!!Form::boton('Nuevo Alumno',route('admin.alumnos.create'),'green','fa fa-plus')!!}
-            {!!Form::boton('Asistencia','#','green-meadow','fa fa-check')!!}
+            {!!Form::boton('Nuevo Asignatura',route('admin.asignatura.create'),'green','fa fa-plus')!!}
             <p></p>
-                <table class="table table-striped table-hover" id="Alumnos">
+                <table class="table table-striped table-hover" id="Asignaturas">
                     <thead>
                         <tr>
-                            <th> Paterno </th>
-                            <th> Materno </th>
-                            <th> Nombres </th>
-                            <th> Grado actual</th>
-                            <th> Foto </th>
-                            <th> Estado </th>
+                            <th> Nombre </th>
+                            <th> Area </th>
+                            <th> Peso</th>
                             <th> Opciones </th>
                         </tr>
                     </thead>
                     <tbody>
                     @foreach ($Lista as $item)
                         <tr>
-                            <td> {{ $item->paterno }} </td>
-                            <td> {{ $item->materno }} </td>
-                            <td> {{ $item->nombres }} </td>
-                            <td> {{ $item->grado }} </td>
-                            <td><a href="{{ route('admin.alumnos.show',$item->id) }}"><img src="{{ asset('/storage/'.$item->foto) }}"  width='25px'> </a></td>
-                            <td> {{ $item->estado }} </td>
+                            <td> {{ $item->nombre }} </td>
+                            <td> {{ $item->area }} </td>
+                            <td> {{ $item->peso }} </td>
                             <td>
                                 <div class="btn-group">
                                     <button class="btn btn-xs green-dark dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Opciones
@@ -49,20 +42,16 @@
                                     </button>
                                     <ul class="dropdown-menu pull-left" role="menu">
                                         <li>
-                                            <a href="{{ route('admin.alumnos.show',$item->id) }}">
+                                            <a href="{{ route('admin.asignatura.show',$item->id) }}">
                                                 <i class="fa fa-eye"></i> Show </a>
                                         </li>
                                         <li>
-                                            <a href="{{ route('admin.alumnos.edit',$item->id) }}">
+                                            <a href="{{ route('admin.asignatura.edit',$item->id) }}">
                                                 <i class="fa fa-edit"></i> Edit </a>
                                         </li>
                                         <li>
-                                            <a href="{{ route('admin.alumnos.delete',$item->id) }}">
+                                            <a href="{{ route('admin.asignatura.show',$item->id) }}">
                                                 <i class="fa fa-trash"></i> Delete </a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ route('admin.familiar.lists',$item->id) }}">
-                                                <i class="fa fa-users"></i> Familiar </a>
                                         </li>
                                     </ul>
                                 </div>
@@ -81,11 +70,11 @@
 
 @section('js-scripts')
 <script>
-$('#Alumnos').dataTable({
+$('#Asignaturas').dataTable({
     "language": {
         "emptyTable": "No hay datos disponibles",
         "info": "Mostrando _START_ a _END_ de _TOTAL_ filas",
-        "search": "Buscar Alumnos :",
+        "search": "Buscar :",
         "lengthMenu": "_MENU_ registros"
     },
     "bProcessing": true,
@@ -126,7 +115,7 @@ $('#Alumnos').dataTable({
 
 
 @section('page-title')
-Datos de alumnos
+Plan Curricular / Asignaturas
 @stop
 
 @section('page-subtitle')

@@ -17,7 +17,7 @@ class CreateAsignaturasTable extends Migration
             $table->increments('id');
             $table->string('nombre',200)->nullable();
             $table->integer('idarea')->nullable();
-            $table->decimal('peso','8','3')->nullable();
+            $table->decimal('peso','8','3')->nullable()->default(0);
             $table->timestamps();
             $table->foreign('idarea')->references('id')->on('catalogo');
         });

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Http\ViewComposers\AreaSelectData;
 use App\Http\ViewComposers\ControlSelectData;
 use App\Http\ViewComposers\DiaSemanaSelectData;
 use App\Http\ViewComposers\EstadoAlumnoSelectData;
@@ -89,6 +90,11 @@ class ViewServiceProvider extends ServiceProvider
             'admin.reservapsicologica.create','admin.reservapsicologica.edit'
             ],
             PersonalSelectData::class
+            );
+        $this->app->make('view')->composer(
+            ['admin.asignatura.create','admin.asignatura.edit'
+            ],
+            AreaSelectData::class
             );
     }
 

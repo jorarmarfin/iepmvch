@@ -13,7 +13,6 @@
                 	{!! Alert::render() !!}
                     <a href="#NewPersonal" data-toggle="modal" class="btn blue">
                         <i class="fa fa-plus"></i>
-                        <i class="fa fa-user"></i>
                     </a>
                 <div class="table-scrollable">
 

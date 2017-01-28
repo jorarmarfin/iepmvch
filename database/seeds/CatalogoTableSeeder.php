@@ -36,7 +36,7 @@ class CatalogoTableSeeder extends Seeder
         Catalogo::create(['idtable' => 0,'iditem' => 21, 'codigo' => 'UM','nombre' => 'UNIDAD MEDIDA','descripcion'=>'Unidad de medida','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 0,'iditem' => 22, 'codigo' => 'PAIS','nombre' => 'PAIS','descripcion'=>'Pais','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 0,'iditem' => 23, 'codigo' => 'MAT','nombre' => 'Materiales','descripcion'=>'Utiles escolares','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 0,'iditem' => 24, 'codigo' => 'ARE','nombre' => 'Area','descripcion'=>'Area de Asignaturas','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 0,'iditem' => 24, 'codigo' => 'ARE','nombre' => 'AREA','descripcion'=>'Area de Asignaturas','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 0,'iditem' => 25, 'codigo' => 'PRACT','nombre' => 'PRACTICAS','descripcion'=>'Practicas Calificadas','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 0,'iditem' => 26, 'codigo' => 'ESTPSI','nombre' => 'ESTADO PSICOLOGICO','descripcion'=>'Estado de la evaluacion psicologica','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 0,'iditem' => 27, 'codigo' => 'UBI','nombre' => 'UBIGEO','descripcion'=>'Ubigeo de peru','valor'=> null,'activo'=>true]);

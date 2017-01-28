@@ -27,9 +27,14 @@
         {!!Form::menu('Psicologia',route('admin.reservapsicologica.index'),'fa fa-user-md')!!}
         {!!Form::menu('Alumnos',route('admin.alumnos.index'),'fa fa-users')!!}
         {!!Form::menu('Personal',route('admin.personal.index'),'fa fa-graduation-cap')!!}
-        {!!Form::menu('Asistencia','#','fa fa-cube')!!}
-        {!!Form::menu('Plan Curricular','#','fa fa-cubes')!!}
-        {!!Form::menu('Horario','#','fa fa-cube')!!}
+        <li class="nav-item  ">
+            {!!Form::menulink('Plan Curricular','#','fa fa-cubes')!!}
+            <ul class="sub-menu">
+                {!!Form::menu('Areas academicas',route('catalogo.gestion','Area'))!!}
+                {!!Form::menu('Asignaturas',route('admin.asignatura.index'))!!}
+                {!!Form::menu('Horario',route('admin.asignatura.index'))!!}
+            </ul>
+        </li>
         {!!Form::menu('Registros','#','icon-book-open')!!}
         {!!Form::menu('Almacen','#','fa fa-archive')!!}
         {!!Form::menu('Pensiones','#','fa fa-dollar')!!}
