@@ -35,6 +35,7 @@
                 {!!Form::menu('Horario',route('admin.asignatura.index'))!!}
             </ul>
         </li>
+        {!!Form::menu('Boleta Venta',route('admin.boletaventa.index'),'fa fa-money')!!}
         {!!Form::menu('Registros','#','icon-book-open')!!}
         {!!Form::menu('Almacen','#','fa fa-archive')!!}
         {!!Form::menu('Pensiones','#','fa fa-dollar')!!}

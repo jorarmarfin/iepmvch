@@ -94,7 +94,7 @@
                                                         <i class="fa fa-file-pdf-o"></i> Compromiso </a>
                                                 </li>
                                                 <li>
-                                                    <a href="{{ route('admin.matricula.recibo',$item->id) }}">
+                                                    <a href="{{ route('admin.checklist.show',$item->id) }}">
                                                         <i class="fa fa-check"></i> CheckList </a>
                                                 </li>
                                             </ul>

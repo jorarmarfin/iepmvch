@@ -4,13 +4,12 @@
 <div class="row">
 	<div class="col-md-12">
     {!! Alert::render() !!}
-
         <!-- BEGIN Portlet PORTLET-->
         <div class="portlet box green">
             <div class="portlet-title">
                 <div class="caption">
                     <i class="fa fa-table"></i>
-                    Lista de Personal
+                    Lista de boletas de venta
                 </div>
                 <div class="tools">
                     <a href="javascript:;" class="collapse"> </a>
@@ -19,29 +18,23 @@
                 </div>
             </div>
             <div class="portlet-body">
-            {!!Form::boton('Nuevo Personal',route('admin.personal.create'),'green','fa fa-plus')!!}
-            {!!Form::boton('Disponibilidad',route('admin.disponibilidad.index'),'green-meadow','fa fa-calendar')!!}
-            {!!Form::boton('Personal Inactivo',route('admin.personal.inactivo'),'red','fa fa-minus')!!}
+            {!!Form::boton('Nueva Boleta',route('admin.boletaventa.create'),'green','fa fa-plus')!!}
             <p></p>
-                <table class="table table-striped table-hover" id="PersonalData">
+                <table class="table table-striped table-hover" id="Asignaturas">
                     <thead>
                         <tr>
-                            <th> Paterno </th>
-                            <th> Materno </th>
-                            <th> Nombres </th>
-                            <th> Foto </th>
-                            <th> Estado </th>
+                            <th> Nombre </th>
+                            <th> Area </th>
+                            <th> Peso</th>
                             <th> Opciones </th>
                         </tr>
                     </thead>
                     <tbody>
                     @foreach ($Lista as $item)
                         <tr>
-                            <td> {{ $item->paterno }} </td>
-                            <td> {{ $item->materno }} </td>
-                            <td> {{ $item->nombres }} </td>
-                            <td><a href="{{ route('admin.personal.show',$item->id) }}"><img src="{{ asset('/storage/'.$item->foto) }}"  width='25px'> </a></td>
-                            <td> {!! LinkActivo($item->activo,route('admin.personal.activo',$item->id)) !!}  </td>
+                            <td> {{ $item->nombre }} </td>
+                            <td> {{ $item->area }} </td>
+                            <td> {{ $item->peso }} </td>
                             <td>
                                 <div class="btn-group">
                                     <button class="btn btn-xs green-dark dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Opciones
@@ -49,20 +42,16 @@
                                     </button>
                                     <ul class="dropdown-menu pull-left" role="menu">
                                         <li>
-                                            <a href="{{ route('admin.personal.show',$item->id) }}">
+                                            <a href="{{ route('admin.asignatura.show',$item->id) }}">
                                                 <i class="fa fa-eye"></i> Show </a>
                                         </li>
                                         <li>
-                                            <a href="{{ route('admin.personal.edit',$item->id) }}">
+                                            <a href="{{ route('admin.asignatura.edit',$item->id) }}">
                                                 <i class="fa fa-edit"></i> Edit </a>
                                         </li>
                                         <li>
-                                            <a href="{{ route('admin.personal.delete',$item->id) }}">
+                                            <a href="{{ route('admin.asignatura.show',$item->id) }}">
                                                 <i class="fa fa-trash"></i> Delete </a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ route('admin.personal.delete',$item->id) }}">
-                                                <i class="fa fa-trash"></i> Crea Usuario </a>
                                         </li>
                                     </ul>
                                 </div>
@@ -81,11 +70,11 @@
 
 @section('js-scripts')
 <script>
-$('#PersonalData').dataTable({
+$('#Asignaturas').dataTable({
     "language": {
         "emptyTable": "No hay datos disponibles",
         "info": "Mostrando _START_ a _END_ de _TOTAL_ filas",
-        "search": "Buscar Personal :",
+        "search": "Buscar :",
         "lengthMenu": "_MENU_ registros"
     },
     "bProcessing": true,
@@ -126,7 +115,7 @@ $('#PersonalData').dataTable({
 
 
 @section('page-title')
-Modulo de personal
+Boleta de venta
 @stop
 
 @section('page-subtitle')

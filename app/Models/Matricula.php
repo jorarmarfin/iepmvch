@@ -40,6 +40,18 @@ class Matricula extends Model
         return $grado->nombre;
     }
     /**
+    * Atributos Nivel
+    */
+    public function getNivelMatriculadoAttribute()
+    {
+        $gradoseccion = GradoSeccion::select('idgrado')
+                                        ->where('id',$this->idgradoseccion)
+                                        ->first();
+        $grado = Grado::find($gradoseccion->idgrado);
+        $nivel = Catalogo::find($grado->idnivel);
+        return $nivel->nombre;
+    }
+    /**
      * Guarda una matricula
      * @param [type] $request [description]
      */
