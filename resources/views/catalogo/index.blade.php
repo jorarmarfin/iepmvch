@@ -30,6 +30,9 @@
                             @if (Session::get('tablename') != 'jefatura' )
                                 <th> Descripcion </th>
                             @endif
+                            @if (Session::get('tablename') == 'IGV' )
+                                <th> valor </th>
+                            @endif
                                 <th> Activo </th>
                                 <th> Opciones </th>
                             </tr>
@@ -46,6 +49,9 @@
                                 <td> {{ $item->nombre }} </td>
                             @if (Session::get('tablename') != 'jefatura')
                                 <td> {{ $item->descripcion }} </td>
+                            @endif
+                            @if (Session::get('tablename') == 'IGV')
+                                <td> {{ $item->valor }} </td>
                             @endif
                                 <td>
                                 @if ($item->activo)

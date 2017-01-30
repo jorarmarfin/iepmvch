@@ -1,0 +1,86 @@
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+									{!! Form::label('lblNombre', 'Nombre del cliente', ['class'=>'control-label']) !!}
+									{!! Form::text('recibi', null, ['class'=>'form-control','placeholder'=>'Nombre del cliente']) !!}
+                                </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+                        <!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    {!! Form::label('lblTipoDocumento', 'Tipo de documento', ['class'=>'control-label']) !!}
+                                    {!! Form::select('idtipodocumento',$tipodocumento, EstadoId('TIPO DOCUMENTO','Boleta de Venta'), ['class'=>'form-control','placeholder'=>'Seleccionar Tipo de documento']) !!}
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    {!! Form::label('lblFecha', 'Fecha de emision', ['class'=>'control-label']) !!}
+                                    {!! Form::date('created_at', null, ['class'=>'form-control']) !!}
+                                </div>
+                            </div><!--/span-->
+                        </div><!--/row-->
+                        <div data-repeater-list="group-a">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-2" data-repeater-item>
+                                            <div class="form-group">
+                                                {!! Form::label('lblProducto', 'Producto', ['class'=>'control-label']) !!}
+                                                {!! Form::select('idproducto',$productos, null, ['class'=>'form-control','placeholder'=>'Productos']) !!}
+                                            </div>
+                                        </div><!--/span-->
+                                        <div class="col-md-1">
+                                            <div class="form-group">
+                                                {!! Form::label('lblCantidad', 'Cantidad', ['class'=>'control-label']) !!}
+                                                {!! Form::number('cantidad', null, ['class'=>'form-control','placeholder'=>'Cantidad']) !!}
+                                            </div>
+                                        </div><!--/span-->
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                {!! Form::label('lblTipoIGV', 'Tipo', ['class'=>'control-label']) !!}
+                                                {!! Form::select('idtipoigv', $tipoigv,null, ['class'=>'form-control','placeholder'=>'Cantidad']) !!}
+                                            </div>
+                                        </div><!--/span-->
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                {!! Form::label('lblPrecioU', 'Precio Unitario', ['class'=>'control-label']) !!}
+                                                {!! Form::text('precio', null, ['class'=>'form-control','placeholder'=>'precio']) !!}
+                                            </div>
+                                        </div><!--/span-->
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                {!! Form::label('lblSubtotal', 'Subtotal', ['class'=>'control-label']) !!}
+                                                {!! Form::text('subtotal', null, ['class'=>'form-control','placeholder'=>'subtotal']) !!}
+                                            </div>
+                                        </div><!--/span-->
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                {!! Form::label('lbltotal', 'total', ['class'=>'control-label']) !!}
+                                                {!! Form::text('total', null, ['class'=>'form-control','placeholder'=>'total']) !!}
+                                            </div>
+                                        </div><!--/span-->
+                                        <div class="col-md-1">
+                                            <div class="form-group">
+                                                <p class="control-label"></p>
+                                                {!!Form::boton('','#','red','fa fa-trash')!!}
+                                            </div>
+                                        </div><!--/span-->
+                                    </div><!--/row-->
+                                </div><!--/span-->
+                            </div><!--/row-->
+                        </div> <!--/data-repeater-->
+                        <div class="row">
+                        <div class="mt-repeater-input">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <a href="javascript:;" data-repeater-create class="btn green-meadow mt-repeater-add">
+                                    <i class="fa fa-plus"></i> Agregar Producto</a>
+                                </div>
+                            </div><!--/span-->
+                        </div>
+                        </div><!--/row-->
+                        {{-- Form::hidden('idestado', EstadoId('ESTADO ALUMNO','Regular')) --}}

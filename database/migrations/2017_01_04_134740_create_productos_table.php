@@ -17,6 +17,7 @@ class CreateProductosTable extends Migration
             $table->increments('id');
             $table->string('nombre',200)->nullable();
             $table->integer('idum')->nullable();
+            $table->decimal('precio',8,3)->nullable();
             $table->timestamps();
             $table->foreign('idum')->references('id')->on('catalogo');
         });

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class BoletaVentaController extends Controller
+class ProductoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class BoletaVentaController extends Controller
     public function index()
     {
         $Lista = [];
-        return view('admin.boletaventa.index',compact('Lista'));
+        return view('admin.productos.index',compact('Lista'));
     }
 
     /**
@@ -25,7 +25,7 @@ class BoletaVentaController extends Controller
      */
     public function create()
     {
-        return view('admin.boletaventa.create');
+        //
     }
 
     /**
@@ -36,7 +36,7 @@ class BoletaVentaController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        //
     }
 
     /**

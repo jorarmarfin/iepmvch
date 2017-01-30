@@ -46,6 +46,7 @@ class CreatePersonalsTable extends Migration
             $table->integer('idtipo')->nullable();
             $table->integer('idsexo')->nullable();
             $table->string('foto',100)->nullable()->default('avatars/nofoto.jpg');
+            $table->integer('idusuario')->nullable();
 
 
             $table->timestamps();
@@ -57,6 +58,7 @@ class CreatePersonalsTable extends Migration
             $table->foreign('idsistemapension')->references('id')->on('catalogo');
             $table->foreign('idtipo')->references('id')->on('catalogo');
             $table->foreign('idsexo')->references('id')->on('catalogo');
+            $table->foreign('idusuario')->references('id')->on('users');
         });
     }
 

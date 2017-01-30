@@ -35,7 +35,15 @@
                 {!!Form::menu('Horario',route('admin.asignatura.index'))!!}
             </ul>
         </li>
-        {!!Form::menu('Boleta Venta',route('admin.boletaventa.index'),'fa fa-money')!!}
+        <li class="nav-item  ">
+            {!!Form::menulink('Caja','#','fa fa-money')!!}
+            <ul class="sub-menu">
+                {!!Form::menu('Boleta Venta',route('admin.boletaventa.index'))!!}
+                {!!Form::menu('Recibo',route('admin.boletaventa.index'))!!}
+                {!!Form::menu('Productos',route('admin.productos.index'))!!}
+                {!!Form::menu('IGV',route('catalogo.gestion','IGV'))!!}
+            </ul>
+        </li>
         {!!Form::menu('Registros','#','icon-book-open')!!}
         {!!Form::menu('Almacen','#','fa fa-archive')!!}
         {!!Form::menu('Pensiones','#','fa fa-dollar')!!}

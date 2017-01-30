@@ -12,9 +12,12 @@ use App\Http\ViewComposers\GradoSeccionSelectData;
 use App\Http\ViewComposers\GradoSelectData;
 use App\Http\ViewComposers\PaisSelectData;
 use App\Http\ViewComposers\PersonalSelectData;
+use App\Http\ViewComposers\ProductosSelectData;
 use App\Http\ViewComposers\SexoSelectData;
 use App\Http\ViewComposers\SistemaPensionSelectData;
+use App\Http\ViewComposers\TipoDocumentoSelectData;
 use App\Http\ViewComposers\TipoFamiliarSelectData;
+use App\Http\ViewComposers\TipoIGVSelectData;
 use App\Http\ViewComposers\TipoMatriculaSelectData;
 use App\Http\ViewComposers\TipoPersonalSelectData;
 use Illuminate\Support\ServiceProvider;
@@ -95,6 +98,21 @@ class ViewServiceProvider extends ServiceProvider
             ['admin.asignatura.create','admin.asignatura.edit'
             ],
             AreaSelectData::class
+            );
+        $this->app->make('view')->composer(
+            ['admin.boletaventa.create','admin.boletaventa.edit'
+            ],
+            TipoDocumentoSelectData::class
+            );
+        $this->app->make('view')->composer(
+            ['admin.boletaventa.create','admin.boletaventa.edit'
+            ],
+            ProductosSelectData::class
+            );
+        $this->app->make('view')->composer(
+            ['admin.boletaventa.create','admin.boletaventa.edit'
+            ],
+            TipoIGVSelectData::class
             );
     }
 

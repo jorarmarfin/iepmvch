@@ -36,12 +36,14 @@ class CreateFamiliarsTable extends Migration
             $table->boolean('autorizo')->default(false);
             $table->integer('idsexo')->nullable();
             $table->boolean('esapoderado')->default(false);
+            $table->integer('idusuario')->nullable();
             $table->timestamps();
             $table->foreign('idpais')->references('id')->on('catalogo');
             $table->foreign('idubigeonacimiento')->references('id')->on('catalogo');
             $table->foreign('idestadocivil')->references('id')->on('catalogo');
             $table->foreign('idtipo')->references('id')->on('catalogo');
             $table->foreign('idsexo')->references('id')->on('catalogo');
+            $table->foreign('idusuario')->references('id')->on('users');
         });
     }
 

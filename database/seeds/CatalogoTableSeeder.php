@@ -42,6 +42,10 @@ class CatalogoTableSeeder extends Seeder
         Catalogo::create(['idtable' => 0,'iditem' => 27, 'codigo' => 'UBI','nombre' => 'UBIGEO','descripcion'=>'Ubigeo de peru','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 0,'iditem' => 28, 'codigo' => 'SEX','nombre' => 'SEXO','descripcion'=>'Tipo de sexo','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 0,'iditem' => 29, 'codigo' => 'TMATRI','nombre' => 'TIPO MATRICULA','descripcion'=>'TIPO DE MATRICULA','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 0,'iditem' => 30, 'codigo' => 'IGV','nombre' => 'IGV','descripcion'=>'IMPUESTO GENERAL A LAS VENTAS','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 0,'iditem' => 31, 'codigo' => 'TDOC','nombre' => 'TIPO DOCUMENTO','descripcion'=>'TIPO DOCUMENTO SUNAT','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 0,'iditem' => 32, 'codigo' => 'TMON','nombre' => 'TIPO MONEDA','descripcion'=>'TIPO DE MONEDA','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 0,'iditem' => 33, 'codigo' => 'TIGV','nombre' => 'TIPO IGV','descripcion'=>'TIPO DE AFECCION AL IGV','valor'=> null,'activo'=>true]);
 
 
 
@@ -203,7 +207,7 @@ class CatalogoTableSeeder extends Seeder
         /**
          * Unidad de medida
          */
-        Catalogo::create(['idtable' => 21,'iditem' => 1, 'codigo' => 'UN','nombre' => 'Unidad','descripcion'=>'Solo un articulo','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 21,'iditem' => 1, 'codigo' => '07','nombre' => 'Unidad','descripcion'=>'Solo un articulo','valor'=> null,'activo'=>true]);
         /**
          * Pais
          */
@@ -2312,7 +2316,42 @@ class CatalogoTableSeeder extends Seeder
         Catalogo::create(['idtable' => 29,'iditem' => 1, 'codigo' => 'MAACT','nombre' => 'Activa','descripcion'=>'Matricula Activa','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 29,'iditem' => 2, 'codigo' => 'MAINA','nombre' => 'Inactiva','descripcion'=>'Matricula Inactiva','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 29,'iditem' => 3, 'codigo' => 'MAPRE','nombre' => 'Pre-Matricula','descripcion'=>'Matricula anticipada del año','valor'=> null,'activo'=>true]);
-
+        /**
+         * IMPUESTO
+         */
+        Catalogo::create(['idtable' => 30,'iditem' => 1, 'codigo' => '1000','nombre' => 'IGV 19%','descripcion'=>'IGV','valor'=> 19,'activo'=>true]);
+        Catalogo::create(['idtable' => 30,'iditem' => 2, 'codigo' => '1000','nombre' => 'IGV 18%','descripcion'=>'IGV','valor'=> 18,'activo'=>true]);
+        Catalogo::create(['idtable' => 30,'iditem' => 3, 'codigo' => '1000','nombre' => 'IGV 17%','descripcion'=>'IGV','valor'=> 17,'activo'=>true]);
+        /**
+         * TIPO DE DOCUMENTO
+         */
+        Catalogo::create(['idtable' => 31,'iditem' => 1, 'codigo' => '03','nombre' => 'Boleta de Venta','descripcion'=>'Boleta de venta','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 31,'iditem' => 2, 'codigo' => '07','nombre' => 'Nota de Credito','descripcion'=>'Nota de débito','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 31,'iditem' => 3, 'codigo' => '08','nombre' => 'Nota de Debito','descripcion'=>'Nota de crédito','valor'=> null,'activo'=>true]);
+        /**
+         * Tipo de moneda
+         */
+        Catalogo::create(['idtable' => 32,'iditem' => 1, 'codigo' => 'PEN','nombre' => 'Nuevo Sol','descripcion'=>'Nuevo sol Perú','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 32,'iditem' => 2, 'codigo' => 'USD','nombre' => 'US Dollar','descripcion'=>'Dolar Estados Unidos (EEUU)','valor'=> null,'activo'=>true]);
+        /**
+         * Tipo de IGV
+         */
+        Catalogo::create(['idtable' => 33,'iditem' => 1, 'codigo' => '10','nombre' => 'Gravado-Operacion Onerosa','descripcion'=>'Gravado-Operacion Onerosa','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 33,'iditem' => 2, 'codigo' => '11','nombre' => 'Gravado-Retiro por premio','descripcion'=>'Gravado-Retiro por premio','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 33,'iditem' => 3, 'codigo' => '12','nombre' => 'Gravado-Retiro por donacion','descripcion'=>'Gravado-Retiro por donacion','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 33,'iditem' => 4, 'codigo' => '13','nombre' => 'Gravado-Retiro','descripcion'=>'Gravado-Retiro','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 33,'iditem' => 5, 'codigo' => '14','nombre' => 'Gravado-Retiro por publicidad','descripcion'=>'Gravado-Retiro por publicidad','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 33,'iditem' => 6, 'codigo' => '15','nombre' => 'Gravado-Bonificaciones','descripcion'=>'Gravado-Bonificaciones','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 33,'iditem' => 7, 'codigo' => '16','nombre' => 'Gravado-Retiro por entrega a trabajadores','descripcion'=>'Gravado-Retiro por entrega a trabjadores','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 33,'iditem' => 8, 'codigo' => '20','nombre' => 'Exonerado-Operacion Onerosa','descripcion'=>'Exonerado-Operacion Onerosa','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 33,'iditem' => 9, 'codigo' => '30','nombre' => 'Inafecto-Operacion onerosa','descripcion'=>'Inafecto-Operacion Onerosa','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 33,'iditem' => 10, 'codigo' => '31','nombre' => 'Inafecto-Retiro por Bonificacion','descripcion'=>'Inafecto-Retiro por Bonificacion','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 33,'iditem' => 11, 'codigo' => '32','nombre' => 'Inafecto-Retiro','descripcion'=>'Inafecto-Retiro','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 33,'iditem' => 12, 'codigo' => '33','nombre' => 'Inafecto-Retiro por muestras medicas','descripcion'=>'Inafecto-Retiro por muestras medicas','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 33,'iditem' => 13, 'codigo' => '34','nombre' => 'Inafecto-Retiro por convenio colectivo','descripcion'=>'Inafecto-Retiro por convenio colectivo','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 33,'iditem' => 14, 'codigo' => '35','nombre' => 'Inafecto-Retiro por premio','descripcion'=>'Inafecto-Retiro por premio','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 33,'iditem' => 15, 'codigo' => '36','nombre' => 'Inafecto-Retiro por publicidad','descripcion'=>'Inafecto-Retiro por publicidad','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 33,'iditem' => 16, 'codigo' => '40','nombre' => 'Exportacion','descripcion'=>'Exportacion','valor'=> null,'activo'=>true]);
 
 
 

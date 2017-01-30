@@ -97,6 +97,14 @@
                                                     <a href="{{ route('admin.checklist.show',$item->id) }}">
                                                         <i class="fa fa-check"></i> CheckList </a>
                                                 </li>
+                                                <li>
+                                                    <a href="{{ route('admin.checklist.show',$item->id) }}">
+                                                        <i class="fa fa-users"></i> Hermanos </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('admin.checklist.show',$item->id) }}">
+                                                        <i class="fa fa-sign-out"></i> Retiro del establecimiento </a>
+                                                </li>
                                             </ul>
                                         </div>
                                     </td>

@@ -137,12 +137,17 @@ class CatalogoController extends Controller
         Alert::success('Se elimino el registro');
         return redirect()->route('catalogo.index');
     }
+    /**
+     * activar un registro en catalogo
+     * @param  [type] $id [description]
+     * @return [type]     [description]
+     */
     public function active($id)
     {
         $catalogo = Catalogo::findOrFail($id);
         $data['activo']=!$catalogo->activo;
-        $this->Catalogo->fill($data);
-        $this->Catalogo->save();
+        $catalogo->fill($data);
+        $catalogo->save();
         Alert::success('Se activo el registro');
         return redirect()->route('catalogo.index');
     }
