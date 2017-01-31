@@ -9,7 +9,7 @@ class ProductosSelectData
 {
 	public function compose(View $view)
 	{
-		$productos = Producto::select('id','nombre')->orderBy('nombre')->pluck('nombre','id')->toarray();
+		$productos = Producto::select('id','nombre')->orderBy('id')->pluck('nombre','id')->toarray();
 
 		$view->with(compact('productos'));
 	}

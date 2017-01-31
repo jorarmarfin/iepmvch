@@ -23,7 +23,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             {!! Form::label('lblNombre', 'Nombre del cliente', ['class'=>'control-label']) !!}
-                            {!! Form::text('recibi', null, ['class'=>'form-control','placeholder'=>'Nombre del cliente']) !!}
+                            {!! Form::text('recibi', 'luis', ['class'=>'form-control','placeholder'=>'Nombre del cliente']) !!}
                         </div>
                     </div>
                     <!--/span-->
@@ -56,7 +56,7 @@
                                     </div>
                                     <div class="form-group col-md-2">
                                         {!! Form::label('lblCantidad', 'Cantidad', ['class'=>'control-label']) !!}
-                                        {!! Form::text('cantidad', null, ['class'=>'form-control','placeholder'=>'Cantidad']) !!}
+                                        {!! Form::text('cantidad', 1, ['class'=>'form-control','placeholder'=>'Cantidad']) !!}
                                     </div>
                                     <div class="form-group col-md-2">
                                         {!! Form::label('lblTipoIGV', 'Tipo', ['class'=>'control-label']) !!}
@@ -111,8 +111,66 @@ $(document).ready(function() {
     $('.mt-repeater').repeater({
         show: function () {
             $(this).slideDown();
-          }
+            Totales();
+          },
+        hide : function (remove) {
+            $(this).slideUp(remove);
+        }
     });
+    Totales();
+
+function Totales() {
+    var prod_0  = "select[name=items\\[0\\]\\[idproducto\\]]";
+    var pre_0  = "input[name=items\\[0\\]\\[precio\\]]";
+    var cant_0  = "input[name=items\\[0\\]\\[cantidad\\]]";
+    var sub_0  = "input[name=items\\[0\\]\\[subtotal\\]]";
+    var tot_0  = "input[name=items\\[0\\]\\[total\\]]";
+    var igv = {{ igv() }}
+    $(prod_0).change(function(){
+       $.ajax({
+           url: '{{ url("/productos") }}',
+           type: 'get',
+           dataType: 'json',
+           data: {varsearch: $(this).val()},
+           success: function (producto) {
+                $(pre_0).val(producto.precio);
+                $(sub_0).val(parseFloat($(cant_0).val())*parseFloat(producto.precio));
+                $(tot_0).val(parseFloat((igv/100)*$(sub_0).val()) + parseFloat($(sub_0).val()));
+           }
+       });
+    });
+    $(cant_0).change(function(){
+        $(sub_0).val(parseFloat($(cant_0).val())*parseFloat($(pre_0).val()));
+        $(tot_0).val(parseFloat((igv/100)*$(sub_0).val()) + parseFloat($(sub_0).val()));
+    });
+
+    var prod_1  = "select[name=items\\[1\\]\\[idproducto\\]]";
+    var pre_1  = "input[name=items\\[1\\]\\[precio\\]]";
+    var cant_1  = "input[name=items\\[1\\]\\[cantidad\\]]";
+    var sub_1  = "input[name=items\\[1\\]\\[subtotal\\]]";
+    var tot_1  = "input[name=items\\[1\\]\\[total\\]]";
+    $(prod_1).change(function(){
+       $.ajax({
+           url: '{{ url("/productos") }}',
+           type: 'get',
+           dataType: 'json',
+           data: {varsearch: $(this).val()},
+           success: function (producto) {
+                $(pre_1).val(producto.precio);
+                $(sub_1).val(parseFloat($(cant_1).val())*parseFloat(producto.precio));
+                $(tot_1).val(parseFloat((igv/100)*$(sub_1).val()) + parseFloat($(sub_1).val()));
+           }
+       });
+    });
+    $(cant_1).change(function(){
+        $(sub_1).val(parseFloat($(cant_1).val())*parseFloat($(pre_1).val()));
+        $(tot_1).val(parseFloat((igv/100)*$(sub_1).val()) + parseFloat($(sub_1).val()));
+    });
+
+
+}
+
+
 
 });
 </script>

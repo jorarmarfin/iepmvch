@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Alumno;
 use App\Models\Catalogo;
 use App\Models\Familiar;
+use App\Models\Producto;
 use Auth;
 use DB;
 use Illuminate\Http\Request;
@@ -65,4 +66,16 @@ class ResourceController extends Controller
                         ->get();
         return $matriculables;
     }
+    /**
+     * Devuelve listado de productos
+     * @return [type] [description]
+     */
+    public function productos(Request $request)
+    {
+        $id = $request->varsearch ?:'';
+        if($request->has('varsearch')) $producto = Producto::find($id);
+        else $producto = Producto::all();
+        return $producto;
+    }
+
 }

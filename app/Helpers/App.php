@@ -125,4 +125,19 @@ if (! function_exists('LinkActivo')) {
         else return '<a href="'.$link.'" class="label label-sm label-danger"> Inactivo </a>';
     }
 }
+/**
+ * Devuelve el id del sexo masculino
+ */
+if (! function_exists('igv')) {
+    /**
+     * Funcion que retorna el prefijo para nombres de archivos
+     * @return [type] [description]
+     */
+    function igv()
+    {
+
+        $igv = Catalogo::table('IGV')->activo()->first();
+        return $igv->valor;
+    }
+}
 
