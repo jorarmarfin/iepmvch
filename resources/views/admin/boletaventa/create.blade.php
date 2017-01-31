@@ -19,15 +19,60 @@
             <!-- BEGIN FORM-->
 			{!! Form::open(['route'=>'admin.boletaventa.store','method'=>'POST','class'=>'horizontal-form mt-repeater']) !!}
             <div class="form-body">
-
-                <div class="form-group mt-repeater">
-                    <div data-repeater-list="group-a">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            {!! Form::label('lblNombre', 'Nombre del cliente', ['class'=>'control-label']) !!}
+                            {!! Form::text('recibi', null, ['class'=>'form-control','placeholder'=>'Nombre del cliente']) !!}
+                        </div>
+                    </div>
+                    <!--/span-->
+                </div>
+                <!--/row-->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {!! Form::label('lblTipoDocumento', 'Tipo de documento', ['class'=>'control-label']) !!}
+                            {!! Form::select('idtipodocumento',$tipodocumento, EstadoId('TIPO DOCUMENTO','Boleta de Venta'), ['class'=>'form-control','placeholder'=>'Seleccionar Tipo de documento']) !!}
+                        </div>
+                    </div>
+                    <!--/span-->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {!! Form::label('lblFecha', 'Fecha de emision', ['class'=>'control-label']) !!}
+                            {!! Form::date('created_at', null, ['class'=>'form-control']) !!}
+                        </div>
+                    </div><!--/span-->
+                </div><!--/row-->
+                 {{-- Form::hidden('idestado', EstadoId('ESTADO ALUMNO','Regular')) --}}
+                <div class="form-group mt-repeater"><!--Bloque ha repetir-->
+                    <div data-repeater-list="items">
                         <div data-repeater-item class="mt-repeater-item">
                             <div class="row mt-repeater-row">
                                 <div class="col-md-11">
-                                    <div class="form-group">
-                                        {!! Form::label('lblNombre', 'Nombre del cliente', ['class'=>'control-label']) !!}
-                                        {!! Form::text('recibi', null, ['class'=>'form-control','placeholder'=>'Nombre del cliente']) !!}
+                                    <div class="form-group col-md-2">
+                                        {!! Form::label('lblProducto', 'Producto', ['class'=>'control-label']) !!}
+                                        {!! Form::select('idproducto',$productos, null, ['class'=>'form-control','placeholder'=>'Productos']) !!}
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        {!! Form::label('lblCantidad', 'Cantidad', ['class'=>'control-label']) !!}
+                                        {!! Form::text('cantidad', null, ['class'=>'form-control','placeholder'=>'Cantidad']) !!}
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        {!! Form::label('lblTipoIGV', 'Tipo', ['class'=>'control-label']) !!}
+                                        {!! Form::select('idtipoigv', $tipoigv,null, ['class'=>'form-control','placeholder'=>'Tipo']) !!}
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        {!! Form::label('lblPrecioU', 'Precio Unitario', ['class'=>'control-label']) !!}
+                                        {!! Form::text('precio', null, ['class'=>'form-control','placeholder'=>'precio']) !!}
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        {!! Form::label('lblSubtotal', 'Subtotal', ['class'=>'control-label']) !!}
+                                        {!! Form::text('subtotal', null, ['class'=>'form-control','placeholder'=>'subtotal']) !!}
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        {!! Form::label('lbltotal', 'total', ['class'=>'control-label']) !!}
+                                        {!! Form::text('total', null, ['class'=>'form-control','placeholder'=>'total']) !!}
                                     </div>
                                 </div>
                                 <div class="col-md-1">
@@ -39,11 +84,11 @@
                             </div>
                         </div>
                     </div>
-                    <a href="javascript:;" data-repeater-create class="btn btn-info mt-repeater-add">
+                    <a href="javascript:;" data-repeater-create class="btn green-meadow mt-repeater-add">
                         <i class="fa fa-plus"></i>
-                        Add Product Variation
+                        Agregar producto
                     </a>
-                </div>
+                </div><!--/Bloque ha repetir-->
 
 
             </div>
