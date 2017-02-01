@@ -15,27 +15,37 @@ class CreateCajasTable extends Migration
     {
         Schema::create('caja', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('recibi',200)->nullable();
-            $table->string('dni',20)->nullable();
-            $table->string('cantidad',200)->nullable();
-            $table->decimal('monto','10','3')->nullable();
-            $table->decimal('valortotal','10','3')->nullable();
-            $table->mediumtext('concepto')->nullable();
-            $table->integer('idalumno')->nullable();
-            $table->integer('idgrado')->nullable();
-            $table->decimal('entrada','10','3')->nullable();
-            $table->decimal('salida','10','3')->nullable();
-            $table->decimal('saldo','10','3')->nullable();
+            $table->date('fechaemision')->nullable();
+            $table->integer('idtipoidentificacion')->nullable();
+            $table->string('numidentificacion',15)->nullable();
+            $table->string('razonsocial',100)->nullable();
+            $table->integer('idtipomoneda')->nullable();
+            $table->decimal('total_gravado','12','2')->nullable();
+            $table->decimal('total_inafecto','12','2')->nullable();
+            $table->decimal('total_exonerado','12','2')->nullable();
+            $table->decimal('totalventa','12','2')->nullable();
+
+            $table->integer('idtiponota')->nullable();
+            $table->mediumtext('descripcion')->nullable();
+            $table->string('serie',4)->nullable();
+            $table->bigint('numero',8)->nullable();
+
+
             $table->integer('idmatricula')->nullable();
+            $table->mediumtext('concepto')->nullable();
+            $table->decimal('entrada','12','2')->nullable();
+            $table->decimal('salida','12','2')->nullable();
+            $table->decimal('saldo','12','2')->nullable();
             $table->integer('idtipo')->nullable();
             $table->integer('idigv')->nullable();
             $table->mediumtext('descripcion')->nullable();
             $table->timestamps();
             $table->foreign('idmatricula')->references('id')->on('matricula');
             $table->foreign('idtipo')->references('id')->on('catalogo');
+            $table->foreign('idtipoidentificacion')->references('id')->on('catalogo');
             $table->foreign('idigv')->references('id')->on('catalogo');
-            $table->foreign('idalumno')->references('id')->on('alumno');
-            $table->foreign('idgrado')->references('id')->on('grado');
+            $table->foreign('idtipomoneda')->references('id')->on('catalogo');
+            $table->foreign('idtiponota')->references('id')->on('catalogo');
         });
     }
 

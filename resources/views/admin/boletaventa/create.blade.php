@@ -52,7 +52,7 @@
                                 <div class="col-md-11">
                                     <div class="form-group col-md-2">
                                         {!! Form::label('lblProducto', 'Producto', ['class'=>'control-label']) !!}
-                                        {!! Form::select('idproducto',$productos, null, ['class'=>'form-control','placeholder'=>'Productos']) !!}
+                                        {!! Form::select('idproducto',$productos, null, ['class'=>'form-control','placeholder'=>'Productos','id'=>'idproducto[]']) !!}
                                     </div>
                                     <div class="form-group col-md-2">
                                         {!! Form::label('lblCantidad', 'Cantidad', ['class'=>'control-label']) !!}
@@ -68,11 +68,11 @@
                                     </div>
                                     <div class="form-group col-md-2">
                                         {!! Form::label('lblSubtotal', 'Subtotal', ['class'=>'control-label']) !!}
-                                        {!! Form::text('subtotal', null, ['class'=>'form-control','placeholder'=>'subtotal']) !!}
+                                        {!! Form::text('subtotal', null, ['class'=>'form-control','placeholder'=>'subtotal','disabled']) !!}
                                     </div>
                                     <div class="form-group col-md-2">
                                         {!! Form::label('lbltotal', 'total', ['class'=>'control-label']) !!}
-                                        {!! Form::text('total', null, ['class'=>'form-control','placeholder'=>'total']) !!}
+                                        {!! Form::text('total', null, ['class'=>'form-control','placeholder'=>'total','disabled']) !!}
                                     </div>
                                 </div>
                                 <div class="col-md-1">
@@ -89,7 +89,24 @@
                         Agregar producto
                     </a>
                 </div><!--/Bloque ha repetir-->
+                <div class="row ">
+                    <div class="col-xs-4 ">
 
+                    </div>
+                    <div class="col-xs-8 invoice-block text-right">
+                        <ul class="list-unstyled amounts">
+                            <li>
+                                <strong>Sub - Total amount:</strong> $9265 </li>
+                            <li>
+                                <strong>Discount:</strong> 12.9% </li>
+                            <li>
+                                <strong>VAT:</strong> ----- </li>
+                            <li>
+                                <strong>Grand Total:</strong> $12489 </li>
+                        </ul>
+                        <br>
+                    </div>
+                </div>
 
             </div>
             <div class="form-actions right">
@@ -115,62 +132,63 @@ $(document).ready(function() {
           },
         hide : function (remove) {
             $(this).slideUp(remove);
-        }
+        },
+        defaultValues: {
+                'cantidad': '1'
+            },
     });
     Totales();
 
 function Totales() {
-    var prod_0  = "select[name=items\\[0\\]\\[idproducto\\]]";
-    var pre_0  = "input[name=items\\[0\\]\\[precio\\]]";
-    var cant_0  = "input[name=items\\[0\\]\\[cantidad\\]]";
-    var sub_0  = "input[name=items\\[0\\]\\[subtotal\\]]";
-    var tot_0  = "input[name=items\\[0\\]\\[total\\]]";
+    var prod = [];
+    var pre = [];
+    var cant = [];
+    var sub = [];
+    var tot = [];
     var igv = {{ igv() }}
-    $(prod_0).change(function(){
-       $.ajax({
-           url: '{{ url("/productos") }}',
-           type: 'get',
-           dataType: 'json',
-           data: {varsearch: $(this).val()},
-           success: function (producto) {
-                $(pre_0).val(producto.precio);
-                $(sub_0).val(parseFloat($(cant_0).val())*parseFloat(producto.precio));
-                $(tot_0).val(parseFloat((igv/100)*$(sub_0).val()) + parseFloat($(sub_0).val()));
-           }
-       });
-    });
-    $(cant_0).change(function(){
-        $(sub_0).val(parseFloat($(cant_0).val())*parseFloat($(pre_0).val()));
-        $(tot_0).val(parseFloat((igv/100)*$(sub_0).val()) + parseFloat($(sub_0).val()));
-    });
+    for (var i = 0; i <= 100; i++) {
+        prod[i] = "select[name=items\\["+i+"\\]\\[idproducto\\]]";
+        pre[i] = "input[name=items\\["+i+"\\]\\[precio\\]";
+        cant[i] = "input[name=items\\["+i+"\\]\\[cantidad\\]]";
+        sub[i] = "input[name=items\\["+i+"\\]\\[subtotal\\]]";
+        tot[i] = "input[name=items\\["+i+"\\]\\[total\\]]";
+    }//fin del for
 
-    var prod_1  = "select[name=items\\[1\\]\\[idproducto\\]]";
-    var pre_1  = "input[name=items\\[1\\]\\[precio\\]]";
-    var cant_1  = "input[name=items\\[1\\]\\[cantidad\\]]";
-    var sub_1  = "input[name=items\\[1\\]\\[subtotal\\]]";
-    var tot_1  = "input[name=items\\[1\\]\\[total\\]]";
-    $(prod_1).change(function(){
-       $.ajax({
-           url: '{{ url("/productos") }}',
-           type: 'get',
-           dataType: 'json',
-           data: {varsearch: $(this).val()},
-           success: function (producto) {
-                $(pre_1).val(producto.precio);
-                $(sub_1).val(parseFloat($(cant_1).val())*parseFloat(producto.precio));
-                $(tot_1).val(parseFloat((igv/100)*$(sub_1).val()) + parseFloat($(sub_1).val()));
-           }
-       });
-    });
-    $(cant_1).change(function(){
-        $(sub_1).val(parseFloat($(cant_1).val())*parseFloat($(pre_1).val()));
-        $(tot_1).val(parseFloat((igv/100)*$(sub_1).val()) + parseFloat($(sub_1).val()));
-    });
-
-
+        ejecutar(prod,pre,cant,sub,tot,igv,0);
+        ejecutar(prod,pre,cant,sub,tot,igv,1);
+        ejecutar(prod,pre,cant,sub,tot,igv,2);
+        ejecutar(prod,pre,cant,sub,tot,igv,3);
+        ejecutar(prod,pre,cant,sub,tot,igv,4);
+        ejecutar(prod,pre,cant,sub,tot,igv,5);
+        ejecutar(prod,pre,cant,sub,tot,igv,6);
+        ejecutar(prod,pre,cant,sub,tot,igv,7);
+        ejecutar(prod,pre,cant,sub,tot,igv,8);
+        ejecutar(prod,pre,cant,sub,tot,igv,9);
+        ejecutar(prod,pre,cant,sub,tot,igv,10);
+        ejecutar(prod,pre,cant,sub,tot,igv,11);
+        ejecutar(prod,pre,cant,sub,tot,igv,12);
+        ejecutar(prod,pre,cant,sub,tot,igv,13);
 }
 
-
+function ejecutar(prod,pre,cant,sub,tot,igv,i) {
+    $(prod[i]).change(function(){
+           $.ajax({
+               url: '{{ url("/productos") }}',
+               type: 'get',
+               dataType: 'json',
+               data: {varsearch: $(this).val()},
+               success: function (producto) {
+                    $(pre[i]).val(producto.precio);
+                    $(sub[i]).val(parseFloat($(cant[i]).val())*parseFloat(producto.precio));
+                    $(tot[i]).val(parseFloat((igv/100)*$(sub[i]).val()) + parseFloat($(sub[i]).val()));
+               }
+           });
+        });
+        $(cant[i]).change(function(){
+            $(sub[i]).val(parseFloat($(cant[i]).val())*parseFloat($(pre_i).val()));
+            $(tot[i]).val(parseFloat((igv/100)*$(sub[i]).val()) + parseFloat($(sub[i]).val()));
+        });
+}
 
 });
 </script>
