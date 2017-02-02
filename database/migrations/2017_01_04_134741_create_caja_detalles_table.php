@@ -16,23 +16,18 @@ class CreateCajaDetallesTable extends Migration
         Schema::create('caja_detalle', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('idcaja')->nullable();
-            $table->integer('idum')->nullable();
             $table->integer('cantidad')->nullable();
             $table->integer('idproducto')->nullable();
-            $table->mediumtext('descripcion')->nullable();
-            $table->decimal('preciounitario','12','10')->nullable();
-
-            $table->integer('idtipoentrada')->nullable();
+            $table->decimal('preciounitario','12','2')->nullable();
+            $table->decimal('descuento','12','2')->default(0);
+            $table->decimal('monto_igv','12','2')->nullable();
             $table->integer('idtipoigv')->nullable();
-            $table->integer('idtipodocumento')->nullable();
-            $table->decimal('subtotal','10','3')->nullable();
-            $table->decimal('total','10','3')->nullable();
+
+            $table->decimal('subtotal','12','2')->nullable();
+            $table->decimal('total','12','2')->nullable();
             $table->timestamps();
             $table->foreign('idcaja')->references('id')->on('caja');
-            $table->foreign('idtipoentrada')->references('id')->on('catalogo');
-            $table->foreign('idum')->references('id')->on('catalogo');
             $table->foreign('idtipoigv')->references('id')->on('catalogo');
-            $table->foreign('idtipodocumento')->references('id')->on('catalogo');
             $table->foreign('idproducto')->references('id')->on('producto');
         });
     }

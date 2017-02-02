@@ -17,9 +17,8 @@ class CreateSeriesTable extends Migration
             $table->increments('id');
             $table->string('nombre',10)->nullable();
             $table->string('prefijo',3)->nullable();
-            $table->integer('serie')->nullable();
+            $table->integer('serie')->default(1);
             $table->biginteger('numero')->nullable();
-            $table->timestamps();
         });
     }
 

@@ -209,7 +209,7 @@ class CatalogoTableSeeder extends Seeder
         /**
          * Unidad de medida
          */
-        Catalogo::create(['idtable' => 21,'iditem' => 1, 'codigo' => '07','nombre' => 'Unidad','descripcion'=>'Solo un articulo','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 21,'iditem' => 1, 'codigo' => 'NIU','nombre' => 'Unidad','descripcion'=>'Solo un articulo','valor'=> null,'activo'=>true]);
         /**
          * Pais
          */
@@ -2321,9 +2321,9 @@ class CatalogoTableSeeder extends Seeder
         /**
          * IMPUESTO
          */
-        Catalogo::create(['idtable' => 30,'iditem' => 1, 'codigo' => '1000','nombre' => 'IGV 19%','descripcion'=>'IGV','valor'=> 19,'activo'=>true]);
+        Catalogo::create(['idtable' => 30,'iditem' => 1, 'codigo' => '1000','nombre' => 'IGV 19%','descripcion'=>'IGV','valor'=> 19,'activo'=>false]);
         Catalogo::create(['idtable' => 30,'iditem' => 2, 'codigo' => '1000','nombre' => 'IGV 18%','descripcion'=>'IGV','valor'=> 18,'activo'=>true]);
-        Catalogo::create(['idtable' => 30,'iditem' => 3, 'codigo' => '1000','nombre' => 'IGV 17%','descripcion'=>'IGV','valor'=> 17,'activo'=>true]);
+        Catalogo::create(['idtable' => 30,'iditem' => 3, 'codigo' => '1000','nombre' => 'IGV 17%','descripcion'=>'IGV','valor'=> 17,'activo'=>false]);
         /**
          * TIPO DE DOCUMENTO
          */
@@ -2362,7 +2362,7 @@ class CatalogoTableSeeder extends Seeder
         Catalogo::create(['idtable' => 34,'iditem' => 3, 'codigo' => '4','nombre' => 'Carne EX','descripcion'=>'Carne de extranjeria','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 34,'iditem' => 4, 'codigo' => '6','nombre' => 'RUC','descripcion'=>'Registro Unico de Contribuyente','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 34,'iditem' => 5, 'codigo' => '7','nombre' => 'Pasaporte','descripcion'=>'Pasaporte','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 34,'iditem' => 5, 'codigo' => 'A','nombre' => 'Cedula','descripcion'=>'Cedula diplomatica de Identidad','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 34,'iditem' => 6, 'codigo' => 'A','nombre' => 'Cedula','descripcion'=>'Cedula diplomatica de Identidad','valor'=> null,'activo'=>true]);
         /**
          * Tipo de nota
          */

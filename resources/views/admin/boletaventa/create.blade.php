@@ -21,11 +21,11 @@
                 {!!Form::hidden('idtipodocumento', EstadoId('TIPO DOCUMENTO','Boleta de Venta') );!!}
             <div class="form-body">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group">
                             {!! Form::label('lblFecha', 'Fecha de emision', ['class'=>'control-label']) !!}
                             <div class="input-group  date " data-provide="datepicker">
-                                {!! Form::text('fechaemision', null, ['class'=>'form-control']) !!}
+                                {!! Form::text('fechaemision', null, ['class'=>'form-control','id'=>'fechaemision']) !!}
                                 <span class="input-group-btn">
                                     <button class="btn default" type="button">
                                         <i class="fa fa-calendar"></i>
@@ -34,38 +34,29 @@
                             </div>
                         </div>
                     </div><!--/span-->
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group">
-                            {!! Form::label('lblTipoDocumento', 'Tipo de documento', ['class'=>'control-label']) !!}
-                            {!! Form::select('ididentificacion',$tipodocumento, EstadoId('TIPO DOCUMENTO','Boleta de Venta'), ['class'=>'form-control','placeholder'=>'Seleccionar Tipo de documento']) !!}
+                            {!! Form::label('lblTipoDocumento', 'Tipo de documento de identificacion', ['class'=>'control-label']) !!}
+                            {!! Form::select('ididentificacion',$tipoidentificacion, EstadoId('TIPO DOCUMENTO IDENTIDAD','DNI'), ['class'=>'form-control','placeholder'=>'Seleccionar Tipo de documento']) !!}
+                        </div>
+                    </div><!--/span-->
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            {!! Form::label('lblNumeroId', 'Numero de Identificacion', ['class'=>'control-label']) !!}
+                            {!! Form::text('ididentificacion',null,  ['class'=>'form-control','placeholder'=>'Numero de identificacion']) !!}
                         </div>
                     </div><!--/span-->
                 </div><!--/row-->
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            {!! Form::label('lblNombre', 'Nombre del cliente', ['class'=>'control-label']) !!}
-                            {!! Form::text('recibi', 'luis', ['class'=>'form-control','placeholder'=>'Nombre del cliente']) !!}
-                        </div>
-                    </div>
-                    <!--/span-->
-                </div>
-                <!--/row-->
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            {!! Form::label('lblTipoDocumento', 'Tipo de documento', ['class'=>'control-label']) !!}
-                            {!! Form::select('idtipodocumento',$tipodocumento, EstadoId('TIPO DOCUMENTO','Boleta de Venta'), ['class'=>'form-control','placeholder'=>'Seleccionar Tipo de documento']) !!}
-                        </div>
-                    </div>
-                    <!--/span-->
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            {!! Form::label('lblFecha', 'Fecha de emision', ['class'=>'control-label']) !!}
-                            {!! Form::date('created_at', null, ['class'=>'form-control']) !!}
+                            {!! Form::label('lblRazonSocial', 'Razon Social', ['class'=>'control-label']) !!}
+                            {!! Form::text('razonsocial', null, ['class'=>'form-control','placeholder'=>'Apellidos y nombres, denominación o razón social del adquirente o usuario ']) !!}
                         </div>
                     </div><!--/span-->
-                </div><!--/row-->
+                    {!!Form::hidden('idtipomoneda', EstadoId('TIPO MONEDA','Nuevo Sol') );!!}
+                </div>
+                <!--/row-->
                  {{-- Form::hidden('idestado', EstadoId('ESTADO ALUMNO','Regular')) --}}
                 <div class="form-group mt-repeater"><!--Bloque ha repetir-->
                     <div data-repeater-list="items">
@@ -80,13 +71,14 @@
                                         {!! Form::label('lblCantidad', 'Cantidad', ['class'=>'control-label']) !!}
                                         {!! Form::text('cantidad', 1, ['class'=>'form-control','placeholder'=>'Cantidad']) !!}
                                     </div>
-                                    <div class="form-group col-md-2">
-                                        {!! Form::label('lblTipoIGV', 'Tipo', ['class'=>'control-label']) !!}
-                                        {!! Form::select('idtipoigv', $tipoigv,null, ['class'=>'form-control','placeholder'=>'Tipo']) !!}
-                                    </div>
+                                        {!!Form::hidden('idtipoigv', EstadoId('TIPO IGV','Gravado-Operacion Onerosa') );!!}
                                     <div class="form-group col-md-2">
                                         {!! Form::label('lblPrecioU', 'Precio Unitario', ['class'=>'control-label']) !!}
                                         {!! Form::text('precio', null, ['class'=>'form-control','placeholder'=>'precio']) !!}
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        {!! Form::label('lblDescuento', 'Descuento', ['class'=>'control-label']) !!}
+                                        {!! Form::text('descuento', 0, ['class'=>'form-control','placeholder'=>'descuento']) !!}
                                     </div>
                                     <div class="form-group col-md-2">
                                         {!! Form::label('lblSubtotal', 'Subtotal', ['class'=>'control-label']) !!}
@@ -118,18 +110,25 @@
                     <div class="col-xs-8 invoice-block text-right">
                         <ul class="list-unstyled amounts">
                             <li>
-                                <strong>Sub - Total amount:</strong> $9265 </li>
+                                <strong class="col-sm-10"> SUBTOTAL: </strong>
+                                <strong class="col-sm-2"><div id="subtotal"></div></strong>
+                            </li>
                             <li>
-                                <strong>Discount:</strong> 12.9% </li>
+                                <strong class="col-sm-10"> DESCUENTO: </strong>
+                                <strong class="col-sm-2"> <div id="descuento"></div></strong>
+                            </li>
                             <li>
-                                <strong>VAT:</strong> ----- </li>
+                                <strong class="col-sm-10"> IGV: </strong>
+                                <strong class="col-sm-2"> <div id="igv"></div></strong>
+                            </li>
                             <li>
-                                <strong>Grand Total:</strong> $12489 </li>
+                                <strong class="col-sm-10"> TOTAL: </strong>
+                                <strong class="col-sm-2"> <div id="total"></div></strong>
+                            </li>
                         </ul>
                         <br>
                     </div>
                 </div>
-
             </div>
             <div class="form-actions right">
                 {!!Form::enviar('Guardar')!!}
@@ -146,77 +145,116 @@
 
 @section('js-scripts')
 <script>
-$('.datepicker').datepicker({
-    format: 'yyyy-mm-dd',
-    startDate: '-3d',
-    orientation: "left",
-});
-
 $(document).ready(function() {
+var aumento = 0;
+
+    $('#fechaemision').datepicker({
+        todayBtn: 'true',
+        format: 'yyyy-mm-dd',
+        orientation: "left",
+        autoclose: 'true'
+    });
+
     $('.mt-repeater').repeater({
         show: function () {
             $(this).slideDown();
             Totales();
+            aumento += parseFloat(aumento);
           },
         hide : function (remove) {
             $(this).slideUp(remove);
+            Totales();
+            aumento -= parseFloat(aumento);
         },
         defaultValues: {
-                'cantidad': '1'
+                'cantidad': '1',
+                'descuento': '0'
             },
     });
     Totales();
 
-function Totales() {
-    var prod = [];
-    var pre = [];
-    var cant = [];
-    var sub = [];
-    var tot = [];
-    var igv = {{ igv() }}
-    for (var i = 0; i <= 100; i++) {
-        prod[i] = "select[name=items\\["+i+"\\]\\[idproducto\\]]";
-        pre[i] = "input[name=items\\["+i+"\\]\\[precio\\]";
-        cant[i] = "input[name=items\\["+i+"\\]\\[cantidad\\]]";
-        sub[i] = "input[name=items\\["+i+"\\]\\[subtotal\\]]";
-        tot[i] = "input[name=items\\["+i+"\\]\\[total\\]]";
-    }//fin del for
+    function Totales() {
+        var prod = [];
+        var pre = [];
+        var des = [];
+        var cant = [];
+        var sub = [];
+        var tot = [];
+        var igv = {{ igv() }};
+        for (var i = 0; i <= 100; i++) {
+            prod[i] = "select[name=items\\["+i+"\\]\\[idproducto\\]]";
+            pre[i] = "input[name=items\\["+i+"\\]\\[precio\\]";
+            des[i] = "input[name=items\\["+i+"\\]\\[descuento\\]";
+            cant[i] = "input[name=items\\["+i+"\\]\\[cantidad\\]]";
+            sub[i] = "input[name=items\\["+i+"\\]\\[subtotal\\]]";
+            tot[i] = "input[name=items\\["+i+"\\]\\[total\\]]";
 
-        ejecutar(prod,pre,cant,sub,tot,igv,0);
-        ejecutar(prod,pre,cant,sub,tot,igv,1);
-        ejecutar(prod,pre,cant,sub,tot,igv,2);
-        ejecutar(prod,pre,cant,sub,tot,igv,3);
-        ejecutar(prod,pre,cant,sub,tot,igv,4);
-        ejecutar(prod,pre,cant,sub,tot,igv,5);
-        ejecutar(prod,pre,cant,sub,tot,igv,6);
-        ejecutar(prod,pre,cant,sub,tot,igv,7);
-        ejecutar(prod,pre,cant,sub,tot,igv,8);
-        ejecutar(prod,pre,cant,sub,tot,igv,9);
-        ejecutar(prod,pre,cant,sub,tot,igv,10);
-        ejecutar(prod,pre,cant,sub,tot,igv,11);
-        ejecutar(prod,pre,cant,sub,tot,igv,12);
-        ejecutar(prod,pre,cant,sub,tot,igv,13);
-}
+            ejecutar(prod,pre,des,cant,sub,tot,igv,i);
+        }//fin del for
 
-function ejecutar(prod,pre,cant,sub,tot,igv,i) {
-    $(prod[i]).change(function(){
-           $.ajax({
-               url: '{{ url("/productos") }}',
-               type: 'get',
-               dataType: 'json',
-               data: {varsearch: $(this).val()},
-               success: function (producto) {
-                    $(pre[i]).val(producto.precio);
-                    $(sub[i]).val(parseFloat($(cant[i]).val())*parseFloat(producto.precio));
-                    $(tot[i]).val(parseFloat((igv/100)*$(sub[i]).val()) + parseFloat($(sub[i]).val()));
-               }
-           });
+    }
+
+    function ejecutar(prod,pre,des,cant,sub,tot,igv,i) {
+        var v_prod = $(prod[i]);
+        var v_pre  = $(pre[i]);
+        var v_des  = $(des[i]);
+        var v_cant = $(cant[i]);
+        var v_sub  = $(sub[i]);
+        var v_tot  = $(tot[i]);
+        v_prod.change(function() {
+            $.ajax({
+                   url: '{{ url("/productos") }}',
+                   type: 'get',
+                   dataType: 'json',
+                   data: {varsearch: $(this).val()},
+                   success: function (producto) {
+                        v_pre.val(producto.precio);
+                        subtotales(v_sub,v_pre,v_des,v_tot,igv);
+
+                   }
+               });
+
         });
-        $(cant[i]).change(function(){
-            $(sub[i]).val(parseFloat($(cant[i]).val())*parseFloat($(pre_i).val()));
-            $(tot[i]).val(parseFloat((igv/100)*$(sub[i]).val()) + parseFloat($(sub[i]).val()));
+        v_cant.change(function(){
+             subtotales(v_sub,v_pre,v_des,v_tot,igv);
+
         });
-}
+
+        v_des.change(function(){
+             subtotales(v_sub,v_pre,v_des,v_tot,igv);
+
+        });
+
+
+    }
+
+    function calculaigv(monto,igv) {
+        var gravado = (igv/100)*monto;
+        return gravado;
+    }
+
+    function subtotales(sub,pre,des,tot,igv) {
+        sub.val(pre.val()-des.val());
+        tot.val( calculaigv(sub.val(),igv) + parseFloat(sub.val()));
+        //$('#subtotal').text('S/. '+subtotal_g);
+    }
+    function calculo_totales_general() {
+        var pre = [];
+        var des = [];
+        var sub = [];
+        var tot = [];
+        var igv = {{ igv() }};
+        var subtotal_g = 0;
+        for (var i = 0; i <= 100; i++) {
+            pre[i] = "input[name=items\\["+i+"\\]\\[precio\\]";
+            des[i] = "input[name=items\\["+i+"\\]\\[descuento\\]";
+            sub[i] = "input[name=items\\["+i+"\\]\\[subtotal\\]]";
+            tot[i] = "input[name=items\\["+i+"\\]\\[total\\]]";
+
+            subtotal_g += parseFloat($(pre[i]).val());
+        }//fin del for
+        console.log(aumento);
+    }
 
 
 });

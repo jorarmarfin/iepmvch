@@ -18,6 +18,7 @@ use App\Http\ViewComposers\SistemaPensionSelectData;
 use App\Http\ViewComposers\TipoDocumentoSelectData;
 use App\Http\ViewComposers\TipoFamiliarSelectData;
 use App\Http\ViewComposers\TipoIGVSelectData;
+use App\Http\ViewComposers\TipoIdentificacionSelectData;
 use App\Http\ViewComposers\TipoMatriculaSelectData;
 use App\Http\ViewComposers\TipoPersonalSelectData;
 use Illuminate\Support\ServiceProvider;
@@ -113,6 +114,11 @@ class ViewServiceProvider extends ServiceProvider
             ['admin.boletaventa.create','admin.boletaventa.edit'
             ],
             TipoIGVSelectData::class
+            );
+        $this->app->make('view')->composer(
+            ['admin.boletaventa.create','admin.boletaventa.edit'
+            ],
+            TipoIdentificacionSelectData::class
             );
     }
 

@@ -12,7 +12,7 @@ class ProductosTableSeeder extends Seeder
      */
     public function run()
     {
-        $um = Catalogo::where('idtable',21)->where('codigo','07')->first();
+        $um = Catalogo::where('idtable',21)->where('codigo','NIU')->first();
         Producto::create(['nombre'=>'Pension Inicial', 'idum'=>$um->id,'precio'=>300.0]);
         Producto::create(['nombre'=>'Pension Primaria', 'idum'=>$um->id,'precio'=>320.0]);
         Producto::create(['nombre'=>'Pension Secundaria', 'idum'=>$um->id,'precio'=>320.0]);

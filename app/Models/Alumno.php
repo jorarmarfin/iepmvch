@@ -113,7 +113,7 @@ class Alumno extends Model
         $alumno->fill($data);
 
         if ($request->hasFile('file')) {
-            if(!str_contains($personal->foto,'nofoto.jpg'))
+            if(!str_contains($alumno->foto,'nofoto.jpg'))
                 Storage::delete("/public/$alumno->foto");
 
             $alumno->foto = $request->file('file')->store('fotos','public');
