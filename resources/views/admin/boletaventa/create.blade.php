@@ -18,7 +18,29 @@
             <div class="portlet-body form">
             <!-- BEGIN FORM-->
 			{!! Form::open(['route'=>'admin.boletaventa.store','method'=>'POST','class'=>'horizontal-form mt-repeater']) !!}
+                {!!Form::hidden('idtipodocumento', EstadoId('TIPO DOCUMENTO','Boleta de Venta') );!!}
             <div class="form-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {!! Form::label('lblFecha', 'Fecha de emision', ['class'=>'control-label']) !!}
+                            <div class="input-group  date " data-provide="datepicker">
+                                {!! Form::text('fechaemision', null, ['class'=>'form-control']) !!}
+                                <span class="input-group-btn">
+                                    <button class="btn default" type="button">
+                                        <i class="fa fa-calendar"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div><!--/span-->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {!! Form::label('lblTipoDocumento', 'Tipo de documento', ['class'=>'control-label']) !!}
+                            {!! Form::select('ididentificacion',$tipodocumento, EstadoId('TIPO DOCUMENTO','Boleta de Venta'), ['class'=>'form-control','placeholder'=>'Seleccionar Tipo de documento']) !!}
+                        </div>
+                    </div><!--/span-->
+                </div><!--/row-->
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
@@ -124,6 +146,12 @@
 
 @section('js-scripts')
 <script>
+$('.datepicker').datepicker({
+    format: 'yyyy-mm-dd',
+    startDate: '-3d',
+    orientation: "left",
+});
+
 $(document).ready(function() {
     $('.mt-repeater').repeater({
         show: function () {
@@ -190,19 +218,20 @@ function ejecutar(prod,pre,cant,sub,tot,igv,i) {
         });
 }
 
+
 });
 </script>
 @stop
 
 
 @section('plugins-styles')
-{!! Html::style(asset('assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css')) !!}
+{!! Html::style(asset('assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css')) !!}
 {!! Html::style(asset('assets/global/plugins/select2/css/select2.min.css')) !!}
 {!! Html::style(asset('assets/global/plugins/select2/css/select2-bootstrap.min.css')) !!}
 {!! Html::style(asset('assets/global/plugins/icheck/skins/all.css')) !!}
 @stop
 @section('plugins-js')
-{!! Html::script(asset('assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js')) !!}
+{!! Html::script(asset('assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js')) !!}
 {!! Html::script(asset('assets/global/plugins/select2/js/select2.full.min.js')) !!}
 {!! Html::script(asset('assets/global/plugins/select2/js/i18n/es.js')) !!}
 {!! Html::script(asset('assets/global/plugins/icheck/icheck.min.js')) !!}

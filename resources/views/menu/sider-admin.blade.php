@@ -40,8 +40,6 @@
             <ul class="sub-menu">
                 {!!Form::menu('Boleta Venta',route('admin.boletaventa.index'))!!}
                 {!!Form::menu('Recibo',route('admin.boletaventa.index'))!!}
-                {!!Form::menu('Nota de crédito',route('admin.boletaventa.index'))!!}
-                {!!Form::menu('Nota de débito',route('admin.boletaventa.index'))!!}
                 {!!Form::menu('Productos',route('admin.productos.index'))!!}
                 {!!Form::menu('IGV',route('catalogo.gestion','IGV'))!!}
             </ul>

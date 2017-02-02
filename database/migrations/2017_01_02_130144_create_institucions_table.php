@@ -25,9 +25,6 @@ class CreateInstitucionsTable extends Migration
             $table->string('email',200)->nullable();
             $table->string('web',100)->nullable();
             $table->string('ruc',50)->nullable();
-            $table->string('serie',10)->nullable();
-            $table->biginteger('inicio')->nullable();
-            $table->biginteger('fin')->nullable();
             $table->timestamps();
         });
     }

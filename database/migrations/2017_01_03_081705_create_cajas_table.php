@@ -16,7 +16,7 @@ class CreateCajasTable extends Migration
         Schema::create('caja', function (Blueprint $table) {
             $table->increments('id');
             $table->date('fechaemision')->nullable();
-            $table->integer('idtipoidentificacion')->nullable();
+            $table->integer('ididentificacion')->nullable();
             $table->string('numidentificacion',15)->nullable();
             $table->string('razonsocial',100)->nullable();
             $table->integer('idtipomoneda')->nullable();
@@ -27,7 +27,8 @@ class CreateCajasTable extends Migration
 
             $table->integer('idtiponota')->nullable();
             $table->mediumtext('descripcion')->nullable();
-            $table->string('serie',4)->nullable();
+            $table->string('prefijo',3)->nullable();
+            $table->integer('serie',3)->nullable();
             $table->bigint('numero',8)->nullable();
 
 
@@ -42,7 +43,7 @@ class CreateCajasTable extends Migration
             $table->timestamps();
             $table->foreign('idmatricula')->references('id')->on('matricula');
             $table->foreign('idtipo')->references('id')->on('catalogo');
-            $table->foreign('idtipoidentificacion')->references('id')->on('catalogo');
+            $table->foreign('ididentificacion')->references('id')->on('catalogo');
             $table->foreign('idigv')->references('id')->on('catalogo');
             $table->foreign('idtipomoneda')->references('id')->on('catalogo');
             $table->foreign('idtiponota')->references('id')->on('catalogo');
