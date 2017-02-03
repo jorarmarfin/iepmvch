@@ -140,4 +140,30 @@ if (! function_exists('igv')) {
         return $igv->valor;
     }
 }
+/**
+ * Devuelve un pad del elemento que ingrese
+ */
+if (! function_exists('pad')) {
+    /**
+     * Funcion que retorna el prefijo para nombres de archivos
+     * @return [type] [description]
+     */
+    function pad($input,$cant,$aguja,$lado = null)
+    {
+        switch ($lado) {
+            case 'L':
+                $pad = str_pad($input, $cant, $aguja,STR_PAD_LEFT);
+                break;
+            case 'B':
+                $pad = str_pad($input, $cant, $aguja,STR_PAD_BOTH);
+                break;
+
+            default:
+                $pad = str_pad($input, $cant, $aguja);
+                break;
+        }
+
+        return $pad;
+    }
+}
 

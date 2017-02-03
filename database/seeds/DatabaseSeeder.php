@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
         $this->call(EtiquetaNotaDetalleTableSeeder::class);
         $this->call(PensionTableSeeder::class);
         $this->call(ProductosTableSeeder::class);
+        $this->call(SerieTableSeeder::class);
 
         Model::reguard();
     }

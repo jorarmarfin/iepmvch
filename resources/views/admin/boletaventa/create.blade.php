@@ -18,7 +18,8 @@
             <div class="portlet-body form">
             <!-- BEGIN FORM-->
 			{!! Form::open(['route'=>'admin.boletaventa.store','method'=>'POST','class'=>'horizontal-form mt-repeater']) !!}
-                {!!Form::hidden('idtipodocumento', EstadoId('TIPO DOCUMENTO','Boleta de Venta') );!!}
+                {!!Form::hidden('idtipooperacion', EstadoId('TIPO DOCUMENTO','Boleta de Venta') );!!}
+                {!!Form::hidden('idtipodocumento', EstadoId('TIPO OPERACION','Venta Interna') );!!}
             <div class="form-body">
                 <div class="row">
                     <div class="col-md-4">
@@ -43,7 +44,7 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             {!! Form::label('lblNumeroId', 'Numero de Identificacion', ['class'=>'control-label']) !!}
-                            {!! Form::text('ididentificacion',null,  ['class'=>'form-control','placeholder'=>'Numero de identificacion']) !!}
+                            {!! Form::text('numidentificacion',null,  ['class'=>'form-control','placeholder'=>'Numero de identificacion']) !!}
                         </div>
                     </div><!--/span-->
                 </div><!--/row-->
@@ -65,28 +66,27 @@
                                 <div class="col-md-11">
                                     <div class="form-group col-md-2">
                                         {!! Form::label('lblProducto', 'Producto', ['class'=>'control-label']) !!}
-                                        {!! Form::select('idproducto',$productos, null, ['class'=>'form-control','placeholder'=>'Productos','id'=>'idproducto[]']) !!}
+                                        {!! Form::select('idproducto',$productos, null, ['class'=>'form-control producto_linea','placeholder'=>'Productos','id'=>'idproducto[]']) !!}
                                     </div>
-                                    <div class="form-group col-md-2">
+                                    <div class="form-group col-md-2" >
                                         {!! Form::label('lblCantidad', 'Cantidad', ['class'=>'control-label']) !!}
-                                        {!! Form::text('cantidad', 1, ['class'=>'form-control','placeholder'=>'Cantidad']) !!}
+                                        {!! Form::text('cantidad', 1, ['class'=>'form-control cantidad_linea','placeholder'=>'Cantidad']) !!}
                                     </div>
-                                        {!!Form::hidden('idtipoigv', EstadoId('TIPO IGV','Gravado-Operacion Onerosa') );!!}
                                     <div class="form-group col-md-2">
                                         {!! Form::label('lblPrecioU', 'Precio Unitario', ['class'=>'control-label']) !!}
-                                        {!! Form::text('precio', null, ['class'=>'form-control','placeholder'=>'precio']) !!}
+                                        {!! Form::text('precio', null, ['class'=>'form-control precio_linea','placeholder'=>'precio','disabled']) !!}
                                     </div>
                                     <div class="form-group col-md-2">
                                         {!! Form::label('lblDescuento', 'Descuento', ['class'=>'control-label']) !!}
-                                        {!! Form::text('descuento', 0, ['class'=>'form-control','placeholder'=>'descuento']) !!}
+                                        {!! Form::text('descuento', 0, ['class'=>'form-control descuento_linea','placeholder'=>'descuento']) !!}
                                     </div>
                                     <div class="form-group col-md-2">
                                         {!! Form::label('lblSubtotal', 'Subtotal', ['class'=>'control-label']) !!}
-                                        {!! Form::text('subtotal', null, ['class'=>'form-control','placeholder'=>'subtotal','disabled']) !!}
+                                        {!! Form::text('subtotal', 0, ['class'=>'form-control subtotal_linea','placeholder'=>'subtotal','disabled']) !!}
                                     </div>
                                     <div class="form-group col-md-2">
                                         {!! Form::label('lbltotal', 'total', ['class'=>'control-label']) !!}
-                                        {!! Form::text('total', null, ['class'=>'form-control','placeholder'=>'total','disabled']) !!}
+                                        {!! Form::text('total', 0, ['class'=>'form-control total_linea','placeholder'=>'total','disabled']) !!}
                                     </div>
                                 </div>
                                 <div class="col-md-1">
@@ -98,9 +98,13 @@
                             </div>
                         </div>
                     </div>
-                    <a href="javascript:;" data-repeater-create class="btn green-meadow mt-repeater-add">
+                    <a href="javascript:;" data-repeater-create class="btn green-meadow mt-repeater-add ">
                         <i class="fa fa-plus"></i>
                         Agregar producto
+                    </a>&nbsp;
+                    <a href="#" id="actualizartotales"  class="btn green ">
+                        <i class="fa fa-refresh"></i>
+                        Actualizar Totales
                     </a>
                 </div><!--/Bloque ha repetir-->
                 <div class="row ">
@@ -111,19 +115,19 @@
                         <ul class="list-unstyled amounts">
                             <li>
                                 <strong class="col-sm-10"> SUBTOTAL: </strong>
-                                <strong class="col-sm-2"><div id="subtotal"></div></strong>
+                                <strong class="col-sm-2"><div id="subtotal_general"></div></strong>
                             </li>
                             <li>
                                 <strong class="col-sm-10"> DESCUENTO: </strong>
-                                <strong class="col-sm-2"> <div id="descuento"></div></strong>
+                                <strong class="col-sm-2"> <div id="descuento_general"></div></strong>
                             </li>
                             <li>
                                 <strong class="col-sm-10"> IGV: </strong>
-                                <strong class="col-sm-2"> <div id="igv"></div></strong>
+                                <strong class="col-sm-2"> <div id="igv_general"></div></strong>
                             </li>
                             <li>
                                 <strong class="col-sm-10"> TOTAL: </strong>
-                                <strong class="col-sm-2"> <div id="total"></div></strong>
+                                <strong class="col-sm-2"> <div id="total_general"></div></strong>
                             </li>
                         </ul>
                         <br>
@@ -146,7 +150,7 @@
 @section('js-scripts')
 <script>
 $(document).ready(function() {
-var aumento = 0;
+
 
     $('#fechaemision').datepicker({
         todayBtn: 'true',
@@ -158,22 +162,25 @@ var aumento = 0;
     $('.mt-repeater').repeater({
         show: function () {
             $(this).slideDown();
-            Totales();
-            aumento += parseFloat(aumento);
+            Parciales();
+            calculo_totales();
           },
         hide : function (remove) {
             $(this).slideUp(remove);
-            Totales();
-            aumento -= parseFloat(aumento);
+            Parciales();
+            calculo_totales();
         },
         defaultValues: {
                 'cantidad': '1',
-                'descuento': '0'
+                'descuento': '0',
+                'subtotal': '0',
+                'total': '0'
             },
     });
-    Totales();
+    Parciales();
+    //calculo_totales();
 
-    function Totales() {
+    function Parciales() {
         var prod = [];
         var pre = [];
         var des = [];
@@ -191,7 +198,6 @@ var aumento = 0;
 
             ejecutar(prod,pre,des,cant,sub,tot,igv,i);
         }//fin del for
-
     }
 
     function ejecutar(prod,pre,des,cant,sub,tot,igv,i) {
@@ -209,23 +215,20 @@ var aumento = 0;
                    data: {varsearch: $(this).val()},
                    success: function (producto) {
                         v_pre.val(producto.precio);
-                        subtotales(v_sub,v_pre,v_des,v_tot,igv);
+                        subtotales(v_sub,v_pre,v_cant,v_des,v_tot,igv);
 
                    }
                });
-
         });
         v_cant.change(function(){
-             subtotales(v_sub,v_pre,v_des,v_tot,igv);
-
+             subtotales(v_sub,v_pre,v_cant,v_des,v_tot,igv);
+             calculo_totales();
         });
 
         v_des.change(function(){
-             subtotales(v_sub,v_pre,v_des,v_tot,igv);
-
+             subtotales(v_sub,v_pre,v_cant,v_des,v_tot,igv);
+             calculo_totales();
         });
-
-
     }
 
     function calculaigv(monto,igv) {
@@ -233,30 +236,84 @@ var aumento = 0;
         return gravado;
     }
 
-    function subtotales(sub,pre,des,tot,igv) {
-        sub.val(pre.val()-des.val());
+    function subtotales(sub,pre,cant,des,tot,igv) {
+        sub.val((pre.val()*cant.val())-des.val());
         tot.val( calculaigv(sub.val(),igv) + parseFloat(sub.val()));
-        //$('#subtotal').text('S/. '+subtotal_g);
+        calculo_totales();
     }
-    function calculo_totales_general() {
-        var pre = [];
-        var des = [];
-        var sub = [];
-        var tot = [];
-        var igv = {{ igv() }};
+
+    function calculo_totales() {
+        var descuento_g = 0;
         var subtotal_g = 0;
-        for (var i = 0; i <= 100; i++) {
-            pre[i] = "input[name=items\\["+i+"\\]\\[precio\\]";
-            des[i] = "input[name=items\\["+i+"\\]\\[descuento\\]";
-            sub[i] = "input[name=items\\["+i+"\\]\\[subtotal\\]]";
-            tot[i] = "input[name=items\\["+i+"\\]\\[total\\]]";
+        var igv_g = 0;
+        var total_g = 0;
+        $('.descuento_linea').each(function(index, value) {
+            descuento_g += eval($(this).val());
+        });
+        $('.subtotal_linea').each(function(index, value) {
+            subtotal_g += eval($(this).val());
+        });
+        $('.total_linea').each(function(index, value) {
+            total_g += eval($(this).val());
+        });
 
-            subtotal_g += parseFloat($(pre[i]).val());
-        }//fin del for
-        console.log(aumento);
+        $('#subtotal_general').text(subtotal_g);
+        $('#descuento_general').text(descuento_g);
+        $('#igv_general').text(Math.round10(total_g - subtotal_g,-2));
+        $('#total_general').text(total_g);
+
     }
+    $('#actualizartotales').click(function() {
+        calculo_totales();
+    });
 
+    (function() {
+      /**
+       * Ajuste decimal de un número.
+       *
+       * @param {String}  tipo  El tipo de ajuste.
+       * @param {Number}  valor El numero.
+       * @param {Integer} exp   El exponente (el logaritmo 10 del ajuste base).
+       * @returns {Number} El valor ajustado.
+       */
+      function decimalAdjust(type, value, exp) {
+        // Si el exp no está definido o es cero...
+        if (typeof exp === 'undefined' || +exp === 0) {
+          return Math[type](value);
+        }
+        value = +value;
+        exp = +exp;
+        // Si el valor no es un número o el exp no es un entero...
+        if (isNaN(value) || !(typeof exp === 'number' && exp % 1 === 0)) {
+          return NaN;
+        }
+        // Shift
+        value = value.toString().split('e');
+        value = Math[type](+(value[0] + 'e' + (value[1] ? (+value[1] - exp) : -exp)));
+        // Shift back
+        value = value.toString().split('e');
+        return +(value[0] + 'e' + (value[1] ? (+value[1] + exp) : exp));
+      }
 
+      // Decimal round
+      if (!Math.round10) {
+        Math.round10 = function(value, exp) {
+          return decimalAdjust('round', value, exp);
+        };
+      }
+      // Decimal floor
+      if (!Math.floor10) {
+        Math.floor10 = function(value, exp) {
+          return decimalAdjust('floor', value, exp);
+        };
+      }
+      // Decimal ceil
+      if (!Math.ceil10) {
+        Math.ceil10 = function(value, exp) {
+          return decimalAdjust('ceil', value, exp);
+        };
+      }
+    })();
 });
 </script>
 @stop

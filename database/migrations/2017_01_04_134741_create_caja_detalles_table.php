@@ -20,7 +20,7 @@ class CreateCajaDetallesTable extends Migration
             $table->integer('idproducto')->nullable();
             $table->decimal('preciounitario','12','2')->nullable();
             $table->decimal('descuento','12','2')->default(0);
-            $table->decimal('monto_igv','12','2')->nullable();
+            $table->decimal('montoigv','12','2')->nullable();
             $table->integer('idtipoigv')->nullable();
 
             $table->decimal('subtotal','12','2')->nullable();

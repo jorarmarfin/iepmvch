@@ -23,18 +23,22 @@
                 <table class="table table-striped table-hover" id="Asignaturas">
                     <thead>
                         <tr>
-                            <th> Nombre </th>
-                            <th> Area </th>
-                            <th> Peso</th>
+                            <th> Serie </th>
+                            <th> Numero </th>
+                            <th> Fecha Emision</th>
+                            <th> Razion social</th>
+                            <th> Total Venta</th>
                             <th> Opciones </th>
                         </tr>
                     </thead>
                     <tbody>
                     @foreach ($Lista as $item)
                         <tr>
-                            <td> {{ $item->nombre }} </td>
-                            <td> {{ $item->area }} </td>
-                            <td> {{ $item->peso }} </td>
+                            <td> {{ pad($item->serie,3,0) }} </td>
+                            <td> {{ pad($item->numero,8,'0','L') }} </td>
+                            <td> {{ $item->fechaemision }} </td>
+                            <td> {{ $item->razonsocial }} </td>
+                            <td> {{ $item->total_venta }} </td>
                             <td>
                                 <div class="btn-group">
                                     <button class="btn btn-xs green-dark dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Opciones
@@ -42,12 +46,12 @@
                                     </button>
                                     <ul class="dropdown-menu pull-left" role="menu">
                                         <li>
-                                            <a href="{{ route('admin.asignatura.show',$item->id) }}">
-                                                <i class="fa fa-eye"></i> Show </a>
+                                            <a href="{{ route('admin.boletaventa.show',$item->id) }}">
+                                                <i class="fa fa-file-pdf-o"></i> Show </a>
                                         </li>
                                         <li>
                                             <a href="{{ route('admin.asignatura.edit',$item->id) }}">
-                                                <i class="fa fa-edit"></i> Edit </a>
+                                                <i class="fa fa-file"></i> Download </a>
                                         </li>
                                         <li>
                                             <a href="{{ route('admin.asignatura.show',$item->id) }}">

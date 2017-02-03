@@ -48,6 +48,7 @@ class CatalogoTableSeeder extends Seeder
         Catalogo::create(['idtable' => 0,'iditem' => 33, 'codigo' => 'TIGV','nombre' => 'TIPO IGV','descripcion'=>'TIPO DE AFECCION AL IGV','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 0,'iditem' => 34, 'codigo' => 'TDOCI','nombre' => 'TIPO DOCUMENTO IDENTIDAD','descripcion'=>'TIPO DE DOCUMENTO DE IDENTIDAD','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 0,'iditem' => 35, 'codigo' => 'TNOT','nombre' => 'TIPO NOTA','descripcion'=>'TIPO DE NOTA','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 0,'iditem' => 36, 'codigo' => 'TOPER','nombre' => 'TIPO OPERACION','descripcion'=>'TIPO DE OPERACION','valor'=> null,'activo'=>true]);
 
 
 
@@ -2328,8 +2329,7 @@ class CatalogoTableSeeder extends Seeder
          * TIPO DE DOCUMENTO
          */
         Catalogo::create(['idtable' => 31,'iditem' => 1, 'codigo' => '03','nombre' => 'Boleta de Venta','descripcion'=>'Boleta de venta','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 31,'iditem' => 2, 'codigo' => '07','nombre' => 'Nota de Credito','descripcion'=>'Nota de débito','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 31,'iditem' => 3, 'codigo' => '08','nombre' => 'Nota de Debito','descripcion'=>'Nota de crédito','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 31,'iditem' => 2, 'codigo' => '00','nombre' => 'Recibo','descripcion'=>'Recibo','valor'=> null,'activo'=>true]);
         /**
          * Tipo de moneda
          */
@@ -2368,6 +2368,10 @@ class CatalogoTableSeeder extends Seeder
          */
         Catalogo::create(['idtable' => 35,'iditem' => 1, 'codigo' => '01','nombre' => 'Interes por mora','descripcion'=>'Interes por mora','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 35,'iditem' => 2, 'codigo' => '02','nombre' => 'Aumento en el valor','descripcion'=>'Aumento en el valor','valor'=> null,'activo'=>true]);
+        /**
+         * TIPO DE OPERACION
+         */
+        Catalogo::create(['idtable' => 36,'iditem' => 1, 'codigo' => '01','nombre' => 'Venta Interna','descripcion'=>'Venta Interna','valor'=> null,'activo'=>true]);
 
 
     }
