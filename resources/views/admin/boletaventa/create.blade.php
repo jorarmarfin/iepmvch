@@ -25,8 +25,8 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             {!! Form::label('lblFecha', 'Fecha de emision', ['class'=>'control-label']) !!}
-                            <div class="input-group  date " data-provide="datepicker">
-                                {!! Form::text('fechaemision', null, ['class'=>'form-control','id'=>'fechaemision']) !!}
+                            <div class="input-group date datepicker" data-date-format="yyyy-mm-dd">
+                                {!! Form::text('fechaemision', null, ['class'=>'form-control']) !!}
                                 <span class="input-group-btn">
                                     <button class="btn default" type="button">
                                         <i class="fa fa-calendar"></i>
@@ -44,7 +44,7 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             {!! Form::label('lblNumeroId', 'Numero de Identificacion', ['class'=>'control-label']) !!}
-                            {!! Form::text('numidentificacion',null,  ['class'=>'form-control','placeholder'=>'Numero de identificacion']) !!}
+                            {!! Form::text('numidentificacion',null,  ['class'=>'form-control','placeholder'=>'Numero de identificacion','id'=>'numidentificacion']) !!}
                         </div>
                     </div><!--/span-->
                 </div><!--/row-->
@@ -52,7 +52,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             {!! Form::label('lblRazonSocial', 'Razon Social', ['class'=>'control-label']) !!}
-                            {!! Form::text('razonsocial', null, ['class'=>'form-control','placeholder'=>'Apellidos y nombres, denominación o razón social del adquirente o usuario ']) !!}
+                            {!! Form::text('razonsocial', null, ['id'=>'razonsocial','class'=>'form-control','placeholder'=>'Apellidos y nombres, denominación o razón social del adquirente o usuario ']) !!}
                         </div>
                     </div><!--/span-->
                     {!!Form::hidden('idtipomoneda', EstadoId('TIPO MONEDA','Nuevo Sol') );!!}
@@ -150,13 +150,26 @@
 @section('js-scripts')
 <script>
 $(document).ready(function() {
+    $('#numidentificacion').easyAutocomplete({
+        url: function(name) {
+         return "{{ url("/numidentificacion") }}?varsearch=" + name ;
+        },
 
+        getValue: "dni",
+        list: {
+            onSelectItemEvent: function() {
+                var value = $("#numidentificacion").getSelectedItemData().nombres;
 
-    $('#fechaemision').datepicker({
-        todayBtn: 'true',
-        format: 'yyyy-mm-dd',
-        orientation: "left",
-        autoclose: 'true'
+                $("#razonsocial").val(value).trigger("change");
+            }
+        }
+    });
+
+    $('.datepicker').datepicker({
+        autoclose: true,
+        todayBtn: 'linked',
+        language: 'es',
+        todayHighlight:true
     });
 
     $('.mt-repeater').repeater({
@@ -323,14 +336,15 @@ $(document).ready(function() {
 {!! Html::style(asset('assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css')) !!}
 {!! Html::style(asset('assets/global/plugins/select2/css/select2.min.css')) !!}
 {!! Html::style(asset('assets/global/plugins/select2/css/select2-bootstrap.min.css')) !!}
-{!! Html::style(asset('assets/global/plugins/icheck/skins/all.css')) !!}
+{!! Html::style(asset('assets/global/plugins/EasyAutocomplete/easy-autocomplete.min.css')) !!}
 @stop
 @section('plugins-js')
 {!! Html::script(asset('assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js')) !!}
+{!! Html::script(asset('assets/global/plugins/bootstrap-datepicker/locales/bootstrap-datepicker.es.min.js')) !!}
 {!! Html::script(asset('assets/global/plugins/select2/js/select2.full.min.js')) !!}
 {!! Html::script(asset('assets/global/plugins/select2/js/i18n/es.js')) !!}
-{!! Html::script(asset('assets/global/plugins/icheck/icheck.min.js')) !!}
 {!! Html::script(asset('assets/global/plugins/jquery-repeater/jquery.repeater.js')) !!}
+{!! Html::script(asset('assets/global/plugins/EasyAutocomplete/jquery.easy-autocomplete.min.js')) !!}
 @stop
 
 

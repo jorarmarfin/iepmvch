@@ -42,8 +42,12 @@ class ResourceController extends Controller
     public function familiares(Request $request)
     {
         $name = $request->varsearch ?:'';
+        $name = strtoupper($name);
         $query = "paterno||' - '||materno||', '||nombres";
         $familiares = Familiar::select('id',DB::raw("$query as text"))
+                        ->whereRaw("upper(paterno) like '%$name%'")
+                        ->orwhereRaw("upper(materno) like '%$name%'")
+                        ->orwhereRaw("upper(nombres) like '%$name%'")
                         ->get();
         return $familiares;
     }
@@ -58,10 +62,14 @@ class ResourceController extends Controller
                                 ->whereIn('nombre',['Regular','Promovido'])
                                 ->get();
         $name = $request->varsearch ?:'';
+        $name = strtoupper($name);
         $query = "alumno.paterno||' - '||alumno.materno||', '||alumno.nombres||' - '||g.nombre";
         $matriculables = Alumno::select('alumno.id',DB::raw("$query as text"))
                         ->join('grado as g','g.id','=','alumno.idgrado')
                         ->whereIn('idestado',$condicion)
+                        ->whereRaw("upper(paterno) like '%$name%'")
+                        ->orwhereRaw("upper(materno) like '%$name%'")
+                        ->orwhereRaw("upper(nombres) like '%$name%'")
                         ->alfabetico()
                         ->get();
         return $matriculables;
@@ -76,6 +84,21 @@ class ResourceController extends Controller
         if($request->has('varsearch')) $producto = Producto::find($id);
         else $producto = Producto::all();
         return $producto;
-    }
 
+
+    }
+    /**
+     * Devuelve listado de DNI disponible
+     * @return [type] [description]
+     */
+    public function numidentificacion(Request $request)
+    {
+        $name = $request->varsearch ?:'';
+        $name = strtoupper($name);
+        $query = "paterno||' - '||materno||', '||nombres";
+        $identificacion = Familiar::select('dni',DB::raw("$query as nombres"))
+                        ->where('dni','like',"%$name%")
+                        ->get();
+        return $identificacion;
+    }
 }

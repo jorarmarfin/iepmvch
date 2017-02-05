@@ -53,6 +53,11 @@ return [
             'root' => storage_path('app/public'),
             'visibility' => 'public',
         ],
+        'boletaventa' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/boletaventa'),
+            'visibility' => 'public',
+        ],
 
         's3' => [
             'driver' => 's3',

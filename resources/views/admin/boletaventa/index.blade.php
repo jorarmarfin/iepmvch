@@ -50,8 +50,16 @@
                                                 <i class="fa fa-file-pdf-o"></i> Show </a>
                                         </li>
                                         <li>
-                                            <a href="{{ route('admin.asignatura.edit',$item->id) }}">
+                                            <a href="{{ route('admin.boletaventa.file',$item->id) }}">
                                                 <i class="fa fa-file"></i> Download </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('admin.boletaventa.file',$item->id) }}">
+                                                <i class="fa fa-file"></i> Cabecera </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('admin.boletaventa.file',$item->id) }}">
+                                                <i class="fa fa-file"></i> Detalle </a>
                                         </li>
                                         <li>
                                             <a href="{{ route('admin.asignatura.show',$item->id) }}">

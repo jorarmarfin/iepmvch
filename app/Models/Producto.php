@@ -17,4 +17,12 @@ class Producto extends Model
     	$um = Catalogo::find($this->idum);
     	return $um->nombre;
     }
+    /**
+    * Atributos Codigo Unidad Medida
+    */
+    public function getCodigoUnidadMedidaAttribute()
+    {
+        $um = Catalogo::find($this->idum);
+        return $um->codigo;
+    }
 }
