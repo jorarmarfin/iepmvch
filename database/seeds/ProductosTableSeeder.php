@@ -22,6 +22,7 @@ class ProductosTableSeeder extends Seeder
         Producto::create(['nombre'=>'Examen de subsanacion', 'idum'=>$um->id,'precio'=>30.0]);
         Producto::create(['nombre'=>'Copia de libreta', 'idum'=>$um->id,'precio'=>50.0]);
         Producto::create(['nombre'=>'Copia de agenda', 'idum'=>$um->id,'precio'=>10.0]);
+        Producto::create(['nombre'=>'Mora', 'idum'=>$um->id,'precio'=>0.5]);
 
     }
 }

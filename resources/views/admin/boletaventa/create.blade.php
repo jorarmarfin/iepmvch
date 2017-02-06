@@ -55,6 +55,18 @@
                             {!! Form::text('razonsocial', null, ['id'=>'razonsocial','class'=>'form-control','placeholder'=>'Apellidos y nombres, denominación o razón social del adquirente o usuario ']) !!}
                         </div>
                     </div><!--/span-->
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            {!! Form::label('lblDireccion', 'Direccion', ['class'=>'control-label']) !!}
+                            {!! Form::text('direccion',null, ['id'=>'direccion','class'=>'form-control','placeholder'=>'Direccion del que paga']) !!}
+                        </div>
+                    </div><!--/span-->
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            {!! Form::label('lblMatricula', 'Alumno Matriculado', ['class'=>'control-label']) !!}
+                            {!! Form::select('idmatricula',[] ,null, ['id'=>'idmatricula','class'=>'form-control','placeholder'=>'Alumno Matriculado en el colegio ']) !!}
+                        </div>
+                    </div><!--/span-->
                     {!!Form::hidden('idtipomoneda', EstadoId('TIPO MONEDA','Nuevo Sol') );!!}
                 </div>
                 <!--/row-->
@@ -121,10 +133,10 @@
                                 <strong class="col-sm-10"> DESCUENTO: </strong>
                                 <strong class="col-sm-2"> <div id="descuento_general"></div></strong>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <strong class="col-sm-10"> IGV: </strong>
                                 <strong class="col-sm-2"> <div id="igv_general"></div></strong>
-                            </li>
+                            </li> --}}
                             <li>
                                 <strong class="col-sm-10"> TOTAL: </strong>
                                 <strong class="col-sm-2"> <div id="total_general"></div></strong>
@@ -150,6 +162,40 @@
 @section('js-scripts')
 <script>
 $(document).ready(function() {
+    $("#idmatricula").select2({
+
+        ajax: {
+            url: '{{ url("/alumnos-matriculados") }}',
+            dataType: 'json',
+            delay: 250,
+            data: function(params) {
+                return {
+                    varsearch: params.term // search term
+                };
+            },
+            processResults: function(data) {
+                // parse the results into the format expected by Select2.
+                // since we are using custom formatting functions we do not need to
+                // alter the remote JSON data
+                return {
+                    results: data
+                };
+            },
+            cache: true
+        },
+        width: '100%',
+        minimumInputLength: 3,
+        templateResult: format,
+        templateSelection: format,
+        escapeMarkup: function(markup) {
+            return markup;
+        } // let our custom formatter work
+    });
+    function format(res){
+        var markup=res.text;
+        return markup;
+    }
+
     $('#numidentificacion').easyAutocomplete({
         url: function(name) {
          return "{{ url("/numidentificacion") }}?varsearch=" + name ;
@@ -158,9 +204,11 @@ $(document).ready(function() {
         getValue: "dni",
         list: {
             onSelectItemEvent: function() {
-                var value = $("#numidentificacion").getSelectedItemData().nombres;
+                var v_razonsocial = $("#numidentificacion").getSelectedItemData().nombres;
+                var v_direccion = $("#numidentificacion").getSelectedItemData().direccion;
 
-                $("#razonsocial").val(value).trigger("change");
+                $("#razonsocial").val(v_razonsocial).trigger("change");
+                $("#direccion").val(v_direccion).trigger("change");
             }
         }
     });
@@ -272,7 +320,7 @@ $(document).ready(function() {
 
         $('#subtotal_general').text(subtotal_g);
         $('#descuento_general').text(descuento_g);
-        $('#igv_general').text(Math.round10(total_g - subtotal_g,-2));
+        //$('#igv_general').text(Math.round10(total_g - subtotal_g,-2));
         $('#total_general').text(total_g);
 
     }

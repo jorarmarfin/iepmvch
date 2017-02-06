@@ -41,7 +41,6 @@
                 {!!Form::menu('Boleta Venta',route('admin.boletaventa.index'))!!}
                 {!!Form::menu('Recibo',route('admin.boletaventa.index'))!!}
                 {!!Form::menu('Productos',route('admin.productos.index'))!!}
-                {!!Form::menu('IGV',route('catalogo.gestion','IGV'))!!}
                 {!!Form::menu('Serie',route('admin.serie.index'))!!}
             </ul>
         </li>

@@ -34,7 +34,7 @@
                     <tbody>
                     @foreach ($Lista as $item)
                         <tr>
-                            <td> {{ pad($item->serie,3,0) }} </td>
+                            <td> {{ pad($item->serie,3,0,'L') }} </td>
                             <td> {{ pad($item->numero,8,'0','L') }} </td>
                             <td> {{ $item->fechaemision }} </td>
                             <td> {{ $item->razonsocial }} </td>
@@ -50,15 +50,11 @@
                                                 <i class="fa fa-file-pdf-o"></i> Show </a>
                                         </li>
                                         <li>
-                                            <a href="{{ route('admin.boletaventa.file',$item->id) }}">
-                                                <i class="fa fa-file"></i> Download </a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ route('admin.boletaventa.file',$item->id) }}">
+                                            <a href="{{ asset('/storage/boletaventa/'.$item->archivo_cabecera) }}">
                                                 <i class="fa fa-file"></i> Cabecera </a>
                                         </li>
                                         <li>
-                                            <a href="{{ route('admin.boletaventa.file',$item->id) }}">
+                                            <a href="{{ asset('/storage/boletaventa/'.$item->archivo_detalle) }}">
                                                 <i class="fa fa-file"></i> Detalle </a>
                                         </li>
                                         <li>

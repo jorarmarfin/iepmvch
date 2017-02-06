@@ -21,6 +21,14 @@ class Matricula extends Model
     					 ->join('grado as g','g.id','=','gs.idgrado');
     }
     /**
+    * Atributos Alumno
+    */
+    public function getAlumnoAttribute()
+    {
+        $alumno = Alumno::find($this->idalumno);
+        return $alumno;
+    }
+    /**
     * Atributos Tipo
     */
     public function getTipoAttribute()

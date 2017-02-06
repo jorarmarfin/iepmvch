@@ -2322,8 +2322,8 @@ class CatalogoTableSeeder extends Seeder
         /**
          * IMPUESTO
          */
-        Catalogo::create(['idtable' => 30,'iditem' => 1, 'codigo' => '1000','nombre' => 'IGV 19%','descripcion'=>'IGV','valor'=> 19,'activo'=>false]);
-        Catalogo::create(['idtable' => 30,'iditem' => 2, 'codigo' => '1000','nombre' => 'IGV 18%','descripcion'=>'IGV','valor'=> 18,'activo'=>true]);
+        Catalogo::create(['idtable' => 30,'iditem' => 1, 'codigo' => '1000','nombre' => 'Sin IGV','descripcion'=>'SIN IGV','valor'=> 0,'activo'=>true]);
+        Catalogo::create(['idtable' => 30,'iditem' => 2, 'codigo' => '1000','nombre' => 'IGV 18%','descripcion'=>'IGV','valor'=> 18,'activo'=>false]);
         Catalogo::create(['idtable' => 30,'iditem' => 3, 'codigo' => '1000','nombre' => 'IGV 17%','descripcion'=>'IGV','valor'=> 17,'activo'=>false]);
         /**
          * TIPO DE DOCUMENTO

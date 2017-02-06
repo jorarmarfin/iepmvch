@@ -3,15 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\BoletaVentaRequest;
 use App\Models\Caja;
 use App\Models\CajaDetalle;
 use App\Models\Institucion;
 use App\Models\Producto;
 use App\Models\Serie;
 use Carbon\Carbon;
+use File;
 use Illuminate\Http\Request;
 use Storage;
-use File;
 use Styde\Html\Facades\Alert;
 
 class BoletaVentaController extends Controller
@@ -43,7 +44,7 @@ class BoletaVentaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BoletaVentaRequest $request)
     {
         $data = $request->all();
         $data['total_descuentos'] = 0;
@@ -62,7 +63,7 @@ class BoletaVentaController extends Controller
             $items[$key]['montoigv'] = $subtotal*igv()/100;
             $items[$key]['subtotal'] = $subtotal;
             $items[$key]['total'] = $items[$key]['montoigv']+$items[$key]['subtotal'];
-            $items[$key]['idtipoigv'] = EstadoId('TIPO IGV','Gravado-Operacion Onerosa');
+            $items[$key]['idtipoigv'] = EstadoId('TIPO IGV','Inafecto-Operacion onerosa');
             $items[$key]['created_at'] = $date;
             $items[$key]['updated_at'] = $date;
 
@@ -71,12 +72,12 @@ class BoletaVentaController extends Controller
             $data['sumatoria_igv'] += $subtotal*igv()/100;
         }
         $data['total_venta'] = $data['total_gravado'] + $data['sumatoria_igv'];
+        $data['entrada'] = $data['total_venta'];
 
         $serie = Serie::where('nombre','boleta')->first();
         $data['prefijo'] = $serie->prefijo;
         $data['serie'] = $serie->serie;
         $data['numero'] = $serie->nombre;
-        dd($items);
         $caja = Caja::create($data);
         if ($caja->id>0) {
             foreach ($items as $key => $item) {
@@ -101,6 +102,7 @@ class BoletaVentaController extends Controller
      */
     public function show($id)
     {
+        $this->file($id);
         return view('admin.boletaventa.show',compact('id'));
     }
 
@@ -148,7 +150,7 @@ class BoletaVentaController extends Controller
         }
         #Detalle
         $name = $institucion->ruc.'-'.$serie->prefijo.pad($serie->serie,3,'0','L').'-'.pad($caja->numero,8,'0','L').'.det';
-        Storage::disk('boletaventa')->put($name,'');
+        Storage::disk('boletaventa')->put($name,null);
         $items = $caja->detalles;
         //dd($items);
         $tiemscontent = '';
@@ -161,8 +163,13 @@ class BoletaVentaController extends Controller
             $itemcontent .= '|'.$item->preciounitario;
             $itemcontent .= '|'.$item->descuento;
             $itemcontent .= '|'.$item->montoigv;
+            $itemcontent .= '|'.$item->codigo_afectacion;
+            $itemcontent .= '|0';
+            $itemcontent .= '|01';
+            $itemcontent .= '|'.$item->subtotal;
+            $itemcontent .= '|'.$item->total;
 
-            Storage::disk('boletaventa')->append($name, $itemcontent);
+            Storage::disk('boletaventa')->prepend($name, $itemcontent);
         });
 
         //return $file;

@@ -14,7 +14,7 @@ class InstitucionTableSeeder extends Seeder
     {
         Institucion::create([
         	'nombre' => 'Milagrosa Virgen de Chapi',
-        	'razonsocial' => 'MILAGROSA VIRGEN DE CHAPI S.R.L',
+        	'razonsocial' => 'CONSORCIO MILAGROSA VIRGEN DE CHAPI S.R.L',
         	'resolucion' => 'R.D.N° 03964 - UGEL 05 - S.J.L.',
         	'direccion' => 'Av. Los Tusilagos (Oeste) N° 202 - 204 Urbanizacion Los jardines de San Juan - S.J.L','idubigeo' => 0,
         	'director' => 'GUTIERREZ TRUJILLO SATURNINO EDUARDO',

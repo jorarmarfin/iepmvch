@@ -21,6 +21,7 @@ class CreateCajasTable extends Migration
             $table->integer('ididentificacion')->nullable();
             $table->string('numidentificacion',15)->nullable();
             $table->string('razonsocial',100)->nullable();
+            $table->string('direccion',200)->nullable();
             $table->integer('idtipomoneda')->nullable();
             $table->decimal('descuento_global','12','2')->default(0);
             $table->decimal('sumatoria_otros_cargos','12','2')->default(0);

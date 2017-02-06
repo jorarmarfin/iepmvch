@@ -16,5 +16,13 @@ class CajaDetalle extends Model
     	$producto = Producto::find($this->idproducto);
     	return $producto;
     }
+    /**
+    * Atributos Codigo de Afectacion
+    */
+    public function getCodigoAfectacionAttribute()
+    {
+    	$afectacion = Catalogo::find($this->idtipoigv);
+    	return $afectacion->codigo;
+    }
 
 }

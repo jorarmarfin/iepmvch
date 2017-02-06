@@ -3,6 +3,7 @@
 use App\Models\Alumno;
 use App\Models\AlumnoFamiliar;
 use App\Models\Catalogo;
+use App\Models\Institucion;
 if (! function_exists('RoleId')) {
 	/**
 	 * Funcion que retorna el prefijo para nombres de archivos
@@ -138,6 +139,20 @@ if (! function_exists('igv')) {
 
         $igv = Catalogo::table('IGV')->activo()->first();
         return $igv->valor;
+    }
+}
+/**
+ * Devuelve el Ruc de la Institucion
+ */
+if (! function_exists('ruc')) {
+    /**
+     * Funcion que retorna el prefijo para nombres de archivos
+     * @return [type] [description]
+     */
+    function ruc()
+    {
+        $institucion = Institucion::first();
+        return $institucion->ruc;
     }
 }
 /**

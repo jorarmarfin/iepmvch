@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Alumno;
 use App\Models\Catalogo;
 use App\Models\Familiar;
+use App\Models\Matricula;
 use App\Models\Producto;
 use Auth;
 use DB;
@@ -75,6 +76,28 @@ class ResourceController extends Controller
         return $matriculables;
     }
     /**
+     * Devuelve listado de alumnos matriculables
+     * @return [type] [description]
+     */
+    public function matriculados(Request $request)
+    {
+        $condicion = EstadoId('TIPO MATRICULA','Activa');
+
+        $name = $request->varsearch ?:'';
+        $name = strtoupper($name);
+        $query = "a.paterno||' - '||a.materno||', '||a.nombres||' - '||g.nombre";
+        $retval = Matricula::select('matricula.id',DB::raw("$query as text"))
+                            ->join('alumno as a','a.id','=','idalumno')
+                            ->join('grado_seccion as gs','gs.id','=','idgradoseccion')
+                            ->join('grado as g','g.id','=','gs.idgrado')
+                            ->where('idtipo',$condicion)
+                            ->whereRaw("upper(a.paterno) like '%$name%'")
+                            ->orwhereRaw("upper(a.materno) like '%$name%'")
+                            ->orwhereRaw("upper(a.nombres) like '%$name%'")
+                            ->get();
+        return $retval;
+    }
+    /**
      * Devuelve listado de productos
      * @return [type] [description]
      */
@@ -96,7 +119,7 @@ class ResourceController extends Controller
         $name = $request->varsearch ?:'';
         $name = strtoupper($name);
         $query = "paterno||' - '||materno||', '||nombres";
-        $identificacion = Familiar::select('dni',DB::raw("$query as nombres"))
+        $identificacion = Familiar::select('dni',DB::raw("$query as nombres"),'direccion')
                         ->where('dni','like',"%$name%")
                         ->get();
         return $identificacion;
