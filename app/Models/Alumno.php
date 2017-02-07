@@ -135,6 +135,14 @@ class Alumno extends Model
      * Relacion de one to many
      * Obtener la dependencia que tiene esta persona
      */
+    public function hermanos()
+    {
+        return $this->hasmany(Hermano::class, 'id', 'idalumno');
+    }
+    /**
+     * Relacion de one to many
+     * Obtener la dependencia que tiene esta persona
+     */
     public function Matricula()
     {
         return $this->hasmany(Matricula::class, 'id', 'idalumno');

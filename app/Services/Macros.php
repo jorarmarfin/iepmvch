@@ -37,11 +37,11 @@ class Macros extends FormBuilder
 	 */
 	public function Enviar()
 	{
-		Form::macro('enviar', function ($name,$color = 'green') {
+		Form::macro('enviar', function ($name,$color = 'green',$iconclass = 'fa-save') {
 
             return '
             	<button type="submit" class="btn '.$color.' uppercase">
-            	<i class="fa fa-save"></i>
+            	<i class="fa '.$iconclass.'"></i>
             	'.$name.'
             	</button>
             ';
@@ -52,7 +52,7 @@ class Macros extends FormBuilder
 	 */
 	public function Boton()
 	{
-		Form::macro('boton',function($name,$url,$color = '',$icon = null,$botonclass=null){
+		Form::macro('boton',function($name,$url,$color = '',$icon = null,$botonclass=null,$data = null){
 			$iconclass = (isset($icon)) ? '<i class="'.$icon.'"></i>' : '' ;
 			return '
 				<a href="'.$url.'" class="btn '.$botonclass.' '.$color.'">
@@ -62,6 +62,21 @@ class Macros extends FormBuilder
 			';
 		});
 
+	}
+	/**
+	 * Boton Modal
+	 */
+	public function BotonModal()
+	{
+		Form::macro('botonmodal',function($name,$url,$color = '',$icon = null,$botonclass=null){
+			$iconclass = (isset($icon)) ? '<i class="'.$icon.'"></i>' : '' ;
+			return '
+				<a href="'.$url.'" data-toggle="modal" class="btn '.$botonclass.' '.$color.'">
+	                '.$iconclass.'
+	                '.$name.'
+	            </a>
+			';
+		});
 	}
 	/**
 	 * Menu

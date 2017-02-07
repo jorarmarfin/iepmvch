@@ -89,8 +89,7 @@ $('#Alumnos').dataTable({
         "lengthMenu": "_MENU_ registros"
     },
     "bProcessing": true,
-    "pagingType": "bootstrap_full_number",
-    "order": [1,"asc"]
+    "pagingType": "bootstrap_full_number"
 });
 </script>
 @stop

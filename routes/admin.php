@@ -11,6 +11,7 @@ Route::group(['prefix' => 'admin','namespace'=>'Admin'], function() {
 	require __DIR__.'/admin/matricula.route.php';
 	require __DIR__.'/admin/reservapsicologica.route.php';
 	require __DIR__.'/admin/checklist.route.php';
+	require __DIR__.'/admin/hermanos.route.php';
 	/**
 	 * Rutas de Plan Curricular
 	 */

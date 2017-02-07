@@ -3,6 +3,13 @@
 @section('content')
 @include('alerts.errors')
 <div class="row">
+    <div class="col-md-10"></div>
+    <div class="col-md-2">
+        {!!Form::back(route('admin.matricula.index'))!!}
+    </div>
+</div>
+<p></p>
+<div class="row">
     <div class="col-md-12">
         {!! Alert::render() !!}
         <!-- BEGIN Portlet PORTLET-->

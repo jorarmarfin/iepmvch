@@ -105,15 +105,15 @@ class BoletaVentaController extends Controller
 
             PDF::SetXY(140,$key*$altodecelda+$incremento);
             PDF::SetFont('times','',10);
-            PDF::Cell(20,10,$item->preciounitario,1,0,'R');
+            PDF::Cell(20,10,'S/.'.$item->preciounitario,1,0,'R');
 
             PDF::SetXY(160,$key*$altodecelda+$incremento);
             PDF::SetFont('times','',10);
-            PDF::Cell(20,10,$item->descuento,1,0,'R');
+            PDF::Cell(20,10,'S/.'.$item->descuento,1,0,'R');
 
             PDF::SetXY(180,$key*$altodecelda+$incremento);
             PDF::SetFont('times','',10);
-            PDF::Cell(20,10,$item->subtotal,1,0,'R');
+            PDF::Cell(20,10,'S/.'.$item->subtotal,1,0,'R');
         });
         $sub_x = $items->count()*20;
         #Total
@@ -128,8 +128,17 @@ class BoletaVentaController extends Controller
         $convert = new NumberToLetterConverter();
 
         PDF::SetXY(20,$incremento+$sub_x+20);
+        PDF::Cell(180,20,"",1,0,'C');
+
+        PDF::SetXY(20,$incremento+$sub_x+20);
         PDF::SetFont('times','B',10);
-        PDF::Cell(180,10,'Son: '.$convert->to_word($caja->total_venta),0,0,'L');
+        PDF::Cell(180,5,'Son: '.$convert->to_word($caja->total_venta),0,0,'L');
+
+        PDF::SetXY(20,$incremento+$sub_x+25);
+        PDF::SetFont('times','',9);
+        PDF::Cell(180,5,'Usted puede verificar la validez de su boleta de venta en la siguiente direccion',0,1,'L');
+        PDF::SetXY(20,$incremento+$sub_x+30);
+        PDF::Cell(180,5,'http://www.sunat.gob.pe/ol-ti-itconsvalicpe/ConsValiCpe.htm',0,0,'L');
 
 
         PDF::Output(public_path('storage/tmp/').'boletaventa.pdf','FI');

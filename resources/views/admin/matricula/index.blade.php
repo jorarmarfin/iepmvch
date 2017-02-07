@@ -86,10 +86,6 @@
                                                         <i class="fa fa-trash"></i> Delete </a>
                                                 </li>
                                                 <li>
-                                                    <a href="{{ route('admin.matricula.recibo',$item->id) }}">
-                                                        <i class="fa fa-file-pdf-o"></i> Recibo </a>
-                                                </li>
-                                                <li>
                                                     <a href="{{ route('admin.matricula.compromiso',$item->id) }}">
                                                         <i class="fa fa-file-pdf-o"></i> Compromiso </a>
                                                 </li>
@@ -98,12 +94,12 @@
                                                         <i class="fa fa-check"></i> CheckList </a>
                                                 </li>
                                                 <li>
-                                                    <a href="{{ route('admin.checklist.show',$item->id) }}">
+                                                    <a href="{{ route('admin.hermanos.show',$item->id) }}">
                                                         <i class="fa fa-users"></i> Hermanos </a>
                                                 </li>
                                                 <li>
                                                     <a href="{{ route('admin.checklist.show',$item->id) }}">
-                                                        <i class="fa fa-sign-out"></i> Retiro del establecimiento </a>
+                                                        <i class="fa fa-sign-out"></i> Retiro </a>
                                                 </li>
                                             </ul>
                                         </div>

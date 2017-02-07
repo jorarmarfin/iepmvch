@@ -19,14 +19,15 @@
             </div>
             <div class="portlet-body">
             {!!Form::boton('Nueva Boleta',route('admin.boletaventa.create'),'green','fa fa-plus')!!}
+            {!!Form::botonmodal('Actualizar Numeración','#Numeracion','green-meadow','fa fa-refresh')!!}
             <p></p>
-                <table class="table table-striped table-hover" id="Asignaturas">
+                <table class="table table-striped table-hover" id="Boletas">
                     <thead>
                         <tr>
                             <th> Serie </th>
                             <th> Numero </th>
                             <th> Fecha Emision</th>
-                            <th> Razion social</th>
+                            <th> Razon social</th>
                             <th> Total Venta</th>
                             <th> Opciones </th>
                         </tr>
@@ -58,7 +59,7 @@
                                                 <i class="fa fa-file"></i> Detalle </a>
                                         </li>
                                         <li>
-                                            <a href="{{ route('admin.asignatura.show',$item->id) }}">
+                                            <a href="{{ route('admin.boletaventa.delete',$item->id) }}">
                                                 <i class="fa fa-trash"></i> Delete </a>
                                         </li>
                                     </ul>
@@ -73,12 +74,35 @@
         <!-- END Portlet PORTLET-->
     </div>
 </div>
+<div class="modal fade" id="Numeracion" tabindex="-1" role="basic" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">Actualizar Numeracion</h4>
+            </div>
 
+            {!! Form::open(['route'=>'admin.boletaventa.storenumeracion','method'=>'POST']) !!}
+            <div class="modal-body">
+                {!! Form::label('lblNumeracion', 'Colocar el numero de serie al que desea actualizar ', ['class'=>'control-label']) !!}
+                {!! Form::text('numero', null, ['class'=>'form-control']) !!}
+
+            </div>
+            <div class="modal-footer">
+                {!! Form::enviar('Actualizarr') !!}
+            </div>
+            {!! Form::close() !!}
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
 @stop
 
 @section('js-scripts')
 <script>
-$('#Asignaturas').dataTable({
+
+$('#Boletas').dataTable({
     "language": {
         "emptyTable": "No hay datos disponibles",
         "info": "Mostrando _START_ a _END_ de _TOTAL_ filas",
@@ -86,9 +110,9 @@ $('#Asignaturas').dataTable({
         "lengthMenu": "_MENU_ registros"
     },
     "bProcessing": true,
-    "pagingType": "bootstrap_full_number",
-    "order": [1,"asc"]
+    "pagingType": "bootstrap_full_number"
 });
+
 </script>
 @stop
 

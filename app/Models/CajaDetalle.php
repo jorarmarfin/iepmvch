@@ -24,5 +24,14 @@ class CajaDetalle extends Model
     	$afectacion = Catalogo::find($this->idtipoigv);
     	return $afectacion->codigo;
     }
+    /**
+    * Atributos Tipo de pension
+    */
+    public function getTipoPensionAttribute()
+    {
+        $tipopension = Catalogo::find($this->idtipopension);
+        $tipopension = (isset($tipopension)) ? '('.$tipopension->nombre.')' : '' ;
+        return $tipopension;
+    }
 
 }

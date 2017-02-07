@@ -14,7 +14,7 @@ use File;
 use Illuminate\Http\Request;
 use Storage;
 use Styde\Html\Facades\Alert;
-
+use DB;
 class BoletaVentaController extends Controller
 {
     /**
@@ -76,17 +76,15 @@ class BoletaVentaController extends Controller
             if (str_contains($producto->nombre,'Pension')) {
                 $caja = Caja::Pensiones($data['idmatricula'])->orderBy('idtipopension','desc')->first();
                 if (is_null($caja)) {
-                dd($caja);
                     $items[$key]['idtipopension'] = EstadoId('TIPO PENSION','Enero');
                 }else{
-                    $items[$key]['idtipopension'] = $caja->idtipopension++;
+                    $items[$key]['idtipopension'] = $caja->idtipopension + 1;
                 }
             }
 
 
 
         }
-
         $data['total_venta'] = $data['total_gravado'] + $data['sumatoria_igv'];
         $data['entrada'] = $data['total_venta'];
 
@@ -109,7 +107,14 @@ class BoletaVentaController extends Controller
         }
 
     }
-
+    public function storenumeracion(Request $request)
+    {
+        //$numero = $request->input('numero');
+        if(DB::statement('ALTER SEQUENCE boleta RESTART WITH '.$request->input('numero'))){
+            Alert::success('Numeracion Actualizada con exito');
+        }
+        return redirect()->route('admin.boletaventa.index');
+    }
     /**
      * Display the specified resource.
      *
@@ -198,9 +203,11 @@ class BoletaVentaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function delete($id)
     {
-        //
+        $caja = Caja::with('detalles')->find($id);
+        $Lista = [];
+        return view('admin.boletaventa.delete',compact('caja','Lista'));
     }
 
     /**
@@ -211,6 +218,10 @@ class BoletaVentaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $caja = Caja::find($id);
+        CajaDetalle::where('idcaja',$caja->id)->delete();
+        $caja->delete();
+        Alert::success('Boleta Eliminada con exito');
+        return redirect()->route('admin.boletaventa.index');
     }
 }

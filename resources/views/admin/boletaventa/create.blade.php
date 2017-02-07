@@ -64,7 +64,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             {!! Form::label('lblMatricula', 'Alumno Matriculado', ['class'=>'control-label']) !!}
-                            {!! Form::select('idmatricula',[] ,null, ['id'=>'idmatricula','class'=>'form-control','placeholder'=>'Alumno Matriculado en el colegio ']) !!}
+                            {!! Form::select('idmatricula',[] ,null, ['id'=>'idmatricula','class'=>'form-control','placeholder'=>'Seleccionar Alumno matriculado']) !!}
                         </div>
                     </div><!--/span-->
                     {!!Form::hidden('idtipomoneda', EstadoId('TIPO MONEDA','Nuevo Sol') );!!}
@@ -75,16 +75,18 @@
                     <div data-repeater-list="items">
                         <div data-repeater-item class="mt-repeater-item">
                             <div class="row mt-repeater-row">
-                                <div class="col-md-11">
-                                    <div class="form-group col-md-2">
+                                <div class="col-md-12">
+                                    <div class="form-group col-md-6">
                                         {!! Form::label('lblProducto', 'Producto', ['class'=>'control-label']) !!}
                                         {!! Form::select('idproducto',$productos, null, ['class'=>'form-control producto_linea','placeholder'=>'Productos','id'=>'idproducto[]']) !!}
                                     </div>
-                                    <div class="form-group col-md-2" >
+                                </div>
+                                <div class="col-md-11">
+                                    <div class="form-group col-md-3" >
                                         {!! Form::label('lblCantidad', 'Cantidad', ['class'=>'control-label']) !!}
                                         {!! Form::text('cantidad', 1, ['class'=>'form-control cantidad_linea','placeholder'=>'Cantidad']) !!}
                                     </div>
-                                    <div class="form-group col-md-2">
+                                    <div class="form-group col-md-3">
                                         {!! Form::label('lblPrecioU', 'Precio Unitario', ['class'=>'control-label']) !!}
                                         {!! Form::text('precio', null, ['class'=>'form-control precio_linea','placeholder'=>'precio','disabled']) !!}
                                     </div>
