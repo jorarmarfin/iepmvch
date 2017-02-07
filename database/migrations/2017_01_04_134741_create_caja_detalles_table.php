@@ -25,10 +25,13 @@ class CreateCajaDetallesTable extends Migration
 
             $table->decimal('subtotal','12','2')->nullable();
             $table->decimal('total','12','2')->nullable();
+            $table->integer('idtipopension')->nullable();
+
             $table->timestamps();
             $table->foreign('idcaja')->references('id')->on('caja');
             $table->foreign('idtipoigv')->references('id')->on('catalogo');
             $table->foreign('idproducto')->references('id')->on('producto');
+            $table->foreign('idtipopension')->references('id')->on('catalogo');
         });
     }
 

@@ -49,6 +49,7 @@ class CatalogoTableSeeder extends Seeder
         Catalogo::create(['idtable' => 0,'iditem' => 34, 'codigo' => 'TDOCI','nombre' => 'TIPO DOCUMENTO IDENTIDAD','descripcion'=>'TIPO DE DOCUMENTO DE IDENTIDAD','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 0,'iditem' => 35, 'codigo' => 'TNOT','nombre' => 'TIPO NOTA','descripcion'=>'TIPO DE NOTA','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 0,'iditem' => 36, 'codigo' => 'TOPER','nombre' => 'TIPO OPERACION','descripcion'=>'TIPO DE OPERACION','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 0,'iditem' => 37, 'codigo' => 'TPEN','nombre' => 'TIPO PENSION','descripcion'=>'TIPO DE PENSION','valor'=> null,'activo'=>true]);
 
 
 
@@ -2372,6 +2373,21 @@ class CatalogoTableSeeder extends Seeder
          * TIPO DE OPERACION
          */
         Catalogo::create(['idtable' => 36,'iditem' => 1, 'codigo' => '01','nombre' => 'Venta Interna','descripcion'=>'Venta Interna','valor'=> null,'activo'=>true]);
+        /**
+         * TIPO DE PENSION
+         */
+        Catalogo::create(['idtable' => 37,'iditem' => 1, 'codigo' => 'P1','nombre' => 'Enero','descripcion'=>'Pension de Enero','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 37,'iditem' => 2, 'codigo' => 'P2','nombre' => 'Febrero','descripcion'=>'Pension de Febrero','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 37,'iditem' => 3, 'codigo' => 'P3','nombre' => 'Marzo','descripcion'=>'Pension de Marzo','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 37,'iditem' => 4, 'codigo' => 'P4','nombre' => 'Abril','descripcion'=>'Pension de Abril','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 37,'iditem' => 5, 'codigo' => 'P5','nombre' => 'Mayo','descripcion'=>'Pension de Mayo','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 37,'iditem' => 6, 'codigo' => 'P6','nombre' => 'Junio','descripcion'=>'Pension de Junio','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 37,'iditem' => 7, 'codigo' => 'P7','nombre' => 'Julio','descripcion'=>'Pension de Julio','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 37,'iditem' => 8, 'codigo' => 'P8','nombre' => 'Agosto','descripcion'=>'Pension de Agosto','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 37,'iditem' => 9, 'codigo' => 'P9','nombre' => 'Setiembre','descripcion'=>'Pension de Setiembre','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 37,'iditem' =>10, 'codigo' => 'P10','nombre' => 'Octubre','descripcion'=>'Pension de Octubre','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 37,'iditem' =>11, 'codigo' => 'P11','nombre' => 'Noviembre','descripcion'=>'Pension de Noviembre','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 37,'iditem' =>12, 'codigo' => 'P12','nombre' => 'Diciembre','descripcion'=>'Pension de Diciembre','valor'=> null,'activo'=>true]);
 
 
     }

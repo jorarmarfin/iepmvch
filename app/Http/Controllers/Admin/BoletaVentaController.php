@@ -70,7 +70,23 @@ class BoletaVentaController extends Controller
             $data['total_descuentos'] += $item['descuento'];
             $data['total_gravado'] += $subtotal;
             $data['sumatoria_igv'] += $subtotal*igv()/100;
+
+            #tipo de pension
+            $items[$key]['idtipopension'] = null;
+            if (str_contains($producto->nombre,'Pension')) {
+                $caja = Caja::Pensiones($data['idmatricula'])->orderBy('idtipopension','desc')->first();
+                if (is_null($caja)) {
+                dd($caja);
+                    $items[$key]['idtipopension'] = EstadoId('TIPO PENSION','Enero');
+                }else{
+                    $items[$key]['idtipopension'] = $caja->idtipopension++;
+                }
+            }
+
+
+
         }
+
         $data['total_venta'] = $data['total_gravado'] + $data['sumatoria_igv'];
         $data['entrada'] = $data['total_venta'];
 

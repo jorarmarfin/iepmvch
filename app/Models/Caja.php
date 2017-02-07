@@ -10,6 +10,17 @@ class Caja extends Model
     protected $fillable = ['idtipooperacion','fechaemision','idtipodocumento', 'ididentificacion', 'numidentificacion','razonsocial','idtipomoneda','descuento_global','sumatoria_otros_cargos','total_descuentos','total_gravado','total_inafecto','total_exonerado','sumatoria_igv','sumatoria_isc','sumatoria_otros_tributos','total_venta','prefijo','serie','numero','idmatricula','entrada','salida','saldo','idigv','direccion'];
 
     /**
+    * Devuelve los valores Activos
+    * @param  [type]  [description]
+    * @return [type]            [description]
+    */
+    public function scopePensiones($cadenaSQL,$idmatricula){
+        return $cadenaSQL->select('cd.idproducto','cd.idtipopension')
+                         ->join('caja_detalle as cd','cd.idcaja','=','caja.id')
+                         ->where('idmatricula',$idmatricula)
+                         ->whereNotNull('cd.idtipopension');
+    }
+    /**
     * Atributos Archivo Cabecera
     */
     public function getArchivoCabeceraAttribute()
