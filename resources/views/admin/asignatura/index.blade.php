@@ -42,10 +42,6 @@
                                     </button>
                                     <ul class="dropdown-menu pull-left" role="menu">
                                         <li>
-                                            <a href="{{ route('admin.asignatura.show',$item->id) }}">
-                                                <i class="fa fa-eye"></i> Show </a>
-                                        </li>
-                                        <li>
                                             <a href="{{ route('admin.asignatura.edit',$item->id) }}">
                                                 <i class="fa fa-edit"></i> Edit </a>
                                         </li>
