@@ -15,7 +15,7 @@ class CreatePersonaautorizadasTable extends Migration
     {
         Schema::create('persona_autorizada', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre',200)->nullable();
+            $table->string('nombres',200)->nullable();
             $table->string('dni',20)->nullable();
             $table->string('telefono',50)->nullable();
             $table->integer('idalumno')->nullable();

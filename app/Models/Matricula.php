@@ -8,7 +8,24 @@ use Illuminate\Database\Eloquent\Model;
 class Matricula extends Model
 {
     protected $table = 'matricula';
-    protected $fillable = ['idalumno', 'idgradoseccion', 'idtipo','year'];
+    protected $fillable = ['idalumno', 'idgradoseccion', 'idtipo','year','retiro_solo','retiro_hermano','retiro_hermano_nombre'];
+
+    /**
+    * Atributos Se retira con su hermano
+    */
+    public function getSeRetiraHermanoAttribute()
+    {
+        $retval = ($this->retiro_hermano)?'Si ('.$this->retiro_hermano_nombre.')':'No';
+        return $retval;
+    }
+    /**
+    * Atributos Se retira Solo
+    */
+    public function getSeRetiraSoloAttribute()
+    {
+        $retval = ($this->retiro_solo)? 'Si':'No';
+        return $retval;
+    }
     /**
     * Devuelve los valores Activos
     * @param  [type]  [description]

@@ -7,6 +7,7 @@ use App\Models\Alumno;
 use App\Models\Hermano;
 use App\Models\Matricula;
 use Illuminate\Http\Request;
+use Styde\Html\Facades\Alert;
 
 class HermanosController extends Controller
 {
@@ -32,10 +33,10 @@ class HermanosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Hermano::create($request->all());
+        Alert::success('Hermano Registrado con exito');
+        return back();
     }
-
-
 
     /**
      * Show the form for editing the specified resource.
@@ -43,31 +44,11 @@ class HermanosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function delete($id)
     {
-        //
+        Hermano::destroy($id);
+        Alert::success('Hermano Eliminado con exito');
+        return back();
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

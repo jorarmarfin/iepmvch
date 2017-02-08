@@ -251,8 +251,19 @@
                         <h3 class="form-section">Fotografia</h3>
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="form-group">
-                                    {!! Form::file('file', []) !!}
+                                <div class="fileinput fileinput-new" data-provides="fileinput">
+                                    <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                                        <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+                                    </div>
+                                    <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
+                                    <div>
+                                        <span class="btn green btn-file">
+                                            <span class="fileinput-new"> Seleccionar Imagen </span>
+                                            <span class="fileinput-exists"> Cambiar </span>
+                                            {{ Form::file('file', []) }}
+                                        </span>
+                                        <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Quitar </a>
+                                    </div>
                                 </div>
                             </div><!--/span-->
                         </div><!--/row-->
@@ -356,12 +367,14 @@ $(document).ready(function() {
 {!! Html::style(asset('assets/global/plugins/select2/css/select2.min.css')) !!}
 {!! Html::style(asset('assets/global/plugins/select2/css/select2-bootstrap.min.css')) !!}
 {!! Html::style(asset('assets/global/plugins/icheck/skins/all.css')) !!}
+{!! Html::style(asset('assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css')) !!}
 @stop
 @section('plugins-js')
 {!! Html::script(asset('assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js')) !!}
 {!! Html::script(asset('assets/global/plugins/select2/js/select2.full.min.js')) !!}
 {!! Html::script(asset('assets/global/plugins/select2/js/i18n/es.js')) !!}
 {!! Html::script(asset('assets/global/plugins/icheck/icheck.min.js')) !!}
+{!! Html::script(asset('assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js')) !!}
 @stop
 
 

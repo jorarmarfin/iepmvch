@@ -39,7 +39,7 @@
                                 </div><!--/span-->
                             </div><!--row-->
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-8">
                                     <div class="form-group">
                                         <label class="control-label col-md-6">Grado : </label>
                                         <div class="col-md-6">
@@ -47,41 +47,45 @@
                                         </div>
                                     </div>
                                 </div><!--/span-->
-                                <div class="col-md-4">
+                                <div class="col-md-8">
                                     <div class="form-group">
-                                        <label class="control-label col-md-6">Nivel:</label>
+                                        <label class="control-label col-md-6">Año de Ingreso I.E.P.:</label>
                                         <div class="col-md-6">
-                                            <p class="form-control-static"> {{ $matricula->nivel_matriculado }} </p>
-                                        </div>
-                                    </div>
-                                </div><!--/span-->
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label class="control-label col-md-8">Año de Ingreso I.E.P.:</label>
-                                        <div class="col-md-4">
                                             <p class="form-control-static"> {{ $matricula->year }} </p>
                                         </div>
                                     </div>
                                 </div><!--/span-->
                             </div><!--row-->
-                            {!! Form::open(['route'=>'admin.hermanos.store','method'=>'POST','class'=>'horizontal-form']) !!}
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        {!! Form::label('lblNombres', 'Nombres', ['class'=>'control-label']) !!}
-                                        {!! Form::text('nombres', null, ['class'=>'form-control','placeholder'=>'Nombres']) !!}
-                                    </div>
-                                </div><!--/span-->
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        {!! Form::label('lblEdad', 'Colegio / Universidad / Trabajo', ['class'=>'control-label']) !!}
-                                        {!! Form::text('descripcion', null, ['class'=>'form-control','placeholder'=>'Colegio / Universidad / Trabajo']) !!}
-                                    </div>
-                                </div><!--/span-->
-                            {!! Form::close() !!}
                         </div><!--span-->
                     </div><!--row-->
                 </div>
              </form>
+            {!! Form::open(['route'=>'admin.hermanos.store','method'=>'POST','class'=>'form-horizontal']) !!}
+            <div class="form-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        {!! Form::hidden('idalumno', $matricula->idalumno ) !!}
+                        {!! Form::hidden('idmatricula', $matricula->id ) !!}
+                        {!! Form::label('lblNombres', 'Nombres', ['class'=>'control-label']) !!}
+                        {!! Form::text('nombres', null, ['class'=>'form-control','placeholder'=>'nombres']) !!}
+                    </div><!--span-->
+                    <div class="col-md-3">
+                        {!! Form::label('lblCU', 'Colegio / Universidad / Trabaja', ['class'=>'control-label']) !!}
+                        {!! Form::text('descripcion', null, ['class'=>'form-control','placeholder'=>'Colegio / Universidad / Trabaja']) !!}
+                    </div><!--span-->
+                    <div class="col-md-3">
+                        {!! Form::label('lblEdad', 'Edad', ['class'=>'control-label']) !!}
+                        {!! Form::text('edad', null, ['class'=>'form-control','placeholder'=>'Edad']) !!}
+                    </div><!--span-->
+                    <div class="col-md-3">
+                        <div style="margin-top:25px">
+                            {!!Form::enviar('Guardar')!!}{!!Form::back(route('admin.matricula.index'))!!}
+                        </div>
+                    </div><!--span-->
+                </div><!--row-->
+            </div>
+            {!! Form::close() !!}
+            <p></p>
             <!-- END FORM-->
                 <div class="row">
                     <div class="col-md-12">
@@ -97,11 +101,10 @@
                             <tbody>
                             @foreach ($hermanos as $item)
                                 <tr>
-                                    <td> {{ $item->nombres }} </td>
+                                    <td> {{ $item->nombres }}        </td>
                                     <td> {{ $item->descripcion }}    </td>
-                                    <td> {{ $item->edad }} </td>
-                                    <td>
-                                    </td>
+                                    <td> {{ $item->edad }}           </td>
+                                    <td> {!!Form::boton('Eliminar',route('admin.hermanos.delete',$item->id),'red','fa fa-trash',null,['data-toggle'=>'confirmation','data-original-title'=>'¡Esta seguro!'])!!} </td>
                                 </tr>
                             @endforeach
                             </tbody>
@@ -136,8 +139,6 @@ $(document).ready(function() {
 
 @section('plugins-styles')
 {!! Html::style('assets/global/plugins/bootstrap-table/bootstrap-table.min.css') !!}
-{!! Html::style(asset('assets/global/plugins/select2/css/select2.min.css')) !!}
-{!! Html::style(asset('assets/global/plugins/select2/css/select2-bootstrap.min.css')) !!}
 {!! Html::style('assets/global/plugins/datatables/datatables.min.css') !!}
 {!! Html::style('assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css') !!}
 @stop
@@ -145,11 +146,10 @@ $(document).ready(function() {
 @section('plugins-js')
 {!! Html::script('assets/global/plugins/jquery-ui/jquery-ui.min.js') !!}
 {!! Html::script('assets/global/plugins/bootstrap-table/bootstrap-table.min.js') !!}
-{!! Html::script(asset('assets/global/plugins/select2/js/select2.full.min.js')) !!}
-{!! Html::script(asset('assets/global/plugins/select2/js/i18n/es.js')) !!}
 {!! Html::script('assets/global/scripts/datatable.js') !!}
 {!! Html::script('assets/global/plugins/datatables/datatables.min.js') !!}
 {!! Html::script('assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js') !!}
+{!! Html::script('assets/global/plugins/bootstrap-confirmation/bootstrap-confirmation.min.js') !!}
 
 @stop
 

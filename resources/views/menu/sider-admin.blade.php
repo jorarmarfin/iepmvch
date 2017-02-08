@@ -18,6 +18,7 @@
             <ul class="sub-menu">
                 {!!Form::menu('Maestro',route('catalogo.gestion','maestro'))!!}
                 {!!Form::menu('Pais',route('catalogo.gestion','pais'))!!}
+                {!!Form::menu('Tipo Familiar',route('catalogo.gestion','tipo familiar'))!!}
             </ul>
         </li>
         <li class="heading">

@@ -70,7 +70,7 @@ class ViewServiceProvider extends ServiceProvider
             EstadoAlumnoSelectData::class
             );
         $this->app->make('view')->composer(
-            ['admin.familiar.create','admin.familiar.edit'],
+            ['admin.familiar.create','admin.familiar.edit','admin.retiro.index'],
             TipoFamiliarSelectData::class
             );
         $this->app->make('view')->composer(

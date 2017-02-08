@@ -19,6 +19,9 @@ class CreateMatriculasTable extends Migration
             $table->integer('idgradoseccion')->nullable();
             $table->integer('idtipo')->nullable();
             $table->string('year',4)->nullable();
+            $table->boolean('retiro_solo')->default(false);
+            $table->boolean('retiro_hermano')->default(false);
+            $table->string('retiro_hermano_nombre',150)->nullable();
             $table->timestamps();
             $table->foreign('idalumno')->references('id')->on('alumno');
             $table->foreign('idgradoseccion')->references('id')->on('grado_seccion');

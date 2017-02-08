@@ -98,7 +98,7 @@
                                                         <i class="fa fa-users"></i> Hermanos </a>
                                                 </li>
                                                 <li>
-                                                    <a href="{{ route('admin.checklist.show',$item->id) }}">
+                                                    <a href="{{ route('admin.retiro.show',$item->id) }}">
                                                         <i class="fa fa-sign-out"></i> Retiro </a>
                                                 </li>
                                             </ul>
