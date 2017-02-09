@@ -9,7 +9,7 @@
             <div class="portlet-title">
                 <div class="caption">
                     <i class="fa fa-book"></i>
-                    Lista de Asignaturas
+                    Listado de Areas
                 </div>
                 <div class="tools">
                     <a href="javascript:;" class="collapse"> </a>
@@ -18,27 +18,25 @@
                 </div>
             </div>
             <div class="portlet-body">
-            {!!Form::boton('Nuevo Asignatura',route('admin.asignatura.create'),'green','fa fa-plus')!!}
+            {!!Form::botonmodal('Nueva Area','#NewArea','green','fa fa-plus')!!}
             <p></p>
                 <table class="table table-striped table-hover" id="Asignaturas">
                     <thead>
                         <tr>
-                            <th> Area inicial</th>
-                            <th> Area primaria </th>
-                            <th> Area Secundaria</th>
-                            <th> Asignatura </th>
-                            <th> Peso</th>
+                            <th> codigo </th>
+                            <th> Nombre en inicial </th>
+                            <th> Nombre en primaria </th>
+                            <th> Nombre en secundaria </th>
                             <th> Opciones </th>
                         </tr>
                     </thead>
                     <tbody>
                     @foreach ($Lista as $item)
                         <tr>
-                            <td> {{ $item->area->inicial }} </td>
-                            <td> {{ $item->area->primaria }} </td>
-                            <td> {{ $item->area->secundaria }} </td>
-                            <td> {{ $item->nombre }} </td>
-                            <td> {{ $item->peso }} </td>
+                            <td> {{ $item->codigo }} </td>
+                            <td> {{ $item->inicial }} </td>
+                            <td> {{ $item->primaria }} </td>
+                            <td> {{ $item->secundaria }} </td>
                             <td>
                                 <div class="btn-group">
                                     <button class="btn btn-xs green-dark dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Opciones
@@ -46,11 +44,11 @@
                                     </button>
                                     <ul class="dropdown-menu pull-left" role="menu">
                                         <li>
-                                            <a href="{{ route('admin.asignatura.edit',$item->id) }}">
+                                            <a href="{{ route('admin.areaacademica.edit',$item->id) }}">
                                                 <i class="fa fa-edit"></i> Edit </a>
                                         </li>
                                         <li>
-                                            <a href="{{ route('admin.asignatura.show',$item->id) }}">
+                                            <a href="{{ route('admin.areaacademica.show',$item->id) }}">
                                                 <i class="fa fa-trash"></i> Delete </a>
                                         </li>
                                     </ul>
@@ -65,7 +63,45 @@
         <!-- END Portlet PORTLET-->
     </div>
 </div>
-
+<div class="modal fade" id="NewArea" tabindex="-1" role="basic" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">Nueva Area</h4>
+            </div>
+{!! Form::open(['route'=>'admin.areaacademica.store','method'=>'POST']) !!}
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-2">
+                        {!! Form::label('lblCodigo', 'Codigo', ['class'=>'label-control']) !!}
+                        {!! Form::text('codigo', null, ['class'=>'form-control']) !!}
+                    </div><!--span-->
+                    <div class="col-md-4">
+                        {!! Form::label('lblInicial', 'Nombre en Inicial', ['class'=>'label-control']) !!}
+                        {!! Form::text('inicial', null, ['class'=>'form-control']) !!}
+                    </div><!--span-->
+                    <div class="col-md-4">
+                        {!! Form::label('lblPrimaria', 'Nombre en Primaria', ['class'=>'label-control']) !!}
+                        {!! Form::text('primaria', null, ['class'=>'form-control']) !!}
+                    </div><!--span-->
+                </div><!--row-->
+                    <div class="row">
+                        <div class="col-md-6">
+                            {!! Form::label('lblSecundaria', 'Nombre en Secundaria', ['class'=>'label-control']) !!}
+                            {!! Form::text('secundaria', null, ['class'=>'form-control']) !!}
+                        </div><!--span-->
+                    </div><!--row-->
+            </div>
+            <div class="modal-footer">
+            {!!Form::enviar('Guardar')!!}
+            </div>
+{!! Form::close() !!}
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
 @stop
 
 @section('js-scripts')
@@ -77,6 +113,7 @@ $('#Asignaturas').dataTable({
         "search": "Buscar :",
         "lengthMenu": "_MENU_ registros"
     },
+    "pageLength":50,
     "bProcessing": true,
     "pagingType": "bootstrap_full_number",
     "order": [0,"asc"]
@@ -115,7 +152,7 @@ $('#Asignaturas').dataTable({
 
 
 @section('page-title')
-Plan Curricular / Asignaturas
+Plan Curricular / Area Academica
 @stop
 
 @section('page-subtitle')

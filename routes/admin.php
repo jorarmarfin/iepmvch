@@ -16,7 +16,9 @@ Route::group(['prefix' => 'admin','namespace'=>'Admin'], function() {
 	/**
 	 * Rutas de Plan Curricular
 	 */
+	require __DIR__.'/admin/areaacademica.route.php';
 	require __DIR__.'/admin/asignatura.route.php';
+	require __DIR__.'/admin/asignaturagradoseccion.route.php';
 	/**
 	 * Boleta de venta
 	 */

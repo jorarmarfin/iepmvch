@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAsignaturasTable extends Migration
+class CreateAreaAcademicasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class CreateAsignaturasTable extends Migration
      */
     public function up()
     {
-        Schema::create('asignatura', function (Blueprint $table) {
+        Schema::create('area_academica', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre',200)->nullable();
-            $table->integer('idareaacademica')->nullable();
-            $table->decimal('peso','8','3')->nullable()->default(0);
+            $table->string('codigo',20)->nullable();
+            $table->string('inicial',50)->nullable();
+            $table->string('primaria',50)->nullable();
+            $table->string('secundaria',50)->nullable();
+            $table->boolean('activo')->nullable(true);
             $table->timestamps();
-            $table->foreign('idareaacademica')->references('id')->on('area_academica');
         });
     }
 
@@ -30,6 +31,6 @@ class CreateAsignaturasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('asignatura');
+        Schema::dropIfExists('area_academica');
     }
 }

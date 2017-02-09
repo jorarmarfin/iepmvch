@@ -1,5 +1,5 @@
 <?php
 
-Route::resource('asignatura', 'AsignaturaController',['names'=>'admin.asignatura']);
+Route::resource('asignatura', 'PlanCurricular\AsignaturaController',['names'=>'admin.asignatura']);
 
 

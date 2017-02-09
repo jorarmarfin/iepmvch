@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Asignatura extends Model
 {
     protected $table = 'asignatura';
-    protected $fillable = ['nombre', 'idarea','peso'];
+    protected $fillable = ['nombre', 'idareaacademica','peso'];
 
 
     /**
@@ -15,7 +15,7 @@ class Asignatura extends Model
     */
     public function getAreaAttribute()
     {
-    	$area = Catalogo::find($this->idarea);
-    	return $area->nombre;
+    	$area = AreaAcademica::find($this->idareaacademica);
+    	return $area;
     }
 }

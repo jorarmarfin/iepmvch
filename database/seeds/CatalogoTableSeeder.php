@@ -223,9 +223,9 @@ class CatalogoTableSeeder extends Seeder
         /**
          * Area de asignatura
          */
-        Catalogo::create(['idtable' => 24,'iditem' => 1, 'codigo' => 'MAT','nombre' => 'Matematica','descripcion'=>'Matematica','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 24,'iditem' => 2, 'codigo' => 'COM','nombre' => 'Comunicacion','descripcion'=>'Comunicacion','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 24,'iditem' => 3, 'codigo' => 'AYC','nombre' => 'Arte y Cultura','descripcion'=>'Arte y Cultura','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 24,'iditem' => 1, 'codigo' => 'ART','nombre' => 'Arte y Cultura','descripcion'=>'Arte y Cultura','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 24,'iditem' => 2, 'codigo' => 'CYA','nombre' => 'Ciencia y Ambiente','descripcion'=>'Ciencia y Ambiente','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 24,'iditem' => 3, 'codigo' => 'CYT','nombre' => 'Ciencia y Tecnologia','descripcion'=>'Ciencia, Tecnología y Ambiente','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 24,'iditem' => 4, 'codigo' => 'CYT','nombre' => 'Ciencia y Tecnologia','descripcion'=>'Ciencia y Tecnologia','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 24,'iditem' => 5, 'codigo' => 'ING','nombre' => 'Ingles','descripcion'=>'Ingles','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 24,'iditem' => 6, 'codigo' => 'CSO','nombre' => 'Ciencias Sociales','descripcion'=>'Ciencias Sociales','valor'=> null,'activo'=>true]);

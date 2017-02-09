@@ -31,8 +31,9 @@
         <li class="nav-item  ">
             {!!Form::menulink('Plan Curricular','#','fa fa-cubes')!!}
             <ul class="sub-menu">
-                {!!Form::menu('Areas academicas',route('catalogo.gestion','Area'))!!}
+                {!!Form::menu('Areas academicas',route('admin.areaacademica.index'))!!}
                 {!!Form::menu('Asignaturas',route('admin.asignatura.index'))!!}
+                {!!Form::menu('Asignaturas Grado',route('admin.ags.index'))!!}
                 {!!Form::menu('Horario',route('admin.asignatura.index'))!!}
             </ul>
         </li>

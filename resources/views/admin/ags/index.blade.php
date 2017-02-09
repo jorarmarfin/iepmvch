@@ -23,10 +23,8 @@
                 <table class="table table-striped table-hover" id="Asignaturas">
                     <thead>
                         <tr>
-                            <th> Area inicial</th>
-                            <th> Area primaria </th>
-                            <th> Area Secundaria</th>
-                            <th> Asignatura </th>
+                            <th> Nombre </th>
+                            <th> Area </th>
                             <th> Peso</th>
                             <th> Opciones </th>
                         </tr>
@@ -34,10 +32,8 @@
                     <tbody>
                     @foreach ($Lista as $item)
                         <tr>
-                            <td> {{ $item->area->inicial }} </td>
-                            <td> {{ $item->area->primaria }} </td>
-                            <td> {{ $item->area->secundaria }} </td>
                             <td> {{ $item->nombre }} </td>
+                            <td> {{ $item->area }} </td>
                             <td> {{ $item->peso }} </td>
                             <td>
                                 <div class="btn-group">
@@ -79,7 +75,7 @@ $('#Asignaturas').dataTable({
     },
     "bProcessing": true,
     "pagingType": "bootstrap_full_number",
-    "order": [0,"asc"]
+    "order": [1,"asc"]
 });
 </script>
 @stop
@@ -115,7 +111,7 @@ $('#Asignaturas').dataTable({
 
 
 @section('page-title')
-Plan Curricular / Asignaturas
+Plan Curricular / Asignaturas Grado Seccion
 @stop
 
 @section('page-subtitle')

@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Database\Seeder;
-use App\Models\Catalogo;
+use App\Models\AreaAcademica;
 use App\Models\Asignatura;
+use Illuminate\Database\Seeder;
 class AsignaturaTableSeeder extends Seeder
 {
     /**
@@ -12,41 +12,47 @@ class AsignaturaTableSeeder extends Seeder
      */
     public function run()
     {
-    	$area = Catalogo::where('idtable',24)->where('codigo','MAT')->first();
-        Asignatura::create(['nombre' => 'Matematica','idarea' => $area->id]);
-        Asignatura::create(['nombre' => 'Raz. Matematico','idarea' => $area->id]);
+    	$area = AreaAcademica::where('codigo','MAT')->first();
+        Asignatura::create(['nombre' => 'Matematica','idareaacademica' => $area->id]);
+        Asignatura::create(['nombre' => 'Raz. Matematico','idareaacademica' => $area->id]);
 
-        $area = Catalogo::where('idtable',24)->where('codigo','COM')->first();
-        Asignatura::create(['nombre' => 'Comunicacion','idarea' => $area->id]);
-        Asignatura::create(['nombre' => 'Raz. Verbal','idarea' => $area->id]);
+        $area = AreaAcademica::where('codigo','COM')->first();
+        Asignatura::create(['nombre' => 'Comunicacion','idareaacademica' => $area->id]);
+        Asignatura::create(['nombre' => 'Raz. Verbal','idareaacademica' => $area->id]);
 
-        $area = Catalogo::where('idtable',24)->where('codigo','AYC')->first();
-        Asignatura::create(['nombre' => 'Arte','idarea' => $area->id]);
-        Asignatura::create(['nombre' => 'Cultura','idarea' => $area->id]);
+        $area = AreaAcademica::where('codigo','ART')->first();
+        Asignatura::create(['nombre' => 'Arte','idareaacademica' => $area->id]);
+        Asignatura::create(['nombre' => 'Cultura','idareaacademica' => $area->id]);
 
-        $area = Catalogo::where('idtable',24)->where('codigo','CYT')->first();
-        Asignatura::create(['nombre' => 'Biologia','idarea' => $area->id]);
-        Asignatura::create(['nombre' => 'Quimica','idarea' => $area->id]);
+        $area = AreaAcademica::where('codigo','CYA')->first();
+        Asignatura::create(['nombre' => 'CTA','idareaacademica' => $area->id]);
+        Asignatura::create(['nombre' => 'Ciencia y Tecnología','idareaacademica' => $area->id]);
+        Asignatura::create(['nombre' => 'Ciencia y ambiente','idareaacademica' => $area->id]);
 
-        $area = Catalogo::where('idtable',24)->where('codigo','ING')->first();
-        Asignatura::create(['nombre' => 'Ingles','idarea' => $area->id]);
+        $area = AreaAcademica::where('codigo','ING')->first();
+        Asignatura::create(['nombre' => 'Ingles','idareaacademica' => $area->id]);
 
-        $area = Catalogo::where('idtable',24)->where('codigo','CSO')->first();
-        Asignatura::create(['nombre' => 'Ciencias Sociales','idarea' => $area->id]);
+        $area = AreaAcademica::where('codigo','PSO')->first();
+        Asignatura::create(['nombre' => 'Personal Social','idareaacademica' => $area->id]);
+        Asignatura::create(['nombre' => 'PFRH','idareaacademica' => $area->id]);
 
-        $area = Catalogo::where('idtable',24)->where('codigo','DPCC')->first();
-        Asignatura::create(['nombre' => 'DPCC','idarea' => $area->id]);
+        $area = AreaAcademica::where('codigo','ERE')->first();
+        Asignatura::create(['nombre' => 'Edu. Religiosa','idareaacademica' => $area->id]);
 
-        $area = Catalogo::where('idtable',24)->where('codigo','EDF')->first();
-        Asignatura::create(['nombre' => 'Edu. Fisica','idarea' => $area->id]);
+        $area = AreaAcademica::where('codigo','EFI')->first();
+        Asignatura::create(['nombre' => 'Edu. Fisica','idareaacademica' => $area->id]);
+        Asignatura::create(['nombre' => 'Motricidad','idareaacademica' => $area->id]);
 
-        $area = Catalogo::where('idtable',24)->where('codigo','EDR')->first();
-        Asignatura::create(['nombre' => 'Edu. Religiosa','idarea' => $area->id]);
+        $area = AreaAcademica::where('codigo','INF')->first();
+        Asignatura::create(['nombre' => 'Informática','idareaacademica' => $area->id]);
 
-        $area = Catalogo::where('idtable',24)->where('codigo','INF')->first();
-        Asignatura::create(['nombre' => 'Informatica','idarea' => $area->id]);
+        $area = AreaAcademica::where('codigo','HIS')->first();
+        Asignatura::create(['nombre' => 'HGE','idareaacademica' => $area->id]);
 
-        $area = Catalogo::where('idtable',24)->where('codigo','TOE')->first();
-        Asignatura::create(['nombre' => 'Tutoria TOE','idarea' => $area->id]);
+        $area = AreaAcademica::where('codigo','FOR')->first();
+        Asignatura::create(['nombre' => 'FCC','idareaacademica' => $area->id]);
+
+        $area = AreaAcademica::where('codigo','TUT')->first();
+        Asignatura::create(['nombre' => 'Tutoria TOE','idareaacademica' => $area->id]);
     }
 }

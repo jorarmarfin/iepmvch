@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\PlanCurricular;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AsignaturaRequest;
@@ -17,7 +17,7 @@ class AsignaturaController extends Controller
      */
     public function index()
     {
-        $Lista = Asignatura::OrderBy('nombre')->get();
+        $Lista = Asignatura::all();
         return view('admin.asignatura.index',compact('Lista'));
     }
 
