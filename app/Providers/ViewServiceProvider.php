@@ -38,7 +38,7 @@ class ViewServiceProvider extends ServiceProvider
             );
         $this->app->make('view')->composer(
             ['admin.reservapsicologica.create','admin.reservapsicologica.delete','admin.reservapsicologica.edit',
-            'admin.alumnos.create','admin.alumnos.edit'],
+            'admin.alumnos.create','admin.alumnos.edit','admin.listautiles.index'],
             GradoSelectData::class
             );
         $this->app->make('view')->composer(

@@ -134,7 +134,7 @@
                                 <div class="form-group">
                                     <label class="control-label col-md-6">Direccion:</label>
                                     <div class="col-md-6">
-                                        <p class="form-control-static"> {{ $familiar->direcion }} </p>
+                                        <p class="form-control-static"> {{ $familiar->direccion }} </p>
                                     </div>
                                 </div>
                             </div><!--/span-->

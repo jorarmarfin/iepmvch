@@ -15,7 +15,7 @@ class GradoTableSeeder extends Seeder
     {
         $nivel = Catalogo::where('idtable',4)->where('codigo','INI')->first();
         Grado::create(['idnivel' => $nivel->id,'ciclo' => 'I','codigo' => '1 años','nombre' => 'Inicial 1 años','activo' => false]);
-        Grado::create(['idnivel' => $nivel->id,'ciclo' => 'I','codigo' => '2 años','nombre' => 'Inicial 2 años','activo' => false]);
+        Grado::create(['idnivel' => $nivel->id,'ciclo' => 'I','codigo' => 'CONDICION LIBRE','nombre' => 'CONDICION LIBRE','activo' => true]);
         Grado::create(['idnivel' => $nivel->id,'ciclo' => 'II','codigo' => '3 años','nombre' => 'Inicial 3 años','activo' => true]);
         Grado::create(['idnivel' => $nivel->id,'ciclo' => 'II','codigo' => '4 años','nombre' => 'Inicial 4 años','activo' => true]);
         Grado::create(['idnivel' => $nivel->id,'ciclo' => 'II','codigo' => '5 años','nombre' => 'Inicial 5 años','activo' => true]);

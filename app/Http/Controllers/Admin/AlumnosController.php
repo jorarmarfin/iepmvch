@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AlumnoRequest;
+use App\Http\Requests\AlumnoUpdateRequest;
 use App\Models\Alumno;
 use App\Models\Catalogo;
 use Illuminate\Http\Request;
@@ -95,7 +96,7 @@ class AlumnosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(AlumnoRequest $request, $id)
+    public function update(AlumnoUpdateRequest $request, $id)
     {
         Alumno::Guardar($request,$id);
         Alert::success('Usuario actualizado');

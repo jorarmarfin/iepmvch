@@ -25,6 +25,10 @@ Route::group(['prefix' => 'admin','namespace'=>'Admin'], function() {
 	require __DIR__.'/admin/boletaventa.route.php';
 	require __DIR__.'/admin/productos.route.php';
 	require __DIR__.'/admin/serie.route.php';
+	/**
+	 * Lista de Utiles
+	 */
+	require __DIR__.'/admin/listautiles.route.php';
 
 
 

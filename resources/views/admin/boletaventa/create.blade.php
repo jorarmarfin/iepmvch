@@ -44,15 +44,15 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             {!! Form::label('lblNumeroId', 'Numero de Identificacion', ['class'=>'control-label']) !!}
-                            {!! Form::text('numidentificacion',null,  ['class'=>'form-control','placeholder'=>'Numero de identificacion','id'=>'numidentificacion']) !!}
+                            {!! Form::text('numidentificacion',null,  ['id'=>'numidentificacion','class'=>'form-control','placeholder'=>'Numero de identificacion']) !!}
                         </div>
                     </div><!--/span-->
                 </div><!--/row-->
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            {!! Form::label('lblRazonSocial', 'Razon Social', ['class'=>'control-label']) !!}
-                            {!! Form::text('razonsocial', null, ['id'=>'razonsocial','class'=>'form-control','placeholder'=>'Apellidos y nombres, denominación o razón social del adquirente o usuario ']) !!}
+                            {!! Form::label('lblRazonSocial', 'Adquiriente', ['class'=>'control-label']) !!}
+                            {!! Form::text('razonsocial', null, ['id'=>'adquiriente','class'=>'form-control','placeholder'=>'Apellidos y nombres, denominación o razón social del adquirente o usuario ']) !!}
                         </div>
                     </div><!--/span-->
                     <div class="col-md-12">
@@ -164,6 +164,24 @@
 @section('js-scripts')
 <script>
 $(document).ready(function() {
+
+    $('#adquiriente').easyAutocomplete({
+        url: function(name) {
+         return "{{ url("/adquiriente") }}?varsearch=" + name ;
+        },
+
+        getValue: "nombres",
+        list: {
+            onSelectItemEvent: function() {
+                var v_dni = $("#adquiriente").getSelectedItemData().dni;
+                var v_direccion = $("#adquiriente").getSelectedItemData().direccion;
+
+                $("#numidentificacion").val(v_dni).trigger("change");
+                $("#direccion").val(v_direccion).trigger("change");
+            }
+        }
+    });
+
     $("#idmatricula").select2({
 
         ajax: {
@@ -197,23 +215,6 @@ $(document).ready(function() {
         var markup=res.text;
         return markup;
     }
-
-    $('#numidentificacion').easyAutocomplete({
-        url: function(name) {
-         return "{{ url("/numidentificacion") }}?varsearch=" + name ;
-        },
-
-        getValue: "dni",
-        list: {
-            onSelectItemEvent: function() {
-                var v_razonsocial = $("#numidentificacion").getSelectedItemData().nombres;
-                var v_direccion = $("#numidentificacion").getSelectedItemData().direccion;
-
-                $("#razonsocial").val(v_razonsocial).trigger("change");
-                $("#direccion").val(v_direccion).trigger("change");
-            }
-        }
-    });
 
     $('.datepicker').datepicker({
         autoclose: true,
@@ -300,7 +301,15 @@ $(document).ready(function() {
     }
 
     function subtotales(sub,pre,cant,des,tot,igv) {
-        sub.val((pre.val()*cant.val())-des.val());
+        var vv_subtotal = pre.val()*cant.val();
+        if (vv_subtotal > des.val()) {
+            vv_subtotal = vv_subtotal-des.val();
+        }else{
+            vv_subtotal = vv_subtotal;
+            des.val(0);
+            bootbox.alert("No puede asignar este tipo de descuento");
+        }
+        sub.val(vv_subtotal);
         tot.val( calculaigv(sub.val(),igv) + parseFloat(sub.val()));
         calculo_totales();
     }
@@ -395,6 +404,7 @@ $(document).ready(function() {
 {!! Html::script(asset('assets/global/plugins/select2/js/i18n/es.js')) !!}
 {!! Html::script(asset('assets/global/plugins/jquery-repeater/jquery.repeater.js')) !!}
 {!! Html::script(asset('assets/global/plugins/EasyAutocomplete/jquery.easy-autocomplete.min.js')) !!}
+{!! Html::script(asset('assets/global/plugins/bootbox/bootbox.min.js')) !!}
 @stop
 
 

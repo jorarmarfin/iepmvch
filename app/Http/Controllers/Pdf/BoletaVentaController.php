@@ -59,7 +59,7 @@ class BoletaVentaController extends Controller
         #
         PDF::SetXY(40,50);
         PDF::SetFont('times','',9);
-        PDF::Cell(100,5,$caja->direccion,0,0,'L');
+        PDF::Cell(100,5,$caja->direccion.' '.$caja->distrito,0,0,'L');
         #
         PDF::SetXY(20,55);
         PDF::SetFont('times','B',9);
@@ -93,28 +93,29 @@ class BoletaVentaController extends Controller
 
         $altodecelda=10;
         $incremento = 80;
-
         $items = $items->each(function ($item,$key) use($altodecelda,$incremento){
             PDF::SetXY(20,$key*$altodecelda+$incremento);
             PDF::SetFont('times','',10);
-            PDF::Cell(20,10,$item->cantidad,1,0,'C');
+            PDF::Cell(20,10,$item->cantidad,'L',0,'C');
 
             PDF::SetXY(40,$key*$altodecelda+$incremento);
             PDF::SetFont('times','',10);
-            PDF::Cell(100,10,$item->producto->nombre,1,0,'L');
+            PDF::Cell(100,10,$item->producto->nombre,'LR',0,'L');
 
             PDF::SetXY(140,$key*$altodecelda+$incremento);
             PDF::SetFont('times','',10);
-            PDF::Cell(20,10,'S/.'.$item->preciounitario,1,0,'R');
+            PDF::Cell(20,10,'S/.'.$item->preciounitario,'LR',0,'R');
 
             PDF::SetXY(160,$key*$altodecelda+$incremento);
             PDF::SetFont('times','',10);
-            PDF::Cell(20,10,'S/.'.$item->descuento,1,0,'R');
+            PDF::Cell(20,10,'S/.'.$item->descuento,'LR',0,'R');
 
             PDF::SetXY(180,$key*$altodecelda+$incremento);
             PDF::SetFont('times','',10);
-            PDF::Cell(20,10,'S/.'.$item->subtotal,1,0,'R');
+            PDF::Cell(20,10,'S/.'.$item->subtotal,'LR',0,'R');
         });
+        PDF::SetXY(20,$items->count()*$altodecelda+$incremento);
+        PDF::Cell(180,10,'','T',0,'R');
         $sub_x = $items->count()*20;
         #Total
         PDF::SetXY(150,$incremento+$sub_x);
@@ -145,25 +146,26 @@ class BoletaVentaController extends Controller
     }
     public function TitulosItems()
     {
+        PDF::SetFillColor(0, 0, 0, 36);
         $y = 70;
         PDF::SetXY(20,$y);
         PDF::SetFont('times','B',10);
-        PDF::Cell(20,10,'Cantidad',1,0,'C');
+        PDF::Cell(20,10,'Cantidad',1,0,'C',1);
 
         PDF::SetXY(40,$y);
         PDF::SetFont('times','B',10);
-        PDF::Cell(100,10,'Descripcion',1,0,'C');
+        PDF::Cell(100,10,'Descripcion',1,0,'C',1);
 
         PDF::SetXY(140,$y);
         PDF::SetFont('times','B',10);
-        PDF::Cell(20,10,'PU',1,0,'C');
+        PDF::Cell(20,10,'PU',1,0,'C',1);
 
         PDF::SetXY(160,$y);
         PDF::SetFont('times','B',10);
-        PDF::Cell(20,10,'Descuento',1,0,'C');
+        PDF::Cell(20,10,'Descuento',1,0,'C',1);
 
         PDF::SetXY(180,$y);
         PDF::SetFont('times','B',10);
-        PDF::Cell(20,10,'Subtotal',1,0,'C');
+        PDF::Cell(20,10,'Subtotal',1,0,'C',1);
     }
 }

@@ -141,7 +141,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    {!! Form::label('lblUbigeo', 'Dsitrito de residencia', ['class'=>'control-label']) !!}
+                                    {!! Form::label('lblUbigeo', 'Distrito de residencia', ['class'=>'control-label']) !!}
                                     {!!Form::select('idubigeo',[], null , ['class'=>'form-control','id'=>'idubigeo']);!!}
                                 </div>
                             </div>

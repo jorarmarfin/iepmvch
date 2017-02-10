@@ -21,6 +21,14 @@ class Caja extends Model
                          ->whereNotNull('cd.idtipopension');
     }
     /**
+    * Atributos Distrito
+    */
+    public function getDistritoAttribute()
+    {
+        $familiar = Familiar::where('dni',$this->numidentificacion)->first();
+        return $familiar->ubigeo;
+    }
+    /**
     * Atributos Archivo Cabecera
     */
     public function getArchivoCabeceraAttribute()

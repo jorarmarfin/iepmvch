@@ -53,9 +53,12 @@ class PersonalController extends Controller
     public function store(PersonalRequest $request)
     {
         $data = $request->all();
-        if ($request->hasFile('file')) {
-            $data['foto'] = $request->file('file')->store('personal','public');
-        }
+
+        if ($request->hasFile('file'))$data['foto'] = $request->file('file')->store('personal','public');
+        if (!$request->hasFile('culmino'))$data['culmino'] = false;
+        if (!$request->hasFile('vigente'))$data['vigente'] = false;
+        if (!$request->hasFile('fechaegreso'))$data['fechaegreso'] = null;
+
         Personal::create($data);
         Alert::success('Personal Registrado con exito');
         return redirect()->route('admin.personal.index');

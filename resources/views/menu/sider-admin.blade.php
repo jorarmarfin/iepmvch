@@ -50,7 +50,7 @@
         {!!Form::menu('Almacen','#','fa fa-archive')!!}
         {!!Form::menu('Pensiones','#','fa fa-dollar')!!}
         {!!Form::menu('Cumpleaños','#','icon-present')!!}
-        {!!Form::menu('Lista de Utiles','#','fa fa-list')!!}
+        {!!Form::menu('Lista de Utiles',route('admin.listautiles.index'),'fa fa-list')!!}
         {!!Form::menu('Memos','#','fa fa-thumbs-o-down')!!}
         {!!Form::menu('Calendarizacion','#','fa fa-calendar')!!}
         {!!Form::menu('Busqueda','#','fa fa-search')!!}

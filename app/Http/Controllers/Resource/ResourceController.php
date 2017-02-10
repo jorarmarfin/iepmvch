@@ -114,14 +114,16 @@ class ResourceController extends Controller
      * Devuelve listado de DNI disponible
      * @return [type] [description]
      */
-    public function numidentificacion(Request $request)
+    public function adquiriente(Request $request)
     {
         $name = $request->varsearch ?:'';
         $name = strtoupper($name);
         $query = "paterno||' - '||materno||', '||nombres";
-        $identificacion = Familiar::select('dni',DB::raw("$query as nombres"),'direccion')
-                        ->where('dni','like',"%$name%")
+        $adquiriente = Familiar::select('dni',DB::raw("$query as nombres"),'direccion')
+                        ->whereRaw("upper(paterno) like '%$name%'")
+                        ->orwhereRaw("upper(materno) like '%$name%'")
+                        ->orwhereRaw("upper(nombres) like '%$name%'")
                         ->get();
-        return $identificacion;
+        return $adquiriente;
     }
 }

@@ -3,17 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Routing\Route;
 
-class AlumnoRequest extends FormRequest
+class AlumnoUpdateRequest extends FormRequest
 {
-    private $route;
-
-    function __construct(Route $route)
-    {
-
-        $this->route = $route;
-    }
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -33,7 +25,7 @@ class AlumnoRequest extends FormRequest
     {
         return [
             'fechanacimiento'=>'required',
-            'dni'=>'required|unique:alumno,dni'.$this->route->getParameter('alumno'),
+            'dni'=>'required',
             'idgrado'=>'required|not_in:-1',
             'telefonos'=>'max:100',
             'telefonoemergencia1'=>'max:100',

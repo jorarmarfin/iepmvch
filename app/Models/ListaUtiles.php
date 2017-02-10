@@ -6,6 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class ListaUtiles extends Model
 {
-    protected $table = 'listautiles';
+    protected $table = 'lista_utiles';
     protected $fillable = ['idgrado', 'idmaterial', 'observacion'];
+
+    /**
+    * Atributos Grado
+    */
+    public function getGradoAttribute()
+    {
+    	$grado = Grado::find($this->idgrado);
+    	return $grado->nombre;
+    }
 }

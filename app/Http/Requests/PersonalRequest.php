@@ -31,8 +31,8 @@ class PersonalRequest extends FormRequest
             'email'=>'required|unique:personal',
             'fechanacimiento'=>'required',
             'numerohijos'=>'required',
-            'fechaegreso'=>'required',
             /*
+            'fechaegreso'=>'required',
             'idestadocivil'=>'required',
             'idsexo'=>'required',
             'idpais'=>'required',
@@ -60,7 +60,7 @@ class PersonalRequest extends FormRequest
             'paterno.required'=>'El campo Apellido paterno es obligatorio',
             'dni.unique'=>'Este DNI ya esta registrado en el sistema',
             'fechanacimiento.required'=>'El campo fecha de nacimiento es obligatorio',
-            'fechaegreso.required'=>'El campo fecha de egreso es obligatorio',
+           /* 'fechaegreso.required'=>'El campo fecha de egreso es obligatorio',*/
         ];
     }
 }

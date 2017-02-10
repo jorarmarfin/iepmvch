@@ -62,7 +62,7 @@
                                         </li>
                                         <li>
                                             <a href="{{ route('admin.personal.delete',$item->id) }}">
-                                                <i class="fa fa-trash"></i> Crea Usuario </a>
+                                                <i class="fa fa-user-plus"></i> Crea Usuario </a>
                                         </li>
                                     </ul>
                                 </div>
