@@ -5,7 +5,7 @@
     @include('alerts.errors')
     <div class="row">
             <div class="col-xs-6">
-            {!!Form::email('email',old('email'), ['class'=>'form-control form-control-solid placeholder-no-fix form-group','placeholder'=>'Email'])!!}
+            {!!Form::text('username',old('username'), ['class'=>'form-control form-control-solid placeholder-no-fix form-group','placeholder'=>'DNI'])!!}
             </div>
         <div class="col-xs-6">
             {!!Form::password('password', ['class'=>'form-control form-control-solid placeholder-no-fix form-group','placeholder'=>'Clave'])!!}

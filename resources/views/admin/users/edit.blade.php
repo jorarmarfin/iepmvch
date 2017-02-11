@@ -11,6 +11,10 @@
 		{!! Form::model($user,['route'=>['admin.users.update',$user],'method'=>'PUT','files'=>true]) !!}
 			<div class="form-body">
 				<div class="form-group">
+					{!!Form::label('lblNombre', 'DNI');!!}
+					{!!Form::text('username', null , ['class'=>'form-control','placeholder'=>'DNI']);!!}
+				</div>
+				<div class="form-group">
 					{!!Form::label('lblNombre', 'Nombre del usuario');!!}
 					{!!Form::text('name', null , ['class'=>'form-control','placeholder'=>'Nombre del usuario']);!!}
 				</div>

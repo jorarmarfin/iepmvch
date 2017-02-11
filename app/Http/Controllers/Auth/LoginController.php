@@ -41,6 +41,16 @@ class LoginController extends Controller
     }
 
     /**
+     * Get the login username to be used by the controller.
+     *
+     * @return string
+     */
+    public function username()
+    {
+        return 'username';
+    }
+
+    /**
      * Get the post register / login redirect path.
      *
      * @return string
@@ -49,6 +59,9 @@ class LoginController extends Controller
     {
         switch (Auth::user()->role->nombre) {
             case 'root':
+                    return route('home.index');
+                break;
+            case 'Administrador':
                     return route('home.index');
                 break;
 
@@ -66,7 +79,7 @@ class LoginController extends Controller
     protected function credentials(Request $request)
     {
         return [
-        'email' => $request->get('email'),
+        'username' => $request->get('username'),
         'password' => $request->get('password'),
         'activo' => true
         ];

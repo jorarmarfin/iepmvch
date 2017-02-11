@@ -15,6 +15,7 @@ class UserTableSeeder extends Seeder
     {
         $root = Catalogo::idroot();
         User::create([
+            'username' => 'pece',
             'name' => 'Luis Fernando',
             'email' => 'luis.mayta@gmail.com',
             'password' => '321654987',
@@ -23,6 +24,7 @@ class UserTableSeeder extends Seeder
             ]);
         $role = Catalogo::where('idtable',1)->where('codigo','adm')->first();
         User::create([
+            'username' => 'cone',
             'name' => 'Rosa Gutierrez',
             'email' => 'rgutierrez@iepmvch.com',
             'password' => '321654987',
@@ -30,6 +32,7 @@ class UserTableSeeder extends Seeder
             'menu' => 'menu.sider-admin',
             ]);
         User::create([
+            'username' => 'vivianne',
             'name' => 'Yenny Gutierrez',
             'email' => 'ygutierrez@iepmvch.com',
             'password' => '321654987',
