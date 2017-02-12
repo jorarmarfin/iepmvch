@@ -61,7 +61,7 @@
 						<div class="form-group">
 							{!!Form::label('lblPesonal', 'Pesonal que atendera',['class'=>'col-md-3 control-label']);!!}
 							<div class="col-md-9">
-							{!!Form::select('idpersonal',$personalData, null , ['class'=>'form-control','placeholder'=>'Seleccionar personal que atendera']);!!}
+							{!!Form::select('idpersonal',$psipersonal, null , ['class'=>'form-control','placeholder'=>'Seleccionar personal que atendera']);!!}
 							</div>
 						</div>
 

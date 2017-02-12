@@ -8,9 +8,47 @@ use Illuminate\Database\Eloquent\Model;
 class Personal extends Model
 {
     protected $table = 'personal';
-    protected $fillable = ['llave','paterno', 'materno', 'nombres','dni','fechanacimiento','idpais','idubigeonacimiento','email','idestadocivil','numerohijos','idubigeo','direccion','telefonofijo','celular','universidad','culmino','carrera','idgestionuniversidad','gradoobtenido','fechaegreso','numerocolegiatura','idsistemapension','afp','vigente','llamadaatencion','memo','activo','idtipo','idsexo','foto'];
+    protected $fillable = ['llave','paterno', 'materno', 'nombres','dni','fechanacimiento','idpais','idubigeonacimiento','email','idestadocivil','numerohijos','idubigeo','direccion','telefonofijo','celular','universidad','culmino','carrera','idgestionuniversidad','gradoobtenido','fechaegreso','numerocolegiatura','idsistemapension','afp','vigente','llamadaatencion','memo','activo','idtipo','idsexo','foto','idusuario'];
 
-
+    /**
+    * Atributos Menu de usuario
+    */
+    public function getMenuAttribute()
+    {
+        $tipo = Catalogo::find($this->idtipo);
+        switch ($tipo->codigo) {
+            case 'Admin':
+                $menu = 'menu.sider-admin';
+                break;
+            case 'Docen':
+                $menu = 'menu.sider-doc';
+                break;
+            case 'Pisco':
+                $menu = 'menu.sider-psi';
+                break;
+        }
+        return $menu;
+    }
+    /**
+    * Atributos Rol de usuario
+    */
+    public function getRolAttribute()
+    {
+        $tipo = Catalogo::find($this->idtipo);
+        switch ($tipo->codigo) {
+            case 'Admin':
+                $codigo = 'adm';
+                break;
+            case 'Docen':
+                $codigo = 'doc';
+                break;
+            case 'Pisco':
+                $codigo = 'psi';
+                break;
+        }
+        $rol = Catalogo::where('codigo',$codigo)->first();
+        return $rol;
+    }
     /**
     * Atributos Sistema Pension
     */

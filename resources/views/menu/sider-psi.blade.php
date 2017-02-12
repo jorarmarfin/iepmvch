@@ -16,30 +16,9 @@
             </a>
         </li>
         <li class="heading">
-            <h3 class="uppercase">Psicologo</h3>
+            <h3 class="uppercase">Modulos</h3>
         </li>
-        <li class="nav-item  ">
-            <a href="{{route('admin.users.index')}}" class="nav-link nav-toggle">
-                <i class="icon-users"></i>
-                <span class="title">Usuarios</span>
-                <span class="arrow"></span>
-            </a>
-        </li>
-        <li class="nav-item  ">
-            <a href="javascript:;" class="nav-link nav-toggle">
-                <i class="icon-wrench"></i>
-                <span class="title">Configuracion</span>
-                <span class="arrow"></span>
-            </a>
-            <ul class="sub-menu">
-                <li class="nav-item  ">
-                    <a href="{{ route('catalogo.gestion','maestro') }}" class="nav-link ">
-                        <span class="title">Maestro</span>
-                    </a>
-                </li>
-            </ul>
-        </li>
-
+        {!!Form::menu('Reservas','#','fa fa-cube')!!}
 
     </ul>
     <!-- END SIDEBAR MENU -->

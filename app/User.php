@@ -2,10 +2,11 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Contracts\Auth\CanResetPassword;
+use App\Models\Catalogo;
 use App\Notifications\ResetPassword;
+use Illuminate\Contracts\Auth\CanResetPassword;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
@@ -16,7 +17,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'password','idrole','foto','activo'];
+    protected $fillable = ['name', 'email', 'password','idrole','foto','activo','username','menu'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -40,6 +41,25 @@ class User extends Authenticatable
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = bcrypt($value);
+    }
+    /**
+     * Atributos menu
+     */
+    public function setidroleAttribute($value)
+    {
+        $this->attributes['idrole'] = $value;
+        $role = Catalogo::find($value);
+        switch ($role->codigo) {
+            case 'adm':
+                $this->attributes['menu'] = 'menu.sider-admin';
+                break;
+            case 'doc':
+                $this->attributes['menu'] = 'menu.sider-doc';
+                break;
+            case 'psi':
+                $this->attributes['menu'] = 'menu.sider-psi';
+                break;
+        }
     }
     /**
      * Send the password reset notification.

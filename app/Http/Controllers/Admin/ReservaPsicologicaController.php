@@ -126,12 +126,14 @@ class ReservaPsicologicaController extends Controller
             $this->Bloquea($request);
         #Valido una hora despues de lo atendido
         $hora = ReservaPsicologica::wheredate('fecha',$date->toDateString())->get();
-        $hora = $hora->last();
-        $lastdate = Carbon::parse($hora->fecha);
-        $lastdate = $lastdate->addHour();
+        if($hora->count()>0){
+            $hora = $hora->last();
+            $lastdate = Carbon::parse($hora->fecha);
+            $lastdate = $lastdate->addHour();
 
-        if($date->hour<$lastdate->hour)
-            $this->Bloquea($request);
+            if($date->hour<$lastdate->hour)
+                $this->Bloquea($request);
+        }
 
     }
     /**

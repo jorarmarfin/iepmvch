@@ -8,8 +8,13 @@ Route::get('personal-inactivo','PersonalController@inactivo')->name('admin.perso
 
 Route::resource('disponibilidad', 'DisponibilidadController',['names'=>'admin.disponibilidad']);
 Route::get('disponibilidad/delete/{personal}','DisponibilidadController@delete')->name('admin.disponibilidad.delete');
-
-
-
+/**
+ * Crea usuario
+ */
+Route::get('personal/crea-usuario/{personal}','PersonalController@createuser')->name('admin.personal.createuser');
+/**
+ * Envia Email
+ */
+Route::get('personal/send-user/{personal}','PersonalController@senduser')->name('admin.personal.senduser');
 
 

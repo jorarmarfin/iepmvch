@@ -4,7 +4,7 @@
 <div class="row">
 	<div class="col-md-12">
     {!! Alert::render() !!}
-
+    @include('alerts.errors')
         <!-- BEGIN Portlet PORTLET-->
         <div class="portlet box green">
             <div class="portlet-title">
@@ -61,8 +61,12 @@
                                                 <i class="fa fa-trash"></i> Delete </a>
                                         </li>
                                         <li>
-                                            <a href="{{ route('admin.personal.delete',$item->id) }}">
+                                            <a href="{{ route('admin.personal.createuser',$item->id) }}">
                                                 <i class="fa fa-user-plus"></i> Crea Usuario </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('admin.personal.senduser',$item->id) }}">
+                                                <i class="icon-envelope"></i> Email Acceso </a>
                                         </li>
                                     </ul>
                                 </div>
