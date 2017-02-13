@@ -8,13 +8,7 @@
             </div>
         </li>
         <!-- END SIDEBAR TOGGLER BUTTON -->
-        <li class="nav-item start ">
-            <a href="{{ route('home.index') }}" class="nav-link nav-toggle">
-                <i class="icon-home"></i>
-                <span class="title">Escritorio</span>
-                <span class="arrow"></span>
-            </a>
-        </li>
+         {!!Form::menu('Escritorio',route('home.index'),'icon-home','start')!!}
         <li class="heading">
             <h3 class="uppercase">Modulos</h3>
         </li>

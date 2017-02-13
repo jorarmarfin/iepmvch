@@ -27,13 +27,4 @@ class HomeController extends Controller
         $Resumen = Matricula::Resumen()->get();
         return view('index',compact('Resumen'));
     }
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function psicologo()
-    {
-        return view('psicologo.index');
-    }
 }

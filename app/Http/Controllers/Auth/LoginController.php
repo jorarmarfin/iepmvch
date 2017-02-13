@@ -57,7 +57,8 @@ class LoginController extends Controller
      */
     public function redirectPath()
     {
-        switch (Auth::user()->role->nombre) {
+        return route('home.index');
+        /*switch (Auth::user()->role->nombre) {
             case 'root':
                     return route('home.index');
                 break;
@@ -67,7 +68,7 @@ class LoginController extends Controller
             case 'Psicologo':
                     return route('psicologo.index');
                 break;
-        }
+        }*/
     }
     /**
      * Get the needed authorization credentials from the request.
