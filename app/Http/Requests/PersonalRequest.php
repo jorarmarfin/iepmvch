@@ -27,7 +27,7 @@ class PersonalRequest extends FormRequest
             'paterno'=>'required',
             'materno'=>'required',
             'nombres'=>'required',
-            'dni'=>'required|unique:personal',
+            'dni'=>'required|numeric|unique:personal',
             'email'=>'required|unique:personal',
             'fechanacimiento'=>'required',
             'numerohijos'=>'required',
@@ -59,6 +59,7 @@ class PersonalRequest extends FormRequest
         return[
             'paterno.required'=>'El campo Apellido paterno es obligatorio',
             'dni.unique'=>'Este DNI ya esta registrado en el sistema',
+            'dni.numeric'=>'El DNI solo debe ser numeros',
             'fechanacimiento.required'=>'El campo fecha de nacimiento es obligatorio',
            /* 'fechaegreso.required'=>'El campo fecha de egreso es obligatorio',*/
         ];

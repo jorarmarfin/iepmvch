@@ -130,7 +130,10 @@ class Matricula extends Model
     * @return [type]            [description]
     */
     public function scopeResumen($cadenaSQL){
-        return $cadenaSQL->select('idgradoseccion',\DB::raw('count(*) as total'))
+        return $cadenaSQL->select('g.id','idgradoseccion',\DB::raw('count(*) as total'))
+                         ->join('grado_seccion as gs','gs.id','=','matricula.idgradoseccion')
+                         ->join('grado as g','g.id','=','gs.idgrado')
+                         ->groupBy('g.id')
                          ->groupBy('idgradoseccion');
     }
 

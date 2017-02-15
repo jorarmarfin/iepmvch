@@ -64,13 +64,17 @@ class ResourceController extends Controller
                                 ->get();
         $name = $request->varsearch ?:'';
         $name = strtoupper($name);
+        $matriculados = Matricula::select('idalumno')->where('idtipo',EstadoId('TIPO MATRICULA','Activa'))->get();
         $query = "alumno.paterno||' - '||alumno.materno||', '||alumno.nombres||' - '||g.nombre";
         $matriculables = Alumno::select('alumno.id',DB::raw("$query as text"))
                         ->join('grado as g','g.id','=','alumno.idgrado')
                         ->whereIn('idestado',$condicion)
-                        ->whereRaw("upper(paterno) like '%$name%'")
-                        ->orwhereRaw("upper(materno) like '%$name%'")
-                        ->orwhereRaw("upper(nombres) like '%$name%'")
+                        ->whereNotIn('alumno.id',$matriculados)
+                        ->Where(function ($query) use($name){
+                            $query->whereRaw("upper(paterno) like '%$name%'")
+                                  ->orwhereRaw("upper(materno) like '%$name%'")
+                                  ->orwhereRaw("upper(nombres) like '%$name%'");
+                        })
                         ->alfabetico()
                         ->get();
         return $matriculables;

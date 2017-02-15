@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $Resumen = Matricula::Resumen()->get();
+        $Resumen = Matricula::Resumen()->OrderBy('id','asc')->get();
         return view('index',compact('Resumen'));
     }
 }

@@ -33,7 +33,7 @@ class AlumnoRequest extends FormRequest
     {
         return [
             'fechanacimiento'=>'required',
-            'dni'=>'required|unique:alumno,dni'.$this->route->getParameter('alumno'),
+            'dni'=>'required|numeric|unique:alumno,dni'.$this->route->getParameter('alumno'),
             'idgrado'=>'required|not_in:-1',
             'telefonos'=>'max:100',
             'telefonoemergencia1'=>'max:100',
@@ -45,6 +45,7 @@ class AlumnoRequest extends FormRequest
         return[
             'fechanacimiento.required'=>'Su fecha de nacimiento es obligatorio',
             'dni.required'=>'Su número de DNI es obligatorio',
+            'dni.numeric'=>'El DNI solo debe ser numeros',
             'idgrado.not_in'=>'El grado del alumno es obligatorio',
             'telefonos.max'=>'Solo puede ingresar maximo 100 caracteres',
             'telefonoemergencia1.max'=>'Solo puede ingresar maximo 100 caracteres',

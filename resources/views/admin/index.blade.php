@@ -19,6 +19,10 @@
 					                <td> {{ $item->total }} </td>
 					            </tr>
 					        @endforeach
+                                <tr>
+                                    <td><strong> Total :</strong></td>
+                                    <td>{{ $Resumen->sum('total') }}</td>
+                                </tr>
 					    </tbody>
 					</table>
                 </div>
