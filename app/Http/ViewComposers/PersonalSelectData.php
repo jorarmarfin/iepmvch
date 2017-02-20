@@ -20,6 +20,6 @@ class PersonalSelectData
 									->alfabetico()->activo()
 									->pluck('nombre','id')->toarray();
 
-		$view->with(compact('personal','psipersonal'));
+		$view->with(compact('allpersonal','psipersonal'));
 	}
 }

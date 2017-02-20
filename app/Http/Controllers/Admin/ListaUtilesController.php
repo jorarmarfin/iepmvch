@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ListaUtilesRequest;
 use App\Models\ListaUtiles;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Styde\Html\Facades\Alert;
 
 class ListaUtilesController extends Controller
@@ -32,6 +33,19 @@ class ListaUtilesController extends Controller
         }
         Alert::success('Archivo Cargado con exito');
         ListaUtiles::create($data);
+        return back();
+    }
+    /**
+     * Funcion par aeliminar una lista de utiles
+     */
+    public function delete($id)
+    {
+        $listautiles = ListaUtiles::find($id);
+        $exists = Storage::disk('public')->exists($listautiles->observacion);
+        if($exists)Storage::delete("/public/$listautiles->observacion");
+
+        $listautiles->delete();
+        Alert::success('Archivo eliminado con exito');
         return back();
     }
 }

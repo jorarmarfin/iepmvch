@@ -23,7 +23,7 @@
             <div class="row">
                 <div class="col-md-3">
                     <div class="form-group">
-                        {!!Form::select('idpersonal',$personalData, null , ['class'=>'form-control','placeholder'=>'Escoger Personal']);!!}
+                        {!!Form::select('idpersonal',$allpersonal, null , ['class'=>'form-control','placeholder'=>'Escoger Personal']);!!}
                     </div>
                 </div><!--/span-->
                 <div class="col-md-3">
@@ -118,13 +118,14 @@ $('.timepicker-default').timepicker({
         showSeconds: true,
         minuteStep: 1
     });
+
 </script>
 @stop
 
 @section('plugins-styles')
 {!! Html::style('assets/global/plugins/datatables/datatables.min.css') !!}
 {!! Html::style('assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css') !!}
-{!! Html::style('assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css') !!}
+{!! Html::style('assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') !!}
 @stop
 
 @section('plugins-js')

@@ -7,9 +7,13 @@ use App\Http\Requests\AlumnoRequest;
 use App\Http\Requests\AlumnoUpdateRequest;
 use App\Models\Alumno;
 use App\Models\Catalogo;
+use App\Models\GradoSeccion;
+use App\Models\Matricula;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Styde\Html\Facades\Alert;
+use Validator;
 class AlumnosController extends Controller
 {
     /**
@@ -117,5 +121,39 @@ class AlumnosController extends Controller
         $alumno->delete();
         Alert::success('Alumno eliminado con exito');
         return redirect()->route('admin.alumnos.index');
+    }
+    /**
+     * Matricula de alumno
+     */
+    public function matricular($id)
+    {
+        $alumno = Alumno::find($id);
+        $estado_matricula = collect([EstadoId('ESTADO ALUMNO','Regular'),EstadoId('ESTADO ALUMNO','Promovido')])->implode(',');
+        $validator = Validator::make($alumno->toArray(), [
+            'idestado' => 'in:'.$estado_matricula,
+        ],[
+            'idestado.in'=>'No se puede matricular a este alumno'
+        ]);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator);
+        }
+        $gradoseccion = GradoSeccion::where('idgrado',$alumno->idgrado +1)->first();
+
+        $matricula = Matricula::create([
+                'idalumno'=>$alumno->id,
+                'idgradoseccion'=>$gradoseccion->id,
+                'idtipo'=>EstadoId('TIPO MATRICULA','Activa'),
+                'year'=>Carbon::now()->year,
+            ]);
+        if($matricula->id>0){
+            $alumno->idestado = EstadoId('ESTADO ALUMNO','Matriculado');
+            $alumno->save();
+            Alert::success('Alumno matriculado con exito');
+            return redirect()->route('admin.alumnos.index');
+        }else{
+            return redirect()->route('admin.alumnos.index');
+        }
+
     }
 }

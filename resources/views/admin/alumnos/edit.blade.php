@@ -196,15 +196,19 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <!--/span-->
+                            </div><!--/span-->
                             <div class="col-md-6">
                                 <div class="form-group">
                                     {!! Form::label('lblColegio', 'Colegio de procedencia', ['class'=>'control-label']) !!}
                                     {!! Form::text('colegioprocedencia', null, ['class'=>'form-control','placeholder'=>'Colegio de procedencia']) !!}
                                 </div>
-                            </div>
-                            <!--/span-->
+                            </div><!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    {!! Form::label('lblEstado', 'Estado Alumno', ['class'=>'control-label']) !!}
+                                    {!! Form::select('idestado', $estadoalumno,EstadoId('ESTADO ALUMNO','Regular'), ['class'=>'form-control']) !!}
+                                </div>
+                            </div><!--/span-->
                         </div>
                         <!--/row-->
                         <h3 class="form-section">Fotografia</h3>
@@ -237,21 +241,16 @@
                                     </div>
                                     {!! Form::textarea('discapacidad', null, ['class'=>'form-control']) !!}
                                 </div>
-                            </div>
-                            <!--/span-->
-                        </div>
-                        <!--/row-->
+                            </div> <!--/span-->
+                        </div><!--/row-->
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
                                     {!!Form::label('lblObservacion', 'Observacion, deudas, etc',['class'=>'control-label']);!!}
                                     {!! Form::textarea('observacion', null, ['class'=>'form-control']) !!}
                                 </div>
-                            </div>
-                            <!--/span-->
-                        </div>
-                        <!--/row-->
-                        {!! Form::hidden('idestado', EstadoId('ESTADO ALUMNO','Regular')) !!}
+                            </div><!--/span-->
+                        </div><!--/row-->
                         </div>
                     <div class="form-actions right">
                         {!!Form::enviar('Guardar')!!}

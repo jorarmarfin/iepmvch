@@ -31,11 +31,11 @@
                                     <div class="input-group col-md-6">
                                         <div class="icheck-inline">
                                             <label>
-                                                {!! Form::radio('viveconestudiante', 1) !!}
+                                                {!! Form::radio('viveconestudiante', 1,null, ['id'=>'vive1']) !!}
                                                 Si
                                             </label>
                                             <label>
-                                                {!! Form::radio('viveconestudiante', 0) !!}
+                                                {!! Form::radio('viveconestudiante', 0,null, ['id'=>'vive2']) !!}
                                                 No
                                             </label>
                                         </div>
@@ -158,8 +158,8 @@
                         <!--/row-->
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="form-group">
-                                    {!! Form::label('lblDireccion', 'Domicilio - calle', ['class'=>'control-label']) !!}
+                                <div class="form-group" id="grupo_direccion">
+                                    {!! Form::label('lblDireccion', 'Direccion del domicilio del familiar', ['class'=>'control-label']) !!}
                                     {!! Form::text('direccion', null, ['class'=>'form-control','placeholder'=>'Direccion completa']) !!}
                                 </div>
                             </div>
@@ -168,7 +168,7 @@
                         <!--/row-->
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="form-group">
+                                <div class="form-group" id="grupo_ubigeo">
                                     {!! Form::label('lblUbigeo', 'Distrito de residencia:', ['class'=>'control-label']) !!}
                                     {!!Form::select('idubigeo',[], null , ['class'=>'form-control','id'=>'idubigeo']);!!}
                                 </div>
@@ -334,6 +334,14 @@ $(document).ready(function() {
         checkboxClass: 'icheckbox_minimal',
         radioClass: 'iradio_minimal',
         increaseArea: '20%' // optional
+    });
+    $("#vive1").on('ifChecked', function(){
+      $("#grupo_ubigeo").hide();
+      $("#grupo_direccion").hide();
+    });
+    $("#vive2").on('ifChecked', function(){
+      $("#grupo_ubigeo").show();
+      $("#grupo_direccion").show();
     });
 });
 </script>

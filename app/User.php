@@ -36,6 +36,13 @@ class User extends Authenticatable
         return $this->hasOne('\App\Models\Catalogo','id','idrole');
     }
     /**
+     * Atributos Email
+     */
+    public function setEmailAttribute($value)
+    {
+        $this->attributes['email'] = strtolower($value);
+    }
+    /**
      * Atributos de la clase Users
      */
     public function setPasswordAttribute($value)

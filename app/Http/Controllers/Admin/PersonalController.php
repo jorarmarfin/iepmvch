@@ -59,9 +59,9 @@ class PersonalController extends Controller
         $data = $request->all();
 
         if ($request->hasFile('file'))$data['foto'] = $request->file('file')->store('personal','public');
-        if (!$request->hasFile('culmino'))$data['culmino'] = false;
-        if (!$request->hasFile('vigente'))$data['vigente'] = false;
-        if (!$request->hasFile('fechaegreso'))$data['fechaegreso'] = null;
+        if (!$request->has('culmino'))$data['culmino'] = false;
+        if (!$request->has('vigente'))$data['vigente'] = false;
+        if (!$request->has('fechaegreso'))$data['fechaegreso'] = null;
 
         Personal::create($data);
         Alert::success('Personal Registrado con exito');
@@ -110,11 +110,10 @@ class PersonalController extends Controller
             $data['foto'] = $request->file('file')->store('personal','public');
         }
 
-        if (!$request->hasFile('culmino'))$data['culmino'] = false;
-        if (!$request->hasFile('vigente'))$data['vigente'] = false;
-        if (!$request->hasFile('fechaegreso'))$data['fechaegreso'] = null;
+        if (!$request->has('culmino'))$data['culmino'] = false;
+        if (!$request->has('vigente'))$data['vigente'] = false;
 
-        #actualiza el Rol y menu de su usuario
+        if (!$request->has('fechaegreso'))$data['fechaegreso'] = null;
 
 
         $personal->fill($data);

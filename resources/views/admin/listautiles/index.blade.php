@@ -75,19 +75,7 @@
                                     </button>
                                     <ul class="dropdown-menu pull-left" role="menu">
                                         <li>
-                                            <a href="{{ route('admin.boletaventa.show',$item->id) }}">
-                                                <i class="fa fa-file-pdf-o"></i> Show </a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ asset('/storage/boletaventa/'.$item->archivo_cabecera) }}">
-                                                <i class="fa fa-file"></i> Cabecera </a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ asset('/storage/boletaventa/'.$item->archivo_detalle) }}">
-                                                <i class="fa fa-file"></i> Detalle </a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ route('admin.boletaventa.delete',$item->id) }}">
+                                            <a href="{{ route('admin.listautiles.delete',$item->id) }}">
                                                 <i class="fa fa-trash"></i> Delete </a>
                                         </li>
                                     </ul>

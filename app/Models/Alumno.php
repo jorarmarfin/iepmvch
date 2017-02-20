@@ -12,6 +12,28 @@ class Alumno extends Model
     protected $fillable = ['paterno', 'materno', 'nombres','dni','idgrado','fechanacimiento','idubigeonacimiento','idpais','religion','bautismo','comunion','confirmacion','idubigeo','direccion','telefonos','telefonoemergencia1','telefonoemergencia2','responsableeconomico','colegioprocedencia','esespecial','discapacidad','idestado','observacion','foto','idsexo'];
 
     /**
+     * Atributos Paterno
+     */
+    public function setPaternoAttribute($value)
+    {
+        $this->attributes['paterno'] = strtoupper($value);
+    }
+    /**
+     * Atributos Materno
+     */
+    public function setMaternoAttribute($value)
+    {
+        $this->attributes['materno'] = strtoupper($value);
+    }
+    /**
+     * Atributos Nombres
+     */
+    public function setNombresAttribute($value)
+    {
+        $this->attributes['nombres'] = title_case($value);
+    }
+
+    /**
      * Atributos de la clase Alumno
      */
     public function getGradoAttribute()
@@ -26,6 +48,25 @@ class Alumno extends Model
     {
       $estado = Catalogo::find($this->idestado);
       return $estado->nombre;
+    }
+    /**
+    * Atributos estado de  Alumno
+    */
+    public function getEstadoLayoutAttribute()
+    {
+      $estado = Catalogo::find($this->idestado);
+      switch ($estado->nombre) {
+        case 'Matriculado':
+           return '<span class="label label-sm label-info"> '.$estado->nombre.' </span>';
+          break;
+        case 'Repite':
+           return '<span class="label label-sm label-danger"> '.$estado->nombre.' </span>';
+          break;
+
+        default:
+           return '<span class="label label-sm label-success"> '.$estado->nombre.' </span>';
+          break;
+      }
     }
     /**
     * Atributos sexo de Alumno

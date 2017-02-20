@@ -24,7 +24,7 @@ class ListaUtilesRequest extends FormRequest
     public function rules()
     {
         return [
-            'idgrado'=>'required|not_in:-1',
+            'idgrado'=>'required|not_in:-1|unique:lista_utiles',
             'file'=>'required'
         ];
     }
@@ -32,6 +32,7 @@ class ListaUtilesRequest extends FormRequest
     {
         return[
             'idgrado.not_in'=>'No escogio el grado ',
+            'idgrado.unique'=>'Ya existe una Lista en este grado',
             'file.required'=>'No escogio el Archivo'
         ];
     }

@@ -4,6 +4,7 @@
 <div class="row">
 	<div class="col-md-12">
     {!! Alert::render() !!}
+    @include('alerts.errors')
         <!-- BEGIN Portlet PORTLET-->
         <div class="portlet box green">
             <div class="portlet-title">
@@ -41,7 +42,7 @@
                             <td> {{ $item->nombres }} </td>
                             <td> {{ $item->grado }} </td>
                             <td><a href="{{ route('admin.alumnos.show',$item->id) }}"><img src="{{ asset('/storage/'.$item->foto) }}"  width='25px'> </a></td>
-                            <td> {{ $item->estado }} </td>
+                            <td> {!! $item->estado_layout !!} </td>
                             <td>
                                 <div class="btn-group">
                                     <button class="btn btn-xs green-dark dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Opciones
@@ -63,6 +64,10 @@
                                         <li>
                                             <a href="{{ route('admin.familiar.lists',$item->id) }}">
                                                 <i class="fa fa-users"></i> Familiar </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('admin.alumnos.matricular',$item->id) }}">
+                                                <i class="fa fa-cube"></i> Matricular </a>
                                         </li>
                                     </ul>
                                 </div>

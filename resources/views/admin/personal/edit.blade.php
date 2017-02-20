@@ -197,7 +197,14 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     {!! Form::label('lblFecha', 'Fecha de egreso', ['class'=>'control-label']) !!}
-                                    {!!Form::date('fechaegreso', null , ['class'=>'form-control','placeholder'=>'Fecha de egreso']);!!}
+                                    <div class="input-group ">
+                                        {!!Form::text('fechaegreso', null , ['id'=>'fechaegreso','class'=>'form-control','placeholder'=>'Fecha de egreso']);!!}
+                                        <span class="input-group-btn ">
+                                            <button class="btn " type="button">
+                                                <i class="fa fa-calendar"></i>
+                                            </button>
+                                        </span>
+                                    </div>
                                 </div>
                             </div><!--/span-->
                         </div><!--/row-->
@@ -274,6 +281,10 @@
 @section('js-scripts')
 <script>
 $(document).ready(function() {
+
+    $("#fechaegreso").datepicker({
+        minViewMode: 2
+    });
 
     $("#idubigeonacimiento").select2({
 
@@ -352,13 +363,13 @@ $(document).ready(function() {
 
 
 @section('plugins-styles')
-{!! Html::style(asset('assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css')) !!}
+{!! Html::style(asset('assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css')) !!}
 {!! Html::style(asset('assets/global/plugins/select2/css/select2.min.css')) !!}
 {!! Html::style(asset('assets/global/plugins/select2/css/select2-bootstrap.min.css')) !!}
 {!! Html::style(asset('assets/global/plugins/icheck/skins/all.css')) !!}
 @stop
 @section('plugins-js')
-{!! Html::script(asset('assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js')) !!}
+{!! Html::script(asset('assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js')) !!}
 {!! Html::script(asset('assets/global/plugins/select2/js/select2.full.min.js')) !!}
 {!! Html::script(asset('assets/global/plugins/select2/js/i18n/es.js')) !!}
 {!! Html::script(asset('assets/global/plugins/icheck/icheck.min.js')) !!}

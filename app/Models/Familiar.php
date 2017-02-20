@@ -8,6 +8,35 @@ class Familiar extends Model
 {
     protected $table = 'familiar';
     protected $fillable = ['viveconestudiante', 'paterno', 'materno','nombres','dni','fechanacimiento','idpais','idubigeonacimiento','religion','idestadocivil','gradoinstruccion','profesion','direccion','celular','telefonofijo','telefonolaboral','email','idtipo','autorizo','idsexo','esapoderado','idubigeo'];
+
+    /**
+     * Atributos Email
+     */
+    public function setEmailAttribute($value)
+    {
+        $this->attributes['email'] = strtolower($value);
+    }
+    /**
+     * Atributos Paterno
+     */
+    public function setPaternoAttribute($value)
+    {
+        $this->attributes['paterno'] = strtoupper($value);
+    }
+    /**
+     * Atributos Materno
+     */
+    public function setMaternoAttribute($value)
+    {
+        $this->attributes['materno'] = strtoupper($value);
+    }
+    /**
+     * Atributos Nombres
+     */
+    public function setNombresAttribute($value)
+    {
+        $this->attributes['nombres'] = title_case($value);
+    }
     /**
     * Devuelve los valores Activos
     * @param  [type]  [description]
@@ -28,9 +57,13 @@ class Familiar extends Model
         $data = $request->all();
         $alumno = Alumno::find($data['idalumno']);
 
+        if ($data['viveconestudiante']) {
+            $data['idubigeo'] = $alumno->idubigeo;
+            $data['direccion'] = $alumno->direccion;
+        }
+
         $familiar = new Familiar();
         $familiar->fill($data);
-        //dd($data);
         if($alumno->familiar()->save($familiar))
         return true;
         else return false;

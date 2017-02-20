@@ -11,6 +11,34 @@ class Personal extends Model
     protected $fillable = ['llave','paterno', 'materno', 'nombres','dni','fechanacimiento','idpais','idubigeonacimiento','email','idestadocivil','numerohijos','idubigeo','direccion','telefonofijo','celular','universidad','culmino','carrera','idgestionuniversidad','gradoobtenido','fechaegreso','numerocolegiatura','idsistemapension','afp','vigente','llamadaatencion','memo','activo','idtipo','idsexo','foto','idusuario'];
 
     /**
+     * Atributos Email
+     */
+    public function setEmailAttribute($value)
+    {
+        $this->attributes['email'] = strtolower($value);
+    }
+    /**
+     * Atributos Paterno
+     */
+    public function setPaternoAttribute($value)
+    {
+        $this->attributes['paterno'] = strtoupper($value);
+    }
+    /**
+     * Atributos Materno
+     */
+    public function setMaternoAttribute($value)
+    {
+        $this->attributes['materno'] = strtoupper($value);
+    }
+    /**
+     * Atributos Nombres
+     */
+    public function setNombresAttribute($value)
+    {
+        $this->attributes['nombres'] = title_case($value);
+    }
+    /**
     * Atributos Menu de usuario
     */
     public function getMenuAttribute()

@@ -2388,6 +2388,10 @@ class CatalogoTableSeeder extends Seeder
         Catalogo::create(['idtable' => 37,'iditem' =>10, 'codigo' => 'P10','nombre' => 'Octubre','descripcion'=>'Pension de Octubre','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 37,'iditem' =>11, 'codigo' => 'P11','nombre' => 'Noviembre','descripcion'=>'Pension de Noviembre','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 37,'iditem' =>12, 'codigo' => 'P12','nombre' => 'Diciembre','descripcion'=>'Pension de Diciembre','valor'=> null,'activo'=>true]);
+        /**
+         * Otro Estado mas de alumno
+         */
+        Catalogo::create(['idtable' => 5,'iditem' => 6, 'codigo' => 'mat','nombre' => 'Matriculado','descripcion'=>'Estudiante matriculado','valor'=> null,'activo'=>true]);
 
 
     }
