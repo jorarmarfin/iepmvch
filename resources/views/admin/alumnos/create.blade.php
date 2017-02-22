@@ -64,32 +64,21 @@
                                 {!!Form::label('lblGrado', 'Grado Actual del alumno',['class'=>'control-label']);!!}
                                     {!!Form::select('idgrado',$grado, null , ['class'=>'form-control']);!!}
                                 </div>
-                            </div>
-                            <!--/span-->
+                            </div><!--/span-->
                             <div class="col-md-6">
                                 <div class="form-group">
                                     {!! Form::label('lblFecha', 'Fecha de nacimiento', ['class'=>'control-label']) !!}
                                     {!!Form::date('fechanacimiento', null , ['class'=>'form-control','placeholder'=>'Fecha de nacimiento']);!!}
                                 </div>
-                            </div>
-                            <!--/span-->
-                        </div>
-                        <!--/row-->
+                            </div><!--/span-->
+                        </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     {!!Form::label('lblPais', 'Pais de nacimiento',['class'=>'control-label']);!!}
                                     {!!Form::select('idpais',$pais, IdPeru() , ['class'=>'form-control']);!!}
                                 </div>
-                            </div>
-                            <!--/span-->
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    {!! Form::label('lblUbigeo', 'Lugar de nacimiento', ['class'=>'control-label']) !!}
-                                    {!!Form::select('idubigeonacimiento',[], null , ['class'=>'form-control','id'=>'idubigeonacimiento']);!!}
-                                </div>
-                            </div>
-                            <!--/span-->
+                            </div><!--/span-->
                         </div>
                         <!--/row-->
                         <div class="row">
@@ -194,14 +183,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <!--/span-->
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    {!! Form::label('lblColegio', 'Colegio de procedencia', ['class'=>'control-label']) !!}
-                                    {!! Form::text('colegioprocedencia', null, ['class'=>'form-control','placeholder'=>'Colegio de procedencia']) !!}
-                                </div>
-                            </div>
-                            <!--/span-->
                             <!--/span-->
                             <div class="col-md-6">
                                 <div class="form-group">

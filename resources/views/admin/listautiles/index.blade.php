@@ -27,7 +27,7 @@
                             {!!Form::select('idgrado', $grado, null , ['class'=>'form-control'])!!}
                         </div>
                     </div><!--/span-->
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group">
                             {!! Form::label('lblArchivo', 'Escoger el Archivo correspondiente', ['class'=>'control-label']) !!}
                             <div class="fileinput fileinput-new" data-provides="fileinput">
@@ -46,7 +46,7 @@
                             </div>
                         </div>
                     </div><!--/span-->
-                    <div class="col-md-2">
+                    <div class="col-md-4">
                         <div style="margin-top:25px">
                             {!!Form::enviar('Guardar')!!}
                         </div>
