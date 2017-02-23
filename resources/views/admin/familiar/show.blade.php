@@ -80,22 +80,6 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="control-label col-md-6">Localidad:</label>
-                                    <div class="col-md-6">
-                                        <p class="form-control-static"> {{ $familiar->ubigeo_nacimiento }} </p>
-                                    </div>
-                                </div>
-                            </div><!--/span-->
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label class="control-label col-md-6">Fecha de Nacimiento:</label>
-                                    <div class="col-md-6">
-                                        <p class="form-control-static"> {{ $familiar->fechanacimiento }} </p>
-                                    </div>
-                                </div>
-                            </div><!--/span-->
-                            <div class="col-md-4">
-                                <div class="form-group">
                                     <label class="control-label col-md-6">Religion:</label>
                                     <div class="col-md-6">
                                         <p class="form-control-static"> {{ $familiar->religion }} </p>

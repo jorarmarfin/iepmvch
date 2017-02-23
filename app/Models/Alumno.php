@@ -159,6 +159,7 @@ class Alumno extends Model
 
             $alumno->foto = $request->file('file')->store('fotos','public');
         }
+
         if($alumno->save()) return true;
         else return false;
 

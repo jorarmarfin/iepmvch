@@ -56,17 +56,30 @@
                             <thead>
                                 <tr>
                                     <th> Alumnos </th>
-                                    <th> Grado actual</th>
+                                    <th> Nivel Matriculado</th>
+                                    <th> Grado Matriculado</th>
                                     <th> Foto </th>
                                     <th> Periodo </th>
                                     <th> Tipo </th>
                                     <th> Opciones </th>
                                 </tr>
                             </thead>
+                            <tfoot>
+                                <tr>
+                                    <th>  </th>
+                                    <th>  </th>
+                                    <th>  </th>
+                                    <th>  </th>
+                                    <th>  </th>
+                                    <th>  </th>
+                                    <th>  </th>
+                                </tr>
+                            </tfoot>
                             <tbody>
                             @foreach ($Lista as $item)
                                 <tr>
                                     <td> {{ $item->paterno.' - '.$item->materno.', '.$item->nombres }} </td>
+                                    <td> {{ $item->nivel }} </td>
                                     <td> {{ $item->grado }} </td>
                                     <td><a href="{{ route('admin.alumnos.show',$item->id) }}"><img src="{{ asset('/storage/'.$item->foto) }}"  width='25px'> </a></td>
                                     <td> {{ $item->year }} </td>
@@ -155,7 +168,6 @@ $(document).ready(function() {
         var markup=res.text;
         return markup;
     }
-
     $('#Matriculados').dataTable({
         "language": {
             "emptyTable": "No hay datos disponibles",
@@ -165,7 +177,45 @@ $(document).ready(function() {
         },
         "bProcessing": true,
         "pagingType": "bootstrap_full_number",
-        "order": [1,"asc"]
+        "order": [1,"asc"],
+        "initComplete": function() {
+            // Nivel column
+            this.api().column(1).every(function(){
+                var column = this;
+                var select = $('<select class="form-control input-sm"><option value="">Nivel</option></select>')
+                    .appendTo( $(column.footer()).empty() )
+                    .on( 'change', function () {
+                        var val = $.fn.dataTable.util.escapeRegex(
+                            $(this).val()
+                        );
+                        column
+                            .search( val ? '^'+val+'$' : '', true, false )
+                            .draw();
+                    } );
+
+                column.data().unique().sort().each( function ( d, j ) {
+                    select.append( '<option value="'+d+'">'+d+'</option>' )
+                } );
+            });
+            // Grado
+            this.api().column(2).every(function(){
+                var column = this;
+                var select = $('<select class="form-control input-sm"><option value="">Grado</option></select>')
+                    .appendTo( $(column.footer()).empty() )
+                    .on( 'change', function () {
+                        var val = $.fn.dataTable.util.escapeRegex(
+                            $(this).val()
+                        );
+                        column
+                            .search( val ? '^'+val+'$' : '', true, false )
+                            .draw();
+                    } );
+
+                column.data().unique().sort().each( function ( d, j ) {
+                    select.append( '<option value="'+d+'">'+d+'</option>' )
+                } );
+            });
+        }
     });
 
 });
@@ -173,10 +223,10 @@ $(document).ready(function() {
 @stop
 
 @section('plugins-styles')
-{!! Html::style('assets/global/plugins/bootstrap-table/bootstrap-table.min.css') !!}
+{!! Html::style(asset('assets/global/plugins/bootstrap-table/bootstrap-table.min.css')) !!}
 {!! Html::style(asset('assets/global/plugins/select2/css/select2.min.css')) !!}
 {!! Html::style(asset('assets/global/plugins/select2/css/select2-bootstrap.min.css')) !!}
-{!! Html::style('assets/global/plugins/datatables/datatables.min.css') !!}
+{!! Html::style(asset('assets/global/plugins/datatables/datatables.min.css')) !!}
 {!! Html::style('assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css') !!}
 @stop
 

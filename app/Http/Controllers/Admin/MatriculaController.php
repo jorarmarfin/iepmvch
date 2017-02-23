@@ -19,7 +19,7 @@ class MatriculaController extends Controller
      */
     public function index()
     {
-        $Lista = Matricula::Activas()->orderBy('matricula.id','desc')->get();
+        $Lista = Matricula::Activas()->orderBy('matricula.id','desc')->paginate(10);
 
         return view('admin.matricula.index',compact('Lista'));
     }
@@ -111,7 +111,10 @@ class MatriculaController extends Controller
     public function destroy($id)
     {
         $matricula = Matricula::find($id);
-        $matricula->delete();
+        $idalumno = $matricula->idalumno;
+        if($matricula->delete()){
+            Alumno::where('id',$idalumno)->update(['idestado'=>EstadoId('ESTADO ALUMNO','Regular')]);
+        }
         Alert::success('Matricula eliminada con exito');
         return redirect()->route('admin.matricula.index');
     }

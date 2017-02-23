@@ -30,34 +30,28 @@
 									{!! Form::label('paterno', 'Apellido Paterno', ['class'=>'control-label']) !!}
 									{!! Form::text('paterno', null, ['class'=>'form-control','placeholder'=>'Apellido Paterno']) !!}
                                 </div>
-                            </div>
-                            <!--/span-->
+                            </div> <!--/span-->
                             <div class="col-md-6">
                                 <div class="form-group">
 									{!! Form::label('lblMaterno', 'Apellido Materno', ['class'=>'control-label']) !!}
 									{!! Form::text('materno', null, ['class'=>'form-control','placeholder'=>'Apellido Materno']) !!}
                                 </div>
-                            </div>
-                            <!--/span-->
-                        </div>
-                        <!--/row-->
+                            </div><!--/span-->
+                        </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
 									{!! Form::label('lblNombres', 'Nombres', ['class'=>'control-label']) !!}
 									{!! Form::text('nombres', null, ['class'=>'form-control','placeholder'=>'Nombres completos']) !!}
                                 </div>
-                            </div>
-                            <!--/span-->
+                            </div><!--/span-->
                             <div class="col-md-6">
                                 <div class="form-group">
 									{!! Form::label('lblDNI', 'Numero de DNI', ['class'=>'control-label']) !!}
 									{!! Form::text('dni', null, ['class'=>'form-control','placeholder'=>'Numero de DNI']) !!}
                                 </div>
-                            </div>
-                            <!--/span-->
-                        </div>
-                        <!--/row-->
+                            </div><!--/span-->
+                        </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -78,33 +72,21 @@
                                     {!! Form::label('lblEstCivil', 'Estado Civil', ['class'=>'control-label']) !!}
                                     {!!Form::select('idestadocivil', $estadocivil, EstadoCivilId('ESTADO CIVIL','Soltero') , ['class'=>'form-control'])!!}
                                 </div>
-
-                            </div>
-                            <!--/span-->
+                            </div><!--/span-->
                             <div class="col-md-6">
                                 <div class="form-group">
                                     {!! Form::label('lblSexo', 'Sexo', ['class'=>'control-label']) !!}
                                     {!!Form::select('idsexo', $sexo, IdMasculino() , ['class'=>'form-control'])!!}
                                 </div>
-                            </div>
-                            <!--/span-->
-                        </div>
-                        <!--/row-->
+                            </div><!--/span-->
+                        </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     {!!Form::label('lblPais', 'Pais de nacimiento',['class'=>'control-label']);!!}
                                     {!!Form::select('idpais',$pais, IdPeru() , ['class'=>'form-control']);!!}
                                 </div>
-                            </div>
-                            <!--/span-->
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    {!! Form::label('lblUbigeo', 'Distrito de nacimiento', ['class'=>'control-label']) !!}
-                                    {!!Form::select('idubigeonacimiento',[], null , ['class'=>'form-control','id'=>'idubigeonacimiento']);!!}
-                                </div>
-                            </div>
-                            <!--/span-->
+                            </div><!--/span-->
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-md-12">
@@ -297,35 +279,6 @@ $(document).ready(function() {
         minViewMode: 2
     });
 
-    $("#idubigeonacimiento").select2({
-
-        ajax: {
-            url: '{{ url("/ubigeo") }}',
-            dataType: 'json',
-            delay: 250,
-            data: function(params) {
-                return {
-                    varsearch: params.term // search term
-                };
-            },
-            processResults: function(data) {
-                // parse the results into the format expected by Select2.
-                // since we are using custom formatting functions we do not need to
-                // alter the remote JSON data
-                return {
-                    results: data
-                };
-            },
-            cache: true
-        },
-        width:'auto',
-        minimumInputLength: 3,
-        templateResult: format,
-        templateSelection: format,
-        escapeMarkup: function(markup) {
-            return markup;
-        } // let our custom formatter work
-    });
     function format(res){
         var markup=res.text;
         return markup;

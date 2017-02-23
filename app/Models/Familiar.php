@@ -7,14 +7,28 @@ use Illuminate\Database\Eloquent\Model;
 class Familiar extends Model
 {
     protected $table = 'familiar';
-    protected $fillable = ['viveconestudiante', 'paterno', 'materno','nombres','dni','fechanacimiento','idpais','idubigeonacimiento','religion','idestadocivil','gradoinstruccion','profesion','direccion','celular','telefonofijo','telefonolaboral','email','idtipo','autorizo','idsexo','esapoderado','idubigeo'];
+    protected $fillable = ['viveconestudiante', 'paterno', 'materno','nombres','dni','fechanacimiento','idpais','religion','idestadocivil','gradoinstruccion','profesion','direccion','celular','telefonofijo','telefonolaboral','email','idtipo','autorizo','idsexo','esapoderado','idubigeo'];
 
     /**
      * Atributos Email
      */
     public function setEmailAttribute($value)
     {
-        $this->attributes['email'] = strtolower($value);
+        $retVal = ($value=='PENDIENTE') ? $value.'-'.$this->id : $value ;
+        if ($value=='PENDIENTE') {
+          $lastfamily = Familiar::where('email','like','%pendiente%')->orderBy('email','desc')->first();
+          if (isset($lastfamily)) {
+            $numero = (int)substr($lastfamily->email, -4);
+            $numero += 1;
+            $retVal = 'PENDIENTE-'.pad($numero,4,'0','L');
+          }else{
+            $retVal = 'PENDIENTE-0000';
+          }
+        } else {
+          $retVal = $value;
+        }
+
+        $this->attributes['email'] = strtolower($retVal);
     }
     /**
      * Atributos Paterno

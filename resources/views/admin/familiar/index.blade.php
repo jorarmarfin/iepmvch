@@ -45,6 +45,7 @@
                             <th> Paterno </th>
                             <th> Materno </th>
                             <th> Nombres </th>
+                            <th> Email </th>
                             <th> Opciones </th>
                         </tr>
                     </thead>
@@ -54,6 +55,7 @@
                             <td> {{ $item->paterno }} </td>
                             <td> {{ $item->materno }} </td>
                             <td> {{ $item->nombres.' ('.$item->tipo.')' }} </td>
+                            <td> {{ $item->email }} </td>
                             <td>
                                 <div class="btn-group">
                                     <button class="btn btn-xs green-dark dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Opciones

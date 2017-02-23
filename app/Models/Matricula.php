@@ -32,10 +32,11 @@ class Matricula extends Model
     * @return [type]            [description]
     */
     public function scopeActivas($cadenaSQL){
-    	return $cadenaSQL->select('matricula.id','a.paterno','a.materno','a.nombres','a.foto','g.nombre as grado','matricula.year','matricula.idtipo')
+    	return $cadenaSQL->select('matricula.id','a.paterno','a.materno','a.nombres','a.foto','g.nombre as grado','matricula.year','matricula.idtipo','n.nombre as nivel')
     					 ->join('alumno as a','a.id','=','idalumno')
     					 ->join('grado_seccion as gs','gs.id','=','idgradoseccion')
-    					 ->join('grado as g','g.id','=','gs.idgrado');
+                         ->join('grado as g','g.id','=','gs.idgrado')
+    					 ->join('catalogo as n','n.id','=','g.idnivel');
     }
     /**
     * Atributos Alumno
@@ -94,7 +95,11 @@ class Matricula extends Model
             return false;
         }
         else{
-            Matricula::create($data);
+            $matricula = Matricula::create($data);
+            $alumno = Alumno::find($matricula->idalumno);
+            $alumno->idestado = EstadoId('ESTADO ALUMNO','Matriculado');
+            $alumno->save();
+
             return true;
         }
     }

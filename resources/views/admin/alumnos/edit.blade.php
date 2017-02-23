@@ -206,7 +206,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     {!! Form::label('lblEstado', 'Estado Alumno', ['class'=>'control-label']) !!}
-                                    {!! Form::select('idestado', $estadoalumno,EstadoId('ESTADO ALUMNO','Regular'), ['class'=>'form-control']) !!}
+                                    {!! Form::select('idestado', $estadoalumno,null, ['class'=>'form-control']) !!}
                                 </div>
                             </div><!--/span-->
                         </div>

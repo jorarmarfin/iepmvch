@@ -75,69 +75,50 @@
                                     {!! Form::label('lblDNI', 'Numero de DNI', ['class'=>'control-label']) !!}
                                     {!! Form::text('dni', null, ['class'=>'form-control','placeholder'=>'Numero de DNI']) !!}
                                 </div>
-                            </div>
-                            <!--/span-->
+                            </div><!--/span-->
                             <div class="col-md-6">
                                 <div class="form-group">
                                     {!! Form::label('lblFecha', 'Fecha de nacimiento', ['class'=>'control-label']) !!}
                                     {!!Form::date('fechanacimiento', null , ['class'=>'form-control','placeholder'=>'Fecha de nacimiento']);!!}
                                 </div>
-                            </div>
-                            <!--/span-->
-                        </div>
-                        <!--/row-->
+                            </div><!--/span-->
+                        </div> <!--/row-->
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     {!!Form::label('lblPais', 'Pais de nacimiento',['class'=>'control-label']);!!}
                                     {!!Form::select('idpais',$pais, null , ['class'=>'form-control']);!!}
                                 </div>
-                            </div>
-                            <!--/span-->
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    {!! Form::label('lblUbigeo', 'Lugar de nacimiento', ['class'=>'control-label']) !!}
-                                    {!!Form::select('idubigeonacimiento',UbigeoPersonal('Lugar de nacimiento',$familiar->idubigeonacimiento), null , ['class'=>'form-control','id'=>'idubigeonacimiento']);!!}
-                                </div>
-                            </div>
-                            <!--/span-->
-                        </div>
-                        <!--/row-->
+                            </div><!--/span-->
+                        </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     {!! Form::label('lblReligion', 'Religion que profesa', ['class'=>'control-label']) !!}
                                     {!!Form::text('religion', null , ['class'=>'form-control','placeholder'=>'Religion que profesa'])!!}
                                 </div>
-                            </div>
-                            <!--/span-->
+                            </div><!--/span-->
                             <div class="col-md-6">
                                 <div class="form-group">
                                     {!! Form::label('lblSexo', 'Sexo', ['class'=>'control-label']) !!}
                                     {!!Form::select('idsexo', $sexo, IdMasculino() , ['class'=>'form-control'])!!}
                                 </div>
-                            </div>
-                            <!--/span-->
-                        </div>
-                        <!--/row-->
+                            </div><!--/span-->
+                        </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     {!! Form::label('lblEstCivil', 'Estado Civil', ['class'=>'control-label']) !!}
                                     {!!Form::select('idestadocivil', $estadocivil, null, ['class'=>'form-control'])!!}
                                 </div>
-                            </div>
-                            <!--/span-->
+                            </div><!--/span-->
                             <div class="col-md-6">
                                 <div class="form-group">
                                     {!! Form::label('lblGradoIn', 'Grado de instruccion', ['class'=>'control-label']) !!}
                                     {!!Form::text('gradoinstruccion', null, ['class'=>'form-control','placeholder'=>'Grado de instruccion'])!!}
                                 </div>
-
-                            </div>
-                            <!--/span-->
-                        </div>
-                        <!--/row-->
+                            </div><!--/span-->
+                        </div><!--/row-->
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">

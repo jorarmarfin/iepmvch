@@ -34,7 +34,9 @@ class FamiliarController extends Controller
      */
     public function index()
     {
-        //
+        $Lista = Familiar::where('email','like','%pendiente%')->get();
+        $id = '';
+        return view('admin.familiar.list',compact('Lista','id'));
     }
 
     /**

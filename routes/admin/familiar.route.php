@@ -2,6 +2,7 @@
 
 //Route::resource('familiar', 'FamiliarController',['names'=>'admin.familiar']);
 Route::get('familiar/lists/{id}','FamiliarController@lists')->name('admin.familiar.lists');
+Route::get('familiar/','FamiliarController@index')->name('admin.familiar.index');
 Route::post('familiar/','FamiliarController@store')->name('admin.familiar.store');
 Route::get('familiar/create/{familiar}','FamiliarController@create')->name('admin.familiar.create');
 Route::get('familiar/{familiar}','FamiliarController@show')->name('admin.familiar.show');
