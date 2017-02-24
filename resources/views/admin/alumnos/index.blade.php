@@ -92,11 +92,12 @@ $('#Alumnos').dataTable({
     "language": {
         "emptyTable": "No hay datos disponibles",
         "info": "Mostrando _START_ a _END_ de _TOTAL_ filas",
-        "search": "Buscar Alumnos :",
+        "search": "Buscar :",
         "lengthMenu": "_MENU_ registros"
     },
     "bProcessing": true,
-    "pagingType": "bootstrap_full_number"
+    "pagingType": "bootstrap_full_number",
+    "order": [0,"asc"]
 });
 </script>
 @stop

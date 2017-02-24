@@ -56,10 +56,22 @@ class Alumno extends Model
     {
       $estado = Catalogo::find($this->idestado);
       switch ($estado->nombre) {
+        case 'Regular"':
+           return '<span class="label label-sm label-success"> '.$estado->nombre.' </span>';
+          break;
+        case 'Retirado':
+           return '<span class="label label-sm label-danger"> '.$estado->nombre.' </span>';
+          break;
+        case 'Promovido':
+           return '<span class="label label-sm label-warning"> '.$estado->nombre.' </span>';
+          break;
         case 'Matriculado':
            return '<span class="label label-sm label-info"> '.$estado->nombre.' </span>';
           break;
         case 'Repite':
+           return '<span class="label label-sm label-danger"> '.$estado->nombre.' </span>';
+          break;
+        case 'Requiere recuperacion':
            return '<span class="label label-sm label-danger"> '.$estado->nombre.' </span>';
           break;
 
