@@ -19,8 +19,7 @@ class MatriculaController extends Controller
      */
     public function index()
     {
-        $Lista = Matricula::Activas()->orderBy('matricula.id','desc')->paginate(10);
-
+        $Lista = Matricula::Activas()->orderBy('matricula.id','desc')->get();
         return view('admin.matricula.index',compact('Lista'));
     }
     /**
@@ -149,6 +148,10 @@ class MatriculaController extends Controller
     public function printcompromiso($id)
     {
         return view('admin.matricula.compromiso',compact('id'));
+    }
+    public function printreporte()
+    {
+        return view('admin.matricula.reporte');
     }
 
 }

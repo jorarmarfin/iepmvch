@@ -49,6 +49,7 @@
                         </div><!--/span-->
                     </div><!--/row-->
                 {!! Form::close() !!}
+                {!!Form::boton('Reporte Matricula',route('admin.matricula.reporte'),'green-meadow','fa fa-file-pdf-o')!!}
                 <h3 >Alumnos matriculados</h3>
                 <div class="row">
                     <div class="col-md-12">
@@ -81,7 +82,7 @@
                                     <td> {{ $item->paterno.' - '.$item->materno.', '.$item->nombres }} </td>
                                     <td> {{ $item->nivel }} </td>
                                     <td> {{ $item->grado }} </td>
-                                    <td><a href="{{ route('admin.alumnos.show',$item->id) }}"><img src="{{ asset('/storage/'.$item->foto) }}"  width='25px'> </a></td>
+                                    <td><a href="{{ route('admin.alumnos.show',$item->idalumno) }}"><img src="{{ asset('/storage/'.$item->foto) }}"  width='25px'> </a></td>
                                     <td> {{ $item->year }} </td>
                                     <td> {{ $item->tipo }} </td>
                                     <td>

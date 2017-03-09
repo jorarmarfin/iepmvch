@@ -32,7 +32,7 @@ class Matricula extends Model
     * @return [type]            [description]
     */
     public function scopeActivas($cadenaSQL){
-    	return $cadenaSQL->select('matricula.id','a.paterno','a.materno','a.nombres','a.foto','g.nombre as grado','matricula.year','matricula.idtipo','n.nombre as nivel')
+    	return $cadenaSQL->select('matricula.id','a.paterno','a.materno','a.nombres','a.foto','g.nombre as grado','matricula.year','matricula.idtipo','n.nombre as nivel','matricula.idalumno','g.id as idgrado')
     					 ->join('alumno as a','a.id','=','idalumno')
     					 ->join('grado_seccion as gs','gs.id','=','idgradoseccion')
                          ->join('grado as g','g.id','=','gs.idgrado')
