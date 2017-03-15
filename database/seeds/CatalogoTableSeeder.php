@@ -2392,6 +2392,14 @@ class CatalogoTableSeeder extends Seeder
          * Otro Estado mas de alumno
          */
         Catalogo::create(['idtable' => 5,'iditem' => 6, 'codigo' => 'mat','nombre' => 'Matriculado','descripcion'=>'Estudiante matriculado','valor'=> null,'activo'=>true]);
+        /**
+         * Otro tipo de matricula
+         */
+        Catalogo::create(['idtable' => 29,'iditem' => 4, 'codigo' => 'MCL','nombre' => 'Condicion libre','descripcion'=>'Condicion Libre','valor'=> null,'activo'=>true]);
+        /**
+         * Otro estado de asistencia
+         */
+        Catalogo::create(['idtable' => 16,'iditem' => 5, 'codigo' => 'F/J','nombre' => 'Falta/justificada','descripcion'=>'Falta justificada','valor'=> null,'activo'=>true]);
 
 
     }

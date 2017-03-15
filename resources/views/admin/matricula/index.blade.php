@@ -49,7 +49,8 @@
                         </div><!--/span-->
                     </div><!--/row-->
                 {!! Form::close() !!}
-                {!!Form::boton('Reporte Matricula',route('admin.matricula.reporte'),'green-meadow','fa fa-file-pdf-o')!!}
+                {!!Form::boton('Reporte General',route('admin.matricula.reporte'),'green-meadow','fa fa-file-pdf-o')!!}
+                {!!Form::boton('Reporte por Grado',route('admin.matricula.reportegrado'),'green-meadow','fa fa-file-pdf-o')!!}
                 <h3 >Alumnos matriculados</h3>
                 <div class="row">
                     <div class="col-md-12">

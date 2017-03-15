@@ -93,7 +93,7 @@ class Alumno extends Model
     */
     public function getNombreCompletoAttribute()
     {
-        $nombrecompleto = strtoupper($this->paterno).' '.strtoupper($this->materno).', '.title_case($this->nombres);
+        $nombrecompleto = strtoupper($this->paterno).'-'.strtoupper($this->materno).', '.title_case($this->nombres);
         return $nombrecompleto;
     }
     /**

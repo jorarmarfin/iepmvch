@@ -24,6 +24,7 @@
         <li class="heading">
             <h3 class="uppercase">Modulos</h3>
         </li>
+        {!!Form::menu('Asistencia',route('admin.asistencia.index'),'fa fa-cube')!!}
         {!!Form::menu('Matricula',route('admin.matricula.index'),'fa fa-cube')!!}
         {!!Form::menu('Psicologia',route('admin.reservapsicologica.index'),'fa fa-user-md')!!}
         {!!Form::menu('Alumnos',route('admin.alumnos.index'),'fa fa-users')!!}

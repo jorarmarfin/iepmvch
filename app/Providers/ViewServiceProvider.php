@@ -6,6 +6,7 @@ use App\Http\ViewComposers\AreaSelectData;
 use App\Http\ViewComposers\ControlSelectData;
 use App\Http\ViewComposers\DiaSemanaSelectData;
 use App\Http\ViewComposers\EstadoAlumnoSelectData;
+use App\Http\ViewComposers\EstadoAsistenciaSelectData;
 use App\Http\ViewComposers\EstadoCivilSelectData;
 use App\Http\ViewComposers\GestionSelectData;
 use App\Http\ViewComposers\GradoSeccionSelectData;
@@ -42,7 +43,7 @@ class ViewServiceProvider extends ServiceProvider
             GradoSelectData::class
             );
         $this->app->make('view')->composer(
-            ['admin.matricula.index','admin.matricula.edit','admin.matricula.delete'],
+            ['admin.matricula.index','admin.matricula.edit','admin.matricula.delete','admin.asistencia.index'],
             GradoSeccionSelectData::class
             );
         $this->app->make('view')->composer(
@@ -119,6 +120,11 @@ class ViewServiceProvider extends ServiceProvider
             ['admin.boletaventa.create','admin.boletaventa.edit'
             ],
             TipoIdentificacionSelectData::class
+            );
+        $this->app->make('view')->composer(
+            ['admin.asistencia.index'
+            ],
+            EstadoAsistenciaSelectData::class
             );
     }
 

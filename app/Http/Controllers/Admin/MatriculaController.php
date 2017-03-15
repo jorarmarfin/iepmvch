@@ -153,5 +153,9 @@ class MatriculaController extends Controller
     {
         return view('admin.matricula.reporte');
     }
+    public function printreportegrado()
+    {
+        return view('admin.matricula.reportegrado');
+    }
 
 }

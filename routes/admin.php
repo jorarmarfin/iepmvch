@@ -29,6 +29,11 @@ Route::group(['prefix' => 'admin','namespace'=>'Admin'], function() {
 	 * Lista de Utiles
 	 */
 	require __DIR__.'/admin/listautiles.route.php';
+	/**
+	 * Registro de asistencia
+	 */
+	require __DIR__.'/admin/asistencia.route.php';
+
 
 
 
