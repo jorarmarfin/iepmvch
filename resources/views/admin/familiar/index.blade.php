@@ -77,6 +77,14 @@
                                             <a href="{{ route('admin.familiar.quitar',$item->id) }}">
                                                 <i class="fa fa-mail-reply"></i> Quitar </a>
                                         </li>
+                                        <li>
+                                            <a href="{{ route('admin.familiar.createuser',$item->id) }}">
+                                                <i class="fa fa-user-plus"></i> Crea Usuario </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('admin.familiar.senduser',$item->id) }}">
+                                                <i class="icon-envelope"></i> Email Acceso </a>
+                                        </li>
                                     </ul>
                                 </div>
                             </td>

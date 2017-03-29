@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Familiar extends Model
 {
     protected $table = 'familiar';
-    protected $fillable = ['viveconestudiante', 'paterno', 'materno','nombres','dni','fechanacimiento','idpais','religion','idestadocivil','gradoinstruccion','profesion','direccion','celular','telefonofijo','telefonolaboral','email','idtipo','autorizo','idsexo','esapoderado','idubigeo'];
+    protected $fillable = ['viveconestudiante', 'paterno', 'materno','nombres','dni','fechanacimiento','idpais','religion','idestadocivil','gradoinstruccion','profesion','direccion','celular','telefonofijo','telefonolaboral','email','idtipo','autorizo','idsexo','esapoderado','idubigeo','idusuario'];
 
     /**
      * Atributos Email

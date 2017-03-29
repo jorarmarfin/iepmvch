@@ -13,4 +13,13 @@ Route::delete('familiar/{familiar}','FamiliarController@destroy')->name('admin.f
 Route::post('familiar/relation','FamiliarController@relation')->name('admin.familiar.relation');
 Route::get('familiar/quitar/{familiar}','FamiliarController@quitar')->name('admin.familiar.quitar');
 
+/**
+ * Crea usuario
+ */
+Route::get('familiar-crea-usuario/{personal}','FamiliarController@createuser')->name('admin.familiar.createuser');
+/**
+ * Envia Email
+ */
+Route::get('familiar-send-user/{personal}','FamiliarController@senduser')->name('admin.familiar.senduser');
+
 

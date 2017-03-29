@@ -14,7 +14,7 @@ class AgendaController extends Controller
      */
     public function index()
     {
-        dd("padres");
+        dd("En construccion");
     }
 
     /**

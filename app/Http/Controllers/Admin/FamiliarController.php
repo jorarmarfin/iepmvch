@@ -6,12 +6,16 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\AlumnoFamiliarRequest;
 use App\Http\Requests\FamiliarRequest;
 use App\Http\Requests\FamiliarUpdateRequest;
+use App\Mail\WelcomeUserEmail;
 use App\Models\Alumno;
 use App\Models\AlumnoFamiliar;
 use App\Models\Familiar;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Styde\Html\Facades\Alert;
+use Validator;
+use Illuminate\Support\Facades\Mail;
 
 class FamiliarController extends Controller
 {
@@ -156,5 +160,59 @@ class FamiliarController extends Controller
         Familiar::quitar($id,$idalumno);
         Alert::success('Familiar quitado con exito');
         return back();
+    }
+    /**
+     * Crea usuario del persona
+     *
+     * @param  [type] $id [description]
+     * @return [type]     [description]
+     */
+    public function createuser($id)
+    {
+
+        $familiar = Familiar::find($id);
+
+        $data['name'] = $familiar->nombres.' '.$familiar->paterno;
+        $data['email'] = $familiar->email;
+        $data['password'] = $familiar->dni;
+        $data['idrole'] = RoleId('pad');
+        $data['foto'] = 'avatars/nofoto.jpg';
+        $data['activo'] = true;
+        $data['username'] = $familiar->dni;
+        $data['menu'] = 'menu.sider-pad';
+
+        $validator = Validator::make($data, [
+            'email' => 'unique:users,email',
+            'username' => 'unique:users,username',
+        ],[
+            'email.unique'=>'El email de este usuario ya esta registrado',
+            'username.unique'=>'El DNI de este usuario ya esta registrado'
+        ]
+        );
+        if ($validator->fails()) {
+            return back()->withErrors($validator);
+        }
+
+        $usuario = User::create($data);
+
+        if($usuario->id){
+            $familiar->idusuario = $usuario->id;
+            $familiar->save();
+            $this->senduser($familiar->id);
+        }
+
+        Alert::success('Usuario creado con exito');
+        return back();
+    }
+
+    public function senduser($id)
+    {
+        $familiar = Familiar::find($id);
+        $usuario = User::find($familiar->idusuario);
+        Mail::to($usuario->email,$usuario->name)
+            ->send(new WelcomeUserEmail($usuario));
+        Alert::success('Usuario enviado por email con exito');
+        return back();
+
     }
 }
