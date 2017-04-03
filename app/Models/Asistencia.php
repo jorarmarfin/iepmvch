@@ -47,6 +47,9 @@ class Asistencia extends Model
         case 'Tardanza/justificada':
            return '<span class="label label-sm label-info"> '.$estado->nombre.' </span>';
           break;
+        case 'Falta/justificada':
+           return '<span class="label label-sm label-danger"> '.$estado->nombre.' </span>';
+          break;
 
         default:
            return '';

@@ -64,7 +64,7 @@ class AlumnosController extends Controller
      */
     public function show($id)
     {
-        $alumno = Alumno::find($id);
+        $alumno = Alumno::with('familiar')->find($id);
         return view('admin.alumnos.show',compact('alumno'));
 
     }

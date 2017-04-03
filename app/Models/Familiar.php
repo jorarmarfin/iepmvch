@@ -120,7 +120,7 @@ class Familiar extends Model
     */
     public function getNombreCompletoAttribute()
     {
-        $nombrecompleto = $this->paterno.' - '.$this->materno.', '.$this->nombres;
+        $nombrecompleto = $this->paterno.'-'.$this->materno.', '.$this->nombres;
         return $nombrecompleto;
     }
     /**

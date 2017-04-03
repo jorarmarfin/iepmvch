@@ -125,8 +125,7 @@
                                                 <p class="form-control-static"> {{ $alumno->religion }} </p>
                                             </div>
                                         </div>
-                                    </div>
-                                    <!--/span-->
+                                    </div><!--/span-->
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="control-label col-md-6">Sacramentos:</label>
@@ -134,14 +133,20 @@
                                                 <p class="form-control-static"> {{ $alumno->sacramentos }} </p>
                                             </div>
                                         </div>
-                                    </div>
-                                    <!--/span-->
-                                </div>
-                                <!--/row-->
-                            </div>
-                            <!--/span-->
-                        </div>
-                        <!--/row-->
+                                    </div> <!--/span-->
+                                    <h3 class="form-section">Familiares</h3>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            @foreach ($alumno->familiar as $item)
+                                                <div class="col-md-12">
+                                                    <p class="form-control-static"> {{ $item->nombre_completo." ($item->tipo) telefonos : ".$item->celular.'-'.$item->telefonofijo.'-'.$item->telefonolaboral }} </p>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div> <!--/span-->
+                                </div><!--/row-->
+                            </div><!--/span-->
+                        </div><!--/row-->
                         <h3 class="form-section">Dirección</h3>
                         <div class="row">
                             <div class="col-md-6">

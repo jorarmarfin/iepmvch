@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Http\Requests\UserRequest;
 use App\Models\Catalogo;
+use App\Models\Familiar;
+use App\Models\Personal;
 use App\User;
 use File;
 use Illuminate\Http\Request;
@@ -109,6 +111,14 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
+        $familiar = Familiar::where('idusuario',$id)->get();
+        $personal = Personal::where('idusuario',$id)->get();
+        if(isset($familiar)){
+            Familiar::where('idusuario',$id)->update(['idusuario'=>null]);
+        }
+        if(isset($personal)){
+            Personal::where('idusuario',$id)->update(['idusuario'=>null]);
+        }
         User::destroy($id);
         Alert::success('Usuario Eliminado');
         return redirect()->route('admin.users.index');

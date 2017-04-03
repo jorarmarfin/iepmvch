@@ -75,7 +75,7 @@
             </a>
         </li>
         <li class="nav-item  ">
-            <a href="javascript:;" class="nav-link nav-toggle">
+            <a href="{{ route('padres.asistencia.index') }}" class="nav-link nav-toggle">
                 <i class="fa fa-calendar-check-o"></i>
                 <span class="title">Asistencias</span>
                 <span class="arrow"></span>

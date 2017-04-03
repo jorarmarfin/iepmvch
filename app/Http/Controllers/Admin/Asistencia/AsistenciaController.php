@@ -25,7 +25,7 @@ class AsistenciaController extends Controller
     	}else{
     		$fecha = $request->get('fecha');
     		$date = Carbon::createFromFormat('Y-m-d',$fecha)->toDateString();
-	    	$alumnos = Matricula::select('id as idmatricula',DB::raw("'$date' as fecha"))
+	    	$alumnos = Matricula::select('id as idmatricula',DB::raw("'$date' as fecha,".EstadoId('ESTADO ASISTENCIA','Asistio')." as idestado"))
 	    						->where('idgradoseccion',$request->get('idgradoseccion'))
 	    						->get();
 	    	Asistencia::insert($alumnos->toArray());
