@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MatriculaRequest;
 use App\Models\Alumno;
+use App\Models\Grado;
 use App\Models\GradoSeccion;
 use App\Models\Matricula;
 use Illuminate\Http\Request;
@@ -123,16 +124,20 @@ class MatriculaController extends Controller
      */
     public function ValidoGrado($request)
     {
-        //dd($request->all());
         $idtipo = EstadoId('TIPO MATRICULA','Pre-Matricula');
-        if ($idtipo != $request->input('idtipo')) {
-            $autorizado = GradoSeccion::GradoSeccionAutorizado($request)->get();
-            $autorizado = $autorizado->implode('id', ',');
-            $this->validate($request, [
-                'idgradoseccion' => 'in:'.$autorizado,
-            ],[
-                'idgradoseccion.in'=>'El grado escogido no es correcto'
-            ]);
+        $grado = Grado::where('nombre','CONDICION LIBRE')->first();
+        $gradoseccion = GradoSeccion::where('idgrado',$grado->id)->first();
+
+        if ($request->input('idgradoseccion')!= $gradoseccion->id) {
+            if ($idtipo != $request->input('idtipo')) {
+                $autorizado = GradoSeccion::GradoSeccionAutorizado($request)->get();
+                $autorizado = $autorizado->implode('id', ',');
+                $this->validate($request, [
+                    'idgradoseccion' => 'in:'.$autorizado,
+                ],[
+                    'idgradoseccion.in'=>'El grado escogido no es correcto'
+                ]);
+            }
         }
     }
     /**
