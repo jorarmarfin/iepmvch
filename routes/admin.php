@@ -19,7 +19,7 @@ Route::group(['prefix' => 'admin','namespace'=>'Admin'], function() {
 	require __DIR__.'/admin/areaacademica.route.php';
 	require __DIR__.'/admin/asignatura.route.php';
 	require __DIR__.'/admin/asignaturagradoseccion.route.php';
-	require __DIR__.'/admin/personalasignatura.route.php';
+	//require __DIR__.'/admin/personalasignatura.route.php';
 	/**
 	 * Boleta de venta
 	 */
