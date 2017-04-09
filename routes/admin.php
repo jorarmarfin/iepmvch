@@ -19,6 +19,7 @@ Route::group(['prefix' => 'admin','namespace'=>'Admin'], function() {
 	require __DIR__.'/admin/areaacademica.route.php';
 	require __DIR__.'/admin/asignatura.route.php';
 	require __DIR__.'/admin/asignaturagradoseccion.route.php';
+	require __DIR__.'/admin/personalasignatura.route.php';
 	/**
 	 * Boleta de venta
 	 */
@@ -33,6 +34,10 @@ Route::group(['prefix' => 'admin','namespace'=>'Admin'], function() {
 	 * Registro de asistencia
 	 */
 	require __DIR__.'/admin/asistencia.route.php';
+	/**
+	 * Cumpleaños
+	 */
+	require __DIR__.'/admin/birthday.route.php';
 
 
 

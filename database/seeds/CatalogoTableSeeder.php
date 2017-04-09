@@ -2395,7 +2395,7 @@ class CatalogoTableSeeder extends Seeder
         /**
          * Otro tipo de matricula
          */
-        Catalogo::create(['idtable' => 29,'iditem' => 4, 'codigo' => 'MCL','nombre' => 'Condicion libre','descripcion'=>'Condicion Libre','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 29,'iditem' => 4, 'codigo' => 'MARE','nombre' => 'Retirada','descripcion'=>'Retirada','valor'=> null,'activo'=>true]);
         /**
          * Otro estado de asistencia
          */

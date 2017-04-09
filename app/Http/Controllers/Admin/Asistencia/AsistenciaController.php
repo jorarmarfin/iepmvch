@@ -9,6 +9,7 @@ use App\Models\Matricula;
 use Carbon\Carbon;
 use DB;
 use Illuminate\Http\Request;
+use Styde\Html\Facades\Alert;
 class AsistenciaController extends Controller
 {
     public function index()
@@ -27,6 +28,8 @@ class AsistenciaController extends Controller
     		$date = Carbon::createFromFormat('Y-m-d',$fecha)->toDateString();
 	    	$alumnos = Matricula::select('id as idmatricula',DB::raw("'$date' as fecha,".EstadoId('ESTADO ASISTENCIA','Asistio')." as idestado"))
 	    						->where('idgradoseccion',$request->get('idgradoseccion'))
+                                ->whereDate('created_at','<=',$date)
+                                ->where('idtipo','<>',EstadoId('TIPO MATRICULA','<>','Retirada'))
 	    						->get();
 	    	Asistencia::insert($alumnos->toArray());
 	    	$Lista = Asistencia::where('fecha',$fecha)->get();
@@ -39,7 +42,18 @@ class AsistenciaController extends Controller
     	$asistencia->idestado = $idestado;
     	$asistencia->save();
 
-    	$Lista = Asistencia::where('fecha',$asistencia->fecha)->get();
-    	return view('admin.asistencia.index',compact('Lista'));
+        $Lista = Asistencia::where('fecha',$asistencia->fecha)->get();
+        return view('admin.asistencia.index',compact('Lista'));
+    }
+    public function show($id)
+    {
+        $asistencia = Asistencia::find($id);
+        $date = $asistencia->fecha;
+        $asistencia->delete();
+        $Lista = Asistencia::where('fecha',$date)
+                            ->where('idtipo','<>',EstadoId('TIPO MATRICULA','<>','Retirada'))
+                            ->get();
+        Alert::success('Asistencia eliminado con exito');
+        return view('admin.asistencia.index',compact('Lista'));
     }
 }

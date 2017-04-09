@@ -36,6 +36,7 @@
                 {!!Form::menu('Asignaturas',route('admin.asignatura.index'))!!}
                 {!!Form::menu('Asignaturas Grado',route('admin.ags.index'))!!}
                 {!!Form::menu('Horario',route('admin.asignatura.index'))!!}
+                {!!Form::menu('Docente Asignatura',route('admin.asignatura.index'))!!}
             </ul>
         </li>
         <li class="nav-item  ">
@@ -50,7 +51,7 @@
         {!!Form::menu('Registros','#','icon-book-open')!!}
         {!!Form::menu('Almacen','#','fa fa-archive')!!}
         {!!Form::menu('Pensiones','#','fa fa-dollar')!!}
-        {!!Form::menu('Cumpleaños','#','icon-present')!!}
+        {!!Form::menu('Cumpleaños',route('admin.birthday.index'),'icon-present')!!}
         {!!Form::menu('Lista de Utiles',route('admin.listautiles.index'),'fa fa-list')!!}
         {!!Form::menu('Memos','#','fa fa-thumbs-o-down')!!}
         {!!Form::menu('Calendarizacion','#','fa fa-calendar')!!}

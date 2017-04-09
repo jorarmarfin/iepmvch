@@ -8,8 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Matricula extends Model
 {
     protected $table = 'matricula';
-    protected $fillable = ['idalumno', 'idgradoseccion', 'idtipo','year','retiro_solo','retiro_hermano','retiro_hermano_nombre'];
+    protected $fillable = ['idalumno', 'idgradoseccion', 'idtipo','year','retiro_solo','retiro_hermano','retiro_hermano_nombre','created_at'];
 
+    /**
+    * Atributos Fecha Matricula
+    */
+    public function getFechaMatriculaAttribute()
+    {
+        $date = Carbon::parse($this->created_at);
+
+        return $date->format('Y-m-d');
+    }
     /**
     * Atributos Se retira con su hermano
     */
@@ -26,18 +35,7 @@ class Matricula extends Model
         $retval = ($this->retiro_solo)? 'Si':'No';
         return $retval;
     }
-    /**
-    * Devuelve los valores Activos
-    * @param  [type]  [description]
-    * @return [type]            [description]
-    */
-    public function scopeActivas($cadenaSQL){
-    	return $cadenaSQL->select('matricula.id','a.paterno','a.materno','a.nombres','a.foto','g.nombre as grado','matricula.year','matricula.idtipo','n.nombre as nivel','matricula.idalumno','g.id as idgrado')
-    					 ->join('alumno as a','a.id','=','idalumno')
-    					 ->join('grado_seccion as gs','gs.id','=','idgradoseccion')
-                         ->join('grado as g','g.id','=','gs.idgrado')
-    					 ->join('catalogo as n','n.id','=','g.idnivel');
-    }
+
     /**
     * Atributos Alumno
     */
@@ -127,6 +125,18 @@ class Matricula extends Model
         }
     }
     /**
+    * Devuelve los valores Activos
+    * @param  [type]  [description]
+    * @return [type]            [description]
+    */
+    public function scopeActivas($cadenaSQL){
+        return $cadenaSQL->select('matricula.id','a.paterno','a.materno','a.nombres','a.foto','g.nombre as grado','matricula.year','matricula.idtipo','n.nombre as nivel','matricula.idalumno','g.id as idgrado','matricula.created_at')
+                         ->join('alumno as a','a.id','=','idalumno')
+                         ->join('grado_seccion as gs','gs.id','=','idgradoseccion')
+                         ->join('grado as g','g.id','=','gs.idgrado')
+                         ->join('catalogo as n','n.id','=','g.idnivel');
+    }
+    /**
      * Resumen de matricula
      */
     /**
@@ -138,6 +148,7 @@ class Matricula extends Model
         return $cadenaSQL->select('g.id','idgradoseccion',\DB::raw('count(*) as total'))
                          ->join('grado_seccion as gs','gs.id','=','matricula.idgradoseccion')
                          ->join('grado as g','g.id','=','gs.idgrado')
+                         ->where('idtipo','<>',EstadoId('TIPO MATRICULA','Retirada'))
                          ->groupBy('g.id')
                          ->groupBy('idgradoseccion');
     }

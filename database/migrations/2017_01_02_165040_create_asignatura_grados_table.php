@@ -18,7 +18,7 @@ class CreateAsignaturaGradosTable extends Migration
             $table->integer('idgradoseccion')->nullable();
             $table->integer('idasignatura')->nullable();
             $table->integer('practicas')->nullable()->default(6);
-            $table->boolean('activo')->nullable();
+            $table->boolean('activo')->default(true);
             $table->timestamps();
             $table->foreign('idgradoseccion')->references('id')->on('grado_seccion');
             $table->foreign('idasignatura')->references('id')->on('asignatura');

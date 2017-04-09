@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Admin\PlanCurricular;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\AsignaturaGradoSeccion;
+use Illuminate\Http\Request;
+use Styde\Html\Facades\Alert;
 
 class AsignaturaGradoSeccionController extends Controller
 {
@@ -14,8 +16,14 @@ class AsignaturaGradoSeccionController extends Controller
      */
     public function index()
     {
-        $Lista = [];
+        $Lista = AsignaturaGradoSeccion::all();
         return view('admin.ags.index',compact('Lista'));
+    }
+    public function delete($id)
+    {
+        AsignaturaGradoSeccion::destroy($id);
+        Alert::success('Asignatura eliminada con exito');
+        return back();
     }
 
     /**
@@ -36,7 +44,9 @@ class AsignaturaGradoSeccionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        AsignaturaGradoSeccion::create($request->all());
+        Alert::success('Asignatura asignada al grado con exito');
+        return back();
     }
 
     /**

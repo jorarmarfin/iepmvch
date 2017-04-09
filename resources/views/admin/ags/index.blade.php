@@ -18,23 +18,37 @@
                 </div>
             </div>
             <div class="portlet-body">
-            {!!Form::boton('Nuevo Asignatura',route('admin.asignatura.create'),'green','fa fa-plus')!!}
+            {!! Form::open(['route'=>'admin.ags.store','method'=>'POST']) !!}
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {!!Form::label('lblGradoSeccion', 'Grado Seccion');!!}
+                            {!!Form::select('idgradoseccion',$gradoseccion ,null , ['class'=>'form-control','placeholder'=>'Grado Seccion']);!!}
+                        </div>
+                    </div><!--span-->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {!!Form::label('lblAsignatura', 'Asignatura');!!}
+                            {!!Form::select('idasignatura',$asignaturas ,null , ['class'=>'form-control','placeholder'=>'Asignaturas']);!!}
+                        </div>
+                    </div><!--span-->
+                </div><!--row-->
+                {!!Form::enviar('Guardar')!!}
+            {!! Form::close() !!}
             <p></p>
                 <table class="table table-striped table-hover" id="Asignaturas">
                     <thead>
                         <tr>
-                            <th> Nombre </th>
-                            <th> Area </th>
-                            <th> Peso</th>
+                            <th> Grado </th>
+                            <th> Asignatura </th>
                             <th> Opciones </th>
                         </tr>
                     </thead>
                     <tbody>
                     @foreach ($Lista as $item)
                         <tr>
-                            <td> {{ $item->nombre }} </td>
-                            <td> {{ $item->area }} </td>
-                            <td> {{ $item->peso }} </td>
+                            <td> {{ $item->grado }} </td>
+                            <td> {{ $item->asignatura }} </td>
                             <td>
                                 <div class="btn-group">
                                     <button class="btn btn-xs green-dark dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Opciones
@@ -46,7 +60,7 @@
                                                 <i class="fa fa-edit"></i> Edit </a>
                                         </li>
                                         <li>
-                                            <a href="{{ route('admin.asignatura.show',$item->id) }}">
+                                            <a href="{{ route('admin.ags.delete',$item->id) }}">
                                                 <i class="fa fa-trash"></i> Delete </a>
                                         </li>
                                     </ul>

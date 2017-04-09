@@ -83,6 +83,10 @@
                                                     <i class="fa fa-check"></i> {{ $estado }} </a>
                                             </li>
                                         @endforeach
+                                            <li>
+                                                <a href="{{ route('admin.asistencia.show',$item->id) }}">
+                                                    <i class="fa fa-trash"></i> Eliminar </a>
+                                            </li>
                                     </ul>
                                 </div>
                             </td>

@@ -47,6 +47,12 @@
                             {!!Form::text('year', null , ['class'=>'form-control']);!!}
                         </div>
                     </div><!--/span-->
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            {!!Form::label('lblFecha', 'Fecha Matricula',['class'=>'control-label']);!!}
+                            {!!Form::text('created_at', null , ['class'=>'form-control']);!!}
+                        </div>
+                    </div><!--/span-->
                 </div><!--/row-->
                 <div class="row">
                     <div class="col-md-6">

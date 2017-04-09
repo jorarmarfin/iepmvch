@@ -128,7 +128,6 @@ class Alumno extends Model
         $sacramentos .= ', Confirmacion';
       }
       return $sacramentos;
-
     }
     /**
     * Atributos Ubigeo de nacimiento
@@ -210,6 +209,26 @@ class Alumno extends Model
       return $cadenaSQL->orderBy('paterno','asc')
                        ->orderBy('materno','asc')
                        ->orderBy('nombres','asc');
+    }
+    /**
+    * Devuelve los valores Activos
+    * @param  [type]  [description]
+    * @return [type]            [description]
+    */
+    public function scopeBirthday($cadenaSQL){
+      $date = Carbon::now();
+      return $cadenaSQL->whereHas('Matriculado',function($query){
+                          $query->where('idtipo','<>',EstadoId('TIPO MATRICULA','Retirada'));
+                        })
+                        ->whereMonth('fechanacimiento','>=',$date->month);
+    }
+    /**
+     * Establecemos el la relacion con catalogo
+     * @return [type] [description]
+     */
+    public function Matriculado()
+    {
+        return $this->hasOne(Matricula::class,'idalumno','id');
     }
 
 

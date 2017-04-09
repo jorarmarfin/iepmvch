@@ -1,8 +1,8 @@
 <?php
-
-Route::get('asistencia','Asistencia\AsistenciaController@index')->name('admin.asistencia.index');
-Route::post('asistencia','Asistencia\AsistenciaController@store')->name('admin.asistencia.store');
-Route::get('asistencia-estado/{id}/{estado}','Asistencia\AsistenciaController@estado')->name('admin.asistencia.estado');
+Route::group(['namespace'=>'Asistencia'], function() {
+	Route::resource('asistencia','AsistenciaController',['names'=>'admin.asistencia','only'=>['index','store','show']]);
+	Route::get('asistencia-estado/{id}/{estado}','AsistenciaController@estado')->name('admin.asistencia.estado');
+});
 
 
 

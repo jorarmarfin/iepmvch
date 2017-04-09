@@ -54,7 +54,7 @@
                 <h3 >Alumnos matriculados</h3>
                 <div class="row">
                     <div class="col-md-12">
-                        <table class="table table-striped table-hover" id="Matriculados">
+                        <table class="table table-striped table-hover table-bordered table-condensed" id="Matriculados">
                             <thead>
                                 <tr>
                                     <th> Alumnos </th>
@@ -62,6 +62,7 @@
                                     <th> Grado Matriculado</th>
                                     <th> Foto </th>
                                     <th> Periodo </th>
+                                    <th> Fecha Matricula </th>
                                     <th> Tipo </th>
                                     <th> Opciones </th>
                                 </tr>
@@ -85,6 +86,7 @@
                                     <td> {{ $item->grado }} </td>
                                     <td><a href="{{ route('admin.alumnos.show',$item->idalumno) }}"><img src="{{ asset('/storage/'.$item->foto) }}"  width='25px'> </a></td>
                                     <td> {{ $item->year }} </td>
+                                    <td> {{ $item->fecha_matricula }} </td>
                                     <td> {{ $item->tipo }} </td>
                                     <td>
                                         <div class="btn-group">

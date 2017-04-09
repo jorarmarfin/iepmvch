@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Http\ViewComposers\AreaSelectData;
+use App\Http\ViewComposers\AsignaturaSelectData;
 use App\Http\ViewComposers\ControlSelectData;
 use App\Http\ViewComposers\DiaSemanaSelectData;
 use App\Http\ViewComposers\EstadoAlumnoSelectData;
@@ -43,7 +44,9 @@ class ViewServiceProvider extends ServiceProvider
             GradoSelectData::class
             );
         $this->app->make('view')->composer(
-            ['admin.matricula.index','admin.matricula.edit','admin.matricula.delete','admin.asistencia.index'],
+            ['admin.matricula.index','admin.matricula.edit','admin.matricula.delete','admin.asistencia.index',
+             'admin.ags.index'
+            ],
             GradoSeccionSelectData::class
             );
         $this->app->make('view')->composer(
@@ -125,6 +128,11 @@ class ViewServiceProvider extends ServiceProvider
             ['admin.asistencia.index'
             ],
             EstadoAsistenciaSelectData::class
+            );
+        $this->app->make('view')->composer(
+            ['admin.ags.index'
+            ],
+            AsignaturaSelectData::class
             );
     }
 
