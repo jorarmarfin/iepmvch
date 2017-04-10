@@ -34,9 +34,9 @@
                     <tbody>
                     @foreach ($Lista as $item)
                         <tr>
-                            <td> {{ $item->area->inicial }} </td>
-                            <td> {{ $item->area->primaria }} </td>
-                            <td> {{ $item->area->secundaria }} </td>
+                            <td> {{ $item->area['inicial'] }} </td>
+                            <td> {{ $item->area['primaria'] }} </td>
+                            <td> {{ $item->area['secundaria'] }} </td>
                             <td> {{ $item->nombre }} </td>
                             <td> {{ $item->peso }} </td>
                             <td>
