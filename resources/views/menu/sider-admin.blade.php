@@ -36,7 +36,7 @@
                 {!!Form::menu('Asignaturas',route('admin.asignatura.index'))!!}
                 {!!Form::menu('Asignaturas Grado',route('admin.ags.index'))!!}
                 {!!Form::menu('Horario',route('admin.asignatura.index'))!!}
-                {!!Form::menu('Docente Asignatura',route('admin.asignatura.index'))!!}
+                {!!Form::menu('Docente Asignatura',route('admin.personalasignatura.index'))!!}
             </ul>
         </li>
         <li class="nav-item  ">

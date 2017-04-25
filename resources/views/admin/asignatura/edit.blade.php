@@ -33,7 +33,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     {!! Form::label('lblArea', 'Area academica', ['class'=>'control-label']) !!}
-                                    {!! Form::select('idarea',$area, null, ['class'=>'form-control','placeholder'=>'Seleccionar Area']) !!}
+                                    {!! Form::select('idareaacademica',$area, null, ['class'=>'form-control','placeholder'=>'Seleccionar Area']) !!}
                                 </div>
                             </div>
                             <!--/span-->

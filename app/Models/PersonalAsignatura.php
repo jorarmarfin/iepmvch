@@ -8,4 +8,21 @@ class PersonalAsignatura extends Model
 {
     protected $table = 'personal_asignatura';
     protected $fillable = ['idpersonal', 'idasignaturagradoseccion', 'tutor','notas'];
+    /**
+    * Atributos Personal
+    */
+    public function getNombrePersonalAttribute()
+    {
+    	$personal = Personal::find($this->idpersonal);
+    	return $personal->nombre_completo;
+    }
+    /**
+    * Atributos Asignatura
+    */
+    public function getNombreAsignaturaAttribute()
+    {
+    	$ags = AsignaturaGradoSeccion::find($this->idasignaturagradoseccion);
+    	$asignatura = Asignatura::find($ags->idasignatura);
+    	return $asignatura->nombre;
+    }
 }

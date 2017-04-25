@@ -16,6 +16,7 @@ class CreatePracticaResumensTable extends Migration
         Schema::create('practica_resumen', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('idmatricula')->nullable();
+            $table->integer('idasignaturagradoseccion')->nullable();
             $table->decimal('pc1_n',8,3)->nullable();
             $table->string('pc1_l',3)->nullable();
             $table->decimal('pc2_n',8,3)->nullable();
@@ -31,6 +32,7 @@ class CreatePracticaResumensTable extends Migration
             $table->decimal('ppc',8,3)->nullable();
             $table->timestamps();
             $table->foreign('idmatricula')->references('id')->on('matricula');
+            $table->foreign('idasignaturagradoseccion')->references('id')->on('asignatura_grado_seccion');
         });
     }
 

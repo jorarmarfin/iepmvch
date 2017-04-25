@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin\PlanCurricular;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AGSRequest;
 use App\Models\AsignaturaGradoSeccion;
+use App\Models\GradoSeccion;
 use Illuminate\Http\Request;
 use Styde\Html\Facades\Alert;
 
@@ -17,7 +19,8 @@ class AsignaturaGradoSeccionController extends Controller
     public function index()
     {
         $Lista = AsignaturaGradoSeccion::all();
-        return view('admin.ags.index',compact('Lista'));
+        $Grados = GradoSeccion::orderBy('idgrado')->get();
+        return view('admin.ags.index',compact('Lista','Grados'));
     }
     public function delete($id)
     {
@@ -42,9 +45,17 @@ class AsignaturaGradoSeccionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AGSRequest $request)
     {
-        AsignaturaGradoSeccion::create($request->all());
+        $idgradoseccion = $request->input('idgradoseccion');
+        $data = $request->input('idasignatura');
+        foreach ($data as $key => $value) {
+            AsignaturaGradoSeccion::create([
+                            'idgradoseccion'=>$idgradoseccion,
+                            'idasignatura'=>$value
+                            ]);
+        }
+
         Alert::success('Asignatura asignada al grado con exito');
         return back();
     }

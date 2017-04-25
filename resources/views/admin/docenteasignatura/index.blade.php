@@ -19,18 +19,26 @@
                 </div>
             </div>
             <div class="portlet-body">
-            {!! Form::open(['route'=>'admin.ags.store','method'=>'POST']) !!}
+            {!! Form::open(['route'=>'admin.personalasignatura.store','method'=>'POST']) !!}
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            {!!Form::label('lblGradoSeccion', 'Grado Seccion');!!}
-                            {!!Form::select('idgradoseccion',$gradoseccion ,null , ['class'=>'form-control','placeholder'=>'Grado Seccion']);!!}
+                            {!!Form::label('lblpersonal', 'Personal');!!}
+                            {!!Form::select('idpersonal',$allpersonal ,null , ['class'=>'form-control','placeholder'=>'Personal','id'=>'Personal']);!!}
                         </div>
                     </div><!--span-->
                     <div class="col-md-6">
                         <div class="form-group">
-                            {!!Form::label('lblAsignatura', 'Asignatura',['class'=>'col-md-12']);!!}
-                            {!!Form::select('idasignatura[]',$asignaturas ,null , ['multiple'=>'multiple','class'=>'form-control mt-multiselect btn btn-default','data-label'=>'left']);!!}
+                            {!!Form::label('lblGradoSeccion', 'Grado Seccion',['class'=>'col-md-12']);!!}
+                            {!!Form::select('idgradoseccion',$gradoseccion ,null , ['class'=>'form-control','id'=>'GradoSeccion']);!!}
+                        </div>
+                    </div><!--span-->
+                </div><!--row-->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            {!!Form::label('lblAsignatura', 'Asignaturas');!!}
+                            {!!Form::select('idasignaturagradoseccion[]',[] ,null , ['class'=>'form-control','id'=>'Asignatura','multiple']);!!}
                         </div>
                     </div><!--span-->
                 </div><!--row-->
@@ -40,7 +48,7 @@
                 <table class="table table-striped table-hover" id="Asignaturas">
                     <thead>
                         <tr>
-                            <th> Grado </th>
+                            <th> Personal </th>
                             <th> Asignatura </th>
                             <th> Opciones </th>
                         </tr>
@@ -48,8 +56,8 @@
                     <tbody>
                     @foreach ($Lista as $item)
                         <tr>
-                            <td> {{ $item->grado }} </td>
-                            <td> {{ $item->asignatura }} </td>
+                            <td> {{ $item->nombre_personal }} </td>
+                            <td> {{ $item->nombre_asignatura }} </td>
                             <td>
                                 <div class="btn-group">
                                     <button class="btn btn-xs green-dark dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Opciones
@@ -57,11 +65,11 @@
                                     </button>
                                     <ul class="dropdown-menu pull-left" role="menu">
                                         <li>
-                                            <a href="{{ route('admin.asignatura.edit',$item->id) }}">
+                                            <a href="{{ route('admin.personalasignatura.edit',$item->id) }}">
                                                 <i class="fa fa-edit"></i> Edit </a>
                                         </li>
                                         <li>
-                                            <a href="{{ route('admin.ags.delete',$item->id) }}">
+                                            <a href="{{ route('admin.personalasignatura.delete',$item->id) }}">
                                                 <i class="fa fa-trash"></i> Delete </a>
                                         </li>
                                     </ul>
@@ -81,10 +89,35 @@
 
 @section('js-scripts')
 <script>
+$('#Personal').select2();
+
+$.fn.FillSelect =function (values) {
+    var options = '';
+    $.each(values,function(key,row){
+        options += '<option value="' + row.id+ '">'+ row.text +'</option>'
+    });
+    $(this).html(options);
+}
+
+$('#GradoSeccion').change(function() {
+    $('#Asignatura').empty();
+    var idgradoseccion = $(this).val();
+
+
+    if (idgradoseccion == '') {
+        $('#Asignatura').empty();
+    }else{
+        $.getJSON('personal-ags-combo/'+idgradoseccion,null,function (values) {
+            console.log(values);
+            $('#Asignatura').FillSelect(values);
+        });
+    }
+});
+
 $('.mt-multiselect').multiselect({
     buttonWidth:'100%',
     includeSelectAllOption: true,
-    buttonClass:'btn btn-defaul'
+    buttonClass:'btn btn-default'
 
 });
 $('#Asignaturas').dataTable({
@@ -101,13 +134,19 @@ $('#Asignaturas').dataTable({
 </script>
 @stop
 
+
+
 @section('plugins-styles')
 {!! Html::style('assets/global/plugins/datatables/datatables.min.css') !!}
 {!! Html::style('assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css') !!}
 {!! Html::style('assets/global/plugins/bootstrap-multiselect/css/bootstrap-multiselect.css') !!}
+{!! Html::style(asset('assets/global/plugins/select2/css/select2.min.css')) !!}
+{!! Html::style(asset('assets/global/plugins/select2/css/select2-bootstrap.min.css')) !!}
 @stop
 
 @section('plugins-js')
+{!! Html::script(asset('assets/global/plugins/select2/js/select2.full.min.js')) !!}
+{!! Html::script(asset('assets/global/plugins/select2/js/i18n/es.js')) !!}
 {!! Html::script('assets/global/plugins/jquery-ui/jquery-ui.min.js') !!}
 {!! Html::script('assets/global/scripts/datatable.js') !!}
 {!! Html::script('assets/global/plugins/datatables/datatables.min.js') !!}

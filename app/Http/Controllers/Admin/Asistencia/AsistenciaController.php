@@ -29,7 +29,7 @@ class AsistenciaController extends Controller
 	    	$alumnos = Matricula::select('id as idmatricula',DB::raw("'$date' as fecha,".EstadoId('ESTADO ASISTENCIA','Asistio')." as idestado"))
 	    						->where('idgradoseccion',$request->get('idgradoseccion'))
                                 ->whereDate('created_at','<=',$date)
-                                ->where('idtipo','<>',EstadoId('TIPO MATRICULA','<>','Retirada'))
+                                ->where('idtipo','<>',EstadoId('TIPO MATRICULA','Retirada'))
 	    						->get();
 	    	Asistencia::insert($alumnos->toArray());
 	    	$Lista = Asistencia::where('fecha',$fecha)->get();
@@ -51,7 +51,7 @@ class AsistenciaController extends Controller
         $date = $asistencia->fecha;
         $asistencia->delete();
         $Lista = Asistencia::where('fecha',$date)
-                            ->where('idtipo','<>',EstadoId('TIPO MATRICULA','<>','Retirada'))
+                            ->where('idtipo','<>',EstadoId('TIPO MATRICULA','Retirada'))
                             ->get();
         Alert::success('Asistencia eliminado con exito');
         return view('admin.asistencia.index',compact('Lista'));

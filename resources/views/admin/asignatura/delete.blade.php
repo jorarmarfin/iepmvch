@@ -26,7 +26,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    {{ $asignatura->nombre }}
+                                    NOmbre de la asignatura : {{ $asignatura->nombre }}
                                 </div>
                             </div>
                             <!--/span-->
@@ -35,7 +35,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    {{ $asignatura->area }}
+                                    Area Secundaria: {{ $asignatura->area->secundaria }}
                                 </div>
                             </div>
                             <!--/span-->

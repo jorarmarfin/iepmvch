@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AsignaturaRequest extends FormRequest
+class AGSRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,15 +24,8 @@ class AsignaturaRequest extends FormRequest
     public function rules()
     {
         return [
-            'nombre'=>'required',
-            'idareaacademica'=>'required',
-        ];
-    }
-    public function messages()
-    {
-        return [
-            'nombre.required'=>'El nombre de la asignatura es obligatorio',
-            'idareaacademica.required'=>'El area de la asignatura es obligatoria',
+            'idasignatura'=>'required',
+            'idgradoseccion'=>'required'
         ];
     }
 }
