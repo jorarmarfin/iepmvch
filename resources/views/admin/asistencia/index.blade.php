@@ -157,13 +157,13 @@ $('#Resumen').on('show.bs.modal', function (e) {
         .done(function(data) {
             var tabla = $('#ResumenFechas');
             tabla.empty();
-            for (var i in data) {
                 tabla.append("<thead>" +
                                 "<tr>" +
                                     "<th> Grado </th>" +
                                     "<th> Fecha </th>" +
                                 "</tr>" +
                             "</thead>")
+            for (var i in data) {
                 tabla.append("<tr>" +
                                 "<td> "+ tdgs +" </td>" +
                                 "<td> "+ data[i]['fecha'] +" </td>" +
