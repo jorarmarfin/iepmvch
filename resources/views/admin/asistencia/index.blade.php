@@ -24,7 +24,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 {!! Form::label('lblGrado', 'Escoger grado ', ['class'=>'control-label']) !!}
-                                {!!Form::select('idgradoseccion', $gradoseccion, null , ['class'=>'form-control'])!!}
+                                {!!Form::select('idgradoseccion', $gradoseccion, null , ['id'=>'idgradoseccion','class'=>'form-control'])!!}
                             </div>
                         </div><!--/span-->
                         <div class="col-md-4">
@@ -45,6 +45,7 @@
                             <div class="form-group">
                                 <p></p>
                             {!!Form::enviar('Filtrar','purple-plum','fa fa-filter')!!}
+                            {!!Form::botonmodal('Resumen por grado','#Resumen','blue','fa fa-book')!!}
                             </div>
                         </div><!--/span-->
                     </div><!--/row-->
@@ -99,7 +100,33 @@
         <!-- END Portlet PORTLET-->
     </div>
 </div>
+<div class="modal fade" id="Resumen" tabindex="-1" role="basic" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">Resumen de Asistencia</h4>
+            </div>
+            <div class="modal-body">
+                <table class="table table-bordered table-hover" id="ResumenFechas">
+                    <thead>
+                        <tr>
+                            <th> Grado </th>
+                            <th> Fecha </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
 
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
 @stop
 
 @section('js-scripts')
@@ -120,6 +147,34 @@ $('#PersonalData').dataTable({
     "pagingType": "bootstrap_full_number",
     "order": [[0,"asc"],[1,"asc"],[2,"asc"]]
 });
+$('#Resumen').on('show.bs.modal', function (e) {
+        var idgs = $('#idgradoseccion').val();
+        var tdgs = $("#idgradoseccion option:selected").text();
+        $.ajax({
+            url: '/admin/asistencia-resumen',
+            data: {varsearch: idgs},
+        })
+        .done(function(data) {
+            var tabla = $('#ResumenFechas');
+            tabla.empty();
+            for (var i in data) {
+                tabla.append("<thead>" +
+                                "<tr>" +
+                                    "<th> Grado </th>" +
+                                    "<th> Fecha </th>" +
+                                "</tr>" +
+                            "</thead>")
+                tabla.append("<tr>" +
+                                "<td> "+ tdgs +" </td>" +
+                                "<td> "+ data[i]['fecha'] +" </td>" +
+                            "</tr>");
+            }
+        })
+        .fail(function() {
+            console.log("error");
+        });
+
+    });
 </script>
 @stop
 

@@ -17,6 +17,17 @@ class AsistenciaController extends Controller
     	$Lista = [];
     	return view('admin.asistencia.index',compact('Lista'));
     }
+
+    public function resumen(Request $request)
+    {
+        if ($request->has('varsearch')) {
+            $idmatriculas = Matricula::select('id')->where('idgradoseccion',$request->get('varsearch'))->get();
+            $asitencias = Asistencia::select('fecha')->whereIn('idmatricula',$idmatriculas)
+                                        ->groupBy('fecha')
+                                        ->get();
+            return $asitencias;
+        }
+    }
     public function store(AsistenciaRequest $request)
     {
     	$asistencia = Asistencia::where('fecha',$request->get('fecha'))->get();
