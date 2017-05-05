@@ -9,7 +9,7 @@
             <div class="portlet-title">
                 <div class="caption">
                     <i class="fa fa-book"></i>
-                    Lista de Asignaturas
+                    Lista de subareas
                 </div>
                 <div class="tools">
                     <a href="javascript:;" class="collapse"> </a>
@@ -18,15 +18,13 @@
                 </div>
             </div>
             <div class="portlet-body">
-            {!!Form::boton('Nuevo Asignatura',route('admin.asignatura.create'),'green','fa fa-plus')!!}
+            {!!Form::boton('Nuevo subarea',route('admin.asignatura.create'),'green','fa fa-plus')!!}
             <p></p>
                 <table class="table table-striped table-hover" id="Asignaturas">
                     <thead>
                         <tr>
-                            <th> Area inicial</th>
-                            <th> Area primaria </th>
-                            <th> Area Secundaria</th>
-                            <th> Asignatura </th>
+                            <th> Area </th>
+                            <th> Subarea </th>
                             <th> Peso</th>
                             <th> Opciones </th>
                         </tr>
@@ -34,9 +32,7 @@
                     <tbody>
                     @foreach ($Lista as $item)
                         <tr>
-                            <td> {{ $item->area['inicial'] }} </td>
-                            <td> {{ $item->area['primaria'] }} </td>
-                            <td> {{ $item->area['secundaria'] }} </td>
+                            <td> {{ $item->area['nombre'] }} </td>
                             <td> {{ $item->nombre }} </td>
                             <td> {{ $item->peso }} </td>
                             <td>
@@ -115,7 +111,7 @@ $('#Asignaturas').dataTable({
 
 
 @section('page-title')
-Plan Curricular / Asignaturas
+Plan Curricular / Sub Areas
 @stop
 
 @section('page-subtitle')

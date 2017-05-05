@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class AreaAcademica extends Model
 {
     protected $table = 'area_academica';
-    protected $fillable = ['codigo', 'inicial', 'primaria','secundaria','activo'];
+    protected $fillable = ['codigo', 'nombre','inicial', 'primaria','secundaria','activo'];
 }

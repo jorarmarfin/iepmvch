@@ -8,7 +8,7 @@
         <div class="portlet box green">
             <div class="portlet-title">
                 <div class="caption">
-                    <i class="fa fa-gift"></i> Nuevo alumno </div>
+                    <i class="fa fa-gift"></i> Nuevo SubArea </div>
                 <div class="tools">
                     <a href="javascript:;" class="collapse"> </a>
                     <a href="javascript:;" class="fullscreen"> </a>
@@ -22,7 +22,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-									{!! Form::label('lblNombre', 'Nombre de la asignatura', ['class'=>'control-label']) !!}
+									{!! Form::label('lblNombre', 'Nombre de la subarea', ['class'=>'control-label']) !!}
 									{!! Form::text('nombre', null, ['class'=>'form-control','placeholder'=>'Nombre de la asignatura']) !!}
                                 </div>
                             </div>
@@ -39,7 +39,7 @@
                             <!--/span-->
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    {!! Form::label('lblPeso', 'Peso de la asignatura', ['class'=>'control-label']) !!}
+                                    {!! Form::label('lblPeso', 'Peso de la subarea', ['class'=>'control-label']) !!}
                                     {!! Form::text('peso', 0, ['class'=>'form-control','placeholder'=>'Peso']) !!}
                                 </div>
                             </div>
@@ -173,7 +173,7 @@ $(document).ready(function() {
 
 
 @section('page-title')
-Plan Curricular / Asignaturas
+Plan Curricular / SubArea
 @stop
 
 @section('page-subtitle')

@@ -24,9 +24,7 @@
                     <thead>
                         <tr>
                             <th> codigo </th>
-                            <th> Nombre en inicial </th>
-                            <th> Nombre en primaria </th>
-                            <th> Nombre en secundaria </th>
+                            <th> Nombre</th>
                             <th> Opciones </th>
                         </tr>
                     </thead>
@@ -34,9 +32,7 @@
                     @foreach ($Lista as $item)
                         <tr>
                             <td> {{ $item->codigo }} </td>
-                            <td> {{ $item->inicial }} </td>
-                            <td> {{ $item->primaria }} </td>
-                            <td> {{ $item->secundaria }} </td>
+                            <td> {{ $item->nombre }} </td>
                             <td>
                                 <div class="btn-group">
                                     <button class="btn btn-xs green-dark dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Opciones
@@ -77,21 +73,11 @@
                         {!! Form::label('lblCodigo', 'Codigo', ['class'=>'label-control']) !!}
                         {!! Form::text('codigo', null, ['class'=>'form-control']) !!}
                     </div><!--span-->
-                    <div class="col-md-4">
-                        {!! Form::label('lblInicial', 'Nombre en Inicial', ['class'=>'label-control']) !!}
-                        {!! Form::text('inicial', null, ['class'=>'form-control']) !!}
-                    </div><!--span-->
-                    <div class="col-md-4">
-                        {!! Form::label('lblPrimaria', 'Nombre en Primaria', ['class'=>'label-control']) !!}
-                        {!! Form::text('primaria', null, ['class'=>'form-control']) !!}
+                    <div class="col-md-10">
+                        {!! Form::label('lblNombre', 'Nombre del area', ['class'=>'label-control']) !!}
+                        {!! Form::text('nombre', null, ['class'=>'form-control']) !!}
                     </div><!--span-->
                 </div><!--row-->
-                    <div class="row">
-                        <div class="col-md-6">
-                            {!! Form::label('lblSecundaria', 'Nombre en Secundaria', ['class'=>'label-control']) !!}
-                            {!! Form::text('secundaria', null, ['class'=>'form-control']) !!}
-                        </div><!--span-->
-                    </div><!--row-->
             </div>
             <div class="modal-footer">
             {!!Form::enviar('Guardar')!!}

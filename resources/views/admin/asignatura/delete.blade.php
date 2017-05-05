@@ -12,7 +12,7 @@
         <div class="portlet box red">
             <div class="portlet-title">
                 <div class="caption">
-                    <i class="fa fa-gift"></i> Eliminar alumno </div>
+                    <i class="fa fa-gift"></i> Eliminar Subarea </div>
                 <div class="tools">
                     <a href="javascript:;" class="collapse"> </a>
                     <a href="javascript:;" class="fullscreen"> </a>
@@ -26,7 +26,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    NOmbre de la asignatura : {{ $asignatura->nombre }}
+                                    Nombre de la subarea : {{ $asignatura->nombre }}
                                 </div>
                             </div>
                             <!--/span-->
@@ -174,7 +174,7 @@ $(document).ready(function() {
 
 
 @section('page-title')
-Plan Curricular / Asignaturas
+Plan Curricular / Subarea
 @stop
 
 @section('page-subtitle')

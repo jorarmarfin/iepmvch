@@ -9,7 +9,7 @@ class AreaSelectData
 {
 	public function compose(View $view)
 	{
-		$area = AreaAcademica::pluck('secundaria','id')->toarray();
+		$area = AreaAcademica::pluck('nombre','id')->toarray();
 
 		$view->with(compact('area'));
 	}

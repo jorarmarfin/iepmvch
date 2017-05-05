@@ -16,6 +16,7 @@ class CreateAreaAcademicasTable extends Migration
         Schema::create('area_academica', function (Blueprint $table) {
             $table->increments('id');
             $table->string('codigo',20)->nullable();
+            $table->string('nombre',150)->nullable();
             $table->string('inicial',50)->nullable();
             $table->string('primaria',50)->nullable();
             $table->string('secundaria',50)->nullable();
