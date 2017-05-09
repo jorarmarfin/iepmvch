@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\PlanCurricular;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AGSRequest;
+use App\Models\Asignatura;
 use App\Models\AsignaturaGradoSeccion;
 use App\Models\GradoSeccion;
 use Illuminate\Http\Request;
@@ -48,12 +49,25 @@ class AsignaturaGradoSeccionController extends Controller
     public function store(AGSRequest $request)
     {
         $idgradoseccion = $request->input('idgradoseccion');
-        $data = $request->input('idasignatura');
-        foreach ($data as $key => $value) {
-            AsignaturaGradoSeccion::create([
-                            'idgradoseccion'=>$idgradoseccion,
-                            'idasignatura'=>$value
-                            ]);
+        $data = $request->input('idarea');
+        foreach ($data as $key => $item) {
+            $subareas = Asignatura::where('idareaacademica',$item)->get();
+            if ($subareas->count()>0) {
+                foreach ($subareas as $key => $subarea) {
+                    AsignaturaGradoSeccion::create([
+                                    'idgradoseccion'=>$idgradoseccion,
+                                    'idarea'=>$item,
+                                    'idasignatura'=>$subarea->id
+                                    ]);
+                }
+            } else {
+                AsignaturaGradoSeccion::create([
+                                    'idgradoseccion'=>$idgradoseccion,
+                                    'idarea'=>$item,
+                                    'idasignatura'=>null
+                                    ]);
+            }
+
         }
 
         Alert::success('Asignatura asignada al grado con exito');

@@ -20,6 +20,7 @@ class CreateAreaAcademicasTable extends Migration
             $table->string('inicial',50)->nullable();
             $table->string('primaria',50)->nullable();
             $table->string('secundaria',50)->nullable();
+            $table->boolean('subarea')->nullable(true);
             $table->boolean('activo')->nullable(true);
             $table->timestamps();
         });

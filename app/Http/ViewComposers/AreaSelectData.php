@@ -10,7 +10,9 @@ class AreaSelectData
 	public function compose(View $view)
 	{
 		$area = AreaAcademica::pluck('nombre','id')->toarray();
+		$areaactivo = AreaAcademica::where('subarea',1)->where('activo',1)->pluck('nombre','id')->toarray();
+		$areaactivado = AreaAcademica::where('activo',1)->pluck('nombre','id')->toarray();
 
-		$view->with(compact('area'));
+		$view->with(compact('area','areaactivo','areaactivado'));
 	}
 }

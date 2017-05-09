@@ -109,6 +109,8 @@ return [
         'password'=>'contraseña',
         'email'=>'correo electronico',
         'idasignatura'=>'Asignatura',
+        'idsubarea'=>'Subarea',
+        'idarea'=>'Area',
         'idgradoseccion'=>'Grado Seccion',
         'idpersonal'=>'Personal',
     ],

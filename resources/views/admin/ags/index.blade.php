@@ -29,8 +29,8 @@
                     </div><!--span-->
                     <div class="col-md-6">
                         <div class="form-group">
-                            {!!Form::label('lblAsignatura', 'Asignatura',['class'=>'col-md-12']);!!}
-                            {!!Form::select('idasignatura[]',$asignaturas ,null , ['multiple'=>'multiple','class'=>'form-control mt-multiselect btn btn-default','data-label'=>'left']);!!}
+                            {!!Form::label('lblArea', 'Area',['class'=>'col-md-12']);!!}
+                            {!!Form::select('idarea[]',$areaactivado ,null , ['multiple'=>'multiple','class'=>'form-control mt-multiselect btn btn-default','data-label'=>'left']);!!}
                         </div>
                     </div><!--span-->
                 </div><!--row-->
@@ -41,7 +41,8 @@
                     <thead>
                         <tr>
                             <th> Grado </th>
-                            <th> Asignatura </th>
+                            <th> Area </th>
+                            <th> sub Area </th>
                             <th> Opciones </th>
                         </tr>
                     </thead>
@@ -49,6 +50,7 @@
                     @foreach ($Lista as $item)
                         <tr>
                             <td> {{ $item->grado }} </td>
+                            <td> {{ $item->nombre_area }} </td>
                             <td> {{ $item->asignatura }} </td>
                             <td>
                                 <div class="btn-group">
@@ -94,6 +96,7 @@ $('#Asignaturas').dataTable({
         "search": "Buscar :",
         "lengthMenu": "_MENU_ registros"
     },
+    "lengthMenu": ['All'],
     "bProcessing": true,
     "pagingType": "bootstrap_full_number",
     "order": [0,"asc"]
@@ -134,7 +137,7 @@ $('#Asignaturas').dataTable({
 
 
 @section('page-title')
-Plan Curricular / Asignaturas Grado Seccion
+Plan Curricular / Grado Seccion Area
 @stop
 
 @section('page-subtitle')

@@ -28,6 +28,37 @@
                             {!! Form::label('lblNombre', 'Nombre de area', ['class'=>'label-control']) !!}
                             {!! Form::text('nombre', null, ['class'=>'form-control']) !!}
                         </div><!--span-->
+                        <div class="col-md-4 form-group">
+                            {!! Form::label('lblCulminoSubArea', 'SubArea', ['class'=>'control-label']) !!}
+                            <div class="input-group">
+                                <div class="icheck-inline">
+                                    <label>
+                                        {!! Form::radio('subarea', true) !!}
+                                        Si
+                                    </label>
+                                    <label>
+                                        {!! Form::radio('subarea', false) !!}
+                                        No
+                                    </label>
+                                </div>
+                            </div>
+                        </div><!--span-->
+                        <div class="col-md-4 form-group">
+                            {!! Form::label('lblCulminoSubArea', 'Activo', ['class'=>'control-label']) !!}
+                            <div class="input-group">
+                                <div class="icheck-inline">
+                                    <label>
+                                        {!! Form::radio('activo', true) !!}
+                                        Si
+                                    </label>
+                                    <label>
+                                        {!! Form::radio('activo', false) !!}
+                                        No
+                                    </label>
+                                </div>
+                            </div>
+                        </div><!--span-->
+
                     </div><!--row-->
                     {!!Form::enviar('Guardar')!!}{!!Form::back(route('admin.areaacademica.index'))!!}
                 {!! Form::close() !!}
@@ -37,6 +68,27 @@
     </div>
 </div>
 @stop
+
+@section('js-scripts')
+<script>
+$(document).ready(function() {
+    $('input').iCheck({
+        checkboxClass: 'icheckbox_minimal',
+        radioClass: 'iradio_minimal',
+        increaseArea: '20%' // optional
+    });
+});
+</script>
+@stop
+
+
+@section('plugins-styles')
+{!! Html::style(asset('assets/global/plugins/icheck/skins/all.css')) !!}
+@stop
+@section('plugins-js')
+{!! Html::script(asset('assets/global/plugins/icheck/icheck.min.js')) !!}
+@stop
+
 
 @section('menu-user')
 @include('menu.profile-admin')

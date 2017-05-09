@@ -100,7 +100,7 @@ class ViewServiceProvider extends ServiceProvider
             PersonalSelectData::class
             );
         $this->app->make('view')->composer(
-            ['admin.asignatura.create','admin.asignatura.edit'
+            ['admin.asignatura.create','admin.asignatura.edit','admin.ags.index'
             ],
             AreaSelectData::class
             );

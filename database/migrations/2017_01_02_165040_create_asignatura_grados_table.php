@@ -16,6 +16,7 @@ class CreateAsignaturaGradosTable extends Migration
         Schema::create('asignatura_grado_seccion', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('idgradoseccion')->nullable();
+            $table->integer('idarea')->nullable();
             $table->integer('idasignatura')->nullable();
             $table->integer('practicas')->nullable()->default(6);
             $table->boolean('activo')->default(true);

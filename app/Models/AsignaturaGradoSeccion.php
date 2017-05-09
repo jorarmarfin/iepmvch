@@ -7,8 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 class AsignaturaGradoSeccion extends Model
 {
     protected $table = 'asignatura_grado_seccion';
-    protected $fillable = ['idgradoseccion', 'idasignatura','practicas', 'activo'];
+    protected $fillable = ['idgradoseccion', 'idarea','idasignatura','practicas', 'activo'];
 
+    /**
+    * Atributos Area
+    */
+    public function getNombreAreaAttribute()
+    {
+        $area = AreaAcademica::where('id',$this->idarea)->first();
+        return $area->nombre;
+    }
     /**
     * Atributos Grado
     */
@@ -24,7 +32,12 @@ class AsignaturaGradoSeccion extends Model
     public function getAsignaturaAttribute()
     {
     	$asignatura = Asignatura::find($this->idasignatura);
-    	return $asignatura->nombre;
+        if (isset($asignatura)) {
+           return $asignatura->nombre;
+        } else {
+            $asignatura = new Asignatura(['nombre'=>'']);
+    	   return $asignatura->nombre;
+        }
     }
     /**
     * Devuelve los valores Activos

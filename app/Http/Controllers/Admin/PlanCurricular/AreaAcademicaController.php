@@ -38,7 +38,10 @@ class AreaAcademicaController extends Controller
      */
     public function store(Request $request)
     {
-        AreaAcademica::create($request->all());
+        $data = $request->all();
+        if (!$request->has('subarea'))$data['subarea'] = false;
+        if (!$request->has('activo'))$data['activo'] = false;
+        AreaAcademica::create($data);
         Alert::success('Area Academica registrada con exito');
         return back();
     }
@@ -76,8 +79,12 @@ class AreaAcademicaController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $data = $request->all();
+        if (!$request->has('subarea'))$data['subarea'] = false;
+        if (!$request->has('activo'))$data['activo'] = false;
+
         $areaacademica = AreaAcademica::find($id);
-        $areaacademica->fill($request->all());
+        $areaacademica->fill($data);
         $areaacademica->save();
         Alert::success('Area Academica actualizada con exito');
         return redirect()->route('admin.areaacademica.index');

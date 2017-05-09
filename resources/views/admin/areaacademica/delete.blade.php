@@ -29,18 +29,8 @@
                             {!! Form::text('codigo', null, ['class'=>'form-control']) !!}
                         </div><!--span-->
                         <div class="col-md-4 form-group">
-                            {!! Form::label('lblInicial', 'Nombre en Inicial', ['class'=>'label-control']) !!}
-                            {!! Form::text('inicial', null, ['class'=>'form-control']) !!}
-                        </div><!--span-->
-                        <div class="col-md-4 form-group">
-                            {!! Form::label('lblPrimaria', 'Nombre en Primaria', ['class'=>'label-control']) !!}
-                            {!! Form::text('primaria', null, ['class'=>'form-control']) !!}
-                        </div><!--span-->
-                    </div><!--row-->
-                    <div class="row">
-                        <div class="col-md-6 form-group">
-                            {!! Form::label('lblSecundaria', 'Nombre en Secundaria', ['class'=>'label-control']) !!}
-                            {!! Form::text('secundaria', null, ['class'=>'form-control']) !!}
+                            {!! Form::label('lblInicial', 'Nombre', ['class'=>'label-control']) !!}
+                            {!! Form::text('nombre', null, ['class'=>'form-control']) !!}
                         </div><!--span-->
                     </div><!--row-->
                     {!!Form::enviar('Eliminar','red','fa fa-trash')!!}{!!Form::back(route('admin.areaacademica.index'))!!}

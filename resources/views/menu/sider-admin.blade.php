@@ -34,7 +34,7 @@
             <ul class="sub-menu">
                 {!!Form::menu('Areas academicas',route('admin.areaacademica.index'))!!}
                 {!!Form::menu('subareas',route('admin.asignatura.index'))!!}
-                {!!Form::menu('Asignaturas Grado',route('admin.ags.index'))!!}
+                {!!Form::menu('Grado Area',route('admin.ags.index'))!!}
                 {!!Form::menu('Horario',route('admin.asignatura.index'))!!}
                 {!!Form::menu('Docente Asignatura',route('admin.personalasignatura.index'))!!}
             </ul>

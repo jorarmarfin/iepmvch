@@ -25,7 +25,6 @@
                         <tr>
                             <th> Area </th>
                             <th> Subarea </th>
-                            <th> Peso</th>
                             <th> Opciones </th>
                         </tr>
                     </thead>
@@ -34,7 +33,6 @@
                         <tr>
                             <td> {{ $item->area['nombre'] }} </td>
                             <td> {{ $item->nombre }} </td>
-                            <td> {{ $item->peso }} </td>
                             <td>
                                 <div class="btn-group">
                                     <button class="btn btn-xs green-dark dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Opciones

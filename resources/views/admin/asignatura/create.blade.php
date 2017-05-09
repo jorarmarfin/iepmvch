@@ -33,14 +33,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     {!! Form::label('lblArea', 'Area academica', ['class'=>'control-label']) !!}
-                                    {!! Form::select('idareaacademica',$area, null, ['class'=>'form-control','placeholder'=>'Seleccionar Area']) !!}
-                                </div>
-                            </div>
-                            <!--/span-->
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    {!! Form::label('lblPeso', 'Peso de la subarea', ['class'=>'control-label']) !!}
-                                    {!! Form::text('peso', 0, ['class'=>'form-control','placeholder'=>'Peso']) !!}
+                                    {!! Form::select('idareaacademica',$areaactivo, null, ['class'=>'form-control','placeholder'=>'Seleccionar Area']) !!}
                                 </div>
                             </div>
                             <!--/span-->

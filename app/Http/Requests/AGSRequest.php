@@ -24,7 +24,7 @@ class AGSRequest extends FormRequest
     public function rules()
     {
         return [
-            'idasignatura'=>'required',
+            'idarea'=>'required',
             'idgradoseccion'=>'required'
         ];
     }

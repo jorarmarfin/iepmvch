@@ -25,6 +25,8 @@
                         <tr>
                             <th> codigo </th>
                             <th> Nombre</th>
+                            <th> Sub Area</th>
+                            <th> Activo</th>
                             <th> Opciones </th>
                         </tr>
                     </thead>
@@ -33,6 +35,8 @@
                         <tr>
                             <td> {{ $item->codigo }} </td>
                             <td> {{ $item->nombre }} </td>
+                            <td> {{ $item->tiene_sub_area }} </td>
+                            <td> {{ $item->es_activo }} </td>
                             <td>
                                 <div class="btn-group">
                                     <button class="btn btn-xs green-dark dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Opciones
@@ -73,9 +77,39 @@
                         {!! Form::label('lblCodigo', 'Codigo', ['class'=>'label-control']) !!}
                         {!! Form::text('codigo', null, ['class'=>'form-control']) !!}
                     </div><!--span-->
-                    <div class="col-md-10">
+                    <div class="col-md-5">
                         {!! Form::label('lblNombre', 'Nombre del area', ['class'=>'label-control']) !!}
                         {!! Form::text('nombre', null, ['class'=>'form-control']) !!}
+                    </div><!--span-->
+                    <div class="col-md-5">
+                        {!! Form::label('lblCulminoSubArea', 'SubArea', ['class'=>'control-label']) !!}
+                        <div class="input-group">
+                            <div class="icheck-inline">
+                                <label>
+                                    {!! Form::radio('subarea', true,true) !!}
+                                    Si
+                                </label>
+                                <label>
+                                    {!! Form::radio('subarea', false) !!}
+                                    No
+                                </label>
+                            </div>
+                        </div>
+                    </div><!--span-->
+                    <div class="col-md-5">
+                        {!! Form::label('lblCulminoSubArea', 'Activo', ['class'=>'control-label']) !!}
+                        <div class="input-group">
+                            <div class="icheck-inline">
+                                <label>
+                                    {!! Form::radio('activo', true,true) !!}
+                                    Si
+                                </label>
+                                <label>
+                                    {!! Form::radio('activo', false) !!}
+                                    No
+                                </label>
+                            </div>
+                        </div>
                     </div><!--span-->
                 </div><!--row-->
             </div>
@@ -104,12 +138,20 @@ $('#Asignaturas').dataTable({
     "pagingType": "bootstrap_full_number",
     "order": [0,"asc"]
 });
+
+$('input').iCheck({
+        checkboxClass: 'icheckbox_minimal',
+        radioClass: 'iradio_minimal',
+        increaseArea: '20%' // optional
+    });
 </script>
 @stop
 
 @section('plugins-styles')
 {!! Html::style('assets/global/plugins/datatables/datatables.min.css') !!}
 {!! Html::style('assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css') !!}
+{!! Html::style(asset('assets/global/plugins/icheck/skins/all.css')) !!}
+
 @stop
 
 @section('plugins-js')
@@ -117,6 +159,8 @@ $('#Asignaturas').dataTable({
 {!! Html::script('assets/global/scripts/datatable.js') !!}
 {!! Html::script('assets/global/plugins/datatables/datatables.min.js') !!}
 {!! Html::script('assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js') !!}
+{!! Html::script(asset('assets/global/plugins/icheck/icheck.min.js')) !!}
+
 @stop
 
 
