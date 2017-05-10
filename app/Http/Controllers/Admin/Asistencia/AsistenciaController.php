@@ -30,7 +30,9 @@ class AsistenciaController extends Controller
     }
     public function store(AsistenciaRequest $request)
     {
-    	$asistencia = Asistencia::where('fecha',$request->get('fecha'))->get();
+        $matriculas = Matricula::select('id')->where('idgradoseccion',$request->get('idgradoseccion'))->get()->toArray();
+    	$asistencia = Asistencia::where('fecha',$request->get('fecha'))->whereIn('idmatricula',$matriculas)->get();
+
     	if ($asistencia->count()>0) {
     		$Lista = $asistencia;
     		return view('admin.asistencia.index',compact('Lista'));

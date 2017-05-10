@@ -10,7 +10,7 @@
             <div class="portlet-title">
                 <div class="caption">
                     <i class="fa fa-book"></i>
-                    Lista de Asignaturas
+                    Lista de Sub areas con grados
                 </div>
                 <div class="tools">
                     <a href="javascript:;" class="collapse"> </a>
@@ -33,7 +33,24 @@
                             {!!Form::select('idarea[]',$areaactivado ,null , ['multiple'=>'multiple','class'=>'form-control mt-multiselect btn btn-default','data-label'=>'left']);!!}
                         </div>
                     </div><!--span-->
+                    <div class="col-md-6">
+                        {!! Form::label('lblCulminoSubArea', 'SubArea', ['class'=>'control-label']) !!}
+                        <div class="input-group">
+                            <div class="icheck-inline">
+                                <label>
+                                    {!! Form::radio('subarea', 1,1) !!}
+                                    Si
+                                </label>
+                                <label>
+                                    {!! Form::radio('subarea', 0) !!}
+                                    No
+                                </label>
+                            </div>
+                        </div>
+                    </div><!--span-->
                 </div><!--row-->
+                <p></p>
+                <p></p>
                 {!!Form::enviar('Guardar')!!}
             {!! Form::close() !!}
             <p></p>
@@ -96,11 +113,12 @@ $('#Asignaturas').dataTable({
         "search": "Buscar :",
         "lengthMenu": "_MENU_ registros"
     },
-    "lengthMenu": ['All'],
+    "lengthMenu": [ 25, 50, 75, 100 ],
     "bProcessing": true,
     "pagingType": "bootstrap_full_number",
     "order": [0,"asc"]
 });
+
 </script>
 @stop
 
@@ -108,6 +126,7 @@ $('#Asignaturas').dataTable({
 {!! Html::style('assets/global/plugins/datatables/datatables.min.css') !!}
 {!! Html::style('assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css') !!}
 {!! Html::style('assets/global/plugins/bootstrap-multiselect/css/bootstrap-multiselect.css') !!}
+{!! Html::style(asset('assets/global/plugins/icheck/skins/all.css')) !!}
 @stop
 
 @section('plugins-js')
@@ -116,6 +135,7 @@ $('#Asignaturas').dataTable({
 {!! Html::script('assets/global/plugins/datatables/datatables.min.js') !!}
 {!! Html::script('assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js') !!}
 {!! Html::script('assets/global/plugins/bootstrap-multiselect/js/bootstrap-multiselect.js') !!}
+{!! Html::script(asset('assets/global/plugins/icheck/icheck.min.js')) !!}
 @stop
 
 

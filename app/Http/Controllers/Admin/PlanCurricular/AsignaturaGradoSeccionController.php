@@ -50,9 +50,11 @@ class AsignaturaGradoSeccionController extends Controller
     {
         $idgradoseccion = $request->input('idgradoseccion');
         $data = $request->input('idarea');
+        $sw = $request->input('subarea');
+
         foreach ($data as $key => $item) {
             $subareas = Asignatura::where('idareaacademica',$item)->get();
-            if ($subareas->count()>0) {
+            if ($subareas->count()>0 && $sw>0) {
                 foreach ($subareas as $key => $subarea) {
                     AsignaturaGradoSeccion::create([
                                     'idgradoseccion'=>$idgradoseccion,
