@@ -24,7 +24,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             {!!Form::label('lblGradoSeccion', 'Grado Seccion');!!}
-                            {!!Form::select('idgradoseccion',$gradoseccion ,null , ['class'=>'form-control','placeholder'=>'Grado Seccion']);!!}
+                            {!!Form::select('idgradoseccion',$gradoseccion2 ,null , ['class'=>'form-control','placeholder'=>'Grado Seccion']);!!}
                         </div>
                     </div><!--span-->
                     <div class="col-md-6">
@@ -90,6 +90,27 @@
                     @endforeach
                     </tbody>
                 </table>
+                <h2>Duplicar</h2>
+            {!! Form::open(['route'=>'admin.ags.duplicar','method'=>'POST']) !!}
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            {!!Form::label('lblGradoSeccion', 'Grado Seccion');!!}
+                            {!!Form::select('idgradoseccion',$gradoseccion2 ,null , ['class'=>'form-control','placeholder'=>'Grado Seccion']);!!}
+                        </div>
+                    </div><!--span-->
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            {!!Form::label('lblGradoSeccion', 'Copiar al grado');!!}
+                            {!!Form::select('idgradoseccioncopia[]',$gradoseccion2 ,null , ['multiple'=>'multiple','class'=>'form-control mt-multiselect']);!!}
+                        </div>
+                    </div><!--span-->
+                    <div class="col-md-4">
+                        {!!Form::enviar('Duplicar','yellow margin-top-20')!!}
+                    </div><!--span-->
+                </div><!--row-->
+            {!! Form::close() !!}
+
             </div>
         </div>
         <!-- END Portlet PORTLET-->
@@ -103,7 +124,7 @@
 $('.mt-multiselect').multiselect({
     buttonWidth:'100%',
     includeSelectAllOption: true,
-    buttonClass:'btn btn-defaul'
+    buttonClass:'btn btn-default'
 
 });
 $('#Asignaturas').dataTable({

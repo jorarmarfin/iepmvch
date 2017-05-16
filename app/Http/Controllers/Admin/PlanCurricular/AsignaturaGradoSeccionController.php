@@ -35,9 +35,28 @@ class AsignaturaGradoSeccionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function duplicar(Request $request)
     {
-        //
+        $idgradoseccion = $request->input('idgradoseccion');
+        $copias = $request->input('idgradoseccioncopia');
+
+        $ags = AsignaturaGradoSeccion::where('idgradoseccion',$idgradoseccion)->get();
+        foreach ($copias as $key => $idgradoseccioncopia) {
+            $data = [];
+            foreach ($ags as $key => $item) {
+                 $data[$key]['idgradoseccion'] = $idgradoseccioncopia;
+                 $data[$key]['idasignatura'] = $item->idasignatura;
+                 $data[$key]['practicas'] = $item->practicas;
+                 $data[$key]['activo'] = $item->activo;
+                 $data[$key]['created_at'] = $item->created_at;
+                 $data[$key]['updated_at'] = $item->updated_at;
+                 $data[$key]['idarea'] = $item->idarea;
+            }
+            AsignaturaGradoSeccion::insert($data);
+        }
+
+        Alert::success('Asignatura duplicada con exito');
+        return back();
     }
 
     /**

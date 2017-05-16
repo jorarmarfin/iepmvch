@@ -11,13 +11,14 @@ class GradoSeccionSelectData
 	public function compose(View $view)
 	{
 		$field = "g.nombre||' ('||s.nombre||')'";
-		$gradoseccion = GradoSeccion::select(DB::raw("$field as nombre"),'grado_seccion.id')
+		$gs = GradoSeccion::select(DB::raw("$field as nombre"),'grado_seccion.id')
 									->join('grado as g','g.id','=','grado_seccion.idgrado')
 									->join('catalogo as s','s.id','=','grado_seccion.idseccion')
 									->orderBy('grado_seccion.id','asc')
 									->pluck('nombre','id')
 									->toarray();
-		$gradoseccion = ['-1' => 'Seleccionar grado seccion']+ $gradoseccion;
-		$view->with(compact('gradoseccion'));
+		$gradoseccion = ['-1' => 'Seleccionar grado seccion']+ $gs;
+		$gradoseccion2 = $gs;
+		$view->with(compact('gradoseccion','gradoseccion2'));
 	}
 }
