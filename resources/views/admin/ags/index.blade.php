@@ -63,6 +63,14 @@
                             <th> Opciones </th>
                         </tr>
                     </thead>
+                    <tfoot>
+                        <tr>
+                            <th>  </th>
+                            <th>  </th>
+                            <th>  </th>
+                            <th>  </th>
+                        </tr>
+                    </tfoot>
                     <tbody>
                     @foreach ($Lista as $item)
                         <tr>
@@ -134,10 +142,30 @@ $('#Asignaturas').dataTable({
         "search": "Buscar :",
         "lengthMenu": "_MENU_ registros"
     },
-    "lengthMenu": [ 25, 50, 75, 100 ],
+    "lengthMenu": [ 10,25, 50, 75, 100 ],
     "bProcessing": true,
     "pagingType": "bootstrap_full_number",
-    "order": [0,"asc"]
+    "order": [0,"asc"],
+    "initComplete": function() {
+            // Columna Grado
+            this.api().column(0).every(function(){
+                var column = this;
+                var select = $('<select class="form-control input-sm"><option value="">Nivel</option></select>')
+                    .appendTo( $(column.footer()).empty() )
+                    .on( 'change', function () {
+                        var val = $.fn.dataTable.util.escapeRegex(
+                            $(this).val()
+                        );
+                        column
+                            .search( val ? '^'+val+'$' : '', true, false )
+                            .draw();
+                    } );
+
+                column.data().unique().sort().each( function ( d, j ) {
+                    select.append( '<option value="'+d+'">'+d+'</option>' )
+                } );
+            });
+        }
 });
 
 </script>
