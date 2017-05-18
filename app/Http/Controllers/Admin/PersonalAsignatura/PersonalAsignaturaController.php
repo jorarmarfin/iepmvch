@@ -19,9 +19,19 @@ class PersonalAsignaturaController extends Controller
     {
         $idpersonal = $request->input('idpersonal');
         $data = $request->input('idasignaturagradoseccion');
-        foreach ($data as $key => $value) {
-            PersonalAsignatura::create(['idpersonal'=>$idpersonal,'idasignaturagradoseccion'=>$value]);
+        if (is_null($data)) {
+            $idgradoseccion = $request->input('idgradoseccion');
+            $data = AsignaturaGradoSeccion::select('id')->where('idgradoseccion',$idgradoseccion)->get();
+
+            foreach ($data as $key => $ags) {
+                PersonalAsignatura::create(['idpersonal'=>$idpersonal,'idasignaturagradoseccion'=>$ags->id]);
+            }
+        }else{
+            foreach ($data as $key => $value) {
+                PersonalAsignatura::create(['idpersonal'=>$idpersonal,'idasignaturagradoseccion'=>$value]);
+            }
         }
+
         Alert::success('Personal asignatura registrado con exito');
         return redirect()->route('admin.personalasignatura.index');
     }

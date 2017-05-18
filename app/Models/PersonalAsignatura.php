@@ -21,8 +21,22 @@ class PersonalAsignatura extends Model
     */
     public function getNombreAsignaturaAttribute()
     {
+        $ags = AsignaturaGradoSeccion::find($this->idasignaturagradoseccion);
+        $asignatura = Asignatura::find($ags->idasignatura);
+        if (is_null($asignatura)) {
+            $asignatura = new Asignatura(['nombre'=>'--']);
+        }
+
+        return $asignatura->nombre;
+    }
+    /**
+    * Atributos Asignatura
+    */
+    public function getNombreAreaAttribute()
+    {
     	$ags = AsignaturaGradoSeccion::find($this->idasignaturagradoseccion);
-    	$asignatura = Asignatura::find($ags->idasignatura);
-    	return $asignatura->nombre;
+    	$area = AreaAcademica::find($ags->idarea);
+
+    	return $area->nombre;
     }
 }

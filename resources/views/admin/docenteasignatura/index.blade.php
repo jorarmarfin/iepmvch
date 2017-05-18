@@ -10,7 +10,7 @@
             <div class="portlet-title">
                 <div class="caption">
                     <i class="fa fa-book"></i>
-                    Lista de Asignaturas
+                    Docente Grado
                 </div>
                 <div class="tools">
                     <a href="javascript:;" class="collapse"> </a>
@@ -37,7 +37,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            {!!Form::label('lblAsignatura', 'Asignaturas');!!}
+                            {!!Form::label('lblAsignatura', 'Sub Areas');!!}
                             {!!Form::select('idasignaturagradoseccion[]',[] ,null , ['class'=>'form-control','id'=>'Asignatura','multiple']);!!}
                         </div>
                     </div><!--span-->
@@ -49,7 +49,8 @@
                     <thead>
                         <tr>
                             <th> Personal </th>
-                            <th> Asignatura </th>
+                            <th> Area </th>
+                            <th> SubArea </th>
                             <th> Opciones </th>
                         </tr>
                     </thead>
@@ -57,6 +58,7 @@
                     @foreach ($Lista as $item)
                         <tr>
                             <td> {{ $item->nombre_personal }} </td>
+                            <td> {{ $item->nombre_area }} </td>
                             <td> {{ $item->nombre_asignatura }} </td>
                             <td>
                                 <div class="btn-group">
