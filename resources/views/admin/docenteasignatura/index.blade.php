@@ -37,6 +37,14 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
+                            {!!Form::label('lblAsignatura', 'Areas');!!}
+                            {!!Form::select('idareas[]',[] ,null , ['class'=>'form-control','id'=>'Areas','multiple']);!!}
+                        </div>
+                    </div><!--span-->
+                </div><!--row-->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
                             {!!Form::label('lblAsignatura', 'Sub Areas');!!}
                             {!!Form::select('idasignaturagradoseccion[]',[] ,null , ['class'=>'form-control','id'=>'Asignatura','multiple']);!!}
                         </div>
@@ -110,8 +118,10 @@ $('#GradoSeccion').change(function() {
         $('#Asignatura').empty();
     }else{
         $.getJSON('personal-ags-combo/'+idgradoseccion,null,function (values) {
-            console.log(values);
             $('#Asignatura').FillSelect(values);
+        });
+        $.getJSON('personal-area-combo/'+idgradoseccion,null,function (values) {
+            $('#Areas').FillSelect(values);
         });
     }
 });

@@ -50,6 +50,17 @@ class AsignaturaGradoSeccion extends Model
                          ->where('idgradoseccion',$idgradoseccion)
                          ->orderBy('a.nombre');
     }
+    /**
+    * Devuelve las areas
+    * @param  [type]  [description]
+    * @return [type]            [description]
+    */
+    public function scopeObtenAreas($cadenaSQL,$idgradoseccion){
+        return $cadenaSQL->select('aa.id','aa.nombre as text')
+                         ->join('area_academica as aa','aa.id','=','asignatura_grado_seccion.idarea')
+                         ->where('idgradoseccion',$idgradoseccion)
+                         ->orderBy('aa.nombre');
+    }
 
 
 }

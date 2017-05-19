@@ -46,4 +46,10 @@ class PersonalAsignaturaController extends Controller
     	$ags = AsignaturaGradoSeccion::ObtenGrado($idgradoseccion)->get();
     	return $ags;
     }
+    public function comboarea($idgradoseccion)
+    {
+    	$area = AsignaturaGradoSeccion::ObtenAreas($idgradoseccion)->get();
+
+    	return $area;
+    }
 }
