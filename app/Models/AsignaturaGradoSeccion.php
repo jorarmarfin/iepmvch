@@ -59,6 +59,7 @@ class AsignaturaGradoSeccion extends Model
         return $cadenaSQL->select('aa.id','aa.nombre as text')
                          ->join('area_academica as aa','aa.id','=','asignatura_grado_seccion.idarea')
                          ->where('idgradoseccion',$idgradoseccion)
+                         ->groupBy(['aa.id','aa.nombre'])
                          ->orderBy('aa.nombre');
     }
 
