@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\PersonalAsignatura;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PersonalAsignaturaRequest;
 use App\Models\AsignaturaGradoSeccion;
 use App\Models\PersonalAsignatura;
 use Illuminate\Http\Request;
@@ -12,41 +13,33 @@ class PersonalAsignaturaController extends Controller
 {
     public function index()
     {
-    	$Lista = PersonalAsignatura::all();
+    	$Lista = PersonalAsignatura::orderBy('id','asc')->get();
     	return view('admin.docenteasignatura.index',compact('Lista'));
     }
-    public function store(Request $request)
+    public function store(PersonalAsignaturaRequest $request)
     {
         $idpersonal = $request->input('idpersonal');
-        $data = $request->input('idasignaturagradoseccion');
-        $dataAreas = $request->input('idareas');
-        
-        if (is_null($dataAreas)) {
-            $idgradoseccion = $request->input('idgradoseccion');
-            
-            foreach ($dataAreas as $key => $area) {
-                # code...
-            }
-
-            $data = AsignaturaGradoSeccion::select('id')->where('idgradoseccion',$idgradoseccion)->get();
-
-        } else {
-            if (is_null($data)) {
-                $idgradoseccion = $request->input('idgradoseccion');
-                $data = AsignaturaGradoSeccion::select('id')->where('idgradoseccion',$idgradoseccion)->get();
-
-                foreach ($data as $key => $ags) {
-                    PersonalAsignatura::create(['idpersonal'=>$idpersonal,'idasignaturagradoseccion'=>$ags->id]);
-                }
-            }else{
-                foreach ($data as $key => $value) {
-                    PersonalAsignatura::create(['idpersonal'=>$idpersonal,'idasignaturagradoseccion'=>$value]);
-                }
-            }
+        $data = $request->input('personal_asignatura');
+        foreach ($data as $key => $item) {
+            PersonalAsignatura::where('id',$item)->update(['idpersonal'=>$idpersonal]);
         }
-        
+
 
         Alert::success('Personal asignatura registrado con exito');
+        return redirect()->route('admin.personalasignatura.index');
+    }
+    public function importargradoarea()
+    {
+        $sw = PersonalAsignatura::all();
+        if ($sw->isEmpty()) {
+            $gradoarea = AsignaturaGradoSeccion::select('id')->Activo()->get()->toArray();
+            foreach ($gradoarea as $key => $item) {
+                PersonalAsignatura::create(['idasignaturagradoseccion'=>$item['id']]);
+            }
+            Alert::success('Areas y Grados improtados con exito');
+        } else {
+            Alert::warning('No se puede importar dos veces');
+        }
         return redirect()->route('admin.personalasignatura.index');
     }
     public function delete($id)
