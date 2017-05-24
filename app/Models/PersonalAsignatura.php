@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Auth;
 class PersonalAsignatura extends Model
 {
     protected $table = 'personal_asignatura';
@@ -47,5 +47,16 @@ class PersonalAsignatura extends Model
     	$area = AreaAcademica::find($ags->idarea);
 
     	return $area->nombre;
+    }
+    /**
+    * Devuelve los valores Activos
+    * @param  [type]  [description]
+    * @return [type]            [description]
+    */
+    public function scopeAsignaturas($cadenaSQL){
+        $idusuario = Auth::user()->id;
+        $personal = Personal::select('id')->where('idusuario',$idusuario)->first();
+
+        return $cadenaSQL->where('idpersonal',$personal->id);
     }
 }

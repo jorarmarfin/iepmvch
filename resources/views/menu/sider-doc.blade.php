@@ -8,38 +8,18 @@
             </div>
         </li>
         <!-- END SIDEBAR TOGGLER BUTTON -->
-        <li class="nav-item start ">
-            <a href="{{ route('home.index') }}" class="nav-link nav-toggle">
-                <i class="icon-home"></i>
-                <span class="title">Escritorio</span>
-                <span class="arrow"></span>
-            </a>
-        </li>
+        {!!Form::menu('Escritorio',route('home.index'),'icon-home','start')!!}
         <li class="heading">
             <h3 class="uppercase">Docente</h3>
         </li>
         <li class="nav-item  ">
-            <a href="{{route('admin.users.index')}}" class="nav-link nav-toggle">
-                <i class="icon-users"></i>
-                <span class="title">Usuarios</span>
-                <span class="arrow"></span>
-            </a>
-        </li>
-        <li class="nav-item  ">
-            <a href="javascript:;" class="nav-link nav-toggle">
-                <i class="icon-wrench"></i>
-                <span class="title">Configuracion</span>
-                <span class="arrow"></span>
-            </a>
+            {!!Form::menulink('Notas','#','fa fa-cubes')!!}
             <ul class="sub-menu">
-                <li class="nav-item  ">
-                    <a href="{{ route('catalogo.gestion','maestro') }}" class="nav-link ">
-                        <span class="title">Maestro</span>
-                    </a>
-                </li>
+                {!!Form::menu('Practicas',route('docentes.practicas.index'),'fa fa-cube')!!}
             </ul>
         </li>
-
+        {!!Form::menu('Mensajes','#','fa fa-comment')!!}
+        {!!Form::menu('Comentarios trimestre','#','fa fa-comments-o')!!}
 
     </ul>
     <!-- END SIDEBAR MENU -->
