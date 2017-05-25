@@ -56,7 +56,6 @@ class PersonalAsignatura extends Model
     public function scopeAsignaturas($cadenaSQL){
         $idusuario = Auth::user()->id;
         $personal = Personal::select('id')->where('idusuario',$idusuario)->first();
-
         return $cadenaSQL->where('idpersonal',$personal->id);
     }
 }

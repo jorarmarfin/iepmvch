@@ -5,7 +5,9 @@ Route::group(['prefix' => 'docentes','middleware'=>'auth','namespace'=>'Docentes
 	Route::group(['namespace'=>'Notas'], function() {
 
 		Route::resource('notas', 'NotasController',['names'=>'docentes.notas','only'=>['index']]);
-		Route::resource('practicas', 'PracticasController',['names'=>'docentes.practicas','only'=>['index']]);
+		Route::get('practicas', 'PracticasController@index')->name('docentes.practicas.index');
+		Route::get('practica/{asignatura}/{practica}', 'PracticasController@show')->name('docentes.practica.show');
+
 	});
 
 

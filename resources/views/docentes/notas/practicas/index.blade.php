@@ -51,8 +51,8 @@
                                             </button>
                                             <ul class="dropdown-menu pull-left" role="menu">
                                                 <li>
-                                                    <a href="{{ route('admin.matricula.edit',$item->id) }}">
-                                                        <i class="fa fa-edit"></i> Edit </a>
+                                                    <a href="{{ route('docentes.practica.show',[$item->id,1]) }}">
+                                                        <i class="fa fa-edit"></i> Practica 01 </a>
                                                 </li>
                                                 <li>
                                                     <a href="{{ route('admin.matricula.delete',$item->id) }}">
