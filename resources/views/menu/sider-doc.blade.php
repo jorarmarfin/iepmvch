@@ -13,10 +13,7 @@
             <h3 class="uppercase">Docente</h3>
         </li>
         <li class="nav-item  ">
-            {!!Form::menulink('Notas','#','fa fa-cubes')!!}
-            <ul class="sub-menu">
-                {!!Form::menu('Practicas',route('docentes.practicas.index'),'fa fa-cube')!!}
-            </ul>
+            {!!Form::menulink('Notas',route('docentes.notas.index'),'fa fa-cubes')!!}
         </li>
         {!!Form::menu('Mensajes','#','fa fa-comment')!!}
         {!!Form::menu('Comentarios trimestre','#','fa fa-comments-o')!!}

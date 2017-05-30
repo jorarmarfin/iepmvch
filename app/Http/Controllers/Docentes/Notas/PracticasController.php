@@ -16,7 +16,7 @@ class PracticasController extends Controller
     	$Lista = PersonalAsignatura::Asignaturas()->get();
     	return view('docentes.notas.practicas.index',compact('Lista'));
     }
-    public function show($id,$idpractica)
+    public function show($id)
     {
     	$personal_asignatura = PersonalAsignatura::find($id);
     	$asignatura = $personal_asignatura->nombre_area;
@@ -42,6 +42,6 @@ class PracticasController extends Controller
     										->where('idasignaturagradoseccion',$idasignaturagradoseccion)
     										->get();
 
-    	return view('docentes.notas.practicas.show',compact('asignatura','practicaresumen','idpractica'));
+    	return view('docentes.notas.practicas.show',compact('asignatura','practicaresumen'));
     }
 }

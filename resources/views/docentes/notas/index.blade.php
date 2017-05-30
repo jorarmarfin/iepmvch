@@ -19,7 +19,7 @@
                 </div>
             </div>
             <div class="portlet-body">
-                <div class="row">
+           <div class="row">
                     <div class="col-md-12">
                         <table class="table table-striped table-hover table-bordered table-condensed" id="Asignaturas">
                             <thead>
@@ -51,28 +51,8 @@
                                             </button>
                                             <ul class="dropdown-menu pull-left" role="menu">
                                                 <li>
-                                                    <a href="{{ route('admin.matricula.edit',$item->id) }}">
-                                                        <i class="fa fa-edit"></i> Edit </a>
-                                                </li>
-                                                <li>
-                                                    <a href="{{ route('admin.matricula.delete',$item->id) }}">
-                                                        <i class="fa fa-trash"></i> Delete </a>
-                                                </li>
-                                                <li>
-                                                    <a href="{{ route('admin.matricula.compromiso',$item->id) }}">
-                                                        <i class="fa fa-file-pdf-o"></i> Compromiso </a>
-                                                </li>
-                                                <li>
-                                                    <a href="{{ route('admin.checklist.show',$item->id) }}">
-                                                        <i class="fa fa-check"></i> CheckList </a>
-                                                </li>
-                                                <li>
-                                                    <a href="{{ route('admin.hermanos.show',$item->id) }}">
-                                                        <i class="fa fa-users"></i> Hermanos </a>
-                                                </li>
-                                                <li>
-                                                    <a href="{{ route('admin.retiro.show',$item->id) }}">
-                                                        <i class="fa fa-sign-out"></i> Retiro </a>
+                                                    <a href="{{ route('docentes.practica.show',[$item->id,1]) }}">
+                                                        <i class="fa fa-edit"></i> Practica 01 </a>
                                                 </li>
                                             </ul>
                                         </div>

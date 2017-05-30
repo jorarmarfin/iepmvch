@@ -19,6 +19,7 @@
                 </div>
             </div>
             <div class="portlet-body">
+            {!!Form::boton('P01',route('docentes.practicas.index'),'green-meadow margin-bottom-20')!!}
                 <div class="row">
                     <div class="col-md-12">
                         <table class="table table-striped table-hover table-bordered table-condensed" id="Practicas">

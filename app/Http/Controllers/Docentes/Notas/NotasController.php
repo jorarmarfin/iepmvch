@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers\Docentes\Notas;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\PersonalAsignatura;
+use Illuminate\Http\Request;
 
 class NotasController extends Controller
 {
     public function index()
     {
-    	$Lista = [];
+    	$Lista = PersonalAsignatura::Asignaturas()->get();
     	return view('docentes.notas.index',compact('Lista'));
     }
 }
