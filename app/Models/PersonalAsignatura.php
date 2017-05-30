@@ -45,7 +45,9 @@ class PersonalAsignatura extends Model
     {
     	$ags = AsignaturaGradoSeccion::find($this->idasignaturagradoseccion);
     	$area = AreaAcademica::find($ags->idarea);
-
+        if (is_null($area)) {
+            $area = new AreaAcademica(['nombre'=>'--']);
+        }
     	return $area->nombre;
     }
     /**
