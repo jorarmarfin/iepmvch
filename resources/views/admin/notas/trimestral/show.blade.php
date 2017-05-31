@@ -10,7 +10,7 @@
             <div class="portlet-title">
                 <div class="caption">
                     <i class="fa fa-table"></i>
-                    Lista de areas y sub areas
+                    Ingreso de notas Trimestrales
                 </div>
                 <div class="tools">
                     <a href="javascript:;" class="collapse"> </a>
@@ -19,48 +19,29 @@
                 </div>
             </div>
             <div class="portlet-body">
-           <div class="row">
+            {!!Form::boton('T01',route('docentes.trimestral.edit',[
+                $practicaresumen[0]->idperiodoacademico,$practicaresumen[0]->idpersonalasignatura,1
+            ]),'green-meadow margin-bottom-20')!!}
+                <div class="row">
                     <div class="col-md-12">
-                        <table class="table table-striped table-hover table-bordered table-condensed" id="Asignaturas">
+                        <table class="table table-striped table-hover table-bordered table-condensed" id="Practicas">
                             <thead>
                                 <tr>
-                                    <th> Grado </th>
-                                    <th> Area</th>
-                                    <th> Sub Area</th>
+                                    <th> Alumno </th>
+                                    <th> T01</th>
+                                    <th> T02</th>
+                                    <th> T03</th>
                                     <th> Opciones </th>
                                 </tr>
                             </thead>
-                            <tfoot>
-                                <tr>
-                                    <th>  </th>
-                                    <th>  </th>
-                                    <th>  </th>
-                                    <th>  </th>
-                                </tr>
-                            </tfoot>
                             <tbody>
-                            @foreach ($Lista as $item)
+                            @foreach ($practicaresumen as $item)
                                 <tr>
-                                    <td> {{ $item->nombre_grado }} </td>
-                                    <td> {{ $item->nombre_area }} </td>
-                                    <td> {{ $item->nombre_asignatura }} </td>
-                                    <td>
-                                        <div class="btn-group">
-                                            <button class="btn btn-xs green-dark dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Opciones
-                                                <i class="fa fa-angle-down"></i>
-                                            </button>
-                                            <ul class="dropdown-menu pull-left" role="menu">
-                                                <li>
-                                                    <a href="{{ route('docentes.practica.show',$item->id) }}">
-                                                        <i class="fa fa-edit"></i> Practicas </a>
-                                                </li>
-                                                <li>
-                                                    <a href="{{ route('docentes.trimestral.show',$item->id) }}">
-                                                        <i class="fa fa-edit"></i> Trimestrales </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </td>
+                                    <td> {{ $item->alumno->nombre_completo }} </td>
+                                    <td> {{ $item->p_t_1 }} </td>
+                                    <td> {{ $item->p_t_2 }} </td>
+                                    <td> {{ $item->promedio_trimestral }} </td>
+                                    <td>                  </td>
                                 </tr>
                             @endforeach
                             </tbody>
@@ -79,8 +60,7 @@
 <script>
 $(document).ready(function() {
 
-
-    $('#Asignaturas').dataTable({
+    $('#Practicas').dataTable({
         "language": {
             "emptyTable": "No hay datos disponibles",
             "info": "Mostrando _START_ a _END_ de _TOTAL_ filas",
@@ -91,7 +71,7 @@ $(document).ready(function() {
         "lengthMenu": [ 25, 50, 75, 100 ],
         "bProcessing": true,
         "pagingType": "bootstrap_full_number",
-        "order": [1,"asc"],
+        "order": [0,"asc"],
 
     });
 
@@ -101,8 +81,6 @@ $(document).ready(function() {
 
 @section('plugins-styles')
 {!! Html::style(asset('assets/global/plugins/bootstrap-table/bootstrap-table.min.css')) !!}
-{!! Html::style(asset('assets/global/plugins/select2/css/select2.min.css')) !!}
-{!! Html::style(asset('assets/global/plugins/select2/css/select2-bootstrap.min.css')) !!}
 {!! Html::style(asset('assets/global/plugins/datatables/datatables.min.css')) !!}
 {!! Html::style('assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css') !!}
 @stop
@@ -110,8 +88,6 @@ $(document).ready(function() {
 @section('plugins-js')
 {!! Html::script('assets/global/plugins/jquery-ui/jquery-ui.min.js') !!}
 {!! Html::script('assets/global/plugins/bootstrap-table/bootstrap-table.min.js') !!}
-{!! Html::script(asset('assets/global/plugins/select2/js/select2.full.min.js')) !!}
-{!! Html::script(asset('assets/global/plugins/select2/js/i18n/es.js')) !!}
 {!! Html::script('assets/global/scripts/datatable.js') !!}
 {!! Html::script('assets/global/plugins/datatables/datatables.min.js') !!}
 {!! Html::script('assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js') !!}
@@ -137,7 +113,7 @@ $(document).ready(function() {
 
 
 @section('page-title')
-Modulo de Notas
+{{ $asignatura }}
 @stop
 
 @section('page-subtitle')

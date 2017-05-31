@@ -29,11 +29,12 @@
 @section('js-scripts')
 <script>
  $('.login-bg').backstretch([
-    "{{ url('assets/pages/img/login/bg1.jpg') }}",
+    "{{ url('assets/pages/img/login/bg11.jpg') }}",
+    "{{ url('assets/pages/img/login/bg10.jpg') }}",
+    "{{ url('assets/pages/img/login/bg9.jpg') }}",
     "{{ url('assets/pages/img/login/bg2.jpg') }}",
     "{{ url('assets/pages/img/login/bg3.jpg') }}",
-    "{{ url('assets/pages/img/login/bg4.jpg') }}",
-    "{{ url('assets/pages/img/login/bg6.jpg') }}",
+    "{{ url('assets/pages/img/login/bg8.jpg') }}",
     "{{ url('assets/pages/img/login/bg7.jpg') }}"
     ], {
       fade: 1000,

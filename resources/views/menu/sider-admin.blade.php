@@ -48,6 +48,7 @@
                 {!!Form::menu('Serie',route('admin.serie.index'))!!}
             </ul>
         </li>
+        {!!Form::menu('Notas',route('admin.notas.index'),'icon-book-open')!!}
         {!!Form::menu('Registros','#','icon-book-open')!!}
         {!!Form::menu('Almacen','#','fa fa-archive')!!}
         {!!Form::menu('Pensiones','#','fa fa-dollar')!!}

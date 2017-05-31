@@ -10,7 +10,7 @@
             <div class="portlet-title">
                 <div class="caption">
                     <i class="fa fa-table"></i>
-                    Lista de areas y sub areas
+                    Relacion de docentes y areas
                 </div>
                 <div class="tools">
                     <a href="javascript:;" class="collapse"> </a>
@@ -24,23 +24,17 @@
                         <table class="table table-striped table-hover table-bordered table-condensed" id="Asignaturas">
                             <thead>
                                 <tr>
+                                    <th> Docente </th>
                                     <th> Grado </th>
                                     <th> Area</th>
                                     <th> Sub Area</th>
                                     <th> Opciones </th>
                                 </tr>
                             </thead>
-                            <tfoot>
-                                <tr>
-                                    <th>  </th>
-                                    <th>  </th>
-                                    <th>  </th>
-                                    <th>  </th>
-                                </tr>
-                            </tfoot>
                             <tbody>
                             @foreach ($Lista as $item)
                                 <tr>
+                                    <td> {{ $item->nombre_personal }} </td>
                                     <td> {{ $item->nombre_grado }} </td>
                                     <td> {{ $item->nombre_area }} </td>
                                     <td> {{ $item->nombre_asignatura }} </td>

@@ -38,6 +38,11 @@ Route::group(['prefix' => 'admin','namespace'=>'Admin'], function() {
 	 * Cumpleaños
 	 */
 	require __DIR__.'/admin/birthday.route.php';
+	/**
+	 * Notas
+	 */
+	require __DIR__.'/admin/notas.route.php';
+
 
 
 
