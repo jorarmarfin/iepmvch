@@ -10,7 +10,7 @@
             <div class="portlet-title">
                 <div class="caption">
                     <i class="fa fa-table"></i>
-                    Ingreso de notas Trimestrales
+                    Alumnos
                 </div>
                 <div class="tools">
                     <a href="javascript:;" class="collapse"> </a>
@@ -19,29 +19,28 @@
                 </div>
             </div>
             <div class="portlet-body">
-            {!!Form::boton('T01',route('docentes.trimestral.edit',[
-                $practicaresumen[0]->idperiodoacademico,$practicaresumen[0]->idpersonalasignatura,1
-            ]),'green-meadow margin-bottom-20')!!}
                 <div class="row">
                     <div class="col-md-12">
                         <table class="table table-striped table-hover table-bordered table-condensed" id="Practicas">
                             <thead>
                                 <tr>
+                                    <th> Area </th>
+                                    <th> Subarea </th>
                                     <th> Alumno </th>
                                     <th> T01</th>
                                     <th> T02</th>
                                     <th> T03</th>
-                                    <th> Opciones </th>
                                 </tr>
                             </thead>
                             <tbody>
-                            @foreach ($practicaresumen as $item)
+                            @foreach ($Lista as $item)
                                 <tr>
+                                    <td> {{ $item->area }} </td>
+                                    <td> {{ $item->asignatura }} </td>
                                     <td> {{ $item->alumno->nombre_completo }} </td>
-                                    <td> {{ $item->p_t_1 }} </td>
+                                    <td> {{ $item->nota_trimestral_1 }} </td>
                                     <td> {{ $item->p_t_2 }} </td>
                                     <td> {{ $item->p_t_3 }} </td>
-                                    <td>                  </td>
                                 </tr>
                             @endforeach
                             </tbody>
@@ -113,7 +112,7 @@ $(document).ready(function() {
 
 
 @section('page-title')
-{{ $asignatura }}
+Notas Trimestrales
 @stop
 
 @section('page-subtitle')

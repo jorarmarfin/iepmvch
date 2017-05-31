@@ -61,7 +61,7 @@
             </a>
         </li>
         <li class="nav-item  ">
-            <a href="javascript:;" class="nav-link nav-toggle">
+            <a href="{{ route('padres.notas.index') }}" class="nav-link nav-toggle">
                 <i class="fa fa-list-alt"></i>
                 <span class="title">Notas</span>
                 <span class="arrow"></span>
