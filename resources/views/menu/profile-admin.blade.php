@@ -1,5 +1,5 @@
 <li>
-    <a href="#">
+    <a href="{{ route('users.perfil') }}">
         <i class="icon-user"></i> Mi Perfil
     </a>
 </li>

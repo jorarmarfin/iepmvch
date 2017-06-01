@@ -20,6 +20,9 @@ Route::group(['prefix' => 'docentes','middleware'=>'auth','namespace'=>'Docentes
 		Route::get('trimestral-ingresa/{periodo}/{personalasignatura}/{trimestral}', 'NotasTrimestralesController@edit')->name('docentes.trimestral.edit');
 		Route::post('trimestral-notas', 'NotasTrimestralesController@notas')->name('docentes.trimestral.notas');
 
+
+
+
 	});
 
 
