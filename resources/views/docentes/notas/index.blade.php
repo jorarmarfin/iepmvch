@@ -51,7 +51,7 @@
                                             </button>
                                             <ul class="dropdown-menu pull-left" role="menu">
                                                 <li>
-                                                    <a href="{{ route('docentes.practica.show',$item->id) }}">
+                                                    <a href="{{ route('docentes.practicas.show',$item->id) }}">
                                                         <i class="fa fa-edit"></i> Practicas </a>
                                                 </li>
                                                 <li>

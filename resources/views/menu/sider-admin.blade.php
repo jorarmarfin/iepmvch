@@ -48,7 +48,13 @@
                 {!!Form::menu('Serie',route('admin.serie.index'))!!}
             </ul>
         </li>
-        {!!Form::menu('Notas',route('admin.notas.index'),'icon-book-open')!!}
+        <li class="nav-item  ">
+            {!!Form::menulink('Calificacion','#','icon-book-open')!!}
+            <ul class="sub-menu">
+                {!!Form::menu('activar practicas',route('admin.notas.activar.index'))!!}
+                {!!Form::menu('Notas',route('admin.notas.index'))!!}
+            </ul>
+        </li>
         {!!Form::menu('Registros','#','icon-book-open')!!}
         {!!Form::menu('Almacen','#','fa fa-archive')!!}
         {!!Form::menu('Pensiones','#','fa fa-dollar')!!}

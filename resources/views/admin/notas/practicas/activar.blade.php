@@ -2,7 +2,6 @@
 
 @section('content')
 @include('alerts.errors')
-{!! Alert::render() !!}
 <div class="row">
     <div class="col-md-12">
         {!! Alert::render() !!}
@@ -20,32 +19,46 @@
                 </div>
             </div>
             <div class="portlet-body">
-            {!!Form::boton('P01','#','green-meadow margin-bottom-20')!!}
                 <div class="row">
                     <div class="col-md-12">
-{!! Form::open(['route'=>'docentes.practica.notas','method'=>'POST']) !!}
+{!! Form::open(['route'=>'admin.notas.activar.store','method'=>'POST']) !!}
                         <table class="table table-striped table-hover table-bordered table-condensed" id="Practicas">
                             <thead>
                                 <tr>
                                     <th> Alumno </th>
                                     <th> P01</th>
-                                    <th> Opciones </th>
+                                    <th> P02</th>
+                                    <th> P03</th>
+                                    <th> P04</th>
+                                    <th> P05</th>
+                                    <th> P06</th>
+                                    <th> P07</th>
+                                    <th> P08</th>
+                                    <th> P09</th>
+                                    <th> P10</th>
                                 </tr>
                             </thead>
                             <tbody>
-                            @foreach ($Registro as $item)
+                            @foreach ($Lista as $item)
                                 <tr>
-                                    <td> {{ $item->alumno->nombre_completo }} </td>
-                                    <td>
-                                        {!!Form::text('p01[]', null , ['class'=>'form-control','placeholder'=>'notas'])!!}
+                                    <td> {{ $item->periodo_academico }}
                                         {!!Form::hidden('id[]', $item->id );!!}
                                     </td>
-                                    <td>  </td>
+                                    <td class="icheck" align="center">  {{ Form::checkbox('pc01['.$loop->index.']', 1,$item->pc01) }}</td>
+                                    <td class="icheck" align="center">  {{ Form::checkbox('pc02['.$loop->index.']', 1,$item->pc02) }}</td>
+                                    <td class="icheck" align="center">  {{ Form::checkbox('pc03['.$loop->index.']', 1,$item->pc03) }}</td>
+                                    <td class="icheck" align="center">  {{ Form::checkbox('pc04['.$loop->index.']', 1,$item->pc04) }}</td>
+                                    <td class="icheck" align="center">  {{ Form::checkbox('pc05['.$loop->index.']', 1,$item->pc05) }}</td>
+                                    <td class="icheck" align="center">  {{ Form::checkbox('pc06['.$loop->index.']', 1,$item->pc06) }}</td>
+                                    <td class="icheck" align="center">  {{ Form::checkbox('pc07['.$loop->index.']', 1,$item->pc07) }}</td>
+                                    <td class="icheck" align="center">  {{ Form::checkbox('pc08['.$loop->index.']', 1,$item->pc08) }}</td>
+                                    <td class="icheck" align="center">  {{ Form::checkbox('pc09['.$loop->index.']', 1,$item->pc09) }}</td>
+                                    <td class="icheck" align="center">  {{ Form::checkbox('pc10['.$loop->index.']', 1,$item->pc10) }}</td>
                                 </tr>
                             @endforeach
                             </tbody>
                         </table>
-{!!Form::enviar('Guardar')!!}
+                        {!!Form::enviar('Guardar')!!}
 {!! Form::close() !!}
                     </div><!--/span-->
                 </div><!--/row-->
@@ -65,15 +78,13 @@ $(document).ready(function() {
         "language": {
             "emptyTable": "No hay datos disponibles",
             "info": "Mostrando _START_ a _END_ de _TOTAL_ filas",
-            "search": "Buscar Alumnos :",
+            "search": "Buscar :",
             "lengthMenu": "_MENU_ registros",
             "infoFiltered": " - filtrado para _MAX_ registros"
         },
-        "lengthMenu": [ 25, 50, 75, 100 ],
-        "bProcessing": true,
-        "pagingType": "bootstrap_full_number",
-        "order": [0,"asc"],
-
+        "paging":   false,
+        "info": false,
+        "ordering": false,
     });
 
 });
@@ -84,6 +95,7 @@ $(document).ready(function() {
 {!! Html::style(asset('assets/global/plugins/bootstrap-table/bootstrap-table.min.css')) !!}
 {!! Html::style(asset('assets/global/plugins/datatables/datatables.min.css')) !!}
 {!! Html::style('assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css') !!}
+{!! Html::style(asset('assets/global/plugins/icheck/skins/all.css')) !!}
 @stop
 
 @section('plugins-js')
@@ -92,6 +104,7 @@ $(document).ready(function() {
 {!! Html::script('assets/global/scripts/datatable.js') !!}
 {!! Html::script('assets/global/plugins/datatables/datatables.min.js') !!}
 {!! Html::script('assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js') !!}
+{!! Html::script(asset('assets/global/plugins/icheck/icheck.min.js')) !!}
 
 @stop
 
@@ -114,7 +127,7 @@ $(document).ready(function() {
 
 
 @section('page-title')
-{{ $asignatura }}
+Activar Practicas
 @stop
 
 @section('page-subtitle')

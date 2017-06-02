@@ -17,7 +17,6 @@ class Registro extends Model
     {
         $matricula = Matricula::find($this->idmatricula);
         $gradoseccion = GradoSeccion::find($matricula->idgradoseccion);
-
         if ($gradoseccion->nivel == 'Inicial') {
             $etiqueta = EtiquetaNota::NotaLiteral($gradoseccion->id_nivel,$this->p_t_1);
         } else {

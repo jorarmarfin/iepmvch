@@ -38,7 +38,7 @@ class PracticasController extends Controller
                                             ->where('idperiodoacademico',$periodo->id)
                                             ->get();
         if ($practicaresumen->count() == 0) {
-            $matricula = $matricula->transform(function ($item, $key)use($id,$periodo) {
+            $matricula->each(function ($item, $key)use($id,$periodo) {
                                 Registro::create([
                                     'idmatricula'=>$item->id,
                                     'idperiodoacademico'=>$periodo->id,
@@ -63,10 +63,13 @@ class PracticasController extends Controller
     public function notas(Request $request)
     {
         $data = $request->all();
-        dd($data);
-        #foreach ($data as $key => $item) {
-        #    Registro::where('id',$item['id'])->update(['p01'=>$item['p01']]);
-        #}
-        #return redirect()->back();
+        $id = $data['id'];
+        $notas = $data['p01'];
+        foreach ($id as $key => $item)  {
+           Registro::where('id',$item)->update(['pc01'=>$notas[$key]]);
+        }
+        $registro = Registro::find($id[0]);
+        $id = $registro->idpersonalasignatura;
+        return redirect()->route('docentes.practicas.show',$id);
     }
 }

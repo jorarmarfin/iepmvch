@@ -42,12 +42,12 @@
                             @foreach ($practicaresumen as $item)
                                 <tr>
                                     <td> {{ $item->alumno->nombre_completo }} </td>
-                                    <td> {{ $item->pc2_n }} </td>
-                                    <td> {{ $item->pc2_n }} </td>
-                                    <td> {{ $item->pc3_n }} </td>
-                                    <td> {{ $item->pc4_n }} </td>
-                                    <td> {{ $item->pc5_n }} </td>
-                                    <td> {{ $item->pc6_n }} </td>
+                                    <td> {{ $item->pc01 }} </td>
+                                    <td> {{ $item->pc02 }} </td>
+                                    <td> {{ $item->pc03 }} </td>
+                                    <td> {{ $item->pc04 }} </td>
+                                    <td> {{ $item->pc05 }} </td>
+                                    <td> {{ $item->pc06 }} </td>
                                     <td> {{ $item->ppc }} </td>
                                     <td>                  </td>
                                 </tr>

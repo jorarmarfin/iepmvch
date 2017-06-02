@@ -15,9 +15,9 @@ class EtiquetaNota extends Model
     		return $nota;
     	} else {
     		$nota = (int)$nota;
-	    	$etiqueta = EtiquetaNota::where('idnivel',$nivel)->first();
+	    	$etiqueta = EtiquetaNota::select('id')->where('idnivel',$nivel)->get();
 
-	    	$valor = EtiquetaNotaDetalle::where('idetiquetanota',$etiqueta->id)
+	    	$valor = EtiquetaNotaDetalle::whereIn('idetiquetanota',$etiqueta->toArray())
 	    								  ->where('nota',$nota)->first();
 	    	if(is_null($valor)) $valor = New EtiquetaNotaDetalle(['literal'=>'--']);
 

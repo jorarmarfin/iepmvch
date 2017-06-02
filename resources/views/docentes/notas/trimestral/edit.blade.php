@@ -36,7 +36,7 @@
                                 <tr>
                                     <td> {{ $item->alumno->nombre_completo }} </td>
                                     <td>
-                                        {!!Form::text('t01[]', 0 , ['class'=>'form-control','placeholder'=>'notas'])!!}
+                                        {!!Form::text('t01[]', null , ['class'=>'form-control','placeholder'=>'notas'])!!}
                                         {!!Form::hidden('id[]',$item->id)!!}
                                     </td>
                                     <td>  </td>

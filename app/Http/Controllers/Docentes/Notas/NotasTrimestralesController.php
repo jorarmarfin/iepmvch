@@ -30,8 +30,9 @@ class NotasTrimestralesController extends Controller
                                             ->where('idpersonalasignatura',$id)
                                             ->where('idperiodoacademico',$periodo->id)
                                             ->get();
+
         if ($data->count() == 0) {
-            $matricula = $matricula->transform(function ($item, $key)use($id,$periodo) {
+            $matricula->each(function ($item, $key)use($id,$periodo) {
                                 Registro::create([
                                     'idmatricula'=>$item->id,
                                     'idperiodoacademico'=>$periodo->id,
@@ -43,6 +44,8 @@ class NotasTrimestralesController extends Controller
                                             ->where('idpersonalasignatura',$id)
                                             ->where('idperiodoacademico',$periodo->id)
                                             ->get();
+
+
     	return view('docentes.notas.trimestral.show',compact('asignatura','practicaresumen'));
     }
     public function edit($periodo,$personalasignatura,$practica)

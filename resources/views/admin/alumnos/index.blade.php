@@ -1,4 +1,4 @@
-}@extends('layouts.base')
+@extends('layouts.base')
 
 @section('content')
 <div class="row">
@@ -95,6 +95,7 @@ $('#Alumnos').dataTable({
         "search": "Buscar :",
         "lengthMenu": "_MENU_ registros"
     },
+    statesave:true,
     "bProcessing": true,
     "pagingType": "bootstrap_full_number",
     "order": [0,"asc"]
