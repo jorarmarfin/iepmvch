@@ -14,11 +14,7 @@ use Illuminate\Http\Request;
 
 class PracticasController extends Controller
 {
-    public function index()
-    {
-    	$Lista = PersonalAsignatura::Asignaturas()->get();
-    	return view('docentes.notas.practicas.index',compact('Lista'));
-    }
+
     public function show($id)
     {
     	$personal_asignatura = PersonalAsignatura::find($id);
@@ -51,6 +47,19 @@ class PracticasController extends Controller
                                             ->where('idperiodoacademico',$periodo->id)
                                             ->get();
     	return view('docentes.notas.practicas.show',compact('asignatura','practicaresumen'));
+    }
+    public function ingresa(Request $request)
+    {
+        $data = $request->all();
+        for ($i=0; $i < 10; $i++) {
+            $practica = 'pc'.pad(($i+1),2,'0','L');
+            if($request->has($practica)){
+                foreach ($data[$practica] as $key => $item) {
+                    Registro::where('id',$data['id'][$key])->update([$practica=>trim($item)]);
+                }
+            }
+        }
+        return back();
     }
     public function edit($periodo,$personalasignatura,$practica)
     {

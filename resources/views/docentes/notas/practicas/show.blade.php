@@ -19,11 +19,9 @@
                 </div>
             </div>
             <div class="portlet-body">
-            {!!Form::boton('P01',route('docentes.practica.edit',[
-                $practicaresumen[0]->idperiodoacademico,$practicaresumen[0]->idpersonalasignatura,1
-            ]),'green-meadow margin-bottom-20')!!}
                 <div class="row">
                     <div class="col-md-12">
+{!! Form::open(['route'=>'docentes.practicas.ingresa','method'=>'POST']) !!}
                         <table class="table table-striped table-hover table-bordered table-condensed" id="Practicas">
                             <thead>
                                 <tr>
@@ -34,26 +32,106 @@
                                     <th> P04</th>
                                     <th> P05</th>
                                     <th> P06</th>
+                                    <th> P07</th>
+                                    <th> P08</th>
+                                    <th> P09</th>
+                                    <th> P10</th>
                                     <th> Promedio</th>
                                     <th> Opciones </th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody>{{ PracticaActiva(89,1) }}
                             @foreach ($practicaresumen as $item)
                                 <tr>
                                     <td> {{ $item->alumno->nombre_completo }} </td>
-                                    <td> {{ $item->pc01 }} </td>
-                                    <td> {{ $item->pc02 }} </td>
-                                    <td> {{ $item->pc03 }} </td>
-                                    <td> {{ $item->pc04 }} </td>
-                                    <td> {{ $item->pc05 }} </td>
-                                    <td> {{ $item->pc06 }} </td>
+                                    <td>
+                                        {!!Form::hidden('id['.$loop->index.']',$item->id);!!}
+                                        @if (PracticaActiva($item->idperiodoacademico,1))
+                                            {!!Form::textnota('pc01['.$loop->index.']', $item->pc01 );!!}
+                                        @else
+                                            {{ $item->pc01 }}
+                                        @endif
+                                    </td>
+                                    <td>
+                                        {!!Form::hidden('id['.$loop->index.']',$item->id);!!}
+                                        @if (PracticaActiva($item->idperiodoacademico,2))
+                                            {!!Form::textnota('pc02['.$loop->index.']', $item->pc02 );!!}
+                                        @else
+                                            {{ $item->pc02 }}
+                                        @endif
+                                    </td>
+                                    <td>
+                                        {!!Form::hidden('id['.$loop->index.']',$item->id);!!}
+                                        @if (PracticaActiva($item->idperiodoacademico,3))
+                                            {!!Form::textnota('pc03['.$loop->index.']', $item->pc03 );!!}
+                                        @else
+                                            {{ $item->pc03 }}
+                                        @endif
+                                    </td>
+                                    <td>
+                                        {!!Form::hidden('id['.$loop->index.']',$item->id);!!}
+                                        @if (PracticaActiva($item->idperiodoacademico,4))
+                                            {!!Form::textnota('pc04['.$loop->index.']', $item->pc04 );!!}
+                                        @else
+                                            {{ $item->pc04 }}
+                                        @endif
+                                    </td>
+                                    <td>
+                                        {!!Form::hidden('id['.$loop->index.']',$item->id);!!}
+                                        @if (PracticaActiva($item->idperiodoacademico,5))
+                                            {!!Form::textnota('pc05['.$loop->index.']', $item->pc05 );!!}
+                                        @else
+                                            {{ $item->pc05 }}
+                                        @endif
+                                    </td>
+                                    <td>
+                                        {!!Form::hidden('id['.$loop->index.']',$item->id);!!}
+                                        @if (PracticaActiva($item->idperiodoacademico,6))
+                                            {!!Form::textnota('pc06['.$loop->index.']', $item->pc06 );!!}
+                                        @else
+                                            {{ $item->pc06 }}
+                                        @endif
+                                    </td>
+                                    <td>
+                                        {!!Form::hidden('id['.$loop->index.']',$item->id);!!}
+                                        @if (PracticaActiva($item->idperiodoacademico,7))
+                                            {!!Form::textnota('pc07['.$loop->index.']', $item->pc07 );!!}
+                                        @else
+                                            {{ $item->pc07 }}
+                                        @endif
+                                    </td>
+                                    <td>
+                                        {!!Form::hidden('id['.$loop->index.']',$item->id);!!}
+                                        @if (PracticaActiva($item->idperiodoacademico,8))
+                                            {!!Form::textnota('pc08['.$loop->index.']', $item->pc08 );!!}
+                                        @else
+                                            {{ $item->pc08 }}
+                                        @endif
+                                    </td>
+                                    <td>
+                                        {!!Form::hidden('id['.$loop->index.']',$item->id);!!}
+                                        @if (PracticaActiva($item->idperiodoacademico,9))
+                                            {!!Form::textnota('pc09['.$loop->index.']', $item->pc09 );!!}
+                                        @else
+                                            {{ $item->pc09 }}
+                                        @endif
+                                    </td>
+                                    <td>
+                                        {!!Form::hidden('id['.$loop->index.']',$item->id);!!}
+                                        @if (PracticaActiva($item->idperiodoacademico,10))
+                                            {!!Form::textnota('pc10['.$loop->index.']', $item->pc10 );!!}
+                                        @else
+                                            {{ $item->pc10 }}
+                                        @endif
+                                    </td>
                                     <td> {{ $item->ppc }} </td>
                                     <td>                  </td>
                                 </tr>
                             @endforeach
                             </tbody>
                         </table>
+                    {!!Form::enviar('Guardar')!!}
+{!! Form::close() !!}
                     </div><!--/span-->
                 </div><!--/row-->
 
@@ -72,7 +150,7 @@ $(document).ready(function() {
         "language": {
             "emptyTable": "No hay datos disponibles",
             "info": "Mostrando _START_ a _END_ de _TOTAL_ filas",
-            "search": "Buscar Alumnos :",
+            "search": "Buscar :",
             "lengthMenu": "_MENU_ registros",
             "infoFiltered": " - filtrado para _MAX_ registros"
         },

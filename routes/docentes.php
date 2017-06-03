@@ -10,6 +10,8 @@ Route::group(['prefix' => 'docentes','middleware'=>'auth','namespace'=>'Docentes
 		 */
 		Route::get('practicas', 'PracticasController@index')->name('docentes.practicas.index');
 		Route::get('practicas/{asignatura}', 'PracticasController@show')->name('docentes.practicas.show');
+		Route::post('ingresa-practica', 'PracticasController@ingresa')->name('docentes.practicas.ingresa');
+
 		Route::get('practica-ingresa/{periodo}/{personalasignatura}/{practica}', 'PracticasController@edit')->name('docentes.practica.edit');
 		Route::post('practica-notas', 'PracticasController@notas')->name('docentes.practica.notas');
 		/**
