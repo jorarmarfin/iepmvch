@@ -48,6 +48,19 @@ class NotasTrimestralesController extends Controller
 
     	return view('docentes.notas.trimestral.show',compact('asignatura','practicaresumen'));
     }
+    public function ingresa(Request $request)
+    {
+        $data = $request->all();
+        for ($i=0; $i < 3; $i++) {
+            $trimestre = 'p_t_'.($i+1);
+            if($request->has($trimestre)){
+                foreach ($data[$trimestre] as $key => $item) {
+                    Registro::where('id',$data['id'][$key])->update([$trimestre=>trim($item)]);
+                }
+            }
+        }
+        return back();
+    }
     public function edit($periodo,$personalasignatura,$practica)
     {
         $personal_asignatura = PersonalAsignatura::find($personalasignatura);

@@ -12,6 +12,14 @@ class Alumno extends Model
     protected $fillable = ['paterno', 'materno', 'nombres','dni','idgrado','fechanacimiento','idpais','religion','bautismo','comunion','confirmacion','idubigeo','direccion','telefonos','telefonoemergencia1','telefonoemergencia2','responsableeconomico','esespecial','discapacidad','idestado','observacion','foto','idsexo'];
 
     /**
+    * Atributos Cumpleaño
+    */
+    public function getCumpleAttribute()
+    {
+      $date = Carbon::createFromFormat('Y-m-d',$this->fechanacimiento);
+      return $date;
+    }
+    /**
      * Atributos Paterno
      */
     public function setPaternoAttribute($value)

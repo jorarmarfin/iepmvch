@@ -11,5 +11,6 @@ Route::group(['namespace'=>'Notas'], function() {
 	 */
 	Route::get('notas','NotasController@index')->name('admin.notas.index');
 	Route::get('notas-trimestral-docente','TrimestralController@docente')->name('admin.notas.trimestral.docente');
+	Route::post('activar-trimestre','ActivarPracticasController@trimestre' )->name('admin.notas.activar.trimestre');
 
 });

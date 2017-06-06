@@ -19,6 +19,8 @@ Route::group(['prefix' => 'docentes','middleware'=>'auth','namespace'=>'Docentes
 		 */
 		Route::get('trimestral', 'NotasTrimestralesController@index')->name('docentes.trimestral.index');
 		Route::get('trimestral/{asignatura}', 'NotasTrimestralesController@show')->name('docentes.trimestral.show');
+		Route::post('ingresa-trimestral', 'NotasTrimestralesController@ingresa')->name('docentes.trimestral.ingresa');
+
 		Route::get('trimestral-ingresa/{periodo}/{personalasignatura}/{trimestral}', 'NotasTrimestralesController@edit')->name('docentes.trimestral.edit');
 		Route::post('trimestral-notas', 'NotasTrimestralesController@notas')->name('docentes.trimestral.notas');
 

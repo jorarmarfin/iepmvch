@@ -19,11 +19,9 @@
                 </div>
             </div>
             <div class="portlet-body">
-            {!!Form::boton('T01',route('docentes.trimestral.edit',[
-                $practicaresumen[0]->idperiodoacademico,$practicaresumen[0]->idpersonalasignatura,1
-            ]),'green-meadow margin-bottom-20')!!}
                 <div class="row">
                     <div class="col-md-12">
+{!! Form::open(['route'=>'docentes.trimestral.ingresa','method'=>'POST']) !!}
                         <table class="table table-striped table-hover table-bordered table-condensed" id="Practicas">
                             <thead>
                                 <tr>
@@ -38,14 +36,35 @@
                             @foreach ($practicaresumen as $item)
                                 <tr>
                                     <td> {{ $item->alumno->nombre_completo }} </td>
-                                    <td> {{ $item->p_t_1 }} </td>
-                                    <td> {{ $item->p_t_2 }} </td>
-                                    <td> {{ $item->p_t_3 }} </td>
+                                    <td>
+                                        {!!Form::hidden('id['.$loop->index.']',$item->id);!!}
+                                        @if (TrimestreActivo($item->idperiodoacademico,1))
+                                            {!!Form::textnota('p_t_1['.$loop->index.']', $item->p_t_1 );!!}
+                                        @else
+                                            {{ $item->p_t_1 }}
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if (TrimestreActivo($item->idperiodoacademico,2))
+                                            {!!Form::textnota('p_t_2['.$loop->index.']', $item->p_t_2 );!!}
+                                        @else
+                                            {{ $item->p_t_2 }}
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if (TrimestreActivo($item->idperiodoacademico,3))
+                                            {!!Form::textnota('p_t_3['.$loop->index.']', $item->p_t_3 );!!}
+                                        @else
+                                            {{ $item->p_t_3 }}
+                                        @endif
+                                    </td>
                                     <td>                  </td>
                                 </tr>
                             @endforeach
                             </tbody>
                         </table>
+                    {!!Form::enviar('Guardar')!!}
+{!! Form::close() !!}
                     </div><!--/span-->
                 </div><!--/row-->
 

@@ -31,6 +31,15 @@
                                     <th> Opciones </th>
                                 </tr>
                             </thead>
+                            <tfoot>
+                                <tr>
+                                    <th> Docente </th>
+                                    <th> Grado </th>
+                                    <th> Area</th>
+                                    <th> Sub Area</th>
+                                    <th> Opciones </th>
+                                </tr>
+                            </tfoot>
                             <tbody>
                             @foreach ($Lista as $item)
                                 <tr>
@@ -85,8 +94,46 @@ $(document).ready(function() {
         "lengthMenu": [ 25, 50, 75, 100 ],
         "bProcessing": true,
         "pagingType": "bootstrap_full_number",
-        "order": [1,"asc"],
+        "order": [[0,"asc"],[1,"asc"]],
+        statesave:true,
+        "initComplete": function() {
+            // Docente column
+            this.api().column(0).every(function(){
+                var column = this;
+                var select = $('<select class="form-control input-sm"><option value="">Docente</option></select>')
+                    .appendTo( $(column.footer()).empty() )
+                    .on( 'change', function () {
+                        var val = $.fn.dataTable.util.escapeRegex(
+                            $(this).val()
+                        );
+                        column
+                            .search( val ? '^'+val+'$' : '', true, false )
+                            .draw();
+                    } );
 
+                column.data().unique().sort().each( function ( d, j ) {
+                    select.append( '<option value="'+d+'">'+d+'</option>' )
+                } );
+            });
+            // Grado
+            this.api().column(1).every(function(){
+                var column = this;
+                var select = $('<select class="form-control input-sm"><option value="">Grado</option></select>')
+                    .appendTo( $(column.footer()).empty() )
+                    .on( 'change', function () {
+                        var val = $.fn.dataTable.util.escapeRegex(
+                            $(this).val()
+                        );
+                        column
+                            .search( val ? '^'+val+'$' : '', true, false )
+                            .draw();
+                    } );
+
+                column.data().unique().sort().each( function ( d, j ) {
+                    select.append( '<option value="'+d+'">'+d+'</option>' )
+                } );
+            });
+        }
     });
 
 });

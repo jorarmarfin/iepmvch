@@ -40,7 +40,7 @@
                                     <th> Opciones </th>
                                 </tr>
                             </thead>
-                            <tbody>{{ PracticaActiva(89,1) }}
+                            <tbody>
                             @foreach ($practicaresumen as $item)
                                 <tr>
                                     <td> {{ $item->alumno->nombre_completo }} </td>
@@ -53,7 +53,6 @@
                                         @endif
                                     </td>
                                     <td>
-                                        {!!Form::hidden('id['.$loop->index.']',$item->id);!!}
                                         @if (PracticaActiva($item->idperiodoacademico,2))
                                             {!!Form::textnota('pc02['.$loop->index.']', $item->pc02 );!!}
                                         @else
@@ -61,7 +60,6 @@
                                         @endif
                                     </td>
                                     <td>
-                                        {!!Form::hidden('id['.$loop->index.']',$item->id);!!}
                                         @if (PracticaActiva($item->idperiodoacademico,3))
                                             {!!Form::textnota('pc03['.$loop->index.']', $item->pc03 );!!}
                                         @else
@@ -69,7 +67,6 @@
                                         @endif
                                     </td>
                                     <td>
-                                        {!!Form::hidden('id['.$loop->index.']',$item->id);!!}
                                         @if (PracticaActiva($item->idperiodoacademico,4))
                                             {!!Form::textnota('pc04['.$loop->index.']', $item->pc04 );!!}
                                         @else
@@ -77,7 +74,6 @@
                                         @endif
                                     </td>
                                     <td>
-                                        {!!Form::hidden('id['.$loop->index.']',$item->id);!!}
                                         @if (PracticaActiva($item->idperiodoacademico,5))
                                             {!!Form::textnota('pc05['.$loop->index.']', $item->pc05 );!!}
                                         @else
@@ -85,7 +81,6 @@
                                         @endif
                                     </td>
                                     <td>
-                                        {!!Form::hidden('id['.$loop->index.']',$item->id);!!}
                                         @if (PracticaActiva($item->idperiodoacademico,6))
                                             {!!Form::textnota('pc06['.$loop->index.']', $item->pc06 );!!}
                                         @else
@@ -93,7 +88,6 @@
                                         @endif
                                     </td>
                                     <td>
-                                        {!!Form::hidden('id['.$loop->index.']',$item->id);!!}
                                         @if (PracticaActiva($item->idperiodoacademico,7))
                                             {!!Form::textnota('pc07['.$loop->index.']', $item->pc07 );!!}
                                         @else
@@ -101,7 +95,6 @@
                                         @endif
                                     </td>
                                     <td>
-                                        {!!Form::hidden('id['.$loop->index.']',$item->id);!!}
                                         @if (PracticaActiva($item->idperiodoacademico,8))
                                             {!!Form::textnota('pc08['.$loop->index.']', $item->pc08 );!!}
                                         @else
@@ -109,7 +102,6 @@
                                         @endif
                                     </td>
                                     <td>
-                                        {!!Form::hidden('id['.$loop->index.']',$item->id);!!}
                                         @if (PracticaActiva($item->idperiodoacademico,9))
                                             {!!Form::textnota('pc09['.$loop->index.']', $item->pc09 );!!}
                                         @else
@@ -117,7 +109,6 @@
                                         @endif
                                     </td>
                                     <td>
-                                        {!!Form::hidden('id['.$loop->index.']',$item->id);!!}
                                         @if (PracticaActiva($item->idperiodoacademico,10))
                                             {!!Form::textnota('pc10['.$loop->index.']', $item->pc10 );!!}
                                         @else

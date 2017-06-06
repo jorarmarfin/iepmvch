@@ -23,17 +23,29 @@
                 <table class="table table-striped table-hover" id="PersonalData">
                     <thead>
                         <tr>
-                            <th> Cumpleaños </th>
+                            <th> Mes </th>
+                            <th> Día </th>
                             <th> Paterno </th>
                             <th> Materno </th>
                             <th> Nombres </th>
                             <th> Foto </th>
                         </tr>
                     </thead>
+                    <tfoot>
+                        <tr>
+                            <th> Mes </th>
+                            <th> Día </th>
+                            <th> Paterno </th>
+                            <th> Materno </th>
+                            <th> Nombres </th>
+                            <th> Foto </th>
+                        </tr>
+                    </tfoot>
                     <tbody>
                     @foreach ($Lista as $item)
                         <tr>
-                            <td> {{ $item->fechanacimiento }} </td>
+                            <td> {{ $item->cumple->month }} </td>
+                            <td> {{ $item->cumple->day }} </td>
                             <td> {{ $item->paterno }} </td>
                             <td> {{ $item->materno }} </td>
                             <td> {{ $item->nombres }} </td>
@@ -61,7 +73,46 @@ $('#PersonalData').dataTable({
     },
     "bProcessing": true,
     "pagingType": "bootstrap_full_number",
-    "order": [[0,"asc"],[1,"asc"],[2,"asc"]]
+    "order": [[0,"asc"],[1,"asc"],[2,"asc"]],
+    statesave:true,
+        "initComplete": function() {
+            // Mes
+            this.api().column(0).every(function(){
+                var column = this;
+                var select = $('<select class="form-control input-sm"><option value="">Mes</option></select>')
+                    .appendTo( $(column.footer()).empty() )
+                    .on( 'change', function () {
+                        var val = $.fn.dataTable.util.escapeRegex(
+                            $(this).val()
+                        );
+                        column
+                            .search( val ? '^'+val+'$' : '', true, false )
+                            .draw();
+                    } );
+
+                column.data().unique().sort().each( function ( d, j ) {
+                    select.append( '<option value="'+d+'">'+d+'</option>' )
+                } );
+            });
+            // Día
+            this.api().column(1).every(function(){
+                var column = this;
+                var select = $('<select class="form-control input-sm"><option value="">Dia</option></select>')
+                    .appendTo( $(column.footer()).empty() )
+                    .on( 'change', function () {
+                        var val = $.fn.dataTable.util.escapeRegex(
+                            $(this).val()
+                        );
+                        column
+                            .search( val ? '^'+val+'$' : '', true, false )
+                            .draw();
+                    } );
+
+                column.data().unique().sort().each( function ( d, j ) {
+                    select.append( '<option value="'+d+'">'+d+'</option>' )
+                } );
+            });
+        }
 });
 </script>
 @stop

@@ -10,7 +10,7 @@
             <div class="portlet-title">
                 <div class="caption">
                     <i class="fa fa-table"></i>
-                    Ingreso de notas
+                    Activar Practicas
                 </div>
                 <div class="tools">
                     <a href="javascript:;" class="collapse"> </a>
@@ -22,7 +22,7 @@
                 <div class="row">
                     <div class="col-md-12">
 {!! Form::open(['route'=>'admin.notas.activar.store','method'=>'POST']) !!}
-                        <table class="table table-striped table-hover table-bordered table-condensed" id="Practicas">
+                        <table class="table table-striped table-hover table-bordered table-condensed ParaActivar">
                             <thead>
                                 <tr>
                                     <th> Alumno </th>
@@ -41,7 +41,8 @@
                             <tbody>
                             @foreach ($Lista as $item)
                                 <tr>
-                                    <td> {{ $item->periodo_academico }}
+                                    <td>
+                                        {{ $item->periodo_academico }}
                                         {!!Form::hidden('id[]', $item->id );!!}
                                     </td>
                                     <td class="icheck" align="center">  {{ Form::checkbox('pc01['.$loop->index.']', 1,$item->pc01) }}</td>
@@ -68,28 +69,62 @@
         <!-- END Portlet PORTLET-->
     </div>
 </div>
+<div class="row">
+    <div class="col-md-12">
+        {!! Alert::render() !!}
+        <!-- BEGIN Portlet PORTLET-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-table"></i>
+                    Activar Trimestre
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse"> </a>
+                    <a href="" class="fullscreen"> </a>
+                    <a href="javascript:;" class="remove"> </a>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="row">
+                    <div class="col-md-6">
+{!! Form::open(['route'=>'admin.notas.activar.trimestre','method'=>'POST']) !!}
+                        <table class="table table-striped table-hover table-bordered table-condensed ParaActivar">
+                            <thead>
+                                <tr>
+                                    <th> Alumno </th>
+                                    <th> T01</th>
+                                    <th> T02</th>
+                                    <th> T03</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach ($Lista as $item)
+                                <tr>
+                                    <td>
+                                        {{ $item->periodo_academico }}
+                                        {!!Form::hidden('id[]', $item->id );!!}
+                                    </td>
+                                    <td class="icheck" align="center">  {{ Form::checkbox('t1['.$loop->index.']', 1,$item->t1) }}</td>
+                                    <td class="icheck" align="center">  {{ Form::checkbox('t2['.$loop->index.']', 1,$item->t2) }}</td>
+                                    <td class="icheck" align="center">  {{ Form::checkbox('t3['.$loop->index.']', 1,$item->t3) }}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                        {!!Form::enviar('Guardar')!!}
+{!! Form::close() !!}
+                    </div><!--/span-->
+                </div><!--/row-->
+
+            </div><!--/Porlet Body-->
+        </div>
+        <!-- END Portlet PORTLET-->
+    </div>
+</div>
 
 @stop
-@section('js-scripts')
-<script>
-$(document).ready(function() {
 
-    $('#Practicas').dataTable({
-        "language": {
-            "emptyTable": "No hay datos disponibles",
-            "info": "Mostrando _START_ a _END_ de _TOTAL_ filas",
-            "search": "Buscar :",
-            "lengthMenu": "_MENU_ registros",
-            "infoFiltered": " - filtrado para _MAX_ registros"
-        },
-        "paging":   false,
-        "info": false,
-        "ordering": false,
-    });
-
-});
-</script>
-@stop
 
 @section('plugins-styles')
 {!! Html::style(asset('assets/global/plugins/bootstrap-table/bootstrap-table.min.css')) !!}

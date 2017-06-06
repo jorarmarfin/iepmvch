@@ -19,6 +19,7 @@
                 {!!Form::menu('Maestro',route('catalogo.gestion','maestro'))!!}
                 {!!Form::menu('Pais',route('catalogo.gestion','pais'))!!}
                 {!!Form::menu('Tipo Familiar',route('catalogo.gestion','tipo familiar'))!!}
+
             </ul>
         </li>
         <li class="heading">
@@ -32,6 +33,7 @@
         <li class="nav-item  ">
             {!!Form::menulink('Plan Curricular','#','fa fa-cubes')!!}
             <ul class="sub-menu">
+                {!!Form::menu('Periodo Academico',route('catalogo.gestion','periodo academico'))!!}
                 {!!Form::menu('Areas academicas',route('admin.areaacademica.index'))!!}
                 {!!Form::menu('subareas',route('admin.asignatura.index'))!!}
                 {!!Form::menu('Grado Area',route('admin.ags.index'))!!}
@@ -51,7 +53,7 @@
         <li class="nav-item  ">
             {!!Form::menulink('Calificacion','#','icon-book-open')!!}
             <ul class="sub-menu">
-                {!!Form::menu('activar practicas',route('admin.notas.activar.index'))!!}
+                {!!Form::menu('activar',route('admin.notas.activar.index'))!!}
                 {!!Form::menu('Notas',route('admin.notas.index'))!!}
             </ul>
         </li>
