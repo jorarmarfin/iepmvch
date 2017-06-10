@@ -23,6 +23,12 @@ Route::group(['prefix' => 'docentes','middleware'=>'auth','namespace'=>'Docentes
 
 		Route::get('trimestral-ingresa/{periodo}/{personalasignatura}/{trimestral}', 'NotasTrimestralesController@edit')->name('docentes.trimestral.edit');
 		Route::post('trimestral-notas', 'NotasTrimestralesController@notas')->name('docentes.trimestral.notas');
+		/**
+		 * Notas de comportamiento
+		 */
+		Route::get('comportamiento', 'ComportamientoController@index')->name('docentes.comportamiento.index');
+		Route::get('comportamiento/{asignatura}/{trimestre}', 'ComportamientoController@show')->name('docentes.comportamiento.show');
+		Route::post('ingresa-comportamiento', 'ComportamientoController@ingresa')->name('docentes.comportamiento.ingresa');
 
 
 

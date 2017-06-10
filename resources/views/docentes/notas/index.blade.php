@@ -66,6 +66,18 @@
                                                     <a href="{{ route('docentes.trimestral.show',[$item->id,3]) }}">
                                                         <i class="fa fa-edit"></i> 3er Trimestre </a>
                                                 </li>
+                                                <li>
+                                                    <a href="{{ route('docentes.comportamiento.show',[$item->id,1]) }}">
+                                                        <i class="fa fa-edit"></i> Comportamiento (1t) </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('docentes.comportamiento.show',[$item->id,2]) }}">
+                                                        <i class="fa fa-edit"></i> Comportamiento (2t) </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('docentes.comportamiento.show',[$item->id,3]) }}">
+                                                        <i class="fa fa-edit"></i> Comportamiento (3t) </a>
+                                                </li>
                                             </ul>
                                         </div>
                                     </td>

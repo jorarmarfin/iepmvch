@@ -44,4 +44,18 @@ class ActivarPracticasController extends Controller
 		}
 		return back();
 	}
+	public function comportamiento(Request $request)
+	{
+		$data = $request->all();
+		for ($i=0; $i < 3; $i++) {
+			$trimestre = 'comportamiento';
+				PeriodoPractica::whereNotNull('id')->update([$trimestre=>false]);
+			if($request->has($trimestre)){
+				foreach ($data[$trimestre] as $key => $item) {
+					PeriodoPractica::where('id',$data['id'][$key])->update([$trimestre=>$item]);
+				}
+			}
+		}
+		return back();
+	}
 }

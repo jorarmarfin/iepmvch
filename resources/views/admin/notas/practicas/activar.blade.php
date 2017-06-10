@@ -25,7 +25,7 @@
                         <table class="table table-striped table-hover table-bordered table-condensed ParaActivar">
                             <thead>
                                 <tr>
-                                    <th> Alumno </th>
+                                    <th> Trimestre </th>
                                     <th> P01</th>
                                     <th> P02</th>
                                     <th> P03</th>
@@ -92,7 +92,7 @@
                         <table class="table table-striped table-hover table-bordered table-condensed ParaActivar">
                             <thead>
                                 <tr>
-                                    <th> Alumno </th>
+                                    <th> Trimestre </th>
                                     <th> Nota Trimestral</th>
                                 </tr>
                             </thead>
@@ -104,6 +104,55 @@
                                         {!!Form::hidden('id[]', $item->id );!!}
                                     </td>
                                     <td class="icheck" align="center">  {{ Form::checkbox('examen['.$loop->index.']', 1,$item->examen) }}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                        {!!Form::enviar('Guardar')!!}
+{!! Form::close() !!}
+                    </div><!--/span-->
+                </div><!--/row-->
+
+            </div><!--/Porlet Body-->
+        </div>
+        <!-- END Portlet PORTLET-->
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        {!! Alert::render() !!}
+        <!-- BEGIN Portlet PORTLET-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-table"></i>
+                    Activar Comportamiento
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse"> </a>
+                    <a href="" class="fullscreen"> </a>
+                    <a href="javascript:;" class="remove"> </a>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="row">
+                    <div class="col-md-6">
+{!! Form::open(['route'=>'admin.notas.activar.comportamiento','method'=>'POST']) !!}
+                        <table class="table table-striped table-hover table-bordered table-condensed ParaActivar">
+                            <thead>
+                                <tr>
+                                    <th> Trimestre </th>
+                                    <th> Nota comportamiento</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach ($Lista as $item)
+                                <tr>
+                                    <td>
+                                        {{ $item->periodo_academico }}
+                                        {!!Form::hidden('id[]', $item->id );!!}
+                                    </td>
+                                    <td class="icheck" align="center">  {{ Form::checkbox('comportamiento['.$loop->index.']', 1,$item->comportamiento) }}</td>
                                 </tr>
                             @endforeach
                             </tbody>

@@ -279,3 +279,18 @@ if (! function_exists('TrimestreActivo')) {
         return $activador->examen;
     }
 }
+/**
+ * Activa el Registro de NOtas Trimestrales
+ */
+if (! function_exists('ComportamientoActivo')) {
+    /**
+     * Funcion que retorna el prefijo para nombres de archivos
+     * @return [type] [description]
+     */
+    function ComportamientoActivo($periodo)
+    {
+        $activador = PeriodoPractica::where('idperiodoacademico',$periodo)->first();
+
+        return $activador->comportamiento;
+    }
+}
