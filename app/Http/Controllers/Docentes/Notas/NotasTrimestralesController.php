@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 
 class NotasTrimestralesController extends Controller
 {
-    public function show($id)
+    public function show($id,$trimestre)
     {
     	$personal_asignatura = PersonalAsignatura::find($id);
     	$asignatura = $personal_asignatura->nombre_area;
@@ -24,29 +24,31 @@ class NotasTrimestralesController extends Controller
     							->where('idtipo',EstadoId('TIPO MATRICULA','Activa'))
     							->get();
         #Periodo academico
-        $periodo = Catalogo::Table('PERIODO ACADEMICO')->activo()->first();
-        #Verifico si existen registros
-        $data = Registro::whereIn('idmatricula',$matricula->toArray())
-                                            ->where('idpersonalasignatura',$id)
-                                            ->where('idperiodoacademico',$periodo->id)
-                                            ->get();
+        $periodos = Catalogo::Table('PERIODO ACADEMICO')->get();
+        foreach ($periodos as $key => $periodo) {
 
-        if ($data->count() == 0) {
-            $matricula->each(function ($item, $key)use($id,$periodo) {
-                                Registro::create([
-                                    'idmatricula'=>$item->id,
-                                    'idperiodoacademico'=>$periodo->id,
-                                    'idpersonalasignatura'=>$id
-                                    ]);
-                            });
+            #Verifico si existen registros
+            $practicaresumen = Registro::whereIn('idmatricula',$matricula->toArray())
+                                                ->where('idpersonalasignatura',$id)
+                                                ->where('idperiodoacademico',$periodo->id)
+                                                ->get();
+            if ($practicaresumen->count() == 0) {
+                $matricula->each(function ($item, $key)use($id,$periodo) {
+                                    Registro::create([
+                                        'idmatricula'=>$item->id,
+                                        'idperiodoacademico'=>$periodo->id,
+                                        'idpersonalasignatura'=>$id
+                                        ]);
+                                });
+            }
         }
         $practicaresumen = Registro::whereIn('idmatricula',$matricula->toArray())
                                             ->where('idpersonalasignatura',$id)
-                                            ->where('idperiodoacademico',$periodo->id)
+                                            ->where('idperiodoacademico',$periodos[$trimestre-1]->id)
                                             ->get();
 
 
-    	return view('docentes.notas.trimestral.show',compact('asignatura','practicaresumen'));
+    	return view('docentes.notas.trimestral.show',compact('asignatura','practicaresumen','trimestre'));
     }
     public function ingresa(Request $request)
     {

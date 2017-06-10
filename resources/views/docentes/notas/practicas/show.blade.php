@@ -25,6 +25,7 @@
                         <table class="table table-striped table-hover table-bordered table-condensed" id="Practicas">
                             <thead>
                                 <tr>
+                                    <th> Periodo </th>
                                     <th> Alumno </th>
                                     <th> P01</th>
                                     <th> P02</th>
@@ -43,6 +44,7 @@
                             <tbody>
                             @foreach ($practicaresumen as $item)
                                 <tr>
+                                    <td> {{ $item->periodo_academico }} </td>
                                     <td> {{ $item->alumno->nombre_completo }} </td>
                                     <td>
                                         {!!Form::hidden('id['.$loop->index.']',$item->id);!!}
@@ -148,7 +150,7 @@ $(document).ready(function() {
         "lengthMenu": [ 25, 50, 75, 100 ],
         "bProcessing": true,
         "pagingType": "bootstrap_full_number",
-        "order": [0,"asc"],
+        "order": [[0,"asc"],[1,"asc"]],
 
     });
 

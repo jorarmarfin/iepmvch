@@ -43,12 +43,28 @@
                                             </button>
                                             <ul class="dropdown-menu pull-left" role="menu">
                                                 <li>
-                                                    <a href="{{ route('docentes.practicas.show',$item->id) }}">
-                                                        <i class="fa fa-edit"></i> Practicas </a>
+                                                    <a href="{{ route('docentes.practicas.show',[$item->id,1]) }}">
+                                                        <i class="fa fa-edit"></i> Practicas (t1) </a>
                                                 </li>
                                                 <li>
-                                                    <a href="{{ route('docentes.trimestral.show',$item->id) }}">
-                                                        <i class="fa fa-edit"></i> Trimestrales </a>
+                                                    <a href="{{ route('docentes.practicas.show',[$item->id,2]) }}">
+                                                        <i class="fa fa-edit"></i> Practicas (t2) </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('docentes.practicas.show',[$item->id,3]) }}">
+                                                        <i class="fa fa-edit"></i> Practicas (t3) </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('docentes.trimestral.show',[$item->id,1]) }}">
+                                                        <i class="fa fa-edit"></i> 1er Trimestre </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('docentes.trimestral.show',[$item->id,2]) }}">
+                                                        <i class="fa fa-edit"></i> 2do Trimestre </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('docentes.trimestral.show',[$item->id,3]) }}">
+                                                        <i class="fa fa-edit"></i> 3er Trimestre </a>
                                                 </li>
                                             </ul>
                                         </div>

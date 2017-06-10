@@ -26,6 +26,8 @@ class CreatePeriodoPracticasTable extends Migration
             $table->boolean('pc08')->default(false);
             $table->boolean('pc09')->default(false);
             $table->boolean('pc10')->default(false);
+            $table->boolean('examen')->default(false);
+            $table->boolean('comportamiento')->default(false);
         });
     }
 

@@ -9,7 +9,7 @@ Route::group(['prefix' => 'docentes','middleware'=>'auth','namespace'=>'Docentes
 		 * Practicas
 		 */
 		Route::get('practicas', 'PracticasController@index')->name('docentes.practicas.index');
-		Route::get('practicas/{asignatura}', 'PracticasController@show')->name('docentes.practicas.show');
+		Route::get('practicas/{asignatura}/{trimestre}', 'PracticasController@show')->name('docentes.practicas.show');
 		Route::post('ingresa-practica', 'PracticasController@ingresa')->name('docentes.practicas.ingresa');
 
 		Route::get('practica-ingresa/{periodo}/{personalasignatura}/{practica}', 'PracticasController@edit')->name('docentes.practica.edit');
@@ -18,7 +18,7 @@ Route::group(['prefix' => 'docentes','middleware'=>'auth','namespace'=>'Docentes
 		 * Notas Trimestrales
 		 */
 		Route::get('trimestral', 'NotasTrimestralesController@index')->name('docentes.trimestral.index');
-		Route::get('trimestral/{asignatura}', 'NotasTrimestralesController@show')->name('docentes.trimestral.show');
+		Route::get('trimestral/{asignatura}/{trimestre}', 'NotasTrimestralesController@show')->name('docentes.trimestral.show');
 		Route::post('ingresa-trimestral', 'NotasTrimestralesController@ingresa')->name('docentes.trimestral.ingresa');
 
 		Route::get('trimestral-ingresa/{periodo}/{personalasignatura}/{trimestral}', 'NotasTrimestralesController@edit')->name('docentes.trimestral.edit');

@@ -271,11 +271,11 @@ if (! function_exists('TrimestreActivo')) {
      * Funcion que retorna el prefijo para nombres de archivos
      * @return [type] [description]
      */
-    function TrimestreActivo($idperiodo,$numero_trimestre)
+    function TrimestreActivo($numero_trimestre)
     {
-        $trimestre = 't'.$numero_trimestre;
-        $activador = PeriodoPractica::where('idperiodoacademico',$idperiodo)->first();
+        $periodo = Catalogo::select('id')->table('PERIODO ACADEMICO')->where('iditem',$numero_trimestre)->first();
+        $activador = PeriodoPractica::where('idperiodoacademico',$periodo->id)->first();
 
-        return $activador[$trimestre];
+        return $activador->examen;
     }
 }

@@ -25,40 +25,52 @@
                         <table class="table table-striped table-hover table-bordered table-condensed" id="Practicas">
                             <thead>
                                 <tr>
+                                    <th> Periodo </th>
                                     <th> Alumno </th>
+                                    @if ($trimestre == 1)
                                     <th> T01</th>
+                                    @endif
+                                    @if ($trimestre == 2)
                                     <th> T02</th>
+                                    @endif
+                                    @if ($trimestre == 3)
                                     <th> T03</th>
-                                    <th> Opciones </th>
+                                    @endif
                                 </tr>
                             </thead>
                             <tbody>
                             @foreach ($practicaresumen as $item)
                                 <tr>
+                                    <td> {{ $item->periodo_academico }} </td>
                                     <td> {{ $item->alumno->nombre_completo }} </td>
-                                    <td>
                                         {!!Form::hidden('id['.$loop->index.']',$item->id);!!}
-                                        @if (TrimestreActivo($item->idperiodoacademico,1))
+                                    @if ($trimestre == 1)
+                                    <td>
+                                        @if (TrimestreActivo(1))
                                             {!!Form::textnota('p_t_1['.$loop->index.']', $item->p_t_1 );!!}
                                         @else
                                             {{ $item->p_t_1 }}
                                         @endif
                                     </td>
+                                    @endif
+                                    @if ($trimestre == 2)
                                     <td>
-                                        @if (TrimestreActivo($item->idperiodoacademico,2))
+                                        @if (TrimestreActivo(2))
                                             {!!Form::textnota('p_t_2['.$loop->index.']', $item->p_t_2 );!!}
                                         @else
                                             {{ $item->p_t_2 }}
                                         @endif
                                     </td>
+                                    @endif
+                                    @if ($trimestre == 3)
                                     <td>
-                                        @if (TrimestreActivo($item->idperiodoacademico,3))
+                                        @if (TrimestreActivo(3))
                                             {!!Form::textnota('p_t_3['.$loop->index.']', $item->p_t_3 );!!}
                                         @else
                                             {{ $item->p_t_3 }}
                                         @endif
                                     </td>
-                                    <td>                  </td>
+                                    @endif
                                 </tr>
                             @endforeach
                             </tbody>

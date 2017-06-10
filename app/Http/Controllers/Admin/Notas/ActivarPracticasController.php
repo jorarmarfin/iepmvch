@@ -34,7 +34,7 @@ class ActivarPracticasController extends Controller
 	{
 		$data = $request->all();
 		for ($i=0; $i < 3; $i++) {
-			$trimestre = 't'.($i+1);
+			$trimestre = 'examen';
 				PeriodoPractica::whereNotNull('id')->update([$trimestre=>false]);
 			if($request->has($trimestre)){
 				foreach ($data[$trimestre] as $key => $item) {

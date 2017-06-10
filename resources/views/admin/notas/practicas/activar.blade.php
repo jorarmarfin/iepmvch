@@ -93,9 +93,7 @@
                             <thead>
                                 <tr>
                                     <th> Alumno </th>
-                                    <th> T01</th>
-                                    <th> T02</th>
-                                    <th> T03</th>
+                                    <th> Nota Trimestral</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -105,9 +103,7 @@
                                         {{ $item->periodo_academico }}
                                         {!!Form::hidden('id[]', $item->id );!!}
                                     </td>
-                                    <td class="icheck" align="center">  {{ Form::checkbox('t1['.$loop->index.']', 1,$item->t1) }}</td>
-                                    <td class="icheck" align="center">  {{ Form::checkbox('t2['.$loop->index.']', 1,$item->t2) }}</td>
-                                    <td class="icheck" align="center">  {{ Form::checkbox('t3['.$loop->index.']', 1,$item->t3) }}</td>
+                                    <td class="icheck" align="center">  {{ Form::checkbox('examen['.$loop->index.']', 1,$item->examen) }}</td>
                                 </tr>
                             @endforeach
                             </tbody>
