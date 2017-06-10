@@ -183,6 +183,7 @@ $(document).ready(function() {
         "bProcessing": true,
         "pagingType": "bootstrap_full_number",
         "order": [1,"asc"],
+        statesave:true,
         "initComplete": function() {
             // Nivel column
             this.api().column(1).every(function(){

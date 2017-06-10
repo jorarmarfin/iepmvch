@@ -20,6 +20,7 @@ class MacroServiceProvider extends ServiceProvider
         $this->ControlBotonModal();
         $this->ControlMenu();
         $this->ControlMenuLink();
+        $this->ControlTextNota();
     }
 
     /**
@@ -78,5 +79,13 @@ class MacroServiceProvider extends ServiceProvider
     {
         $macro = new Macros();
         return $macro->MenuLink();
+    }
+    /**
+     * Input Text Nota
+     */
+    public function ControlTextNota()
+    {
+        $macro = new Macros();
+        return $macro->TextNota();
     }
 }

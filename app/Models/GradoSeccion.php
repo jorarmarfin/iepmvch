@@ -9,7 +9,24 @@ class GradoSeccion extends Model
     protected $table = 'grado_seccion';
     protected $fillable = ['idgrado', 'idseccion','cantidad'];
     public $timestamps = false;
-
+    /**
+    * Atributos Nivel
+    */
+    public function getIdNivelAttribute()
+    {
+      $grado = Grado::find($this->idgrado);
+      $nivel = Catalogo::find($grado->idnivel);
+      return $nivel->id;
+    }
+    /**
+    * Atributos Nivel
+    */
+    public function getNivelAttribute()
+    {
+      $grado = Grado::find($this->idgrado);
+      $nivel = Catalogo::find($grado->idnivel);
+      return $nivel->nombre;
+    }
     /**
     * Atributos Grado
     */

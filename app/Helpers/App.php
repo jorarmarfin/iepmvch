@@ -4,6 +4,7 @@ use App\Models\Alumno;
 use App\Models\AlumnoFamiliar;
 use App\Models\Catalogo;
 use App\Models\Institucion;
+use App\Models\PeriodoPractica;
 if (! function_exists('RoleId')) {
 	/**
 	 * Funcion que retorna el prefijo para nombres de archivos
@@ -243,5 +244,38 @@ if (! function_exists('str_clean')) {
             );
 
     return $string;
+    }
+}
+
+/**
+ * Devuelve un pad del elemento que ingrese
+ */
+if (! function_exists('PracticaActiva')) {
+    /**
+     * Funcion que retorna el prefijo para nombres de archivos
+     * @return [type] [description]
+     */
+    function PracticaActiva($idperiodo,$numero_practica)
+    {
+        $practica = 'pc'.str_pad($numero_practica, 2, '0',STR_PAD_LEFT);
+        $activador = PeriodoPractica::where('idperiodoacademico',$idperiodo)->first();
+
+        return $activador[$practica];
+    }
+}
+/**
+ * Activa el Registro de NOtas Trimestrales
+ */
+if (! function_exists('TrimestreActivo')) {
+    /**
+     * Funcion que retorna el prefijo para nombres de archivos
+     * @return [type] [description]
+     */
+    function TrimestreActivo($numero_trimestre)
+    {
+        $periodo = Catalogo::select('id')->table('PERIODO ACADEMICO')->where('iditem',$numero_trimestre)->first();
+        $activador = PeriodoPractica::where('idperiodoacademico',$periodo->id)->first();
+
+        return $activador->examen;
     }
 }

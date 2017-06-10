@@ -62,6 +62,13 @@ class AsignaturaGradoSeccion extends Model
                          ->groupBy(['aa.id','aa.nombre'])
                          ->orderBy('aa.nombre');
     }
-
+    /**
+    * Devuelve los valores Activos
+    * @param  [type]  [description]
+    * @return [type]            [description]
+    */
+    public function scopeActivo($cadenaSQL){
+        return $cadenaSQL->where('activo',1);
+    }
 
 }

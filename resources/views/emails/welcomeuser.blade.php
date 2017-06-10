@@ -1,10 +1,11 @@
 @extends('layouts.email')
 
 @section('title')
-Bienvenido {{ $user->name }} al intranet
+Bienvenido {{ $user->name }} al sistema del colegio
 @stop
 
 @section('content')
+Donde podrá acceder a los diversos servicios que brindamos online.
 Se ha creado un nuevo usuario en nuestro sistema con las siguientes credenciales :
 <p>
 	<strong>Nombre de usuario:</strong> {{ $user->username }} </p></br>

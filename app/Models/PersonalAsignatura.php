@@ -3,17 +3,26 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Auth;
 class PersonalAsignatura extends Model
 {
     protected $table = 'personal_asignatura';
     protected $fillable = ['idpersonal', 'idasignaturagradoseccion', 'tutor','notas'];
+    /**
+    * Atributos Nombre de grado
+    */
+    public function getNombreGradoAttribute()
+    {
+        $ags = AsignaturaGradoSeccion::find($this->idasignaturagradoseccion);
+        return $ags->grado;
+    }
     /**
     * Atributos Personal
     */
     public function getNombrePersonalAttribute()
     {
     	$personal = Personal::find($this->idpersonal);
+        if(is_null($personal))$personal = new PersonalAsignatura(['nombre_completo'=>'---']);
     	return $personal->nombre_completo;
     }
     /**
@@ -36,7 +45,19 @@ class PersonalAsignatura extends Model
     {
     	$ags = AsignaturaGradoSeccion::find($this->idasignaturagradoseccion);
     	$area = AreaAcademica::find($ags->idarea);
-
+        if (is_null($area)) {
+            $area = new AreaAcademica(['nombre'=>'--']);
+        }
     	return $area->nombre;
+    }
+    /**
+    * Devuelve los valores Activos
+    * @param  [type]  [description]
+    * @return [type]            [description]
+    */
+    public function scopeAsignaturas($cadenaSQL){
+        $idusuario = Auth::user()->id;
+        $personal = Personal::select('id')->where('idusuario',$idusuario)->first();
+        return $cadenaSQL->where('idpersonal',$personal->id);
     }
 }

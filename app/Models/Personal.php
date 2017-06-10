@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
-
+use Auth;
 class Personal extends Model
 {
     protected $table = 'personal';
@@ -216,4 +216,5 @@ class Personal extends Model
     public function scopeInactivo($cadenaSQL){
         return $cadenaSQL->where('activo',0);
     }
+
 }

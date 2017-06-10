@@ -31,6 +31,8 @@ Panel de Administracion
 	@include('psicologo.index')
 @elseif(Auth::user()->role->nombre == 'Padre')
 	@include('padres.index')
+@elseif(Auth::user()->role->nombre == 'Docente')
+	@include('docentes.index')
 @endif
 
 @stop

@@ -52,7 +52,7 @@
                                 <ul class="login-social">
                                     <li>
                                         <a href="https://www.facebook.com/profile.php?id=100005054298971&lst=1542528658%3A100005054298971%3A1482758268" target="blank">
-                                            <i class="icon-social-facebook"></i>
+                                            <img src="{{ asset('assets/pages/img/face.png') }}" width="200px">
                                         </a>
                                     </li>
                                 </ul>

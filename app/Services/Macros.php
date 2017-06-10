@@ -122,6 +122,17 @@ class Macros extends FormBuilder
 		});
 
 	}
+	/**
+	 * Notas
+	 */
+	public function TextNota()
+	{
+		Form::macro('textnota',function($name,$valor = null){
+
+			return Form::text($name, $valor , ['class'=>'form-control','placeholder'=>'Nota']);
+		});
+
+	}
 
 }
 
