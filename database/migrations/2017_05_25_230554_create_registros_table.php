@@ -65,6 +65,7 @@ class CreateRegistrosTable extends Migration
             $table->char('evaluacion_trimestral',2)->nullable();
             $table->char('promedio_trimestral',2)->nullable();
             $table->char('comportamiento',2)->nullable();
+            $table->char('cuaderno',2)->nullable();
             $table->char('p_t_1',2)->nullable();
             $table->char('p_t_2',2)->nullable();
             $table->char('p_t_3',2)->nullable();
