@@ -28,6 +28,30 @@ class CreatePeriodoPracticasTable extends Migration
             $table->boolean('pc10')->default(false);
             $table->boolean('examen')->default(false);
             $table->boolean('comportamiento')->default(false);
+            $table->boolean('actitud')->default(false);
+            $table->boolean('cuaderno')->default(false);
+            $table->boolean('in01')->default(false);
+            $table->boolean('in02')->default(false);
+            $table->boolean('in03')->default(false);
+            $table->boolean('in04')->default(false);
+            $table->boolean('in05')->default(false);
+            $table->boolean('in06')->default(false);
+            $table->boolean('in07')->default(false);
+            $table->boolean('in08')->default(false);
+            $table->boolean('in09')->default(false);
+            $table->boolean('in10')->default(false);
+            $table->boolean('in11')->default(false);
+            $table->boolean('in12')->default(false);
+            $table->boolean('in13')->default(false);
+            $table->boolean('in14')->default(false);
+            $table->boolean('in15')->default(false);
+            $table->boolean('in16')->default(false);
+            $table->boolean('in17')->default(false);
+            $table->boolean('in18')->default(false);
+            $table->boolean('in19')->default(false);
+            $table->boolean('in20')->default(false);
+            $table->boolean('examen')->default(false);
+            $table->boolean('comportamiento')->default(false);
         });
     }
 

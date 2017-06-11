@@ -21,7 +21,7 @@
             <div class="portlet-body">
                 <div class="row">
                     <div class="col-md-12">
-{!! Form::open(['route'=>'admin.notas.activar.store','method'=>'POST']) !!}
+            {!! Form::open(['route'=>'admin.notas.activar.store','method'=>'POST']) !!}
                         <table class="table table-striped table-hover table-bordered table-condensed ParaActivar">
                             <thead>
                                 <tr>
@@ -60,7 +60,7 @@
                             </tbody>
                         </table>
                         {!!Form::enviar('Guardar')!!}
-{!! Form::close() !!}
+            {!! Form::close() !!}
                     </div><!--/span-->
                 </div><!--/row-->
 
@@ -88,7 +88,7 @@
             <div class="portlet-body">
                 <div class="row">
                     <div class="col-md-6">
-{!! Form::open(['route'=>'admin.notas.activar.trimestre','method'=>'POST']) !!}
+            {!! Form::open(['route'=>'admin.notas.activar.trimestre','method'=>'POST']) !!}
                         <table class="table table-striped table-hover table-bordered table-condensed ParaActivar">
                             <thead>
                                 <tr>
@@ -109,7 +109,7 @@
                             </tbody>
                         </table>
                         {!!Form::enviar('Guardar')!!}
-{!! Form::close() !!}
+            {!! Form::close() !!}
                     </div><!--/span-->
                 </div><!--/row-->
 
@@ -137,7 +137,7 @@
             <div class="portlet-body">
                 <div class="row">
                     <div class="col-md-6">
-{!! Form::open(['route'=>'admin.notas.activar.comportamiento','method'=>'POST']) !!}
+                {!! Form::open(['route'=>'admin.notas.activar.comportamiento','method'=>'POST']) !!}
                         <table class="table table-striped table-hover table-bordered table-condensed ParaActivar">
                             <thead>
                                 <tr>
@@ -158,7 +158,62 @@
                             </tbody>
                         </table>
                         {!!Form::enviar('Guardar')!!}
-{!! Form::close() !!}
+                {!! Form::close() !!}
+                    </div><!--/span-->
+                </div><!--/row-->
+
+            </div><!--/Porlet Body-->
+        </div>
+        <!-- END Portlet PORTLET-->
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        {!! Alert::render() !!}
+        <!-- BEGIN Portlet PORTLET-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-table"></i>
+                    Activar Comportamiento
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse"> </a>
+                    <a href="" class="fullscreen"> </a>
+                    <a href="javascript:;" class="remove"> </a>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="row">
+                    <div class="col-md-12">
+        {!! Form::open(['route'=>'admin.notas.activar.indicadores','method'=>'POST']) !!}
+                        <table class="table table-striped table-bordered table-hover TablaActivar">
+                            <thead>
+                                <tr>
+                                    <th> Trimestre </th>
+                                    @for ($i = 0; $i < 16; $i++)
+                                        <th> Indicador {{ ($i+1) }}</th>
+                                    @endfor
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach ($Lista as $item)
+                                <tr>
+                                    <td>
+                                        {{ $item->periodo_academico }}
+                                        {!!Form::hidden('id[]', $item->id );!!}
+                                    </td>
+                                    @for ($i = 0; $i < 16; $i++)
+                                        <td class="icheck" align="center">
+                                            {{ Form::checkbox('in'.pad(($i+1),2,'0','L').'['.$loop->index.']', 1,$item['in'.pad(($i+1),2,'0','L')]) }}
+                                        </td>
+                                    @endfor
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                        {!!Form::enviar('Guardar')!!}
+        {!! Form::close() !!}
                     </div><!--/span-->
                 </div><!--/row-->
 
@@ -169,7 +224,16 @@
 </div>
 
 @stop
-
+@section('js-scripts')
+<script>
+$('.TablaActivar').dataTable({
+    "paging":   false,
+    "ordering": false,
+    "info":     false,
+    "searching": false
+});
+</script>
+@stop
 
 @section('plugins-styles')
 {!! Html::style(asset('assets/global/plugins/bootstrap-table/bootstrap-table.min.css')) !!}

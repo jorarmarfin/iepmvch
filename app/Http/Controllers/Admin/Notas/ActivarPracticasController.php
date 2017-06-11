@@ -58,4 +58,18 @@ class ActivarPracticasController extends Controller
 		}
 		return back();
 	}
+	public function indicadores(Request $request)
+	{
+		$data = $request->all();
+		for ($i=0; $i < 16; $i++) {
+			$trimestre = 'in'.pad($i+1,2,'0','L');
+				PeriodoPractica::whereNotNull('id')->update([$trimestre=>false]);
+			if($request->has($trimestre)){
+				foreach ($data[$trimestre] as $key => $item) {
+					PeriodoPractica::where('id',$data['id'][$key])->update([$trimestre=>$item]);
+				}
+			}
+		}
+		return back();
+	}
 }

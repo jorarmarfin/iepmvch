@@ -13,6 +13,7 @@ use App\Http\ViewComposers\GestionSelectData;
 use App\Http\ViewComposers\GradoSeccionSelectData;
 use App\Http\ViewComposers\GradoSelectData;
 use App\Http\ViewComposers\PaisSelectData;
+use App\Http\ViewComposers\PeriodoAcademicoSelectData;
 use App\Http\ViewComposers\PersonalSelectData;
 use App\Http\ViewComposers\ProductosSelectData;
 use App\Http\ViewComposers\SexoSelectData;
@@ -133,6 +134,11 @@ class ViewServiceProvider extends ServiceProvider
             ['admin.ags.index'
             ],
             AsignaturaSelectData::class
+            );
+        $this->app->make('view')->composer(
+            ['docentes.capacidades.show','docentes.capacidades.edit'
+            ],
+            PeriodoAcademicoSelectData::class
             );
     }
 

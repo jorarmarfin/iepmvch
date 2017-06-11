@@ -16,5 +16,9 @@ Route::group(['namespace'=>'Notas'], function() {
 	 * Activar Comportamiento
 	 */
 	Route::post('activar-comportamiento','ActivarPracticasController@comportamiento' )->name('admin.notas.activar.comportamiento');
+	/**
+	 * Activar Indicadores
+	 */
+	Route::post('activar-indicadores','ActivarPracticasController@indicadores' )->name('admin.notas.activar.indicadores');
 
 });

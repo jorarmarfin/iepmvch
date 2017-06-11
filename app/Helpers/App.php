@@ -2,6 +2,7 @@
 
 use App\Models\Alumno;
 use App\Models\AlumnoFamiliar;
+use App\Models\Capacidad;
 use App\Models\Catalogo;
 use App\Models\Institucion;
 use App\Models\PeriodoPractica;
@@ -294,3 +295,51 @@ if (! function_exists('ComportamientoActivo')) {
         return $activador->comportamiento;
     }
 }
+/**
+ * Activa el Registro de Indicadores
+ */
+if (! function_exists('IndicadorActivo')) {
+    /**
+     * Funcion que retorna el prefijo para nombres de archivos
+     * @return [type] [description]
+     */
+    function IndicadorActivo($periodo,$indicador)
+    {
+        $indicador = 'in'.pad($indicador,2,'0','L');
+        $activador = PeriodoPractica::where('idperiodoacademico',$periodo)->first();
+
+        return $activador[$indicador];
+    }
+}
+/**
+ * Activa el Registro de Actitud
+ */
+if (! function_exists('ActitudActiva')) {
+    /**
+     * Funcion que retorna el prefijo para nombres de archivos
+     * @return [type] [description]
+     */
+    function ActitudActiva($periodo,$actitud)
+    {
+        $actitud = 'ac'.pad($actitud,2,'0','L');
+        $activador = PeriodoPractica::where('idperiodoacademico',$periodo)->first();
+
+        return $activador[$actitud];
+    }
+}
+/**
+ * Activa el Registro de Cuaderno
+ */
+if (! function_exists('CuadernoActivo')) {
+    /**
+     * Funcion que retorna el prefijo para nombres de archivos
+     * @return [type] [description]
+     */
+    function CuadernoActivo($periodo)
+    {
+        $activador = PeriodoPractica::where('idperiodoacademico',$periodo)->first();
+
+        return $activador->cuaderno;
+    }
+}
+
