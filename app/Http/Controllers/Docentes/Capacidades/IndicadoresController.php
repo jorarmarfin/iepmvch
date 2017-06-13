@@ -18,8 +18,13 @@ class IndicadoresController extends Controller
     }
     public function store(CreateIndicadorRequest $request)
     {
-    	CapacidadDetalle::create($request->all());
-    	Alert::success('Indicador registrado con exito');
+        $cantidad = CapacidadDetalle::where('idcapacidad',$request->input('idcapacidad'))->count();
+        if($cantidad<4){
+    	    CapacidadDetalle::create($request->all());
+    	    Alert::success('Indicador registrado con exito');
+        }else{
+            Alert::success('No puede agregar mas indicadores para esta capacidad');
+        }
   		return redirect()->route('docentes.capacidad.indicadores.show',$request->input('idcapacidad'));
     }
     public function edit($id)

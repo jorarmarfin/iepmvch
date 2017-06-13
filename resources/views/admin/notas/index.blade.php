@@ -54,12 +54,76 @@
                                             </button>
                                             <ul class="dropdown-menu pull-left" role="menu">
                                                 <li>
-                                                    <a href="{{ route('docentes.practicas.show',$item->id) }}">
-                                                        <i class="fa fa-edit"></i> Practicas </a>
+                                                    <a href="{{ route('docentes.practicas.show',[$item->id,1]) }}">
+                                                        <i class="fa fa-edit"></i> Practicas (t1) </a>
                                                 </li>
                                                 <li>
-                                                    <a href="{{ route('docentes.trimestral.show',$item->id) }}">
-                                                        <i class="fa fa-edit"></i> Trimestrales </a>
+                                                    <a href="{{ route('docentes.practicas.show',[$item->id,2]) }}">
+                                                        <i class="fa fa-edit"></i> Practicas (t2) </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('docentes.practicas.show',[$item->id,3]) }}">
+                                                        <i class="fa fa-edit"></i> Practicas (t3) </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('docentes.trimestral.show',[$item->id,1]) }}">
+                                                        <i class="fa fa-edit"></i> 1er Trimestre </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('docentes.trimestral.show',[$item->id,2]) }}">
+                                                        <i class="fa fa-edit"></i> 2do Trimestre </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('docentes.trimestral.show',[$item->id,3]) }}">
+                                                        <i class="fa fa-edit"></i> 3er Trimestre </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('docentes.comportamiento.show',[$item->id,1]) }}">
+                                                        <i class="fa fa-edit"></i> Comportamiento (1t) </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('docentes.comportamiento.show',[$item->id,2]) }}">
+                                                        <i class="fa fa-edit"></i> Comportamiento (2t) </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('docentes.comportamiento.show',[$item->id,3]) }}">
+                                                        <i class="fa fa-edit"></i> Comportamiento (3t) </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('docentes.indicadores.show',[$item->id,1]) }}">
+                                                        <i class="fa fa-edit"></i> Indicadores (1t) </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('docentes.indicadores.show',[$item->id,2]) }}">
+                                                        <i class="fa fa-edit"></i> Indicadores (2t) </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('docentes.indicadores.show',[$item->id,3]) }}">
+                                                        <i class="fa fa-edit"></i> Indicadores (3t) </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('docentes.actitud.show',[$item->id,1]) }}">
+                                                        <i class="fa fa-edit"></i> Actitud (1t) </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('docentes.actitud.show',[$item->id,2]) }}">
+                                                        <i class="fa fa-edit"></i> Actitud (2t) </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('docentes.actitud.show',[$item->id,3]) }}">
+                                                        <i class="fa fa-edit"></i> Actitud (3t) </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('docentes.indicadores.show',[$item->id,1]) }}">
+                                                        <i class="fa fa-edit"></i> Indicadores (1t) </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('docentes.indicadores.show',[$item->id,2]) }}">
+                                                        <i class="fa fa-edit"></i> Indicadores (2t) </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('docentes.indicadores.show',[$item->id,3]) }}">
+                                                        <i class="fa fa-edit"></i> Indicadores (3t) </a>
                                                 </li>
                                             </ul>
                                         </div>

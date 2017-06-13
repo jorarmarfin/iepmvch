@@ -31,7 +31,7 @@
                                     <th>  </th>
                                     <th>  </th>
                                     @for ($i = 0; $i < 4; $i++)
-                                        @if (isset($indicadores[$i]))
+                                        @if (isset($capacidades[$i]))
                                             <th colspan="4" width="50%">
                                                 {{ $capacidades[$i]->nombre }}
                                             </th>

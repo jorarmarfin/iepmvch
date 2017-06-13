@@ -23,8 +23,14 @@ class CapacidadesController extends Controller
     }
     public function store(CreateCapacidadRequest $request)
     {
-    	Capacidad::create($request->all());
-    	Alert::success('Capacidad registrada con exito');
+        $cantidad = Capacidad::where('idperiodoacademico',$request->input('idperiodoacademico'))
+                             ->where('idpersonalasignatura',$request->input('idpersonalasignatura'))->count();
+        if($cantidad<4){
+            Capacidad::create($request->all());
+            Alert::success('Capacidad registrada con exito');
+        }else{
+            Alert::success('No puede agregar mas capacidades para ester trimestre');
+        }
     	return redirect()->route('docentes.capacidades.show',$request->input('idpersonalasignatura'));
     }
     public function edit($id)
