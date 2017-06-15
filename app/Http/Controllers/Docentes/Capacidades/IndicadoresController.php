@@ -41,4 +41,10 @@ class IndicadoresController extends Controller
     	Alert::success('Indicador actualizado con exito');
   		return redirect()->route('docentes.capacidad.indicadores.show',$indicador->idcapacidad);
     }
+    public function delete($id)
+    {
+        CapacidadDetalle::destroy($id);
+        Alert::success('Indicador eliminado con exito');
+        return back();
+    }
 }

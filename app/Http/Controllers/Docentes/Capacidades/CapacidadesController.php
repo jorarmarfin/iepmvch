@@ -6,6 +6,7 @@ use Alert;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateCapacidadRequest;
 use App\Models\Capacidad;
+use App\Models\CapacidadDetalle;
 use App\Models\PersonalAsignatura;
 use Illuminate\Http\Request;
 class CapacidadesController extends Controller
@@ -46,5 +47,22 @@ class CapacidadesController extends Controller
     	$capacidad->save();
     	Alert::success('Capacidad actualziada con exito');
     	return redirect()->route('docentes.capacidades.show',$capacidad->idpersonalasignatura);
+    }
+    public function delete($id)
+    {
+        $indicadores = CapacidadDetalle::where('idcapacidad',$id)->count();
+        if ($indicadores>0) {
+            Alert::danger('No se puede eliminar esta capacidad')
+                 ->items([
+                    'Primero: Eliminar todos los indicadores de esta capacidad',
+                    'Segundo: Eliminar esta capacidad',
+                    ]);
+            return back();
+        } else {
+            Capacidad::destroy($id);
+            Alert::success('Capacidad eliminada con exito');
+            return back();
+        }
+
     }
 }

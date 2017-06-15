@@ -39,21 +39,18 @@
                                         @else
                                             <th> sin capacidad </th>
                                         @endif
-
                                     @endfor
                                     <th>  </th>
                                 </tr>
                                 <tr>
                                     <th> Periodo </th>
                                     <th> Alumno </th>
-                                    @for ($i = 0; $i < 16; $i++)
-                                        @if (isset($indicadores[$i]))
-                                            <th> {{ $indicadores[$i]->nombre }}</th>
-
-                                        @else
-                                            <th> sin indicador </th>
-
-                                        @endif
+                                    @for ($i = 0; $i < 4; $i++)
+                                        @for ($j = 0; $j < 4; $j++)
+                                            @if (isset($capacidades[$i]))
+                                                <th>{{ IndicadorDeCapacidad($capacidades[$i]->id,$j) }}</th>
+                                            @endif
+                                        @endfor
                                     @endfor
                                     <th> Promedio</th>
                                 </tr>

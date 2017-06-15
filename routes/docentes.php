@@ -55,7 +55,10 @@ Route::group(['prefix' => 'docentes','middleware'=>'auth','namespace'=>'Docentes
 
 	Route::group(['namespace'=>'Capacidades'], function() {
 		Route::resource('capacidades','CapacidadesController',['names'=>'docentes.capacidades','only'=>['index','show','store','edit','update']]);
+		Route::get('capacidades-delete/{id}','CapacidadesController@delete')->name('docentes.capacidades.delete');
+
 		Route::resource('capacidad-indicadores','IndicadoresController',['names'=>'docentes.capacidad.indicadores','only'=>['index','show','store','edit','update']]);
+		Route::get('indicador-capacidad-delete/{id}','IndicadoresController@delete')->name('docentes.capacidad.indicadores.delete');
 
 
 

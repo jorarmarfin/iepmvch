@@ -102,18 +102,6 @@
                                                     <a href="{{ route('docentes.actitud.show',[$item->id,3]) }}">
                                                         <i class="fa fa-edit"></i> Actitud (3t) </a>
                                                 </li>
-                                                <li>
-                                                    <a href="{{ route('docentes.indicadores.show',[$item->id,1]) }}">
-                                                        <i class="fa fa-edit"></i> Indicadores (1t) </a>
-                                                </li>
-                                                <li>
-                                                    <a href="{{ route('docentes.indicadores.show',[$item->id,2]) }}">
-                                                        <i class="fa fa-edit"></i> Indicadores (2t) </a>
-                                                </li>
-                                                <li>
-                                                    <a href="{{ route('docentes.indicadores.show',[$item->id,3]) }}">
-                                                        <i class="fa fa-edit"></i> Indicadores (3t) </a>
-                                                </li>
                                             </ul>
                                         </div>
                                     </td>

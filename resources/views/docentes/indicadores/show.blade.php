@@ -47,7 +47,8 @@
                                 <tr>
                                     <td> {{ $item->nombre }} </td>
                                     <td>
-                                        {!!Form::boton('Editar',route('docentes.capacidad.indicadores.edit',$item->id),'red','fa fa-edit','btn-xs')!!}
+                                        {!!Form::boton('Editar',route('docentes.capacidad.indicadores.edit',$item->id),'yellow','fa fa-edit','btn-xs')!!}
+                                        {!!Form::boton('Eliminar',route('docentes.capacidad.indicadores.delete',$item->id),'red','fa fa-edit','btn-xs')!!}
                                     </td>
                                 </tr>
                             @endforeach

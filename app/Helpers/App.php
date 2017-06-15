@@ -3,6 +3,7 @@
 use App\Models\Alumno;
 use App\Models\AlumnoFamiliar;
 use App\Models\Capacidad;
+use App\Models\CapacidadDetalle;
 use App\Models\Catalogo;
 use App\Models\Institucion;
 use App\Models\PeriodoPractica;
@@ -340,6 +341,23 @@ if (! function_exists('CuadernoActivo')) {
         $activador = PeriodoPractica::where('idperiodoacademico',$periodo)->first();
 
         return $activador->cuaderno;
+    }
+}
+/**
+ * Activa el Registro de Cuaderno
+ */
+if (! function_exists('IndicadorDeCapacidad')) {
+    /**
+     * Funcion que retorna el prefijo para nombres de archivos
+     * @return [type] [description]
+     */
+    function IndicadorDeCapacidad($idcapacidad,$numero_indicador)
+    {
+        $indicador = CapacidadDetalle::where('idcapacidad',$idcapacidad)->get();
+
+        if(isset($indicador[$numero_indicador]))return $indicador[$numero_indicador]->nombre;
+        else return 'sin indicador';
+
     }
 }
 

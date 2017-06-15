@@ -60,8 +60,12 @@
                                                         <i class="fa fa-edit"></i> Editar </a>
                                                 </li>
                                                 <li>
+                                                    <a href="{{ route('docentes.capacidades.delete',$item->id) }}">
+                                                        <i class="fa fa-eraser"></i> Eliminar </a>
+                                                </li>
+                                                <li>
                                                     <a href="{{ route('docentes.capacidad.indicadores.show',$item->id) }}">
-                                                        <i class="fa fa-edit"></i> Indicadores </a>
+                                                        <i class="fa fa-caret-square-o-up"></i> Indicadores </a>
                                                 </li>
                                             </ul>
                                         </div>

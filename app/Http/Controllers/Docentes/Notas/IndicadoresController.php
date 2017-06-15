@@ -53,6 +53,7 @@ class IndicadoresController extends Controller
 
         $capacidades = Capacidad::Nombres($practicaresumen[0])->get();
         $indicadores =  CapacidadDetalle::whereIn('idcapacidad',$capacidades->pluck(['id']))->get();
+
     	return view('docentes.notas.indicadores.show',compact('asignatura','practicaresumen','capacidades','indicadores'));
     }
     public function ingresa(Request $request)
