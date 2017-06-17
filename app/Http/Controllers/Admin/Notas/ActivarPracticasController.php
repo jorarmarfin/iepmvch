@@ -72,4 +72,21 @@ class ActivarPracticasController extends Controller
 		}
 		return back();
 	}
+	public function actitud(Request $request)
+	{
+		$data = $request->all();
+
+		for ($i=0; $i < 5; $i++) {
+			$actitud = 'ac'.pad(($i+1),2,'0','L');
+				PeriodoPractica::whereNotNull('id')->update([$actitud=>false]);
+			if($request->has($actitud)){
+				foreach ($data[$actitud] as $key => $item) {
+					PeriodoPractica::where('id',$data['id'][$key])->update([$actitud=>$item]);
+				}
+			}else{
+
+			}
+		}
+		return back();
+	}
 }

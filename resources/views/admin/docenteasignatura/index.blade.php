@@ -44,6 +44,7 @@
                             <th> Grado </th>
                             <th> Area </th>
                             <th> SubArea </th>
+                            <th> Tutor </th>
                             <th> Opciones </th>
                         </tr>
                     </thead>
@@ -54,6 +55,7 @@
                             <th> Grado </th>
                             <th> Area </th>
                             <th> SubArea </th>
+                            <th> Tutor </th>
                             <th> Opciones </th>
                         </tr>
                     </tfoot>
@@ -71,13 +73,20 @@
                             <td> {{ $item->nombre_area }} </td>
                             <td> {{ $item->nombre_asignatura }} </td>
                             <td>
+                                @if ($item->tutor)
+                                    <a href="{{ route('admin.personalasignatura.tutor',$item->id) }}" class="label label-info"> SI </a>
+                                @else
+                                    <a href="{{ route('admin.personalasignatura.tutor',$item->id) }}" class="label label-danger"> NO </a>
+                                @endif
+                            </td>
+                            <td>
                                 <div class="btn-group">
                                     <button class="btn btn-xs green-dark dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Opciones
                                         <i class="fa fa-angle-down"></i>
                                     </button>
                                     <ul class="dropdown-menu pull-left" role="menu">
                                         <li>
-                                            <a href="{{ route('admin.personalasignatura.edit',$item->id) }}">
+                                            <a href="#">
                                                 <i class="fa fa-edit"></i> Edit </a>
                                         </li>
                                         <li>

@@ -20,5 +20,9 @@ Route::group(['namespace'=>'Notas'], function() {
 	 * Activar Indicadores
 	 */
 	Route::post('activar-indicadores','ActivarPracticasController@indicadores' )->name('admin.notas.activar.indicadores');
+	/**
+	 * Activar Actitud
+	 */
+	Route::post('activar-actitud','ActivarPracticasController@actitud' )->name('admin.notas.activar.actitud');
 
 });

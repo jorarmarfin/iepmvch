@@ -222,7 +222,63 @@
         <!-- END Portlet PORTLET-->
     </div>
 </div>
+<div class="row">
+    <div class="col-md-12">
+        {!! Alert::render() !!}
+        <!-- BEGIN Portlet PORTLET-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-table"></i>
+                    Activar Actitud
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse"> </a>
+                    <a href="" class="fullscreen"> </a>
+                    <a href="javascript:;" class="remove"> </a>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="row">
+                    <div class="col-md-12">
+            {!! Form::open(['route'=>'admin.notas.activar.actitud','method'=>'POST']) !!}
+                        <table class="table table-striped table-hover table-bordered table-condensed ParaActivar">
+                            <thead>
+                                <tr>
+                                    <th> Trimestre </th>
+                                    <th> Actitud 01</th>
+                                    <th> Actitud 02</th>
+                                    <th> Actitud 03</th>
+                                    <th> Actitud 04</th>
+                                    <th> Actitud 05</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach ($Lista as $item)
+                                <tr>
+                                    <td>
+                                        {{ $item->periodo_academico }}
+                                        {!!Form::hidden('id[]', $item->id );!!}
+                                    </td>
+                                    <td class="icheck" align="center">  {{ Form::checkbox('ac01['.$loop->index.']', 1,$item->ac01) }}</td>
+                                    <td class="icheck" align="center">  {{ Form::checkbox('ac02['.$loop->index.']', 1,$item->ac02) }}</td>
+                                    <td class="icheck" align="center">  {{ Form::checkbox('ac03['.$loop->index.']', 1,$item->ac03) }}</td>
+                                    <td class="icheck" align="center">  {{ Form::checkbox('ac04['.$loop->index.']', 1,$item->ac04) }}</td>
+                                    <td class="icheck" align="center">  {{ Form::checkbox('ac05['.$loop->index.']', 1,$item->ac05) }}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                        {!!Form::enviar('Guardar')!!}
+            {!! Form::close() !!}
+                    </div><!--/span-->
+                </div><!--/row-->
 
+            </div><!--/Porlet Body-->
+        </div>
+        <!-- END Portlet PORTLET-->
+    </div>
+</div>
 @stop
 @section('js-scripts')
 <script>

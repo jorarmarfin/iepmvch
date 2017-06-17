@@ -39,7 +39,7 @@ class PersonalAsignatura extends Model
         return $asignatura->nombre;
     }
     /**
-    * Atributos Asignatura
+    * Atributos Area
     */
     public function getNombreAreaAttribute()
     {

@@ -59,4 +59,12 @@ class PersonalAsignaturaController extends Controller
 
     	return $area;
     }
+    public function asignartutor($id)
+    {
+        $personalasignatura = PersonalAsignatura::find($id);
+        $personalasignatura->tutor = !$personalasignatura->tutor;
+        $personalasignatura->save();
+        Alert::success('Tutor asignado con exito');
+        return back();
+    }
 }
