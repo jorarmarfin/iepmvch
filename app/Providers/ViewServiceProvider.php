@@ -46,7 +46,7 @@ class ViewServiceProvider extends ServiceProvider
             );
         $this->app->make('view')->composer(
             ['admin.matricula.index','admin.matricula.edit','admin.matricula.delete','admin.asistencia.index',
-             'admin.ags.index','admin.docenteasignatura.index'
+             'admin.ags.index','admin.docenteasignatura.index','admin.personalgrado.index','admin.personalgrado.edit','admin.personalgrado.delete'
             ],
             GradoSeccionSelectData::class
             );
@@ -96,7 +96,7 @@ class ViewServiceProvider extends ServiceProvider
             );
         $this->app->make('view')->composer(
             ['admin.disponibilidad.index','admin.disponibilidad.edit','admin.disponibilidad.delete',
-            'admin.reservapsicologica.create','admin.reservapsicologica.edit','admin.docenteasignatura.index'
+            'admin.reservapsicologica.create','admin.reservapsicologica.edit','admin.docenteasignatura.index','admin.personalgrado.index','admin.personalgrado.edit','admin.personalgrado.delete'
             ],
             PersonalSelectData::class
             );

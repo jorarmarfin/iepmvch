@@ -13,9 +13,11 @@ class CreatePersonalGradosTable extends Migration
      */
     public function up()
     {
-        Schema::create('personal_grados', function (Blueprint $table) {
+        Schema::create('personal_grado', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            $table->integer('idpersonal')->nullable();
+            $table->integer('idgrado')->nullable();
+            $table->boolean('activo')->nullable();
         });
     }
 
@@ -26,6 +28,6 @@ class CreatePersonalGradosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('personal_grados');
+        Schema::dropIfExists('personal_grado');
     }
 }

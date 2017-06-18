@@ -10,7 +10,7 @@
             <div class="portlet-title">
                 <div class="caption">
                     <i class="fa fa-table"></i>
-                    Examenes Trimestrales
+                    Practicas
                 </div>
                 <div class="tools">
                     <a href="javascript:;" class="collapse"> </a>
@@ -26,9 +26,16 @@
                                 <tr>
                                     <th> Area </th>
                                     <th> Subarea </th>
-                                    <th> T01</th>
-                                    <th> T02</th>
-                                    <th> T03</th>
+                                    <th> P01</th>
+                                    <th> P02</th>
+                                    <th> P03</th>
+                                    <th> P04</th>
+                                    <th> P05</th>
+                                    <th> P06</th>
+                                    <th> P07</th>
+                                    <th> P08</th>
+                                    <th> P09</th>
+                                    <th> P10</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -36,9 +43,16 @@
                                 <tr>
                                     <td> {{ $item->area }} </td>
                                     <td> {{ $item->asignatura }} </td>
-                                    <td> {{ $item->nota_trimestral_1 }} </td>
-                                    <td> {{ $item->nota_trimestral_2 }} </td>
-                                    <td> {{ $item->nota_trimestral_3 }} </td>
+                                    <td> {{ $item->pc01 }} </td>
+                                    <td> {{ $item->pc02 }} </td>
+                                    <td> {{ $item->pc03 }} </td>
+                                    <td> {{ $item->pc04 }} </td>
+                                    <td> {{ $item->pc05 }} </td>
+                                    <td> {{ $item->pc06 }} </td>
+                                    <td> {{ $item->pc07 }} </td>
+                                    <td> {{ $item->pc08 }} </td>
+                                    <td> {{ $item->pc09 }} </td>
+                                    <td> {{ $item->pc10 }} </td>
                                 </tr>
                             @endforeach
                             </tbody>

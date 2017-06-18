@@ -13,6 +13,7 @@
             <h3 class="uppercase">Docente</h3>
         </li>
         {!!Form::menu('Notas',route('docentes.notas.index'),'fa fa-cubes')!!}
+        {!!Form::menu('Notas Padres',route('docentes.padres.index'),'fa fa-cubes')!!}
         {!!Form::menu('Capacidades',route('docentes.capacidades.index'),'fa fa-cubes')!!}
         {!!Form::menu('Mensajes','#','fa fa-comment')!!}
         {!!Form::menu('Comentarios trimestre','#','fa fa-comments-o')!!}

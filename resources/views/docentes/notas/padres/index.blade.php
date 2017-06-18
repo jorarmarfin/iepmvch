@@ -10,7 +10,7 @@
             <div class="portlet-title">
                 <div class="caption">
                     <i class="fa fa-table"></i>
-                    Examenes Trimestrales
+                    Lista de Alumnos por Grado
                 </div>
                 <div class="tools">
                     <a href="javascript:;" class="collapse"> </a>
@@ -19,26 +19,42 @@
                 </div>
             </div>
             <div class="portlet-body">
-                <div class="row">
+           <div class="row">
                     <div class="col-md-12">
-                        <table class="table table-striped table-hover table-bordered table-condensed" id="Practicas">
+                        <table class="table table-striped table-hover table-bordered table-condensed" id="Asignaturas">
                             <thead>
                                 <tr>
-                                    <th> Area </th>
-                                    <th> Subarea </th>
-                                    <th> T01</th>
-                                    <th> T02</th>
-                                    <th> T03</th>
+                                    <th> Grado </th>
+                                    <th> Alumno </th>
+                                    <th> Opciones </th>
                                 </tr>
                             </thead>
                             <tbody>
                             @foreach ($Lista as $item)
                                 <tr>
-                                    <td> {{ $item->area }} </td>
-                                    <td> {{ $item->asignatura }} </td>
-                                    <td> {{ $item->nota_trimestral_1 }} </td>
-                                    <td> {{ $item->nota_trimestral_2 }} </td>
-                                    <td> {{ $item->nota_trimestral_3 }} </td>
+                                    <td> {{ $item->grado_matriculado }} </td>
+                                    <td> {{ $item->alumno->nombre_completo }} </td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <button class="btn btn-xs green-dark dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Calificar
+                                                <i class="fa fa-angle-down"></i>
+                                            </button>
+                                            <ul class="dropdown-menu pull-left" role="menu">
+                                                <li>
+                                                    <a href="{{ route('docentes.padres.show',1) }}">
+                                                        <i class="fa fa-edit"></i> Primer Trimestre </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('docentes.padres.show',2) }}">
+                                                        <i class="fa fa-edit"></i> Segundo Trimestre </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('docentes.padres.show',3) }}">
+                                                        <i class="fa fa-edit"></i> Tercer Trimestre </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>
@@ -57,7 +73,8 @@
 <script>
 $(document).ready(function() {
 
-    $('#Practicas').dataTable({
+
+    $('#Asignaturas').dataTable({
         "language": {
             "emptyTable": "No hay datos disponibles",
             "info": "Mostrando _START_ a _END_ de _TOTAL_ filas",
@@ -68,7 +85,7 @@ $(document).ready(function() {
         "lengthMenu": [ 25, 50, 75, 100 ],
         "bProcessing": true,
         "pagingType": "bootstrap_full_number",
-        "order": [0,"asc"],
+        "order": [[0,"asc"],[1,"asc"]],
 
     });
 
@@ -78,6 +95,8 @@ $(document).ready(function() {
 
 @section('plugins-styles')
 {!! Html::style(asset('assets/global/plugins/bootstrap-table/bootstrap-table.min.css')) !!}
+{!! Html::style(asset('assets/global/plugins/select2/css/select2.min.css')) !!}
+{!! Html::style(asset('assets/global/plugins/select2/css/select2-bootstrap.min.css')) !!}
 {!! Html::style(asset('assets/global/plugins/datatables/datatables.min.css')) !!}
 {!! Html::style('assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css') !!}
 @stop
@@ -85,6 +104,8 @@ $(document).ready(function() {
 @section('plugins-js')
 {!! Html::script('assets/global/plugins/jquery-ui/jquery-ui.min.js') !!}
 {!! Html::script('assets/global/plugins/bootstrap-table/bootstrap-table.min.js') !!}
+{!! Html::script(asset('assets/global/plugins/select2/js/select2.full.min.js')) !!}
+{!! Html::script(asset('assets/global/plugins/select2/js/i18n/es.js')) !!}
 {!! Html::script('assets/global/scripts/datatable.js') !!}
 {!! Html::script('assets/global/plugins/datatables/datatables.min.js') !!}
 {!! Html::script('assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js') !!}
@@ -110,7 +131,7 @@ $(document).ready(function() {
 
 
 @section('page-title')
-{{ $Lista[0]->alumno->nombre_completo }}
+Modulo de calificacion de Padres
 @stop
 
 @section('page-subtitle')

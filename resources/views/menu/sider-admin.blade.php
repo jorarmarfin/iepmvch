@@ -38,6 +38,7 @@
                 {!!Form::menu('subareas',route('admin.asignatura.index'))!!}
                 {!!Form::menu('Grado Area',route('admin.ags.index'))!!}
                 {!!Form::menu('Docente Grado',route('admin.personalasignatura.index'))!!}
+                {!!Form::menu('Tutoria',route('admin.personalgrado.index'))!!}
                 {!!Form::menu('Horario',route('admin.asignatura.index'))!!}
             </ul>
         </li>

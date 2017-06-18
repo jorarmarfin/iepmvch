@@ -48,6 +48,12 @@ Route::group(['prefix' => 'docentes','middleware'=>'auth','namespace'=>'Docentes
 		Route::get('cuaderno', 'CuadernoController@index')->name('docentes.cuaderno.index');
 		Route::get('cuaderno/{asignatura}/{trimestre}', 'CuadernoController@show')->name('docentes.cuaderno.show');
 		Route::post('ingresa-cuaderno', 'CuadernoController@ingresa')->name('docentes.cuaderno.ingresa');
+		/**
+		 * Notas de Padres
+		 */
+		Route::get('padres', 'PadresController@index')->name('docentes.padres.index');
+		Route::get('padres-show/{trimestre}', 'PadresController@show')->name('docentes.padres.show');
+		Route::post('padres-store', 'PadresController@store')->name('docentes.padres.store');
 
 
 

@@ -15,14 +15,21 @@ class CreateEvaluacionPadresTable extends Migration
     {
         Schema::create('evaluacion_padre', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('idperiodoacademico')->nullable();
             $table->integer('idmatricula')->nullable();
-            $table->integer('idaccionprincipal')->nullable();
-            $table->decimal('t1',8,3)->nullable();
-            $table->decimal('t2',8,3)->nullable();
-            $table->decimal('t3',8,3)->nullable();
-            $table->timestamps();
-            $table->foreign('idmatricula')->references('id')->on('matricula');
-            $table->foreign('idaccionprincipal')->references('id')->on('accion_principal');
+            $table->char('ap1',2)->nullable();
+            $table->char('ap2',2)->nullable();
+            $table->char('ap3',2)->nullable();
+            $table->char('ap4',2)->nullable();
+            $table->char('ap5',2)->nullable();
+            $table->char('ap6',2)->nullable();
+            $table->char('ap7',2)->nullable();
+            $table->char('ap8',2)->nullable();
+            $table->char('ap9',2)->nullable();
+            $table->char('ap10',2)->nullable();
+            $table->char('ap11',2)->nullable();
+            $table->char('ap12',2)->nullable();
+            $table->mediumtext('comentario')->nullable();
         });
     }
 
