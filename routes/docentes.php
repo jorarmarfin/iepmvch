@@ -52,8 +52,8 @@ Route::group(['prefix' => 'docentes','middleware'=>'auth','namespace'=>'Docentes
 		 * Notas de Padres
 		 */
 		Route::get('padres', 'PadresController@index')->name('docentes.padres.index');
-		Route::get('padres-show/{trimestre}', 'PadresController@show')->name('docentes.padres.show');
-		Route::post('padres-store', 'PadresController@store')->name('docentes.padres.store');
+		Route::get('padres-show/{matricula}/{trimestre}', 'PadresController@show')->name('docentes.padres.show');
+		Route::put('padres-update/{id}', 'PadresController@update')->name('docentes.padres.update');
 
 
 

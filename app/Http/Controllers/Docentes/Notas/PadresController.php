@@ -17,16 +17,7 @@ class PadresController extends Controller
 	{
 		$personal = Personal::select('id')->where('idusuario',Auth::user()->id)->first();
 		$tutor = PersonalGrado::where('idpersonal',$personal->id)->first();
-		$Lista = Matricula::where('idgradoseccion',$tutor->idgrado)
-    							->where('idtipo',EstadoId('TIPO MATRICULA','Activa'))
-    							->get();
-    	return view('docentes.notas.padres.index',compact('Lista'));
-	}
-    public function show($trimestre)
-    {
-    	$personal = Personal::select('id')->where('idusuario',Auth::user()->id)->first();
-    	$tutor = PersonalGrado::where('idpersonal',$personal->id)->first();
-    	if(isset($tutor)){
+		if(isset($tutor)){
     		$matricula = Matricula::select('id')->where('idgradoseccion',$tutor->idgrado)
     							->where('idtipo',EstadoId('TIPO MATRICULA','Activa'))
     							->get();
@@ -46,16 +37,30 @@ class PadresController extends Controller
 	                                });
 	            }
 	        }
-	        $evaluacionpadres = EvaluacionPadre::whereIn('idmatricula',$matricula->toArray())
-                                            ->where('idperiodoacademico',$periodos[$trimestre-1]->id)
-                                            ->get();
-                                            dd($evaluacionpadres);
-            return view('docentes.notas.padres.show',compact('evaluacionpadres'));
+	        $Lista = $matricula = Matricula::where('idgradoseccion',$tutor->idgrado)
+    							->where('idtipo',EstadoId('TIPO MATRICULA','Activa'))
+    							->get();
+            return view('docentes.notas.padres.index',compact('Lista'));
     	}
 
-    }
-    public function store(Request $request)
+	}
+    public function show($idmatricula,$trimestre)
     {
-
+    	$trimestre = Catalogo::select('id')->table('PERIODO ACADEMICO')->where('iditem',$trimestre)->first();
+        $evaluacionpadres = EvaluacionPadre::where('idmatricula',$idmatricula)
+                                       	   ->where('idperiodoacademico',$trimestre->id)
+                                           ->first();
+        return view('docentes.notas.padres.show',compact('evaluacionpadres'));
+    }
+    public function update(Request $request,$id)
+    {
+    	$evaluacionpadres = EvaluacionPadre::find($id);
+    	$data = $request->all();
+    	for ($i=1; $i <= 12; $i++) {
+    		$data['ap'.$i] = substr(trim($data['ap'.$i]), 0,2) ;
+    	}
+    	$evaluacionpadres->fill($data);
+    	$evaluacionpadres->save();
+    	return back();
     }
 }

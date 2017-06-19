@@ -10,7 +10,7 @@
             <div class="portlet-title">
                 <div class="caption">
                     <i class="fa fa-table"></i>
-                    Lista de Alumnos por Grado
+                    Alumno : {{ $evaluacionpadres->matricula->alumno->nombre_completo }}
                 </div>
                 <div class="tools">
                     <a href="javascript:;" class="collapse"> </a>
@@ -19,9 +19,30 @@
                 </div>
             </div>
             <div class="portlet-body">
-            {!! Form::open(['route'=>'docentes.padres.store','method'=>'POST']) !!}
+            {!! Form::model($evaluacionpadres,['route'=>['docentes.padres.update',$evaluacionpadres],'method'=>'PUT']) !!}
             <div class="row">
                 <div class="col-md-12">
+                    <table class="table table-bordered ">
+                        <thead>
+                            <tr>
+                                <th colspan="4"> ESCALA DE CALIFICACION DE PADRES DE FAMILIA </th>
+                            </tr>
+                            <tr>
+                                <th> C </th>
+                                <th> B </th>
+                                <th> A </th>
+                                <th> AD </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td> Nunca </td>
+                                <td> algunas Veces </td>
+                                <td> Casi Siempre </td>
+                                <td> Siempre </td>
+                            </tr>
+                        </tbody>
+                    </table>
                     <table class="table table-striped table-hover table-bordered table-condensed" id="Asignaturas">
                         <thead>
                             <tr>
@@ -30,54 +51,55 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {!!Form::hidden('id', $evaluacionpadres->id );!!}
                             <tr>
                                 <td> Envía al Estudiante todos los dias con el uniforme </td>
-                                <td> {!!Form::textnota('ap[0]' );!!} </td>
+                                <td> {!!Form::textnota('ap1' );!!} </td>
                             </tr>
-                            <tr>
-                                <td> Envía al Estudiante con el uniforme deportivo solo cuando tiene educacion fisica o taller </td>
-                                <td> {!!Form::textnota('ap[1]' );!!} </td>
-                            </tr>
+                            @if (!str_contains($evaluacionpadres->matricula->grado_matriculado, 'Inicial'))
+                                <tr>
+                                    <td> Envía al Estudiante con el uniforme deportivo solo cuando tiene educacion fisica o taller </td>
+                                    <td> {!!Form::textnota('ap2' );!!} </td>
+                                </tr>
+                            @endif
                             <tr>
                                 <td> Se asegura que el estudiante asista bien aseado y peinado a la I.E.P. (corte escolar - varones) </td>
-                                <td> {!!Form::textnota('ap[2]' );!!} </td>
+                                <td> {!!Form::textnota('ap3' );!!} </td>
                             </tr>
                             <tr>
                                 <td> Está al pendiente que el estudiante cumpla con todas las areas academicas asignadas </td>
-                                <td> {!!Form::textnota('ap[3]' );!!} </td>
+                                <td> {!!Form::textnota('ap4' );!!} </td>
                             </tr>
                             <tr>
                                 <td> Está al pendiente que el estudiante asista a clases con todos sus materiales y utiles para trabajar </td>
-                                <td> {!!Form::textnota('ap[4]' );!!} </td>
+                                <td> {!!Form::textnota('ap5' );!!} </td>
                             </tr>
                             <tr>
                                 <td> Está al pendiente que el estudiante que el estudiante conserve en buen estado sus materiales escolares </td>
-                                <td> {!!Form::textnota('ap[5]' );!!} </td>
+                                <td> {!!Form::textnota('ap6' );!!} </td>
                             </tr>
                             <tr>
                                 <td> Está al pendiente del desempeño escolar del estudiante y se involucra en el proceso de aprendizaje </td>
-                                <td> {!!Form::textnota('ap[6]' );!!} </td>
+                                <td> {!!Form::textnota('ap7' );!!} </td>
                             </tr>
                             <tr>
                                 <td> Asiste a la I.E.P. regularmente a preguntarle a los profesores sobre la conducta del estudiante </td>
-                                <td> {!!Form::textnota('ap[7]' );!!} </td>
+                                <td> {!!Form::textnota('ap8' );!!} </td>
                             </tr>
                             <tr>
                                 <td> Asiste a las reuniones de padres de familia y escuela de padres </td>
-                                <td> {!!Form::textnota('ap[8]' );!!} </td>
+                                <td> {!!Form::textnota('ap9' );!!} </td>
                             </tr>
                             <tr>
                                 <td> Atiende las indicaciones y sugerencias de los docentes </td>
-                                <td> {!!Form::textnota('ap[9]' );!!} </td>
+                                <td> {!!Form::textnota('ap10' );!!} </td>
                             </tr>
                             <tr>
                                 <td> Asiste a las citaciones de la I.E.P. (Docentes, Psicologia y Dirección) </td>
-                                <td> {!!Form::textnota('ap[10]' );!!} </td>
+                                <td> {!!Form::textnota('ap11' );!!} </td>
                             </tr>
                             <tr>
                                 <td> Revisa y firma el cuaderno de control diariamente de manera responsable </td>
-                                <td> {!!Form::textnota('ap[11]' );!!} </td>
+                                <td> {!!Form::textnota('ap12' );!!} </td>
                             </tr>
                         </tbody>
                     </table>

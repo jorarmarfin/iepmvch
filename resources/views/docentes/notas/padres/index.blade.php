@@ -41,15 +41,15 @@
                                             </button>
                                             <ul class="dropdown-menu pull-left" role="menu">
                                                 <li>
-                                                    <a href="{{ route('docentes.padres.show',1) }}">
+                                                    <a href="{{ route('docentes.padres.show',[$item->id,1]) }}">
                                                         <i class="fa fa-edit"></i> Primer Trimestre </a>
                                                 </li>
                                                 <li>
-                                                    <a href="{{ route('docentes.padres.show',2) }}">
+                                                    <a href="{{ route('docentes.padres.show',[$item->id,2]) }}">
                                                         <i class="fa fa-edit"></i> Segundo Trimestre </a>
                                                 </li>
                                                 <li>
-                                                    <a href="{{ route('docentes.padres.show',3) }}">
+                                                    <a href="{{ route('docentes.padres.show',[$item->id,3]) }}">
                                                         <i class="fa fa-edit"></i> Tercer Trimestre </a>
                                                 </li>
                                             </ul>

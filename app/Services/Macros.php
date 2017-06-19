@@ -129,7 +129,7 @@ class Macros extends FormBuilder
 	{
 		Form::macro('textnota',function($name,$valor = null){
 
-			return Form::text($name, $valor , ['class'=>'form-control','placeholder'=>'Nota']);
+			return Form::text($name, $valor , ['class'=>'form-control','placeholder'=>'Nota','maxlength'=>2]);
 		});
 
 	}
