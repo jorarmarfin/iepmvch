@@ -57,7 +57,10 @@ class PadresController extends Controller
     	$evaluacionpadres = EvaluacionPadre::find($id);
     	$data = $request->all();
     	for ($i=1; $i <= 12; $i++) {
-    		$data['ap'.$i] = substr(trim($data['ap'.$i]), 0,2) ;
+
+            if (array_key_exists('ap'.$i, $data)) {
+    		  $data['ap'.$i] = substr(trim($data['ap'.$i]), 0,2) ;
+            }
     	}
     	$evaluacionpadres->fill($data);
     	$evaluacionpadres->save();
