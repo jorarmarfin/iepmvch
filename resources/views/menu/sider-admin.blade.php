@@ -58,7 +58,7 @@
                 {!!Form::menu('Notas',route('admin.notas.index'))!!}
             </ul>
         </li>
-        {!!Form::menu('Registros','#','icon-book-open')!!}
+        {!!Form::menu('Registros',route('admin.registro.index'),'icon-book-open')!!}
         {!!Form::menu('Almacen','#','fa fa-archive')!!}
         {!!Form::menu('Pensiones','#','fa fa-dollar')!!}
         {!!Form::menu('Cumpleaños',route('admin.birthday.index'),'icon-present')!!}

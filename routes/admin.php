@@ -42,6 +42,10 @@ Route::group(['prefix' => 'admin','namespace'=>'Admin'], function() {
 	 * Notas
 	 */
 	require __DIR__.'/admin/notas.route.php';
+	/**
+	 * Registros
+	 */
+	require __DIR__.'/admin/registro.route.php';
 
 
 

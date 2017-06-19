@@ -15,8 +15,8 @@
         {!!Form::menu('Notas',route('docentes.notas.index'),'fa fa-cubes')!!}
         {!!Form::menu('Notas Padres',route('docentes.padres.index'),'fa fa-cubes')!!}
         {!!Form::menu('Capacidades',route('docentes.capacidades.index'),'fa fa-cubes')!!}
+        {!!Form::menu('Comportamiento',route('docentes.comportamiento.index'),'fa fa-cubes')!!}
         {!!Form::menu('Mensajes','#','fa fa-comment')!!}
-        {!!Form::menu('Comentarios trimestre','#','fa fa-comments-o')!!}
 
     </ul>
     <!-- END SIDEBAR MENU -->

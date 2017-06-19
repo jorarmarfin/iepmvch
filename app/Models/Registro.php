@@ -9,7 +9,46 @@ class Registro extends Model
     protected $table = 'registro';
     protected $guarded = [];
     public $timestamps = false;
-
+    /**
+    * Atributos Profesor
+    */
+    public function getProfesorAttribute()
+    {
+        $personalasignatura = PersonalAsignatura::find($this->idpersonalasignatura);
+        $personal = Personal::find($personalasignatura->idpersonal);
+        return $personal->nombre_completo;
+    }
+    /**
+    * Atributos Ciclo
+    */
+    public function getCicloAttribute()
+    {
+        $matricula = Matricula::find($this->idmatricula);
+        $gradoseccion = GradoSeccion::find($matricula->idgradoseccion);
+        $grado = Grado::find($gradoseccion->idgrado);
+        return $grado->ciclo;
+    }
+    /**
+    * Atributos Nivel
+    */
+    public function getNivelAttribute()
+    {
+        $matricula = Matricula::find($this->idmatricula);
+        $gradoseccion = GradoSeccion::find($matricula->idgradoseccion);
+        $grado = Grado::find($gradoseccion->idgrado);
+        $nivel = Catalogo::find($grado->idnivel);
+        return $nivel->nombre;
+    }
+    /**
+    * Atributos Grado
+    */
+    public function getGradoAttribute()
+    {
+        $matricula = Matricula::find($this->idmatricula);
+        $gradoseccion = GradoSeccion::find($matricula->idgradoseccion);
+        $grado = Grado::find($gradoseccion->idgrado);
+        return $grado->nombre;
+    }
     /**
     * Atributos Nota Trimestral 01
     */

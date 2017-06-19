@@ -27,9 +27,9 @@ Route::group(['prefix' => 'docentes','middleware'=>'auth','namespace'=>'Docentes
 		/**
 		 * Notas de comportamiento
 		 */
-		Route::get('comportamiento', 'ComportamientoController@index')->name('docentes.comportamiento.index');
-		Route::get('comportamiento/{asignatura}/{trimestre}', 'ComportamientoController@show')->name('docentes.comportamiento.show');
-		Route::post('ingresa-comportamiento', 'ComportamientoController@ingresa')->name('docentes.comportamiento.ingresa');
+		#Route::get('comportamiento', 'ComportamientoController@index')->name('docentes.comportamiento.index');
+		#Route::get('comportamiento/{asignatura}/{trimestre}', 'ComportamientoController@show')->name('docentes.comportamiento.show');
+		#Route::post('ingresa-comportamiento', 'ComportamientoController@ingresa')->name('docentes.comportamiento.ingresa');
 		/**
 		 * Notas de indicadores
 		 */
@@ -56,6 +56,15 @@ Route::group(['prefix' => 'docentes','middleware'=>'auth','namespace'=>'Docentes
 		Route::put('padres-update/{id}', 'PadresController@update')->name('docentes.padres.update');
 
 
+	});
+
+	Route::group(['namespace'=>'Comportamiento'], function() {
+		/**
+		 * Nuevos comportamiento
+		 */
+		Route::get('comportamiento','ComportamientoController@index')->name('docentes.comportamiento.index');
+		Route::get('comportamiento-grado/{trimestre}','ComportamientoController@grado')->name('docentes.comportamiento.grado');
+		Route::get('comportamiento-alumnos/{trimestre}/{grado}','ComportamientoController@alumnos')->name('docentes.comportamiento.alumnos');
 
 	});
 
